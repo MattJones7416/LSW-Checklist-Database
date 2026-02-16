@@ -1,4 +1,4 @@
-name: Update Market Values
+name: Sync Brickset Star Wars Catalog
 
 on:
   workflow_dispatch:
@@ -9,11 +9,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-market-values
+  group: sync-brickset-catalog
   cancel-in-progress: false
 
 jobs:
-  refresh-prices:
+  sync-catalog:
     runs-on: ubuntu-latest
     timeout-minutes: 360
 
@@ -26,26 +26,33 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Refresh market values
+      - name: Install dependencies
         run: |
-          python scripts/update_market_values.py \
+          python -m pip install --upgrade pip
+          python -m pip install requests
+
+      - name: Sync sets and minifigures
+        run: |
+          python scripts/sync_brickset_catalog.py \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --delay 2.5 \
-            --jitter 0.35 \
+            --page-delay 0.75 \
+            --page-jitter 0.25 \
+            --bricklink-delay 1.5 \
+            --bricklink-jitter 0.35 \
             --timeout 20 \
-            --retries 1 \
+            --retries 4 \
             --verbose
 
       - name: Commit and push (if changed)
         run: |
           if git diff --quiet; then
-            echo "No price changes to commit."
+            echo "No catalog changes to commit."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json"
-          git commit -m "chore: refresh market values"
+          git commit -m "chore: sync Brickset Star Wars catalog"
           git push
