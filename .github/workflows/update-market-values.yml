@@ -1,0 +1,51 @@
+name: Update Market Values
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-market-values
+  cancel-in-progress: false
+
+jobs:
+  refresh-prices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Refresh market values
+        run: |
+          python scripts/update_market_values.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --delay 2.5 \
+            --jitter 0.35 \
+            --timeout 20 \
+            --retries 1 \
+            --verbose
+
+      - name: Commit and push (if changed)
+        run: |
+          if git diff --quiet; then
+            echo "No price changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json"
+          git commit -m "chore: refresh market values"
+          git push
