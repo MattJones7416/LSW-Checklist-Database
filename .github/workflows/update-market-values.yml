@@ -35,10 +35,10 @@ jobs:
 
       - name: Sync sets and minifigures
         env:
-          BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY }}
+          BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY || vars.BRICKSET_API_KEY }}
         run: |
           if [ -z "${BRICKSET_API_KEY}" ]; then
-            echo "Missing BRICKSET_API_KEY secret"
+            echo "Missing BRICKSET_API_KEY. Set it in GitHub Actions Secrets or Repository Variables (Codespaces secrets are not used by Actions)."
             exit 1
           fi
 
