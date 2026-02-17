@@ -34,7 +34,7 @@ SETS_BASE_URL = "https://brickset.com/sets/theme-Star-Wars"
 MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
 BRICKSET_API_BASE_URL = "https://brickset.com/api/v3.asmx"
-SCRIPT_VERSION = "2026-02-17.7"
+SCRIPT_VERSION = "2026-02-17.8"
 SOFT_BLOCK_MARKERS = (
     "cf-chl-",
     "/cdn-cgi/challenge-platform/",
@@ -660,18 +660,19 @@ def fetch_brickset_api(
     api_key: str,
     method: str,
     user_hash: str,
-    method_params: Dict[str, Any],
+    method_params: Optional[Dict[str, Any]],
 ) -> Dict[str, Any]:
     base = api_base_url.rstrip("/")
     url = f"{base}/{method}"
-    params_json = json.dumps(method_params, separators=(",", ":"))
     query = {
         "apiKey": api_key,
         # Brickset v3 methods are defined with userHash in the signature.
         # Sending an empty userHash is valid for unauthenticated catalog queries.
         "userHash": user_hash,
-        "params": params_json,
     }
+    if method_params:
+        params_json = json.dumps(method_params, separators=(",", ":"))
+        query["params"] = params_json
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -837,6 +838,46 @@ def parse_set_from_api(raw: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     return parsed
 
 
+def fetch_themes_via_api(
+    session: requests.Session,
+    cfg: FetchConfig,
+    *,
+    api_base_url: str,
+    api_key: str,
+) -> List[str]:
+    payload = fetch_brickset_api(
+        session,
+        cfg,
+        api_base_url=api_base_url,
+        api_key=api_key,
+        method="getThemes",
+        user_hash="",
+        method_params=None,
+    )
+    raw_themes = payload.get("themes")
+    if not isinstance(raw_themes, list):
+        raise RuntimeError("api:getThemes: response missing themes array")
+
+    values: List[str] = []
+    seen: set[str] = set()
+    for raw in raw_themes:
+        if not isinstance(raw, dict):
+            continue
+        theme = collapse_ws(str(api_pick(raw, "theme") or ""))
+        if not theme:
+            continue
+        key = theme.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        values.append(theme)
+
+    if not values:
+        raise RuntimeError("api:getThemes: no themes returned")
+    values.sort(key=lambda t: t.lower())
+    return values
+
+
 def crawl_sets_via_api(
     session: requests.Session,
     cfg: FetchConfig,
@@ -845,7 +886,7 @@ def crawl_sets_via_api(
     api_key: str,
     page_size: int,
     max_pages: Optional[int],
-    theme_filter: Optional[str],
+    theme_filter: str,
 ) -> Tuple[Dict[Tuple[str, int], Dict[str, Any]], CrawlStats]:
     stats = CrawlStats()
     records: Dict[Tuple[str, int], Dict[str, Any]] = {}
@@ -861,9 +902,8 @@ def crawl_sets_via_api(
             request_params: Dict[str, Any] = {
                 "pageSize": effective_page_size,
                 "pageNumber": page,
+                "theme": theme_filter,
             }
-            if theme_filter:
-                request_params["theme"] = theme_filter
 
             try:
                 payload = fetch_brickset_api(
@@ -931,7 +971,7 @@ def crawl_sets_via_api(
 
         log(
             (
-                f"[API Sets] page {page}: parsed={len(api_sets)} unique_added={page_added} "
+                f"[API Sets:{theme_filter}] page {page}: parsed={len(api_sets)} unique_added={page_added} "
                 f"total_unique={len(records)} pageSize={effective_page_size}"
             ),
             enabled=cfg.verbose,
@@ -1607,15 +1647,47 @@ def main(argv: Sequence[str]) -> int:
 
     session = requests.Session()
     try:
-        scraped_sets_by_key, set_stats = crawl_sets_via_api(
-            session,
-            cfg,
-            api_base_url=args.api_base_url,
-            api_key=api_key,
-            page_size=max(50, min(500, args.api_page_size)),
-            max_pages=args.max_set_pages,
-            theme_filter=collapse_ws(str(args.theme or "")) or None,
-        )
+        requested_theme = collapse_ws(str(args.theme or ""))
+        if requested_theme:
+            themes_to_sync = [requested_theme]
+        else:
+            themes_to_sync = fetch_themes_via_api(
+                session,
+                cfg,
+                api_base_url=args.api_base_url,
+                api_key=api_key,
+            )
+            log(
+                f"[Sets] Themes discovered via API: {len(themes_to_sync)}",
+                enabled=cfg.verbose,
+            )
+
+        scraped_sets_by_key: Dict[Tuple[str, int], Dict[str, Any]] = {}
+        set_stats = CrawlStats()
+
+        for theme_name in themes_to_sync:
+            try:
+                theme_records, theme_stats = crawl_sets_via_api(
+                    session,
+                    cfg,
+                    api_base_url=args.api_base_url,
+                    api_key=api_key,
+                    page_size=max(50, min(500, args.api_page_size)),
+                    max_pages=args.max_set_pages,
+                    theme_filter=theme_name,
+                )
+                scraped_sets_by_key.update(theme_records)
+                set_stats.pages_fetched += theme_stats.pages_fetched
+                set_stats.articles_parsed += theme_stats.articles_parsed
+                set_stats.records_parsed += theme_stats.records_parsed
+                set_stats.failed_pages += theme_stats.failed_pages
+            except Exception as theme_exc:
+                set_stats.failed_pages += 1
+                print(f"[Sets] Theme sync failed ({theme_name}): {theme_exc}", flush=True)
+                continue
+
+        if not scraped_sets_by_key:
+            raise RuntimeError("all theme syncs failed")
     except Exception as exc:
         print(
             (
