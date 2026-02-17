@@ -34,15 +34,13 @@ MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
 SCRIPT_VERSION = "2026-02-17.3"
 SOFT_BLOCK_MARKERS = (
-    "cf-chl",
-    "cloudflare",
-    "attention required",
+    "cf-chl-",
+    "/cdn-cgi/challenge-platform/",
+    "attention required!",
+    "checking your browser before accessing",
     "verify you are human",
-    "enable javascript",
     "captcha",
-    "access denied",
-    "temporarily unavailable",
-    "too many requests",
+    "please complete the security check",
 )
 
 PRICE_TOKEN_PATTERN = (
@@ -181,7 +179,10 @@ def maybe_sleep(base_delay: float, jitter: float) -> None:
 
 def looks_like_soft_block(html: str) -> bool:
     lower = html.lower()
-    return any(marker in lower for marker in SOFT_BLOCK_MARKERS)
+    if any(marker in lower for marker in SOFT_BLOCK_MARKERS):
+        return True
+    # Cloudflare challenge pages commonly include this combined wording.
+    return "attention required" in lower and "cloudflare" in lower
 
 
 def extract_html_title(html: str) -> str:
@@ -624,6 +625,10 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
+            article_blocks = extract_article_blocks(html, mode="sets")
+            if article_blocks:
+                break
+
             if looks_like_soft_block(html):
                 saw_soft_block = True
                 cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.0))
@@ -646,10 +651,6 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
                     pass
                 time.sleep(wait_seconds)
                 continue
-
-            article_blocks = extract_article_blocks(html, mode="sets")
-            if article_blocks:
-                break
 
             if page_attempt < attempts:
                 wait_seconds = 30.0 * page_attempt if not saw_soft_block else min(240.0, 60.0 * page_attempt)
@@ -718,6 +719,10 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
+            article_blocks = extract_article_blocks(html, mode="minifigs")
+            if article_blocks:
+                break
+
             if looks_like_soft_block(html):
                 saw_soft_block = True
                 cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.0))
@@ -740,10 +745,6 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
                     pass
                 time.sleep(wait_seconds)
                 continue
-
-            article_blocks = extract_article_blocks(html, mode="minifigs")
-            if article_blocks:
-                break
 
             if page_attempt < attempts:
                 wait_seconds = 30.0 * page_attempt if not saw_soft_block else min(240.0, 60.0 * page_attempt)
