@@ -47,13 +47,13 @@ jobs:
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
             --themes-json "dist/Themes.json" \
             --api-key "${BRICKSET_API_KEY}" \
-            --api-page-size 500 \
+            --api-page-size 200 \
             --page-delay 0.75 \
             --page-jitter 0.25 \
             --bricklink-delay 1.5 \
             --bricklink-jitter 0.35 \
             --timeout 20 \
-            --retries 3 \
+            --retries 5 \
             --max-multiplicity-fetches 250 \
             --verbose
 

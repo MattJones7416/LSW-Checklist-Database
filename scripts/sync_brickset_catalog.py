@@ -34,7 +34,7 @@ SETS_BASE_URL = "https://brickset.com/sets/theme-Star-Wars"
 MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
 BRICKSET_API_BASE_URL = "https://brickset.com/api/v3.asmx"
-SCRIPT_VERSION = "2026-02-17.5"
+SCRIPT_VERSION = "2026-02-17.6"
 SOFT_BLOCK_MARKERS = (
     "cf-chl-",
     "/cdn-cgi/challenge-platform/",
@@ -698,6 +698,17 @@ def fetch_brickset_api(
             time.sleep(wait_seconds)
             continue
 
+        if response.status_code >= 500:
+            if attempt == attempts:
+                raise RuntimeError(f"api:{method}: HTTP {response.status_code}")
+            wait_seconds = float(min(240.0, max(15.0, attempt * 25.0)))
+            log(
+                f"[API] HTTP {response.status_code} for {method}; waiting {wait_seconds:.0f}s before retry",
+                enabled=cfg.verbose,
+            )
+            time.sleep(wait_seconds)
+            continue
+
         if response.status_code >= 400:
             raise RuntimeError(f"api:{method}: HTTP {response.status_code}")
 
@@ -812,27 +823,61 @@ def crawl_sets_via_api(
 ) -> Tuple[Dict[Tuple[str, int], Dict[str, Any]], CrawlStats]:
     stats = CrawlStats()
     records: Dict[Tuple[str, int], Dict[str, Any]] = {}
+    effective_page_size = max(50, min(500, page_size))
 
     page = 1
     matches: Optional[int] = None
     while True:
-        request_params: Dict[str, Any] = {
-            "pageSize": max(50, min(500, page_size)),
-            "pageNumber": page,
-            "extendedData": True,
-        }
-        if theme_filter:
-            request_params["theme"] = theme_filter
+        page_attempt = 0
+        payload: Optional[Dict[str, Any]] = None
+        while True:
+            page_attempt += 1
+            request_params: Dict[str, Any] = {
+                "pageSize": effective_page_size,
+                "pageNumber": page,
+                "extendedData": True,
+            }
+            if theme_filter:
+                request_params["theme"] = theme_filter
 
-        payload = fetch_brickset_api(
-            session,
-            cfg,
-            api_base_url=api_base_url,
-            api_key=api_key,
-            method="getSets",
-            method_params=request_params,
-        )
-        stats.pages_fetched += 1
+            try:
+                payload = fetch_brickset_api(
+                    session,
+                    cfg,
+                    api_base_url=api_base_url,
+                    api_key=api_key,
+                    method="getSets",
+                    method_params=request_params,
+                )
+                stats.pages_fetched += 1
+                break
+            except RuntimeError as exc:
+                msg = str(exc)
+                retryable_5xx = any(code in msg for code in ("HTTP 500", "HTTP 502", "HTTP 503", "HTTP 504"))
+                if retryable_5xx and effective_page_size > 50:
+                    next_page_size = max(50, effective_page_size // 2)
+                    if next_page_size < effective_page_size:
+                        log(
+                            (
+                                f"[API Sets] page {page}: {msg}; "
+                                f"reducing pageSize {effective_page_size}->{next_page_size} and retrying"
+                            ),
+                            enabled=True,
+                        )
+                        effective_page_size = next_page_size
+                        continue
+                if retryable_5xx and page_attempt < 4:
+                    wait_seconds = float(min(240.0, max(20.0, page_attempt * 30.0)))
+                    log(
+                        f"[API Sets] page {page}: {msg}; retrying in {wait_seconds:.0f}s",
+                        enabled=True,
+                    )
+                    time.sleep(wait_seconds)
+                    continue
+                raise
+
+        if payload is None:
+            raise RuntimeError(f"api:getSets: page {page} failed to return payload")
 
         if matches is None:
             matches = parse_int(payload.get("matches"))
@@ -859,7 +904,10 @@ def crawl_sets_via_api(
             stats.records_parsed += 1
 
         log(
-            f"[API Sets] page {page}: parsed={len(api_sets)} unique_added={page_added} total_unique={len(records)}",
+            (
+                f"[API Sets] page {page}: parsed={len(api_sets)} unique_added={page_added} "
+                f"total_unique={len(records)} pageSize={effective_page_size}"
+            ),
             enabled=cfg.verbose,
         )
 
@@ -1532,15 +1580,26 @@ def main(argv: Sequence[str]) -> int:
     )
 
     session = requests.Session()
-    scraped_sets_by_key, set_stats = crawl_sets_via_api(
-        session,
-        cfg,
-        api_base_url=args.api_base_url,
-        api_key=api_key,
-        page_size=max(50, min(500, args.api_page_size)),
-        max_pages=args.max_set_pages,
-        theme_filter=collapse_ws(str(args.theme or "")) or None,
-    )
+    try:
+        scraped_sets_by_key, set_stats = crawl_sets_via_api(
+            session,
+            cfg,
+            api_base_url=args.api_base_url,
+            api_key=api_key,
+            page_size=max(50, min(500, args.api_page_size)),
+            max_pages=args.max_set_pages,
+            theme_filter=collapse_ws(str(args.theme or "")) or None,
+        )
+    except Exception as exc:
+        print(
+            (
+                f"[Sets] API sync failed ({exc}). "
+                "Proceeding with existing set catalog for this run."
+            ),
+            flush=True,
+        )
+        scraped_sets_by_key = {}
+        set_stats = CrawlStats(failed_pages=1)
 
     if args.crawl_minifigs:
         scraped_minifigs_by_key, minifig_stats = crawl_minifigs(session, cfg, args.minifigs_url, args.max_minifig_pages)
