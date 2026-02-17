@@ -34,16 +34,27 @@ jobs:
           python -m pip install requests
 
       - name: Sync sets and minifigures
+        env:
+          BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY }}
         run: |
+          if [ -z "${BRICKSET_API_KEY}" ]; then
+            echo "Missing BRICKSET_API_KEY secret"
+            exit 1
+          fi
+
           python scripts/sync_brickset_catalog.py \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --page-delay 1.20 \
-            --page-jitter 0.35 \
+            --themes-json "dist/Themes.json" \
+            --api-key "${BRICKSET_API_KEY}" \
+            --api-page-size 500 \
+            --page-delay 0.75 \
+            --page-jitter 0.25 \
             --bricklink-delay 1.5 \
             --bricklink-jitter 0.35 \
             --timeout 20 \
-            --retries 5 \
+            --retries 3 \
+            --max-multiplicity-fetches 250 \
             --verbose
 
       - name: Refresh BrickLink market analytics
@@ -55,6 +66,7 @@ jobs:
             --jitter 0.15 \
             --timeout 20 \
             --retries 2 \
+            --limit 1200 \
             --verbose
 
       - name: Commit and push (if changed)
@@ -66,7 +78,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json"
+          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
           git commit -m "chore: sync catalog and market analytics"
 
           # Handle non-fast-forward when another run/user pushed first.

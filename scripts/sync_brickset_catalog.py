@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Synchronize LEGO Star Wars set/minifigure catalogs from Brickset.
+"""Synchronize set/minifigure catalogs from Brickset.
 
 What this script does:
-- Crawls Brickset Star Wars set listing pages.
-- Crawls Brickset Star Wars minifigure listing pages.
+- Pulls sets from Brickset API v3 (`getSets`) across all themes.
+- Optionally crawls Brickset minifigure listing pages.
 - Merges new/updated records into existing JSON files.
 - Refreshes `New` / `Used` current value fields from listing data.
 - Expands set `MinifigNumbers` multiplicities from BrickLink inventories.
@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import re
 import sys
@@ -32,7 +33,8 @@ import requests
 SETS_BASE_URL = "https://brickset.com/sets/theme-Star-Wars"
 MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
-SCRIPT_VERSION = "2026-02-17.3"
+BRICKSET_API_BASE_URL = "https://brickset.com/api/v3.asmx"
+SCRIPT_VERSION = "2026-02-17.5"
 SOFT_BLOCK_MARKERS = (
     "cf-chl-",
     "/cdn-cgi/challenge-platform/",
@@ -190,6 +192,65 @@ def extract_html_title(html: str) -> str:
     if not match:
         return ""
     return collapse_ws(strip_tags(match.group(1)))
+
+
+def parse_bool(value: Any) -> Optional[bool]:
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return value != 0
+    text = collapse_ws(str(value)).lower()
+    if not text:
+        return None
+    if text in {"true", "yes", "y", "1"}:
+        return True
+    if text in {"false", "no", "n", "0"}:
+        return False
+    return None
+
+
+def api_pick(row: Dict[str, Any], *keys: str) -> Any:
+    lower_map = {str(k).lower(): v for k, v in row.items()}
+    for key in keys:
+        candidate = lower_map.get(key.lower())
+        if candidate is not None:
+            return candidate
+    return None
+
+
+def parse_api_payload_text(text: str) -> Dict[str, Any]:
+    data: Any = json.loads(text)
+    if isinstance(data, dict) and "d" in data:
+        wrapped = data["d"]
+        if isinstance(wrapped, str):
+            wrapped = json.loads(wrapped)
+        data = wrapped
+    if isinstance(data, str):
+        data = json.loads(data)
+    if not isinstance(data, dict):
+        raise ValueError("Brickset API response was not an object")
+    return data
+
+
+def format_catalog_date(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    text = collapse_ws(str(value))
+    if not text:
+        return None
+    # Already in app-compatible format.
+    if re.match(r"^[0-9]{2}/[0-9]{2}/[0-9]{4}\s+[0-9]{2}:[0-9]{2}:[0-9]{2}$", text):
+        return text
+    # Common API shapes.
+    for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d", "%d %b %Y", "%d %B %Y"):
+        try:
+            parsed = datetime.strptime(text, fmt)
+            return parsed.strftime("%d/%m/%Y %H:%M:%S")
+        except ValueError:
+            continue
+    return None
 
 
 def extract_article_blocks(html: str, *, mode: str) -> List[str]:
@@ -591,6 +652,230 @@ def fetch_html(session: requests.Session, url: str, cfg: FetchConfig, *, source:
     raise RuntimeError(f"{source}: unreachable failure for {url}")
 
 
+def fetch_brickset_api(
+    session: requests.Session,
+    cfg: FetchConfig,
+    *,
+    api_base_url: str,
+    api_key: str,
+    method: str,
+    method_params: Dict[str, Any],
+) -> Dict[str, Any]:
+    base = api_base_url.rstrip("/")
+    url = f"{base}/{method}"
+    query = {
+        "apiKey": api_key,
+        "params": json.dumps(method_params, separators=(",", ":")),
+    }
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/122.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Language": "en-GB,en;q=0.9",
+        "Cache-Control": "no-cache",
+        "Referer": "https://brickset.com/",
+    }
+
+    attempts = max(1, cfg.retries + 1)
+    for attempt in range(1, attempts + 1):
+        try:
+            response = session.get(url, params=query, headers=headers, timeout=cfg.timeout_seconds)
+        except requests.RequestException as exc:
+            if attempt == attempts:
+                raise RuntimeError(f"api:{method}: request failed: {exc}") from exc
+            time.sleep(min(10.0, 1.5 * attempt))
+            continue
+
+        if response.status_code == 429:
+            retry_after = parse_int(response.headers.get("Retry-After", ""))
+            wait_seconds = float(retry_after if retry_after is not None else max(15, attempt * 20))
+            if attempt == attempts:
+                raise RuntimeError(f"api:{method}: HTTP 429")
+            log(f"[API] HTTP 429 for {method}; waiting {wait_seconds:.0f}s", enabled=cfg.verbose)
+            time.sleep(wait_seconds)
+            continue
+
+        if response.status_code >= 400:
+            raise RuntimeError(f"api:{method}: HTTP {response.status_code}")
+
+        try:
+            payload = parse_api_payload_text(response.text)
+        except Exception as exc:
+            if attempt == attempts:
+                raise RuntimeError(f"api:{method}: invalid JSON payload: {exc}") from exc
+            time.sleep(min(8.0, 1.5 * attempt))
+            continue
+
+        status = collapse_ws(str(payload.get("status") or "")).lower()
+        if status and status not in {"success", "ok"}:
+            message = collapse_ws(str(payload.get("message") or "unknown API error"))
+            raise RuntimeError(f"api:{method}: {message}")
+
+        return payload
+
+    raise RuntimeError(f"api:{method}: unreachable failure")
+
+
+def parse_set_from_api(raw: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    number_value = api_pick(raw, "number")
+    if number_value is None:
+        return None
+    number_text = collapse_ws(str(number_value))
+    if not number_text:
+        return None
+
+    variant = parse_int(api_pick(raw, "numberVariant", "variant")) or 1
+    number_out: Any = int(number_text) if number_text.isdigit() else number_text.upper()
+
+    set_name = collapse_ws(str(api_pick(raw, "name", "setName") or ""))
+    if not set_name:
+        return None
+
+    theme = collapse_ws(str(api_pick(raw, "theme") or "")) or "Unknown"
+    set_link = to_absolute_url(str(api_pick(raw, "bricksetURL", "setURL", "url") or ""))
+    image_url = to_absolute_url(
+        str(
+            api_pick(
+                raw,
+                "imageURL",
+                "largeThumbnailURL",
+                "thumbnailURL",
+                "image",
+            )
+            or ""
+        )
+    )
+
+    parsed: Dict[str, Any] = {
+        "Number": number_out,
+        "Variant": variant,
+        "SetName": set_name,
+        "YearFrom": parse_int(api_pick(raw, "year", "yearFrom")),
+        "Subtheme": api_pick(raw, "subtheme"),
+        "Theme": theme,
+        "ThemeGroup": api_pick(raw, "themeGroup"),
+        "Category": api_pick(raw, "category"),
+        "Released": parse_bool(api_pick(raw, "released")),
+        "Pieces": parse_int(api_pick(raw, "pieces")),
+        "Minifigs": parse_int(api_pick(raw, "minifigs")),
+        "SetID": parse_int(api_pick(raw, "setID", "setId")),
+        "OwnCount": parse_int(api_pick(raw, "ownedBy", "ownCount")),
+        "WantCount": parse_int(api_pick(raw, "wantedBy", "wantCount")),
+        "Rating": api_pick(raw, "rating"),
+        "Availability": api_pick(raw, "availability"),
+        "PackagingType": api_pick(raw, "packagingType"),
+        "AdditionalImageCount": parse_int(api_pick(raw, "additionalImageCount")),
+        "USRetailPrice": api_pick(raw, "USRetailPrice"),
+        "UKRetailPrice": api_pick(raw, "UKRetailPrice"),
+        "CARetailPrice": api_pick(raw, "CARetailPrice"),
+        "DERetailPrice": api_pick(raw, "DERetailPrice"),
+        "USDateAdded": format_catalog_date(api_pick(raw, "USDateAdded")),
+        "USDateRemoved": format_catalog_date(api_pick(raw, "USDateRemoved")),
+        "LaunchDate": format_catalog_date(api_pick(raw, "LaunchDate")),
+        "ExitDate": format_catalog_date(api_pick(raw, "ExitDate")),
+        "EAN": api_pick(raw, "EAN"),
+        "UPC": api_pick(raw, "UPC"),
+        "USItemNumber": api_pick(raw, "USItemNumber"),
+        "EUItemNumber": api_pick(raw, "EUItemNumber"),
+        "Weight": api_pick(raw, "weight"),
+        "Height": api_pick(raw, "height"),
+        "Width": api_pick(raw, "width"),
+        "Depth": api_pick(raw, "depth"),
+        "InstructionsCount": parse_int(api_pick(raw, "instructionsCount")),
+        "AgeMin": parse_int(api_pick(raw, "ageMin")),
+        "AgeMax": parse_int(api_pick(raw, "ageMax")),
+        "ModelDimension1": api_pick(raw, "modelDimension1"),
+        "ModelDimension2": api_pick(raw, "modelDimension2"),
+        "ModelDimension3": api_pick(raw, "modelDimension3"),
+        "Designers": api_pick(raw, "designers"),
+        "link": set_link,
+        "instructionsLink": "",
+        "productImage": image_url,
+        "ImageFilename": f"{number_text}-{variant}",
+        "type": "Set",
+    }
+    return parsed
+
+
+def crawl_sets_via_api(
+    session: requests.Session,
+    cfg: FetchConfig,
+    *,
+    api_base_url: str,
+    api_key: str,
+    page_size: int,
+    max_pages: Optional[int],
+    theme_filter: Optional[str],
+) -> Tuple[Dict[Tuple[str, int], Dict[str, Any]], CrawlStats]:
+    stats = CrawlStats()
+    records: Dict[Tuple[str, int], Dict[str, Any]] = {}
+
+    page = 1
+    matches: Optional[int] = None
+    while True:
+        request_params: Dict[str, Any] = {
+            "pageSize": max(50, min(500, page_size)),
+            "pageNumber": page,
+            "extendedData": True,
+        }
+        if theme_filter:
+            request_params["theme"] = theme_filter
+
+        payload = fetch_brickset_api(
+            session,
+            cfg,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            method="getSets",
+            method_params=request_params,
+        )
+        stats.pages_fetched += 1
+
+        if matches is None:
+            matches = parse_int(payload.get("matches"))
+
+        api_sets = payload.get("sets")
+        if not isinstance(api_sets, list):
+            raise RuntimeError("api:getSets: response missing sets array")
+
+        if not api_sets:
+            break
+
+        stats.articles_parsed += len(api_sets)
+        page_added = 0
+        for raw in api_sets:
+            if not isinstance(raw, dict):
+                continue
+            parsed = parse_set_from_api(raw)
+            if not parsed:
+                continue
+            key = set_key(parsed["Number"], parsed["Variant"])
+            if key not in records:
+                page_added += 1
+            records[key] = parsed
+            stats.records_parsed += 1
+
+        log(
+            f"[API Sets] page {page}: parsed={len(api_sets)} unique_added={page_added} total_unique={len(records)}",
+            enabled=cfg.verbose,
+        )
+
+        if max_pages is not None and page >= max_pages:
+            break
+        if matches is not None and len(records) >= matches:
+            break
+
+        page += 1
+        maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
+
+    if not records:
+        raise RuntimeError("api:getSets: no set records parsed")
+    return records, stats
+
+
 def discover_total_pages(html: str, base_url: str) -> int:
     parsed = urlparse(base_url)
     path = parsed.path.rstrip("/")
@@ -806,8 +1091,8 @@ def merge_set_rows(existing_rows: List[Dict[str, Any]], scraped_by_key: Dict[Tup
     template: Dict[str, Any] = {key: None for key in columns}
     template.update({
         "Category": "Normal",
-        "Theme": "Star Wars",
-        "ThemeGroup": "Licensed",
+        "Theme": "Unknown",
+        "ThemeGroup": "Unknown",
         "Image": "X",
         "instructionsLink": "",
         "link": "",
@@ -853,8 +1138,8 @@ def merge_set_rows(existing_rows: List[Dict[str, Any]], scraped_by_key: Dict[Tup
         row["link"] = collapse_ws(str(row.get("link") or ""))
         row["productImage"] = collapse_ws(str(row.get("productImage") or ""))
         row["type"] = "Set"
-        row["Theme"] = row.get("Theme") or "Star Wars"
-        row["ThemeGroup"] = row.get("ThemeGroup") or "Licensed"
+        row["Theme"] = row.get("Theme") or "Unknown"
+        row["ThemeGroup"] = row.get("ThemeGroup") or "Unknown"
         row["Category"] = row.get("Category") or "Normal"
 
         seen.add(key)
@@ -1016,6 +1301,8 @@ def apply_set_minifigure_multiplicity(
     set_rows: List[Dict[str, Any]],
     cfg: FetchConfig,
     max_fetches: Optional[int] = None,
+    *,
+    include_rows_without_minifig_numbers: bool = False,
 ) -> MultiplicityStats:
     stats = MultiplicityStats()
 
@@ -1030,7 +1317,9 @@ def apply_set_minifigure_multiplicity(
         if not unique_list and minifigs_total <= 0:
             continue
 
-        should_fetch = minifigs_total > len(unique_list) or (not unique_list and minifigs_total > 0)
+        should_fetch = minifigs_total > len(unique_list) and bool(unique_list)
+        if include_rows_without_minifig_numbers and (not unique_list and minifigs_total > 0):
+            should_fetch = True
         if not should_fetch:
             continue
 
@@ -1103,16 +1392,77 @@ def write_json_array(path: Path, rows: List[Dict[str, Any]]) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def build_theme_index(set_rows: List[Dict[str, Any]], minifig_rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    set_counts: Dict[str, int] = {}
+    for row in set_rows:
+        theme = collapse_ws(str(row.get("Theme") or "Unknown"))
+        if not theme:
+            theme = "Unknown"
+        set_counts[theme] = set_counts.get(theme, 0) + 1
+
+    minifig_counts: Dict[str, int] = {}
+    for row in minifig_rows:
+        raw_theme = row.get("Theme") or row.get("Category") or "Unknown"
+        theme = collapse_ws(str(raw_theme))
+        if not theme:
+            theme = "Unknown"
+        minifig_counts[theme] = minifig_counts.get(theme, 0) + 1
+
+    all_themes = sorted(set(set_counts.keys()) | set(minifig_counts.keys()), key=lambda t: t.lower())
+    return [
+        {
+            "Theme": theme,
+            "SetCount": set_counts.get(theme, 0),
+            "MinifigCount": minifig_counts.get(theme, 0),
+        }
+        for theme in all_themes
+    ]
+
+
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Sync Brickset Star Wars catalogs to JSON.")
+    parser = argparse.ArgumentParser(description="Sync Brickset catalogs to JSON (API-first for sets).")
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json", help="Sets JSON output path.")
     parser.add_argument(
         "--minifigs-json",
         default="dist/Lego-Star-Wars-Minifigure-Database.json",
         help="Minifigures JSON output path.",
     )
-    parser.add_argument("--sets-url", default=SETS_BASE_URL, help="Brickset URL for Star Wars sets.")
-    parser.add_argument("--minifigs-url", default=MINIFIGS_BASE_URL, help="Brickset URL for Star Wars minifigures.")
+    parser.add_argument(
+        "--themes-json",
+        default="dist/Themes.json",
+        help="Theme index JSON output path.",
+    )
+    parser.add_argument(
+        "--api-key",
+        default=None,
+        help="Brickset API key. Falls back to BRICKSET_API_KEY env var.",
+    )
+    parser.add_argument(
+        "--api-base-url",
+        default=BRICKSET_API_BASE_URL,
+        help="Brickset API base URL.",
+    )
+    parser.add_argument(
+        "--theme",
+        default=None,
+        help="Optional theme filter for API getSets (e.g. 'Star Wars'). Default: all themes.",
+    )
+    parser.add_argument(
+        "--api-page-size",
+        type=int,
+        default=500,
+        help="Page size for API getSets calls (max 500).",
+    )
+    parser.add_argument(
+        "--sets-url",
+        default=SETS_BASE_URL,
+        help="Fallback Brickset URL for web-crawled sets (legacy/debug).",
+    )
+    parser.add_argument(
+        "--minifigs-url",
+        default=MINIFIGS_BASE_URL,
+        help="Brickset URL for web-crawled minifigures.",
+    )
     parser.add_argument("--timeout", type=float, default=25.0, help="HTTP timeout in seconds.")
     parser.add_argument("--retries", type=int, default=4, help="Retry count for network requests.")
     parser.add_argument("--page-delay", type=float, default=0.75, help="Delay between Brickset page requests.")
@@ -1121,7 +1471,17 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser.add_argument("--bricklink-jitter", type=float, default=0.35, help="Random jitter added to BrickLink delay.")
     parser.add_argument("--max-set-pages", type=int, default=None, help="Optional cap for set pages (debug).")
     parser.add_argument("--max-minifig-pages", type=int, default=None, help="Optional cap for minifig pages (debug).")
+    parser.add_argument(
+        "--crawl-minifigs",
+        action="store_true",
+        help="Crawl minifig pages from web. Default keeps existing minifig JSON unchanged.",
+    )
     parser.add_argument("--skip-multiplicity", action="store_true", help="Skip BrickLink multiplicity enrichment.")
+    parser.add_argument(
+        "--multiplicity-include-empty",
+        action="store_true",
+        help="Also fetch BrickLink multiplicity for rows without MinifigNumbers (very expensive).",
+    )
     parser.add_argument(
         "--max-multiplicity-fetches",
         type=int,
@@ -1139,6 +1499,7 @@ def main(argv: Sequence[str]) -> int:
 
     sets_path = Path(args.sets_json)
     minifigs_path = Path(args.minifigs_json)
+    themes_path = Path(args.themes_json)
 
     if not sets_path.exists():
         print(f"Missing sets JSON: {sets_path}", file=sys.stderr)
@@ -1157,6 +1518,11 @@ def main(argv: Sequence[str]) -> int:
         verbose=args.verbose,
     )
 
+    api_key = collapse_ws(str(args.api_key or os.getenv("BRICKSET_API_KEY") or ""))
+    if not api_key:
+        print("Missing Brickset API key. Provide --api-key or set BRICKSET_API_KEY.", file=sys.stderr)
+        return 1
+
     existing_sets = load_json_array(sets_path)
     existing_minifigs = load_json_array(minifigs_path)
 
@@ -1166,12 +1532,26 @@ def main(argv: Sequence[str]) -> int:
     )
 
     session = requests.Session()
+    scraped_sets_by_key, set_stats = crawl_sets_via_api(
+        session,
+        cfg,
+        api_base_url=args.api_base_url,
+        api_key=api_key,
+        page_size=max(50, min(500, args.api_page_size)),
+        max_pages=args.max_set_pages,
+        theme_filter=collapse_ws(str(args.theme or "")) or None,
+    )
 
-    scraped_sets_by_key, set_stats = crawl_sets(session, cfg, args.sets_url, args.max_set_pages)
-    scraped_minifigs_by_key, minifig_stats = crawl_minifigs(session, cfg, args.minifigs_url, args.max_minifig_pages)
+    if args.crawl_minifigs:
+        scraped_minifigs_by_key, minifig_stats = crawl_minifigs(session, cfg, args.minifigs_url, args.max_minifig_pages)
+    else:
+        scraped_minifigs_by_key = {}
+        minifig_stats = CrawlStats()
+        log("[Minifigs] crawl skipped; preserving existing minifigure JSON.", enabled=cfg.verbose)
 
     merged_sets = merge_set_rows(existing_sets, scraped_sets_by_key)
     merged_minifigs = merge_minifig_rows(existing_minifigs, scraped_minifigs_by_key)
+    themes_index = build_theme_index(merged_sets, merged_minifigs)
 
     multiplicity_stats = MultiplicityStats()
     if not args.skip_multiplicity:
@@ -1180,6 +1560,7 @@ def main(argv: Sequence[str]) -> int:
             merged_sets,
             cfg,
             max_fetches=max(0, args.max_multiplicity_fetches) if args.max_multiplicity_fetches is not None else None,
+            include_rows_without_minifig_numbers=bool(args.multiplicity_include_empty),
         )
 
     if args.dry_run:
@@ -1187,6 +1568,7 @@ def main(argv: Sequence[str]) -> int:
     else:
         write_json_array(sets_path, merged_sets)
         write_json_array(minifigs_path, merged_minifigs)
+        write_json_array(themes_path, themes_index)
 
     print(
         (
@@ -1209,6 +1591,7 @@ def main(argv: Sequence[str]) -> int:
         ),
         flush=True,
     )
+    print(f"[Themes] total={len(themes_index)}", flush=True)
 
     return 0
 
