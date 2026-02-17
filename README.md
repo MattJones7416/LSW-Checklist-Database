@@ -17,8 +17,9 @@ The sync process:
    - `dist/Lego Star Wars Database.json`
    - `dist/Lego-Star-Wars-Minifigure-Database.json`
 4. Refreshes `New` / `Used` values from Brickset listing data
-5. Expands set `MinifigNumbers` multiplicities from BrickLink inventory pages
-6. Commits and pushes if changes are detected
+5. Refreshes `New` / `Used` values again from each item detail page (`Current value`)
+6. Expands set `MinifigNumbers` multiplicities from BrickLink inventory pages
+7. Commits and pushes if changes are detected
 
 ## Local run
 

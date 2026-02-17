@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,6 +46,17 @@ jobs:
             --retries 4 \
             --verbose
 
+      - name: Refresh market values from detail pages
+        run: |
+          python scripts/update_market_values.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --delay 2.0 \
+            --jitter 0.35 \
+            --timeout 20 \
+            --retries 2 \
+            --verbose
+
       - name: Commit and push (if changed)
         run: |
           if git diff --quiet; then
@@ -55,4 +68,18 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json"
           git commit -m "chore: sync Brickset Star Wars catalog"
-          git push
+
+          # Handle non-fast-forward when another run/user pushed first.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Push succeeded on attempt $attempt."
+              exit 0
+            fi
+
+            echo "Push rejected on attempt $attempt; rebasing onto origin/main and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+
+          echo "Push failed after 3 attempts."
+          exit 1
