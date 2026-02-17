@@ -34,7 +34,7 @@ SETS_BASE_URL = "https://brickset.com/sets/theme-Star-Wars"
 MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
 BRICKSET_API_BASE_URL = "https://brickset.com/api/v3.asmx"
-SCRIPT_VERSION = "2026-02-17.6"
+SCRIPT_VERSION = "2026-02-17.7"
 SOFT_BLOCK_MARKERS = (
     "cf-chl-",
     "/cdn-cgi/challenge-platform/",
@@ -659,13 +659,18 @@ def fetch_brickset_api(
     api_base_url: str,
     api_key: str,
     method: str,
+    user_hash: str,
     method_params: Dict[str, Any],
 ) -> Dict[str, Any]:
     base = api_base_url.rstrip("/")
     url = f"{base}/{method}"
+    params_json = json.dumps(method_params, separators=(",", ":"))
     query = {
         "apiKey": api_key,
-        "params": json.dumps(method_params, separators=(",", ":")),
+        # Brickset v3 methods are defined with userHash in the signature.
+        # Sending an empty userHash is valid for unauthenticated catalog queries.
+        "userHash": user_hash,
+        "params": params_json,
     }
     headers = {
         "User-Agent": (
@@ -688,6 +693,27 @@ def fetch_brickset_api(
                 raise RuntimeError(f"api:{method}: request failed: {exc}") from exc
             time.sleep(min(10.0, 1.5 * attempt))
             continue
+
+        if response.status_code >= 500:
+            try:
+                post_response = session.post(url, data=query, headers=headers, timeout=cfg.timeout_seconds)
+                if post_response.status_code < 500:
+                    response = post_response
+                else:
+                    log(
+                        (
+                            f"[API] GET {method} returned HTTP {response.status_code}; "
+                            f"POST fallback returned HTTP {post_response.status_code}"
+                        ),
+                        enabled=cfg.verbose,
+                    )
+                    response = post_response
+            except requests.RequestException as exc:
+                if attempt == attempts:
+                    raise RuntimeError(f"api:{method}: request failed: {exc}") from exc
+                wait_seconds = min(10.0, 1.5 * attempt)
+                time.sleep(wait_seconds)
+                continue
 
         if response.status_code == 429:
             retry_after = parse_int(response.headers.get("Retry-After", ""))
@@ -835,7 +861,6 @@ def crawl_sets_via_api(
             request_params: Dict[str, Any] = {
                 "pageSize": effective_page_size,
                 "pageNumber": page,
-                "extendedData": True,
             }
             if theme_filter:
                 request_params["theme"] = theme_filter
@@ -847,6 +872,7 @@ def crawl_sets_via_api(
                     api_base_url=api_base_url,
                     api_key=api_key,
                     method="getSets",
+                    user_hash="",
                     method_params=request_params,
                 )
                 stats.pages_fetched += 1
