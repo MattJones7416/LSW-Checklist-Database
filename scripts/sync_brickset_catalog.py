@@ -40,7 +40,10 @@ PRICE_TOKEN_PATTERN = (
 )
 PRICE_TOKEN_RE = re.compile(PRICE_TOKEN_PATTERN, re.IGNORECASE)
 
-SET_ARTICLE_RE = re.compile(r"<article class='set'>(.*?)</article>", re.IGNORECASE | re.DOTALL)
+ARTICLE_WITH_CLASS_RE = re.compile(
+    r"(?is)<article\b[^>]*class\s*=\s*(['\"])(.*?)\1[^>]*>.*?</article>"
+)
+ARTICLE_GENERIC_RE = re.compile(r"(?is)<article\b[^>]*>.*?</article>")
 DT_DD_RE = re.compile(r"<dt>(.*?)</dt>\s*<dd(?:[^>]*)>(.*?)</dd>", re.IGNORECASE | re.DOTALL)
 SET_CODE_RE = re.compile(r"/sets/([A-Za-z0-9]+-[0-9]+)(?:/|['\"?#])", re.IGNORECASE)
 MINIFIG_CODE_RE = re.compile(r"/minifigs/([a-z0-9]+)(?:/|['\"?#])", re.IGNORECASE)
@@ -68,6 +71,7 @@ class CrawlStats:
     pages_fetched: int = 0
     articles_parsed: int = 0
     records_parsed: int = 0
+    failed_pages: int = 0
 
 
 @dataclass
@@ -161,6 +165,33 @@ def maybe_sleep(base_delay: float, jitter: float) -> None:
         delay += random.uniform(0.0, jitter)
     if delay > 0:
         time.sleep(delay)
+
+
+def extract_article_blocks(html: str, *, mode: str) -> List[str]:
+    blocks: List[str] = []
+
+    def is_relevant(block: str) -> bool:
+        if mode == "sets":
+            return SET_CODE_RE.search(block) is not None
+        return MINIFIG_CODE_RE.search(block) is not None or "/minifigs/" in block.lower()
+
+    for match in ARTICLE_WITH_CLASS_RE.finditer(html):
+        class_names = collapse_ws(match.group(2)).lower()
+        if "set" not in class_names:
+            continue
+        block = match.group(0)
+        if is_relevant(block):
+            blocks.append(block)
+
+    if blocks:
+        return blocks
+
+    for match in ARTICLE_GENERIC_RE.finditer(html):
+        block = match.group(0)
+        if is_relevant(block):
+            blocks.append(block)
+
+    return blocks
 
 
 def to_absolute_url(path_or_url: Optional[str]) -> str:
@@ -293,26 +324,56 @@ def parse_set_article(article_html: str) -> Optional[Dict[str, Any]]:
 
     dt_map = extract_dt_map(article_html)
 
-    meta_link_match = re.search(r"<div class='meta'><h1><a href=\"([^\"]+)\"", article_html)
+    meta_link_match = re.search(
+        r"<div\b[^>]*class=['\"][^'\"]*\bmeta\b[^'\"]*['\"][^>]*>\s*<h1>\s*<a\b[^>]*href=['\"]([^'\"]+)['\"]",
+        article_html,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not meta_link_match:
+        meta_link_match = re.search(
+            r"<h1>\s*<a\b[^>]*href=['\"]([^'\"]+)['\"]",
+            article_html,
+            re.IGNORECASE | re.DOTALL,
+        )
     if not meta_link_match:
         return None
     link = to_absolute_url(meta_link_match.group(1))
 
     name_match = re.search(
-        r"<div class='meta'><h1><a [^>]*><span>[^<]*</span>\s*(.*?)</a></h1>",
+        r"<div\b[^>]*class=['\"][^'\"]*\bmeta\b[^'\"]*['\"][^>]*>\s*<h1>\s*<a\b[^>]*>(.*?)</a>\s*</h1>",
         article_html,
-        re.DOTALL,
+        re.IGNORECASE | re.DOTALL,
     )
-    set_name = strip_tags(name_match.group(1)) if name_match else ""
+    if not name_match:
+        name_match = re.search(
+            r"<h1>\s*<a\b[^>]*>(.*?)</a>\s*</h1>",
+            article_html,
+            re.IGNORECASE | re.DOTALL,
+        )
+    set_name_raw = strip_tags(name_match.group(1)) if name_match else ""
+    set_name = collapse_ws(set_name_raw)
+    set_prefixes = [set_code, raw_number, f"{raw_number}-{variant}"]
+    for prefix in set_prefixes:
+        if not prefix:
+            continue
+        if set_name.lower().startswith(prefix.lower()):
+            trimmed = set_name[len(prefix):].lstrip(" :-")
+            if trimmed:
+                set_name = collapse_ws(trimmed)
+            break
     if not set_name:
         return None
 
-    year_match = re.search(r"<a class='year'[^>]*>([^<]+)</a>", article_html)
+    year_match = re.search(r"<a\b[^>]*class=['\"][^'\"]*\byear\b[^'\"]*['\"][^>]*>([^<]+)</a>", article_html, re.IGNORECASE)
     year_from = parse_int(year_match.group(1)) if year_match else None
     if year_from == 0:
         year_from = None
 
-    subtheme_match = re.search(r"<a class='subtheme'[^>]*>(.*?)</a>", article_html, re.DOTALL)
+    subtheme_match = re.search(
+        r"<a\b[^>]*class=['\"][^'\"]*\bsubtheme\b[^'\"]*['\"][^>]*>(.*?)</a>",
+        article_html,
+        re.IGNORECASE | re.DOTALL,
+    )
     subtheme = strip_tags(subtheme_match.group(1)) if subtheme_match else ""
 
     pieces = parse_int(strip_tags(first_from_map(dt_map, "pieces") or ""))
@@ -377,7 +438,17 @@ def parse_set_article(article_html: str) -> Optional[Dict[str, Any]]:
 
 
 def parse_minifig_article(article_html: str) -> Optional[Dict[str, Any]]:
-    meta_link_match = re.search(r"<div class='meta'><h1><a href=\"([^\"]+)\"", article_html)
+    meta_link_match = re.search(
+        r"<div\b[^>]*class=['\"][^'\"]*\bmeta\b[^'\"]*['\"][^>]*>\s*<h1>\s*<a\b[^>]*href=['\"]([^'\"]+)['\"]",
+        article_html,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not meta_link_match:
+        meta_link_match = re.search(
+            r"<h1>\s*<a\b[^>]*href=['\"]([^'\"]+)['\"]",
+            article_html,
+            re.IGNORECASE | re.DOTALL,
+        )
     if not meta_link_match:
         return None
 
@@ -388,18 +459,33 @@ def parse_minifig_article(article_html: str) -> Optional[Dict[str, Any]]:
     number = code_match.group(1).lower()
 
     name_match = re.search(
-        r"<div class='meta'><h1><a [^>]*><span>[^<]*</span>\s*(.*?)</a></h1>",
+        r"<div\b[^>]*class=['\"][^'\"]*\bmeta\b[^'\"]*['\"][^>]*>\s*<h1>\s*<a\b[^>]*>(.*?)</a>\s*</h1>",
         article_html,
-        re.DOTALL,
+        re.IGNORECASE | re.DOTALL,
     )
-    minifig_name = strip_tags(name_match.group(1)) if name_match else ""
+    if not name_match:
+        name_match = re.search(
+            r"<h1>\s*<a\b[^>]*>(.*?)</a>\s*</h1>",
+            article_html,
+            re.IGNORECASE | re.DOTALL,
+        )
+    minifig_name_raw = strip_tags(name_match.group(1)) if name_match else ""
+    minifig_name = collapse_ws(minifig_name_raw)
+    if minifig_name.lower().startswith(number):
+        trimmed = minifig_name[len(number):].lstrip(" :-")
+        if trimmed:
+            minifig_name = collapse_ws(trimmed)
     if not minifig_name:
         return None
 
-    character_match = re.search(r"<a\s+class='name'[^>]*>(.*?)</a>", article_html, re.IGNORECASE | re.DOTALL)
+    character_match = re.search(
+        r"<a\b[^>]*class=['\"][^'\"]*\bname\b[^'\"]*['\"][^>]*>(.*?)</a>",
+        article_html,
+        re.IGNORECASE | re.DOTALL,
+    )
     character_name = strip_tags(character_match.group(1)) if character_match else ""
 
-    year_match = re.search(r"<a class='year'[^>]*>([^<]+)</a>", article_html)
+    year_match = re.search(r"<a\b[^>]*class=['\"][^'\"]*\byear\b[^'\"]*['\"][^>]*>([^<]+)</a>", article_html, re.IGNORECASE)
     year = parse_int(year_match.group(1)) if year_match else None
     if year == 0:
         year = None
@@ -513,12 +599,12 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
-            article_blocks = SET_ARTICLE_RE.findall(html)
+            article_blocks = extract_article_blocks(html, mode="sets")
             if article_blocks:
                 break
 
             if page_attempt < attempts:
-                wait_seconds = 20.0 * page_attempt
+                wait_seconds = 30.0 * page_attempt
                 log(
                     f"[Sets] page {page}/{total_pages}: no articles, retrying in {wait_seconds:.0f}s",
                     enabled=cfg.verbose,
@@ -526,7 +612,12 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
                 time.sleep(wait_seconds)
 
         if not article_blocks:
-            raise RuntimeError(f"sets: page {page}/{total_pages} returned no set articles after retries")
+            stats.failed_pages += 1
+            log(
+                f"[Sets] page {page}/{total_pages}: skipping after retries (no articles).",
+                enabled=True,
+            )
+            continue
 
         stats.articles_parsed += len(article_blocks)
 
@@ -539,6 +630,9 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
             stats.records_parsed += 1
 
         log(f"[Sets] page {page}/{total_pages}: parsed {len(article_blocks)} articles", enabled=cfg.verbose)
+
+    if not records:
+        raise RuntimeError("sets: no set records parsed from Brickset")
 
     return records, stats
 
@@ -567,12 +661,12 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
-            article_blocks = SET_ARTICLE_RE.findall(html)
+            article_blocks = extract_article_blocks(html, mode="minifigs")
             if article_blocks:
                 break
 
             if page_attempt < attempts:
-                wait_seconds = 20.0 * page_attempt
+                wait_seconds = 30.0 * page_attempt
                 log(
                     f"[Minifigs] page {page}/{total_pages}: no articles, retrying in {wait_seconds:.0f}s",
                     enabled=cfg.verbose,
@@ -580,7 +674,12 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
                 time.sleep(wait_seconds)
 
         if not article_blocks:
-            raise RuntimeError(f"minifigs: page {page}/{total_pages} returned no minifigure articles after retries")
+            stats.failed_pages += 1
+            log(
+                f"[Minifigs] page {page}/{total_pages}: skipping after retries (no articles).",
+                enabled=True,
+            )
+            continue
 
         stats.articles_parsed += len(article_blocks)
 
@@ -593,6 +692,9 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
             stats.records_parsed += 1
 
         log(f"[Minifigs] page {page}/{total_pages}: parsed {len(article_blocks)} articles", enabled=cfg.verbose)
+
+    if not records:
+        raise RuntimeError("minifigs: no minifigure records parsed from Brickset")
 
     return records, stats
 
@@ -999,14 +1101,14 @@ def main(argv: Sequence[str]) -> int:
     print(
         (
             f"[Sets] pages={set_stats.pages_fetched} articles={set_stats.articles_parsed} "
-            f"parsed={set_stats.records_parsed} merged={len(merged_sets)}"
+            f"parsed={set_stats.records_parsed} failed_pages={set_stats.failed_pages} merged={len(merged_sets)}"
         ),
         flush=True,
     )
     print(
         (
             f"[Minifigs] pages={minifig_stats.pages_fetched} articles={minifig_stats.articles_parsed} "
-            f"parsed={minifig_stats.records_parsed} merged={len(merged_minifigs)}"
+            f"parsed={minifig_stats.records_parsed} failed_pages={minifig_stats.failed_pages} merged={len(merged_minifigs)}"
         ),
         flush=True,
     )
