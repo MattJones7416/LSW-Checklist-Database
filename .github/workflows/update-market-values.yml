@@ -46,13 +46,13 @@ jobs:
             --retries 4 \
             --verbose
 
-      - name: Refresh market values from detail pages
+      - name: Refresh BrickLink market analytics
         run: |
           python scripts/update_market_values.py \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --delay 2.0 \
-            --jitter 0.35 \
+            --delay 0.65 \
+            --jitter 0.15 \
             --timeout 20 \
             --retries 2 \
             --verbose
@@ -67,7 +67,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json"
-          git commit -m "chore: sync Brickset Star Wars catalog"
+          git commit -m "chore: sync catalog and market analytics"
 
           # Handle non-fast-forward when another run/user pushed first.
           for attempt in 1 2 3; do
