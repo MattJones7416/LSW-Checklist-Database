@@ -32,6 +32,18 @@ import requests
 SETS_BASE_URL = "https://brickset.com/sets/theme-Star-Wars"
 MINIFIGS_BASE_URL = "https://brickset.com/minifigs/category-Star-Wars"
 BRICKLINK_INVENTORY_URL_TEMPLATE = "https://www.bricklink.com/catalogItemInv.asp?S={set_code}&viewItemType=M"
+SCRIPT_VERSION = "2026-02-17.3"
+SOFT_BLOCK_MARKERS = (
+    "cf-chl",
+    "cloudflare",
+    "attention required",
+    "verify you are human",
+    "enable javascript",
+    "captcha",
+    "access denied",
+    "temporarily unavailable",
+    "too many requests",
+)
 
 PRICE_TOKEN_PATTERN = (
     r"(?:[~≈]?\s*(?:£|\$|€)\s*[0-9][0-9,]*(?:\.[0-9]{1,2})?"
@@ -165,6 +177,18 @@ def maybe_sleep(base_delay: float, jitter: float) -> None:
         delay += random.uniform(0.0, jitter)
     if delay > 0:
         time.sleep(delay)
+
+
+def looks_like_soft_block(html: str) -> bool:
+    lower = html.lower()
+    return any(marker in lower for marker in SOFT_BLOCK_MARKERS)
+
+
+def extract_html_title(html: str) -> str:
+    match = re.search(r"(?is)<title[^>]*>(.*?)</title>", html)
+    if not match:
+        return ""
+    return collapse_ws(strip_tags(match.group(1)))
 
 
 def extract_article_blocks(html: str, *, mode: str) -> List[str]:
@@ -588,7 +612,8 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
 
     for page in range(1, total_pages + 1):
         article_blocks: List[str] = []
-        attempts = 3
+        attempts = 5
+        saw_soft_block = False
 
         for page_attempt in range(1, attempts + 1):
             if page == 1 and page_attempt == 1:
@@ -599,12 +624,35 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
+            if looks_like_soft_block(html):
+                saw_soft_block = True
+                cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.0))
+                cfg.page_jitter_seconds = max(cfg.page_jitter_seconds, 0.5)
+                wait_seconds = min(300.0, max(45.0, page_attempt * 45.0))
+                title = extract_html_title(html)
+                if title:
+                    log(
+                        f"[Sets] page {page}/{total_pages}: soft block detected ({title}); waiting {wait_seconds:.0f}s",
+                        enabled=True,
+                    )
+                else:
+                    log(
+                        f"[Sets] page {page}/{total_pages}: soft block detected; waiting {wait_seconds:.0f}s",
+                        enabled=True,
+                    )
+                try:
+                    session.cookies.clear()
+                except Exception:
+                    pass
+                time.sleep(wait_seconds)
+                continue
+
             article_blocks = extract_article_blocks(html, mode="sets")
             if article_blocks:
                 break
 
             if page_attempt < attempts:
-                wait_seconds = 30.0 * page_attempt
+                wait_seconds = 30.0 * page_attempt if not saw_soft_block else min(240.0, 60.0 * page_attempt)
                 log(
                     f"[Sets] page {page}/{total_pages}: no articles, retrying in {wait_seconds:.0f}s",
                     enabled=cfg.verbose,
@@ -613,6 +661,14 @@ def crawl_sets(session: requests.Session, cfg: FetchConfig, base_url: str, max_p
 
         if not article_blocks:
             stats.failed_pages += 1
+            cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.5))
+            cfg.page_jitter_seconds = max(cfg.page_jitter_seconds, 0.6)
+            try:
+                first_page_html = fetch_html(session, base_url, cfg, source="sets")
+                stats.pages_fetched += 1
+                maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
+            except Exception as exc:
+                log(f"[Sets] page {page}/{total_pages}: base refresh failed: {exc}", enabled=True)
             log(
                 f"[Sets] page {page}/{total_pages}: skipping after retries (no articles).",
                 enabled=True,
@@ -650,7 +706,8 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
 
     for page in range(1, total_pages + 1):
         article_blocks: List[str] = []
-        attempts = 3
+        attempts = 5
+        saw_soft_block = False
 
         for page_attempt in range(1, attempts + 1):
             if page == 1 and page_attempt == 1:
@@ -661,12 +718,35 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
                 stats.pages_fetched += 1
                 maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
+            if looks_like_soft_block(html):
+                saw_soft_block = True
+                cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.0))
+                cfg.page_jitter_seconds = max(cfg.page_jitter_seconds, 0.5)
+                wait_seconds = min(300.0, max(45.0, page_attempt * 45.0))
+                title = extract_html_title(html)
+                if title:
+                    log(
+                        f"[Minifigs] page {page}/{total_pages}: soft block detected ({title}); waiting {wait_seconds:.0f}s",
+                        enabled=True,
+                    )
+                else:
+                    log(
+                        f"[Minifigs] page {page}/{total_pages}: soft block detected; waiting {wait_seconds:.0f}s",
+                        enabled=True,
+                    )
+                try:
+                    session.cookies.clear()
+                except Exception:
+                    pass
+                time.sleep(wait_seconds)
+                continue
+
             article_blocks = extract_article_blocks(html, mode="minifigs")
             if article_blocks:
                 break
 
             if page_attempt < attempts:
-                wait_seconds = 30.0 * page_attempt
+                wait_seconds = 30.0 * page_attempt if not saw_soft_block else min(240.0, 60.0 * page_attempt)
                 log(
                     f"[Minifigs] page {page}/{total_pages}: no articles, retrying in {wait_seconds:.0f}s",
                     enabled=cfg.verbose,
@@ -675,6 +755,14 @@ def crawl_minifigs(session: requests.Session, cfg: FetchConfig, base_url: str, m
 
         if not article_blocks:
             stats.failed_pages += 1
+            cfg.page_delay_seconds = min(4.0, max(cfg.page_delay_seconds, 2.5))
+            cfg.page_jitter_seconds = max(cfg.page_jitter_seconds, 0.6)
+            try:
+                first_page_html = fetch_html(session, base_url, cfg, source="minifigs")
+                stats.pages_fetched += 1
+                maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
+            except Exception as exc:
+                log(f"[Minifigs] page {page}/{total_pages}: base refresh failed: {exc}", enabled=True)
             log(
                 f"[Minifigs] page {page}/{total_pages}: skipping after retries (no articles).",
                 enabled=True,
@@ -1046,6 +1134,7 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
 
 def main(argv: Sequence[str]) -> int:
     args = parse_args(argv)
+    print(f"[Sync] script_version={SCRIPT_VERSION}", flush=True)
 
     sets_path = Path(args.sets_json)
     minifigs_path = Path(args.minifigs_json)
