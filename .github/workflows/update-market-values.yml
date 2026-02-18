@@ -181,3 +181,44 @@ jobs:
               exit "$status"
             fi
           done
+
+      - name: Build chunked catalog and per-item market details
+        run: |
+          rm -rf "dist/chunks" "dist/market-details"
+
+          python scripts/split_catalog_chunks.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --output-dir "dist/chunks" \
+            --manifest-path "dist/catalog-index.json" \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main" \
+            --market-details-dir "dist/market-details" \
+            --strip-market-detail-fields \
+            --max-items-per-chunk 800
+
+      - name: Commit and push chunked catalog outputs (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "dist/catalog-index.json" "dist/chunks" "dist/market-details"
+          if git diff --cached --quiet; then
+            echo "No chunk output changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: refresh chunked catalog outputs"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Chunk output push succeeded on attempt $attempt."
+              exit 0
+            fi
+
+            echo "Chunk output push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+
+          echo "Chunk output push failed after 3 attempts."
+          exit 1
