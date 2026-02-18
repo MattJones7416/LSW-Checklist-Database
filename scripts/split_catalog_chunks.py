@@ -197,6 +197,25 @@ def normalized_number_key(row: Dict[str, Any]) -> str:
     return raw
 
 
+def market_detail_kind(row: Dict[str, Any]) -> str:
+    row_type = normalize_type(row.get("type"))
+    return "minifigures" if row_type == "minifigure" else "sets"
+
+
+def market_detail_bucket(number_key: str) -> str:
+    compact = re.sub(r"[^a-z0-9]", "", number_key.lower())
+    if not compact:
+        return "misc"
+    if len(compact) == 1:
+        return f"{compact}0"
+    return compact[:2]
+
+
+def market_detail_filename(number_key: str) -> str:
+    safe = re.sub(r"[^a-z0-9._-]+", "-", number_key.lower()).strip("-")
+    return safe or "unknown"
+
+
 def has_meaningful_market_detail(detail: Dict[str, Any]) -> bool:
     for key, value in detail.items():
         if key == "Number":
@@ -231,7 +250,11 @@ def split_out_market_details(
                     detail_payload[field] = row[field]
 
             if has_meaningful_market_detail(detail_payload):
-                detail_path = market_details_dir / f"{number}.json"
+                kind = market_detail_kind(row)
+                bucket = market_detail_bucket(number)
+                filename = market_detail_filename(number)
+                detail_path = market_details_dir / kind / bucket / f"{filename}.json"
+                detail_path.parent.mkdir(parents=True, exist_ok=True)
                 detail_path.write_text(
                     json.dumps(detail_payload, ensure_ascii=False, separators=(",", ":")),
                     encoding="utf-8",
