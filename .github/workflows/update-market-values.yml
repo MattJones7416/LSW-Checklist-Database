@@ -1,4 +1,4 @@
-name: Sync Brickset Star Wars Catalog
+name: Sync Catalog and Market Data
 
 on:
   workflow_dispatch:
@@ -9,13 +9,13 @@ permissions:
   contents: write
 
 concurrency:
-  group: sync-brickset-catalog
+  group: sync-catalog-and-market
   cancel-in-progress: false
 
 jobs:
   sync-catalog:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 240
 
     steps:
       - name: Checkout
@@ -31,14 +31,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install requests
+          python -m pip install requests requests_oauthlib
 
       - name: Sync sets and minifigures
         env:
           BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY || vars.BRICKSET_API_KEY }}
         run: |
           if [ -z "${BRICKSET_API_KEY}" ]; then
-            echo "Missing BRICKSET_API_KEY. Set it in GitHub Actions Secrets or Repository Variables (Codespaces secrets are not used by Actions)."
+            echo "Missing BRICKSET_API_KEY. Set it in repository Secrets or Variables."
             exit 1
           fi
 
@@ -57,16 +57,35 @@ jobs:
             --max-multiplicity-fetches 250 \
             --verbose
 
-      - name: Refresh BrickLink market analytics
+      - name: Refresh BrickLink market values (API)
+        env:
+          BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
+          BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
+          BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
+          BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
+          BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
         run: |
+          missing=""
+          for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
+            if [ -z "${!key}" ]; then
+              missing="$missing $key"
+            fi
+          done
+
+          if [ -n "$missing" ]; then
+            echo "Missing BrickLink credentials:$missing"
+            echo "Set them in repository Secrets (or Variables)."
+            exit 1
+          fi
+
           python scripts/update_market_values.py \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --delay 0.65 \
-            --jitter 0.15 \
+            --currency-code "${BRICKLINK_CURRENCY}" \
+            --delay 0.18 \
+            --jitter 0.04 \
             --timeout 20 \
-            --retries 2 \
-            --limit 1200 \
+            --retries 3 \
             --verbose
 
       - name: Commit and push (if changed)
@@ -79,9 +98,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
-          git commit -m "chore: sync catalog and market analytics"
+          git commit -m "chore: sync catalog and BrickLink API market data"
 
-          # Handle non-fast-forward when another run/user pushed first.
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
               echo "Push succeeded on attempt $attempt."

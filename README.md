@@ -1,44 +1,59 @@
-# LSW-Checklist
+# LSW-Checklist-Database
 
 This repo auto-maintains the set and minifigure JSON catalogs used by the app.
 
 ## Automated daily sync
 
-GitHub Actions runs daily and can also be run manually:
+GitHub Actions runs daily and can also be run manually.
 
 - Workflow: `.github/workflows/update-market-values.yml`
 - Scripts:
-  - `scripts/sync_brickset_catalog.py`
-  - `scripts/update_market_values.py`
+  - `scripts/sync_brickset_catalog.py` (catalog + themes + multiplicity)
+  - `scripts/update_market_values.py` (BrickLink API market refresh)
 
-The sync process:
+### Pipeline summary
 
-1. Pulls sets from Brickset API v3 (`getSets`) across all themes by default
-2. Optionally crawls Brickset minifig pages (disabled by default to keep runs stable)
-3. Updates/adds entries in:
+1. Pull sets from Brickset API v3 (`getSets`) across themes.
+2. Optionally crawl Brickset minifig pages (currently disabled in workflow for stability).
+3. Update/add entries in:
    - `dist/Lego Star Wars Database.json`
    - `dist/Lego-Star-Wars-Minifigure-Database.json`
-   - `dist/Themes.json` (theme index for UI chips/filters)
-4. Expands set `MinifigNumbers` multiplicities from BrickLink inventory pages
-   - by default only for rows that already have `MinifigNumbers` (avoids massive request volume)
-5. Refreshes market fields from BrickLink Price Guide pages (`catalogPG.asp`) including:
+   - `dist/Themes.json`
+4. Expand set `MinifigNumbers` multiplicities from BrickLink inventory pages.
+5. Refresh market fields via **BrickLink API** (OAuth, no HTML scraping):
    - `New` / `Used` display values
-   - 6-month sold stats (new/used)
-   - current listing stats (new/used)
-   - monthly sales series + full transaction rows + latest sale snapshot
-   - RRP comparison and 2Y/5Y forecast helper fields
-6. Adds cross-catalog exclusivity/appears-in helper fields
-7. Commits and pushes if changes are detected
+   - sold/current summary stats
+   - monthly market snapshot series
+   - forecast helper fields
+   - latest sale snapshot fields
+6. Refresh cross-catalog helper fields:
+   - `ExclusiveMinifigNumbers`, `ExclusiveMinifigCount`
+   - `AppearsInSetNumbers`, `IsSetExclusive`, `ExclusiveToSetNumber`
+
+## Required GitHub Secrets
+
+Set these in repository Secrets (or Variables):
+
+- `BRICKSET_API_KEY`
+- `BRICKLINK_CONSUMER_KEY`
+- `BRICKLINK_CONSUMER_SECRET`
+- `BRICKLINK_TOKEN_VALUE`
+- `BRICKLINK_TOKEN_SECRET`
+
+Optional:
+
+- `BRICKLINK_CURRENCY` (default `GBP`)
 
 ## Local run
 
-Set API key first:
-
 ```bash
-export BRICKSET_API_KEY="your_api_key"
-```
+export BRICKSET_API_KEY="..."
+export BRICKLINK_CONSUMER_KEY="..."
+export BRICKLINK_CONSUMER_SECRET="..."
+export BRICKLINK_TOKEN_VALUE="..."
+export BRICKLINK_TOKEN_SECRET="..."
+export BRICKLINK_CURRENCY="GBP"
 
-```bash
 python scripts/sync_brickset_catalog.py \
   --sets-json "dist/Lego Star Wars Database.json" \
   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
@@ -50,20 +65,15 @@ python scripts/sync_brickset_catalog.py \
 python scripts/update_market_values.py \
   --sets-json "dist/Lego Star Wars Database.json" \
   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-  --delay 0.65 \
-  --jitter 0.15 \
+  --currency-code "$BRICKLINK_CURRENCY" \
+  --delay 0.18 \
+  --jitter 0.04 \
   --timeout 20 \
-  --retries 2 \
-  --limit 1200 \
+  --retries 3 \
   --verbose
 ```
 
 Useful debug flags:
 
-- `--theme "Star Wars"` (API set filter)
-- `--crawl-minifigs` (enable web minifigure crawl)
-- `--multiplicity-include-empty` (expensive; disabled by default)
-- `--limit 5 --start-index 0`
+- `--limit 25 --start-index 0`
 - `--skip-cross-enrichment`
-- `--link-fallback`
-- `--insecure` (local cert troubleshooting only)
