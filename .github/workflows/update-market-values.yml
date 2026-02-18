@@ -191,7 +191,7 @@ jobs:
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
             --output-dir "dist/chunks" \
             --manifest-path "dist/catalog-index.json" \
-            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main" \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist" \
             --market-details-dir "dist/market-details" \
             --strip-market-detail-fields \
             --max-items-per-chunk 800

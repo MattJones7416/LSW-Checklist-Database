@@ -1,0 +1,3775 @@
+{
+  "version": 1,
+  "generatedAt": "2026-02-18T19:55:47.964548+00:00",
+  "sets": [
+    {
+      "label": "12V",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/12v.json",
+      "count": 53,
+      "part": 1,
+      "parts": 1,
+      "theme": "12V"
+    },
+    {
+      "label": "4 Juniors",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/4-juniors.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "4 Juniors"
+    },
+    {
+      "label": "4.5V",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/4-5v.json",
+      "count": 88,
+      "part": 1,
+      "parts": 1,
+      "theme": "4.5V"
+    },
+    {
+      "label": "9V",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/9v.json",
+      "count": 102,
+      "part": 1,
+      "parts": 1,
+      "theme": "9V"
+    },
+    {
+      "label": "Action Wheelers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/action-wheelers.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Action Wheelers"
+    },
+    {
+      "label": "Activity Books",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books.json",
+      "count": 245,
+      "part": 1,
+      "parts": 1,
+      "theme": "Activity Books"
+    },
+    {
+      "label": "Activity Books with LEGO Parts",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
+      "count": 423,
+      "part": 1,
+      "parts": 1,
+      "theme": "Activity Books with LEGO Parts"
+    },
+    {
+      "label": "Advent",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/advent.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Advent"
+    },
+    {
+      "label": "Agents",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/agents.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Agents"
+    },
+    {
+      "label": "Airlines",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/airlines.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Airlines"
+    },
+    {
+      "label": "Airport",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/airport.json",
+      "count": 57,
+      "part": 1,
+      "parts": 1,
+      "theme": "Airport"
+    },
+    {
+      "label": "Alien Conquest",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/alien-conquest.json",
+      "count": 10,
+      "part": 1,
+      "parts": 1,
+      "theme": "Alien Conquest"
+    },
+    {
+      "label": "Alpha Team",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/alpha-team.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Alpha Team"
+    },
+    {
+      "label": "Angry Birds",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/angry-birds.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Angry Birds"
+    },
+    {
+      "label": "Animal Crossing",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/animal-crossing.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Animal Crossing"
+    },
+    {
+      "label": "Aquanauts",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/aquanauts.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Aquanauts"
+    },
+    {
+      "label": "Aquaraiders I",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/aquaraiders-i.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Aquaraiders I"
+    },
+    {
+      "label": "Aquaraiders II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/aquaraiders-ii.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Aquaraiders II"
+    },
+    {
+      "label": "Aquasharks",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/aquasharks.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Aquasharks"
+    },
+    {
+      "label": "Aquazone",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/aquazone.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "Aquazone"
+    },
+    {
+      "label": "Architecture",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/architecture.json",
+      "count": 50,
+      "part": 1,
+      "parts": 1,
+      "theme": "Architecture"
+    },
+    {
+      "label": "Arctic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/arctic.json",
+      "count": 40,
+      "part": 1,
+      "parts": 1,
+      "theme": "Arctic"
+    },
+    {
+      "label": "Atlantis",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/atlantis.json",
+      "count": 24,
+      "part": 1,
+      "parts": 1,
+      "theme": "Atlantis"
+    },
+    {
+      "label": "Audio and Visual Media",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/audio-and-visual-media.json",
+      "count": 89,
+      "part": 1,
+      "parts": 1,
+      "theme": "Audio and Visual Media"
+    },
+    {
+      "label": "Avatar",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avatar.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Avatar"
+    },
+    {
+      "label": "Avatar: The Last Airbender",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avatar-the-last-airbender.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Avatar: The Last Airbender"
+    },
+    {
+      "label": "Avengers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
+      "count": 97,
+      "part": 1,
+      "parts": 1,
+      "theme": "Avengers"
+    },
+    {
+      "label": "Bag and Luggage Tags",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
+      "count": 121,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bag and Luggage Tags"
+    },
+    {
+      "label": "Bags, Totes, & Luggage",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage.json",
+      "count": 769,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bags, Totes, & Luggage"
+    },
+    {
+      "label": "Basic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic.json",
+      "count": 201,
+      "part": 1,
+      "parts": 1,
+      "theme": "Basic"
+    },
+    {
+      "label": "Basic Set",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic-set.json",
+      "count": 415,
+      "part": 1,
+      "parts": 1,
+      "theme": "Basic Set"
+    },
+    {
+      "label": "Basketball",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basketball.json",
+      "count": 35,
+      "part": 1,
+      "parts": 1,
+      "theme": "Basketball"
+    },
+    {
+      "label": "Batman",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/batman.json",
+      "count": 144,
+      "part": 1,
+      "parts": 1,
+      "theme": "Batman"
+    },
+    {
+      "label": "Belville",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/belville.json",
+      "count": 89,
+      "part": 1,
+      "parts": 1,
+      "theme": "Belville"
+    },
+    {
+      "label": "Ben 10",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ben-10.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ben 10"
+    },
+    {
+      "label": "Bionicle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bionicle.json",
+      "count": 449,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bionicle"
+    },
+    {
+      "label": "Black Falcons",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/black-falcons.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Black Falcons"
+    },
+    {
+      "label": "Black Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/black-knights.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Black Knights"
+    },
+    {
+      "label": "Blacktron I",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/blacktron-i.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Blacktron I"
+    },
+    {
+      "label": "Blacktron II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/blacktron-ii.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Blacktron II"
+    },
+    {
+      "label": "Bluey",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bluey.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bluey"
+    },
+    {
+      "label": "Boat",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/boat.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Boat"
+    },
+    {
+      "label": "Bob the Builder",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bob-the-builder.json",
+      "count": 31,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bob the Builder"
+    },
+    {
+      "label": "Books",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/books.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "Books"
+    },
+    {
+      "label": "Botanicals",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
+      "count": 41,
+      "part": 1,
+      "parts": 1,
+      "theme": "Botanicals"
+    },
+    {
+      "label": "Brick Sketches",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brick-sketches.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Brick Sketches"
+    },
+    {
+      "label": "Brickheadz",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz.json",
+      "count": 192,
+      "part": 1,
+      "parts": 1,
+      "theme": "Brickheadz"
+    },
+    {
+      "label": "BrickLink Designer Program",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bricklink-designer-program.json",
+      "count": 63,
+      "part": 1,
+      "parts": 1,
+      "theme": "BrickLink Designer Program"
+    },
+    {
+      "label": "Bricks & More",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bricks-more.json",
+      "count": 68,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bricks & More"
+    },
+    {
+      "label": "Bricktober",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bricktober.json",
+      "count": 44,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bricktober"
+    },
+    {
+      "label": "Building",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/building.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Building"
+    },
+    {
+      "label": "Building Set with People",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/building-set-with-people.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Building Set with People"
+    },
+    {
+      "label": "Bulk Bricks",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bulk-bricks.json",
+      "count": 136,
+      "part": 1,
+      "parts": 1,
+      "theme": "Bulk Bricks"
+    },
+    {
+      "label": "Captain America",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/captain-america.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Captain America"
+    },
+    {
+      "label": "Cargo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/cargo.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Cargo"
+    },
+    {
+      "label": "Cars",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/cars.json",
+      "count": 58,
+      "part": 1,
+      "parts": 1,
+      "theme": "Cars"
+    },
+    {
+      "label": "Castle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/castle.json",
+      "count": 36,
+      "part": 1,
+      "parts": 1,
+      "theme": "Castle"
+    },
+    {
+      "label": "Chinese (Lunar) New Year",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/chinese-lunar-new-year.json",
+      "count": 30,
+      "part": 1,
+      "parts": 1,
+      "theme": "Chinese (Lunar) New Year"
+    },
+    {
+      "label": "Chinese Traditional Festivals",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/chinese-traditional-festivals.json",
+      "count": 35,
+      "part": 1,
+      "parts": 1,
+      "theme": "Chinese Traditional Festivals"
+    },
+    {
+      "label": "Christmas",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
+      "count": 190,
+      "part": 1,
+      "parts": 1,
+      "theme": "Christmas"
+    },
+    {
+      "label": "Cities of Wonders",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/cities-of-wonders.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Cities of Wonders"
+    },
+    {
+      "label": "City",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city.json",
+      "count": 294,
+      "part": 1,
+      "parts": 1,
+      "theme": "City"
+    },
+    {
+      "label": "City Center",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city-center.json",
+      "count": 22,
+      "part": 1,
+      "parts": 1,
+      "theme": "City Center"
+    },
+    {
+      "label": "Classic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic.json",
+      "count": 78,
+      "part": 1,
+      "parts": 1,
+      "theme": "Classic"
+    },
+    {
+      "label": "Classic Basic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-basic.json",
+      "count": 53,
+      "part": 1,
+      "parts": 1,
+      "theme": "Classic Basic"
+    },
+    {
+      "label": "Classic Castle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-castle.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Classic Castle"
+    },
+    {
+      "label": "Classic Space",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-space.json",
+      "count": 89,
+      "part": 1,
+      "parts": 1,
+      "theme": "Classic Space"
+    },
+    {
+      "label": "Classic Town",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
+      "count": 412,
+      "part": 1,
+      "parts": 1,
+      "theme": "Classic Town"
+    },
+    {
+      "label": "Clikits",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clikits.json",
+      "count": 85,
+      "part": 1,
+      "parts": 1,
+      "theme": "Clikits"
+    },
+    {
+      "label": "Clocks and Watches",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clocks-and-watches.json",
+      "count": 225,
+      "part": 1,
+      "parts": 1,
+      "theme": "Clocks and Watches"
+    },
+    {
+      "label": "Coast Guard",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/coast-guard.json",
+      "count": 30,
+      "part": 1,
+      "parts": 1,
+      "theme": "Coast Guard"
+    },
+    {
+      "label": "Collectible Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/collectible-minifigures.json",
+      "count": 39,
+      "part": 1,
+      "parts": 1,
+      "theme": "Collectible Minifigures"
+    },
+    {
+      "label": "Competition",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/competition.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Competition"
+    },
+    {
+      "label": "Constraction",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/constraction.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Constraction"
+    },
+    {
+      "label": "Construction",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/construction.json",
+      "count": 124,
+      "part": 1,
+      "parts": 1,
+      "theme": "Construction"
+    },
+    {
+      "label": "Control Lab",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/control-lab.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Control Lab"
+    },
+    {
+      "label": "Creator",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/creator.json",
+      "count": 231,
+      "part": 1,
+      "parts": 1,
+      "theme": "Creator"
+    },
+    {
+      "label": "Creator 3-in-1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/creator-3-in-1.json",
+      "count": 265,
+      "part": 1,
+      "parts": 1,
+      "theme": "Creator 3-in-1"
+    },
+    {
+      "label": "Creator Expert",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/creator-expert.json",
+      "count": 51,
+      "part": 1,
+      "parts": 1,
+      "theme": "Creator Expert"
+    },
+    {
+      "label": "Dark Forest",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dark-forest.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dark Forest"
+    },
+    {
+      "label": "Database Sets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/database-sets.json",
+      "count": 123,
+      "part": 1,
+      "parts": 1,
+      "theme": "Database Sets"
+    },
+    {
+      "label": "DC Comics",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dc-comics.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "DC Comics"
+    },
+    {
+      "label": "DC Comics Super Heroes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dc-comics-super-heroes.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "DC Comics Super Heroes"
+    },
+    {
+      "label": "DC Super Hero Girls",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dc-super-hero-girls.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "DC Super Hero Girls"
+    },
+    {
+      "label": "DC Super Heroes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dc-super-heroes.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "DC Super Heroes"
+    },
+    {
+      "label": "Desert",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/desert.json",
+      "count": 26,
+      "part": 1,
+      "parts": 1,
+      "theme": "Desert"
+    },
+    {
+      "label": "Designer Sets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/designer-sets.json",
+      "count": 49,
+      "part": 1,
+      "parts": 1,
+      "theme": "Designer Sets"
+    },
+    {
+      "label": "Despicable Me 4",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/despicable-me-4.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Despicable Me 4"
+    },
+    {
+      "label": "DFB Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dfb-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "DFB Minifigures"
+    },
+    {
+      "label": "Dimensions",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dimensions.json",
+      "count": 68,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dimensions"
+    },
+    {
+      "label": "Dino",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dino.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dino"
+    },
+    {
+      "label": "Dino Attack / Dino 2010",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dino-attack-dino-2010.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dino Attack / Dino 2010"
+    },
+    {
+      "label": "Dino Island",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dino-island.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dino Island"
+    },
+    {
+      "label": "Dinosaurs",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dinosaurs.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dinosaurs"
+    },
+    {
+      "label": "Discovery",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/discovery.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Discovery"
+    },
+    {
+      "label": "Disney",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney.json",
+      "count": 72,
+      "part": 1,
+      "parts": 1,
+      "theme": "Disney"
+    },
+    {
+      "label": "Disney 100",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney-100.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Disney 100"
+    },
+    {
+      "label": "Disney Princess",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney-princess.json",
+      "count": 132,
+      "part": 1,
+      "parts": 1,
+      "theme": "Disney Princess"
+    },
+    {
+      "label": "Disney Series 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney-series-1.json",
+      "count": 20,
+      "part": 1,
+      "parts": 1,
+      "theme": "Disney Series 1"
+    },
+    {
+      "label": "Disney Series 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney-series-2.json",
+      "count": 20,
+      "part": 1,
+      "parts": 1,
+      "theme": "Disney Series 2"
+    },
+    {
+      "label": "Divers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/divers.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "Divers"
+    },
+    {
+      "label": "Doc McStuffins",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/doc-mcstuffins.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Doc McStuffins"
+    },
+    {
+      "label": "Dolls",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dolls.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dolls"
+    },
+    {
+      "label": "Dora the Explorer",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dora-the-explorer.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dora the Explorer"
+    },
+    {
+      "label": "DOTS",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dots.json",
+      "count": 93,
+      "part": 1,
+      "parts": 1,
+      "theme": "DOTS"
+    },
+    {
+      "label": "Dragon Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dragon-knights.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dragon Knights"
+    },
+    {
+      "label": "Dreamzzz",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dreamzzz.json",
+      "count": 66,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dreamzzz"
+    },
+    {
+      "label": "Dungeons & Dragons",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dungeons-dragons.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Dungeons & Dragons"
+    },
+    {
+      "label": "Duplo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo.json",
+      "count": 120,
+      "part": 1,
+      "parts": 1,
+      "theme": "Duplo"
+    },
+    {
+      "label": "Duplo and Explore",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo-and-explore.json",
+      "count": 289,
+      "part": 1,
+      "parts": 1,
+      "theme": "Duplo and Explore"
+    },
+    {
+      "label": "Early Creator",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/early-creator.json",
+      "count": 37,
+      "part": 1,
+      "parts": 1,
+      "theme": "Early Creator"
+    },
+    {
+      "label": "Easter",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/easter.json",
+      "count": 59,
+      "part": 1,
+      "parts": 1,
+      "theme": "Easter"
+    },
+    {
+      "label": "Editions",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/editions.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Editions"
+    },
+    {
+      "label": "Educational and Dacta",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/educational-and-dacta.json",
+      "count": 127,
+      "part": 1,
+      "parts": 1,
+      "theme": "Educational and Dacta"
+    },
+    {
+      "label": "eLAB",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/elab.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "eLAB"
+    },
+    {
+      "label": "Elves",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/elves.json",
+      "count": 42,
+      "part": 1,
+      "parts": 1,
+      "theme": "Elves"
+    },
+    {
+      "label": "EV3",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ev3.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "EV3"
+    },
+    {
+      "label": "Exo-Force",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/exo-force.json",
+      "count": 52,
+      "part": 1,
+      "parts": 1,
+      "theme": "Exo-Force"
+    },
+    {
+      "label": "Expert Builder",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/expert-builder.json",
+      "count": 39,
+      "part": 1,
+      "parts": 1,
+      "theme": "Expert Builder"
+    },
+    {
+      "label": "Exploriens",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/exploriens.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Exploriens"
+    },
+    {
+      "label": "Extreme Team",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/extreme-team.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Extreme Team"
+    },
+    {
+      "label": "Fabuland",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fabuland.json",
+      "count": 107,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fabuland"
+    },
+    {
+      "label": "Factory",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/factory.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Factory"
+    },
+    {
+      "label": "Fantastic Beasts",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fantastic-beasts.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fantastic Beasts"
+    },
+    {
+      "label": "Fantasy Era",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fantasy-era.json",
+      "count": 31,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fantasy Era"
+    },
+    {
+      "label": "Farm",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/farm.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Farm"
+    },
+    {
+      "label": "Ferrari",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ferrari.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ferrari"
+    },
+    {
+      "label": "Ferries",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ferries.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ferries"
+    },
+    {
+      "label": "Fire",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fire.json",
+      "count": 125,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fire"
+    },
+    {
+      "label": "FIRST LEGO League",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/first-lego-league.json",
+      "count": 110,
+      "part": 1,
+      "parts": 1,
+      "theme": "FIRST LEGO League"
+    },
+    {
+      "label": "Forestmen",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/forestmen.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Forestmen"
+    },
+    {
+      "label": "Forma",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/forma.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Forma"
+    },
+    {
+      "label": "Formula 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/formula-1.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Formula 1"
+    },
+    {
+      "label": "Fortnite",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fortnite.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fortnite"
+    },
+    {
+      "label": "Freestyle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/freestyle.json",
+      "count": 66,
+      "part": 1,
+      "parts": 1,
+      "theme": "Freestyle"
+    },
+    {
+      "label": "Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
+      "count": 684,
+      "part": 1,
+      "parts": 1,
+      "theme": "Friends"
+    },
+    {
+      "label": "Fright Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fright-knights.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fright Knights"
+    },
+    {
+      "label": "Frozen",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/frozen.json",
+      "count": 39,
+      "part": 1,
+      "parts": 1,
+      "theme": "Frozen"
+    },
+    {
+      "label": "Fusion",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fusion.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Fusion"
+    },
+    {
+      "label": "Futuron",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/futuron.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Futuron"
+    },
+    {
+      "label": "Gabby's Dollhouse",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gabby-s-dollhouse.json",
+      "count": 10,
+      "part": 1,
+      "parts": 1,
+      "theme": "Gabby's Dollhouse"
+    },
+    {
+      "label": "Galaxy Squad",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/galaxy-squad.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "Galaxy Squad"
+    },
+    {
+      "label": "Galidor",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/galidor.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Galidor"
+    },
+    {
+      "label": "Games",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/games.json",
+      "count": 47,
+      "part": 1,
+      "parts": 1,
+      "theme": "Games"
+    },
+    {
+      "label": "Gas Station",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gas-station.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Gas Station"
+    },
+    {
+      "label": "Gear",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear.json",
+      "count": 601,
+      "part": 1,
+      "parts": 1,
+      "theme": "Gear"
+    },
+    {
+      "label": "Gears",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gears.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Gears"
+    },
+    {
+      "label": "Ghostbusters",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ghostbusters.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ghostbusters"
+    },
+    {
+      "label": "Gravity Games",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gravity-games.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Gravity Games"
+    },
+    {
+      "label": "Guardians of the Galaxy",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/guardians-of-the-galaxy.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Guardians of the Galaxy"
+    },
+    {
+      "label": "Halloween",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/halloween.json",
+      "count": 42,
+      "part": 1,
+      "parts": 1,
+      "theme": "Halloween"
+    },
+    {
+      "label": "Harbor",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harbor.json",
+      "count": 26,
+      "part": 1,
+      "parts": 1,
+      "theme": "Harbor"
+    },
+    {
+      "label": "Harry Potter",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harry-potter.json",
+      "count": 205,
+      "part": 1,
+      "parts": 1,
+      "theme": "Harry Potter"
+    },
+    {
+      "label": "Harry Potter and Fantastic Beasts Series 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harry-potter-and-fantastic-beasts-series-1.json",
+      "count": 24,
+      "part": 1,
+      "parts": 1,
+      "theme": "Harry Potter and Fantastic Beasts Series 1"
+    },
+    {
+      "label": "Harry Potter and Fantastic Beasts Series 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harry-potter-and-fantastic-beasts-series-2.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Harry Potter and Fantastic Beasts Series 2"
+    },
+    {
+      "label": "Hero Factory",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hero-factory.json",
+      "count": 34,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hero Factory"
+    },
+    {
+      "label": "Heroes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/heroes.json",
+      "count": 44,
+      "part": 1,
+      "parts": 1,
+      "theme": "Heroes"
+    },
+    {
+      "label": "Hidden Side",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hidden-side.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hidden Side"
+    },
+    {
+      "label": "HO 1:87 Vehicles",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ho-1-87-vehicles.json",
+      "count": 61,
+      "part": 1,
+      "parts": 1,
+      "theme": "HO 1:87 Vehicles"
+    },
+    {
+      "label": "Hobby Sets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hobby-sets.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hobby Sets"
+    },
+    {
+      "label": "Hockey",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hockey.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hockey"
+    },
+    {
+      "label": "Homemaker",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/homemaker.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Homemaker"
+    },
+    {
+      "label": "Horizon Adventures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/horizon-adventures.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "Horizon Adventures"
+    },
+    {
+      "label": "Hospital",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hospital.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hospital"
+    },
+    {
+      "label": "Houseware",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
+      "count": 541,
+      "part": 1,
+      "parts": 1,
+      "theme": "Houseware"
+    },
+    {
+      "label": "Hydronauts",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/hydronauts.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Hydronauts"
+    },
+    {
+      "label": "Ice Planet 2002",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ice-planet-2002.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ice Planet 2002"
+    },
+    {
+      "label": "Icons",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
+      "count": 78,
+      "part": 1,
+      "parts": 1,
+      "theme": "Icons"
+    },
+    {
+      "label": "Ideas Books",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ideas-books.json",
+      "count": 124,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ideas Books"
+    },
+    {
+      "label": "Incredibles 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/incredibles-2.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Incredibles 2"
+    },
+    {
+      "label": "Indiana Jones",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/indiana-jones.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Indiana Jones"
+    },
+    {
+      "label": "Insectoids",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/insectoids.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Insectoids"
+    },
+    {
+      "label": "Inventor",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/inventor.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Inventor"
+    },
+    {
+      "label": "Iron Man",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/iron-man.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Iron Man"
+    },
+    {
+      "label": "Island Xtreme Stunts",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/island-xtreme-stunts.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Island Xtreme Stunts"
+    },
+    {
+      "label": "Jack Stone",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jack-stone.json",
+      "count": 28,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jack Stone"
+    },
+    {
+      "label": "Jake and the Never Land Pirates",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jake-and-the-never-land-pirates.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jake and the Never Land Pirates"
+    },
+    {
+      "label": "Jumbo Bricks",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jumbo-bricks.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jumbo Bricks"
+    },
+    {
+      "label": "Jungle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jungle.json",
+      "count": 27,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jungle"
+    },
+    {
+      "label": "Juniors",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/juniors.json",
+      "count": 29,
+      "part": 1,
+      "parts": 1,
+      "theme": "Juniors"
+    },
+    {
+      "label": "Jurassic Park III",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-park-iii.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jurassic Park III"
+    },
+    {
+      "label": "Jurassic World",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-world.json",
+      "count": 123,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jurassic World"
+    },
+    {
+      "label": "Jurassic World: Fallen Kingdom",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-world-fallen-kingdom.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Jurassic World: Fallen Kingdom"
+    },
+    {
+      "label": "Justice League",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/justice-league.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Justice League"
+    },
+    {
+      "label": "Key Chain (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p1.json",
+      "count": 800,
+      "part": 1,
+      "parts": 2,
+      "theme": "Key Chain"
+    },
+    {
+      "label": "Key Chain (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
+      "count": 7,
+      "part": 2,
+      "parts": 2,
+      "theme": "Key Chain"
+    },
+    {
+      "label": "Kingdoms",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/kingdoms.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Kingdoms"
+    },
+    {
+      "label": "Knights Kingdom I",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/knights-kingdom-i.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Knights Kingdom I"
+    },
+    {
+      "label": "Knights Kingdom II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/knights-kingdom-ii.json",
+      "count": 76,
+      "part": 1,
+      "parts": 1,
+      "theme": "Knights Kingdom II"
+    },
+    {
+      "label": "Launch Command",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/launch-command.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Launch Command"
+    },
+    {
+      "label": "Learning",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/learning.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Learning"
+    },
+    {
+      "label": "Learning at Home",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/learning-at-home.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Learning at Home"
+    },
+    {
+      "label": "Legends of Chima",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/legends-of-chima.json",
+      "count": 98,
+      "part": 1,
+      "parts": 1,
+      "theme": "Legends of Chima"
+    },
+    {
+      "label": "LEGO Art",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-art.json",
+      "count": 25,
+      "part": 1,
+      "parts": 1,
+      "theme": "LEGO Art"
+    },
+    {
+      "label": "LEGO Brand Store",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
+      "count": 233,
+      "part": 1,
+      "parts": 1,
+      "theme": "LEGO Brand Store"
+    },
+    {
+      "label": "LEGO Exclusive",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-exclusive.json",
+      "count": 75,
+      "part": 1,
+      "parts": 1,
+      "theme": "LEGO Exclusive"
+    },
+    {
+      "label": "LEGO Ideas and CUUSOO",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
+      "count": 98,
+      "part": 1,
+      "parts": 1,
+      "theme": "LEGO Ideas and CUUSOO"
+    },
+    {
+      "label": "LEGO Originals",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-originals.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "LEGO Originals"
+    },
+    {
+      "label": "Legoland Parks",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/legoland-parks.json",
+      "count": 56,
+      "part": 1,
+      "parts": 1,
+      "theme": "Legoland Parks"
+    },
+    {
+      "label": "Legoville",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/legoville.json",
+      "count": 77,
+      "part": 1,
+      "parts": 1,
+      "theme": "Legoville"
+    },
+    {
+      "label": "Life On Mars",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/life-on-mars.json",
+      "count": 26,
+      "part": 1,
+      "parts": 1,
+      "theme": "Life On Mars"
+    },
+    {
+      "label": "Lion Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lion-knights.json",
+      "count": 26,
+      "part": 1,
+      "parts": 1,
+      "theme": "Lion Knights"
+    },
+    {
+      "label": "Little Forest Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/little-forest-friends.json",
+      "count": 10,
+      "part": 1,
+      "parts": 1,
+      "theme": "Little Forest Friends"
+    },
+    {
+      "label": "Little Robots",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/little-robots.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Little Robots"
+    },
+    {
+      "label": "Looney Tunes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/looney-tunes.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Looney Tunes"
+    },
+    {
+      "label": "M:Tron",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/m-tron.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "M:Tron"
+    },
+    {
+      "label": "Magnets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
+      "count": 140,
+      "part": 1,
+      "parts": 1,
+      "theme": "Magnets"
+    },
+    {
+      "label": "Make & Create",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/make-create.json",
+      "count": 51,
+      "part": 1,
+      "parts": 1,
+      "theme": "Make & Create"
+    },
+    {
+      "label": "Mars Exploration",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mars-exploration.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mars Exploration"
+    },
+    {
+      "label": "Mars Mission",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mars-mission.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mars Mission"
+    },
+    {
+      "label": "Marvel",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Marvel"
+    },
+    {
+      "label": "Marvel Series 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel-series-1.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Marvel Series 1"
+    },
+    {
+      "label": "Marvel Series 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel-series-2.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Marvel Series 2"
+    },
+    {
+      "label": "Marvel Super Heroes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel-super-heroes.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Marvel Super Heroes"
+    },
+    {
+      "label": "Master Builder Academy",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/master-builder-academy.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Master Builder Academy"
+    },
+    {
+      "label": "McDonalds",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mcdonalds.json",
+      "count": 20,
+      "part": 1,
+      "parts": 1,
+      "theme": "McDonalds"
+    },
+    {
+      "label": "Mickey & Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mickey-friends.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mickey & Friends"
+    },
+    {
+      "label": "Mickey Mouse",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mickey-mouse.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mickey Mouse"
+    },
+    {
+      "label": "Miles From Tomorrowland",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/miles-from-tomorrowland.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Miles From Tomorrowland"
+    },
+    {
+      "label": "Mindstorms",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mindstorms.json",
+      "count": 29,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mindstorms"
+    },
+    {
+      "label": "Minecraft",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
+      "count": 192,
+      "part": 1,
+      "parts": 1,
+      "theme": "Minecraft"
+    },
+    {
+      "label": "Mini",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mini.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mini"
+    },
+    {
+      "label": "Minions",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minions.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Minions"
+    },
+    {
+      "label": "Minitalia",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minitalia.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Minitalia"
+    },
+    {
+      "label": "Mission Deep Freeze",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mission-deep-freeze.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mission Deep Freeze"
+    },
+    {
+      "label": "Mission Deep Sea",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mission-deep-sea.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mission Deep Sea"
+    },
+    {
+      "label": "Mixels",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mixels.json",
+      "count": 123,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mixels"
+    },
+    {
+      "label": "Model Team",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/model-team.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Model Team"
+    },
+    {
+      "label": "Modular Buildings",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/modular-buildings.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Modular Buildings"
+    },
+    {
+      "label": "Modulex",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/modulex.json",
+      "count": 35,
+      "part": 1,
+      "parts": 1,
+      "theme": "Modulex"
+    },
+    {
+      "label": "Monkie Kid",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/monkie-kid.json",
+      "count": 58,
+      "part": 1,
+      "parts": 1,
+      "theme": "Monkie Kid"
+    },
+    {
+      "label": "Monster Fighters",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/monster-fighters.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Monster Fighters"
+    },
+    {
+      "label": "Monthly Mini Model Build",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/monthly-mini-model-build.json",
+      "count": 152,
+      "part": 1,
+      "parts": 1,
+      "theme": "Monthly Mini Model Build"
+    },
+    {
+      "label": "Mosaic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mosaic.json",
+      "count": 7,
+      "part": 1,
+      "parts": 1,
+      "theme": "Mosaic"
+    },
+    {
+      "label": "My Town",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/my-town.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "My Town"
+    },
+    {
+      "label": "Nexo Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/nexo-knights.json",
+      "count": 110,
+      "part": 1,
+      "parts": 1,
+      "theme": "Nexo Knights"
+    },
+    {
+      "label": "Nike",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/nike.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Nike"
+    },
+    {
+      "label": "Ninja",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninja.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ninja"
+    },
+    {
+      "label": "Ninjago",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
+      "count": 624,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ninjago"
+    },
+    {
+      "label": "Non-fiction Books",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/non-fiction-books.json",
+      "count": 177,
+      "part": 1,
+      "parts": 1,
+      "theme": "Non-fiction Books"
+    },
+    {
+      "label": "NXT",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/nxt.json",
+      "count": 53,
+      "part": 1,
+      "parts": 1,
+      "theme": "NXT"
+    },
+    {
+      "label": "Off-Road",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/off-road.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "theme": "Off-Road"
+    },
+    {
+      "label": "One Piece",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/one-piece.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "One Piece"
+    },
+    {
+      "label": "Orient Expedition",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/orient-expedition.json",
+      "count": 28,
+      "part": 1,
+      "parts": 1,
+      "theme": "Orient Expedition"
+    },
+    {
+      "label": "Other",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
+      "count": 163,
+      "part": 1,
+      "parts": 1,
+      "theme": "Other"
+    },
+    {
+      "label": "Outback",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/outback.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Outback"
+    },
+    {
+      "label": "Overwatch",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/overwatch.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Overwatch"
+    },
+    {
+      "label": "Paradisa",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/paradisa.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Paradisa"
+    },
+    {
+      "label": "Peppa Pig",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/peppa-pig.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Peppa Pig"
+    },
+    {
+      "label": "Pharaoh's Quest",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pharaoh-s-quest.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pharaoh's Quest"
+    },
+    {
+      "label": "Pick A Model",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pick-a-model.json",
+      "count": 32,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pick A Model"
+    },
+    {
+      "label": "Pirates",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pirates.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pirates"
+    },
+    {
+      "label": "Pirates I",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pirates-i.json",
+      "count": 67,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pirates I"
+    },
+    {
+      "label": "Pirates II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pirates-ii.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pirates II"
+    },
+    {
+      "label": "Pirates III",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pirates-iii.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pirates III"
+    },
+    {
+      "label": "Pirates of the Caribbean",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pirates-of-the-caribbean.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pirates of the Caribbean"
+    },
+    {
+      "label": "Planes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/planes.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Planes"
+    },
+    {
+      "label": "Playhouse",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/playhouse.json",
+      "count": 59,
+      "part": 1,
+      "parts": 1,
+      "theme": "Playhouse"
+    },
+    {
+      "label": "Playsets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/playsets.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Playsets"
+    },
+    {
+      "label": "Plush Toys",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/plush-toys.json",
+      "count": 137,
+      "part": 1,
+      "parts": 1,
+      "theme": "Plush Toys"
+    },
+    {
+      "label": "Pokémon",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pokémon"
+    },
+    {
+      "label": "Police",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/police.json",
+      "count": 207,
+      "part": 1,
+      "parts": 1,
+      "theme": "Police"
+    },
+    {
+      "label": "Posters and Art Prints",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
+      "count": 95,
+      "part": 1,
+      "parts": 1,
+      "theme": "Posters and Art Prints"
+    },
+    {
+      "label": "Power Functions",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/power-functions.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Power Functions"
+    },
+    {
+      "label": "Power Miners",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/power-miners.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Power Miners"
+    },
+    {
+      "label": "Powered Up",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/powered-up.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Powered Up"
+    },
+    {
+      "label": "Primo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/primo.json",
+      "count": 137,
+      "part": 1,
+      "parts": 1,
+      "theme": "Primo"
+    },
+    {
+      "label": "Prince of Persia",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/prince-of-persia.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Prince of Persia"
+    },
+    {
+      "label": "Princess Castle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/princess-castle.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Princess Castle"
+    },
+    {
+      "label": "Promotional",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
+      "count": 253,
+      "part": 1,
+      "parts": 1,
+      "theme": "Promotional"
+    },
+    {
+      "label": "Protectors",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/protectors.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Protectors"
+    },
+    {
+      "label": "Quatro",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/quatro.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Quatro"
+    },
+    {
+      "label": "Race",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/race.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Race"
+    },
+    {
+      "label": "Racers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/racers.json",
+      "count": 196,
+      "part": 1,
+      "parts": 1,
+      "theme": "Racers"
+    },
+    {
+      "label": "Rattles",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/rattles.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Rattles"
+    },
+    {
+      "label": "RC",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/rc.json",
+      "count": 25,
+      "part": 1,
+      "parts": 1,
+      "theme": "RC"
+    },
+    {
+      "label": "RCX",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/rcx.json",
+      "count": 36,
+      "part": 1,
+      "parts": 1,
+      "theme": "RCX"
+    },
+    {
+      "label": "Res-Q",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/res-q.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Res-Q"
+    },
+    {
+      "label": "RoboForce",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/roboforce.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "RoboForce"
+    },
+    {
+      "label": "RoboRiders",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/roboriders.json",
+      "count": 29,
+      "part": 1,
+      "parts": 1,
+      "theme": "RoboRiders"
+    },
+    {
+      "label": "Rock Raiders",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/rock-raiders.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Rock Raiders"
+    },
+    {
+      "label": "Role Play Toys and Costumes",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/role-play-toys-and-costumes.json",
+      "count": 232,
+      "part": 1,
+      "parts": 1,
+      "theme": "Role Play Toys and Costumes"
+    },
+    {
+      "label": "Royal Knights",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/royal-knights.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Royal Knights"
+    },
+    {
+      "label": "Samsonite",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/samsonite.json",
+      "count": 115,
+      "part": 1,
+      "parts": 1,
+      "theme": "Samsonite"
+    },
+    {
+      "label": "Scala",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/scala.json",
+      "count": 73,
+      "part": 1,
+      "parts": 1,
+      "theme": "Scala"
+    },
+    {
+      "label": "Scooby-Doo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/scooby-doo.json",
+      "count": 10,
+      "part": 1,
+      "parts": 1,
+      "theme": "Scooby-Doo"
+    },
+    {
+      "label": "Sculptures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sculptures.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Sculptures"
+    },
+    {
+      "label": "Seasonal",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
+      "count": 110,
+      "part": 1,
+      "parts": 1,
+      "theme": "Seasonal"
+    },
+    {
+      "label": "Series 1 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-1-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 1 Minifigures"
+    },
+    {
+      "label": "Series 10 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-10-minifigures.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 10 Minifigures"
+    },
+    {
+      "label": "Series 11 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-11-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 11 Minifigures"
+    },
+    {
+      "label": "Series 12 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-12-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 12 Minifigures"
+    },
+    {
+      "label": "Series 13 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-13-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 13 Minifigures"
+    },
+    {
+      "label": "Series 14 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-14-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 14 Minifigures"
+    },
+    {
+      "label": "Series 15 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-15-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 15 Minifigures"
+    },
+    {
+      "label": "Series 16 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-16-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 16 Minifigures"
+    },
+    {
+      "label": "Series 17 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-17-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 17 Minifigures"
+    },
+    {
+      "label": "Series 18 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-18-minifigures.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 18 Minifigures"
+    },
+    {
+      "label": "Series 19 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-19-minifigures.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 19 Minifigures"
+    },
+    {
+      "label": "Series 2 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-2-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 2 Minifigures"
+    },
+    {
+      "label": "Series 20 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-20-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 20 Minifigures"
+    },
+    {
+      "label": "Series 21 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-21-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 21 Minifigures"
+    },
+    {
+      "label": "Series 22 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-22-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 22 Minifigures"
+    },
+    {
+      "label": "Series 23 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-23-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 23 Minifigures"
+    },
+    {
+      "label": "Series 24 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-24-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 24 Minifigures"
+    },
+    {
+      "label": "Series 25 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-25-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 25 Minifigures"
+    },
+    {
+      "label": "Series 26 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-26-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 26 Minifigures"
+    },
+    {
+      "label": "Series 27 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-27-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 27 Minifigures"
+    },
+    {
+      "label": "Series 28 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-28-minifigures.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 28 Minifigures"
+    },
+    {
+      "label": "Series 3 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-3-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 3 Minifigures"
+    },
+    {
+      "label": "Series 4 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-4-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 4 Minifigures"
+    },
+    {
+      "label": "Series 5 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-5-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 5 Minifigures"
+    },
+    {
+      "label": "Series 6 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-6-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 6 Minifigures"
+    },
+    {
+      "label": "Series 7 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-7-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 7 Minifigures"
+    },
+    {
+      "label": "Series 8 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-8-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 8 Minifigures"
+    },
+    {
+      "label": "Series 9 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-9-minifigures.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 9 Minifigures"
+    },
+    {
+      "label": "Serious Play",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/serious-play.json",
+      "count": 21,
+      "part": 1,
+      "parts": 1,
+      "theme": "Serious Play"
+    },
+    {
+      "label": "Service Packs",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/service-packs.json",
+      "count": 353,
+      "part": 1,
+      "parts": 1,
+      "theme": "Service Packs"
+    },
+    {
+      "label": "Skylines",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/skylines.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "Skylines"
+    },
+    {
+      "label": "Soccer",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/soccer.json",
+      "count": 104,
+      "part": 1,
+      "parts": 1,
+      "theme": "Soccer"
+    },
+    {
+      "label": "Sofia the First",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sofia-the-first.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Sofia the First"
+    },
+    {
+      "label": "Soft Bricks",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/soft-bricks.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Soft Bricks"
+    },
+    {
+      "label": "Sonic The Hedgehog",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sonic-the-hedgehog.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Sonic The Hedgehog"
+    },
+    {
+      "label": "Space",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Space"
+    },
+    {
+      "label": "Space Police I",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space-police-i.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "Space Police I"
+    },
+    {
+      "label": "Space Police II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space-police-ii.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "Space Police II"
+    },
+    {
+      "label": "Space Police III",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space-police-iii.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Space Police III"
+    },
+    {
+      "label": "Space Port",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space-port.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Space Port"
+    },
+    {
+      "label": "Speed Champions",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/speed-champions.json",
+      "count": 101,
+      "part": 1,
+      "parts": 1,
+      "theme": "Speed Champions"
+    },
+    {
+      "label": "Speed Racer",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/speed-racer.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Speed Racer"
+    },
+    {
+      "label": "Speed Slammers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/speed-slammers.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Speed Slammers"
+    },
+    {
+      "label": "Speedorz",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/speedorz.json",
+      "count": 30,
+      "part": 1,
+      "parts": 1,
+      "theme": "Speedorz"
+    },
+    {
+      "label": "Spider-Man",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
+      "count": 124,
+      "part": 1,
+      "parts": 1,
+      "theme": "Spider-Man"
+    },
+    {
+      "label": "Spider-Man - Across the Spider-Verse",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man-across-the-spider-verse.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Spider-Man - Across the Spider-Verse"
+    },
+    {
+      "label": "Spidey and His Amazing Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spidey-and-his-amazing-friends.json",
+      "count": 16,
+      "part": 1,
+      "parts": 1,
+      "theme": "Spidey and His Amazing Friends"
+    },
+    {
+      "label": "SPIKE",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spike.json",
+      "count": 31,
+      "part": 1,
+      "parts": 1,
+      "theme": "SPIKE"
+    },
+    {
+      "label": "SpongeBob SquarePants",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spongebob-squarepants.json",
+      "count": 14,
+      "part": 1,
+      "parts": 1,
+      "theme": "SpongeBob SquarePants"
+    },
+    {
+      "label": "Sports",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sports.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Sports"
+    },
+    {
+      "label": "Spybotics",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spybotics.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Spybotics"
+    },
+    {
+      "label": "Spyrius",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spyrius.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Spyrius"
+    },
+    {
+      "label": "Star Wars (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p1.json",
+      "count": 800,
+      "part": 1,
+      "parts": 2,
+      "theme": "Star Wars"
+    },
+    {
+      "label": "Star Wars (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
+      "count": 342,
+      "part": 2,
+      "parts": 2,
+      "theme": "Star Wars"
+    },
+    {
+      "label": "Stationery and Office Supplies",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
+      "count": 666,
+      "part": 1,
+      "parts": 1,
+      "theme": "Stationery and Office Supplies"
+    },
+    {
+      "label": "Stingrays",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stingrays.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Stingrays"
+    },
+    {
+      "label": "Storage",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/storage.json",
+      "count": 178,
+      "part": 1,
+      "parts": 1,
+      "theme": "Storage"
+    },
+    {
+      "label": "Story Books",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
+      "count": 391,
+      "part": 1,
+      "parts": 1,
+      "theme": "Story Books"
+    },
+    {
+      "label": "Stranger Things",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stranger-things.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Stranger Things"
+    },
+    {
+      "label": "Studios",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/studios.json",
+      "count": 53,
+      "part": 1,
+      "parts": 1,
+      "theme": "Studios"
+    },
+    {
+      "label": "Stuntz",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stuntz.json",
+      "count": 27,
+      "part": 1,
+      "parts": 1,
+      "theme": "Stuntz"
+    },
+    {
+      "label": "Super Heroes DC",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-heroes-dc.json",
+      "count": 30,
+      "part": 1,
+      "parts": 1,
+      "theme": "Super Heroes DC"
+    },
+    {
+      "label": "Super Heroes Marvel",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-heroes-marvel.json",
+      "count": 55,
+      "part": 1,
+      "parts": 1,
+      "theme": "Super Heroes Marvel"
+    },
+    {
+      "label": "Super Mario",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-mario.json",
+      "count": 174,
+      "part": 1,
+      "parts": 1,
+      "theme": "Super Mario"
+    },
+    {
+      "label": "Superman",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/superman.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Superman"
+    },
+    {
+      "label": "Supplemental",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/supplemental.json",
+      "count": 365,
+      "part": 1,
+      "parts": 1,
+      "theme": "Supplemental"
+    },
+    {
+      "label": "System",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/system.json",
+      "count": 53,
+      "part": 1,
+      "parts": 1,
+      "theme": "System"
+    },
+    {
+      "label": "Tabletop Games and Puzzles",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
+      "count": 72,
+      "part": 1,
+      "parts": 1,
+      "theme": "Tabletop Games and Puzzles"
+    },
+    {
+      "label": "Team GB",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/team-gb.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Team GB"
+    },
+    {
+      "label": "Technic (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p1.json",
+      "count": 800,
+      "part": 1,
+      "parts": 2,
+      "theme": "Technic"
+    },
+    {
+      "label": "Technic (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
+      "count": 130,
+      "part": 2,
+      "parts": 2,
+      "theme": "Technic"
+    },
+    {
+      "label": "Teenage Mutant Ninja Turtles",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/teenage-mutant-ninja-turtles.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Teenage Mutant Ninja Turtles"
+    },
+    {
+      "label": "Thanksgiving",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/thanksgiving.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Thanksgiving"
+    },
+    {
+      "label": "The Hobbit",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-hobbit.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Hobbit"
+    },
+    {
+      "label": "The Infinity Saga",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-infinity-saga.json",
+      "count": 57,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Infinity Saga"
+    },
+    {
+      "label": "The Legend of Zelda",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-legend-of-zelda.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Legend of Zelda"
+    },
+    {
+      "label": "The LEGO Batman Movie",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-batman-movie.json",
+      "count": 44,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Batman Movie"
+    },
+    {
+      "label": "The LEGO Batman Movie Series 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-batman-movie-series-1.json",
+      "count": 22,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Batman Movie Series 1"
+    },
+    {
+      "label": "The LEGO Batman Movie Series 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-batman-movie-series-2.json",
+      "count": 22,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Batman Movie Series 2"
+    },
+    {
+      "label": "The LEGO Movie",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-movie.json",
+      "count": 50,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Movie"
+    },
+    {
+      "label": "The LEGO Movie II",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-movie-ii.json",
+      "count": 64,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Movie II"
+    },
+    {
+      "label": "The LEGO Ninjago Movie",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lego-ninjago-movie.json",
+      "count": 57,
+      "part": 1,
+      "parts": 1,
+      "theme": "The LEGO Ninjago Movie"
+    },
+    {
+      "label": "The Lone Ranger",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lone-ranger.json",
+      "count": 8,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Lone Ranger"
+    },
+    {
+      "label": "The Lord of the Rings",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-lord-of-the-rings.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Lord of the Rings"
+    },
+    {
+      "label": "The Muppets",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-muppets.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Muppets"
+    },
+    {
+      "label": "The Powerpuff Girls",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-powerpuff-girls.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Powerpuff Girls"
+    },
+    {
+      "label": "The Simpsons Series 1",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-simpsons-series-1.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Simpsons Series 1"
+    },
+    {
+      "label": "The Simpsons Series 2",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-simpsons-series-2.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Simpsons Series 2"
+    },
+    {
+      "label": "Thomas & Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/thomas-friends.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "Thomas & Friends"
+    },
+    {
+      "label": "Throwbot Slizer",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/throwbot-slizer.json",
+      "count": 17,
+      "part": 1,
+      "parts": 1,
+      "theme": "Throwbot Slizer"
+    },
+    {
+      "label": "Time Cruisers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/time-cruisers.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Time Cruisers"
+    },
+    {
+      "label": "Toolo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/toolo.json",
+      "count": 13,
+      "part": 1,
+      "parts": 1,
+      "theme": "Toolo"
+    },
+    {
+      "label": "Town",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/town.json",
+      "count": 424,
+      "part": 1,
+      "parts": 1,
+      "theme": "Town"
+    },
+    {
+      "label": "Town Jr.",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/town-jr.json",
+      "count": 41,
+      "part": 1,
+      "parts": 1,
+      "theme": "Town Jr."
+    },
+    {
+      "label": "Town Plan",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/town-plan.json",
+      "count": 41,
+      "part": 1,
+      "parts": 1,
+      "theme": "Town Plan"
+    },
+    {
+      "label": "Toy Story",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/toy-story.json",
+      "count": 27,
+      "part": 1,
+      "parts": 1,
+      "theme": "Toy Story"
+    },
+    {
+      "label": "Traffic",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/traffic.json",
+      "count": 61,
+      "part": 1,
+      "parts": 1,
+      "theme": "Traffic"
+    },
+    {
+      "label": "Train",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/train.json",
+      "count": 73,
+      "part": 1,
+      "parts": 1,
+      "theme": "Train"
+    },
+    {
+      "label": "Trains",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/trains.json",
+      "count": 103,
+      "part": 1,
+      "parts": 1,
+      "theme": "Trains"
+    },
+    {
+      "label": "Trolls: World Tour",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/trolls-world-tour.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Trolls: World Tour"
+    },
+    {
+      "label": "UCS",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ucs.json",
+      "count": 6,
+      "part": 1,
+      "parts": 1,
+      "theme": "UCS"
+    },
+    {
+      "label": "UFO",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ufo.json",
+      "count": 18,
+      "part": 1,
+      "parts": 1,
+      "theme": "UFO"
+    },
+    {
+      "label": "Ultra Agents",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ultra-agents.json",
+      "count": 15,
+      "part": 1,
+      "parts": 1,
+      "theme": "Ultra Agents"
+    },
+    {
+      "label": "Unikitty!",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/unikitty.json",
+      "count": 25,
+      "part": 1,
+      "parts": 1,
+      "theme": "Unikitty!"
+    },
+    {
+      "label": "Unitron",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/unitron.json",
+      "count": 4,
+      "part": 1,
+      "parts": 1,
+      "theme": "Unitron"
+    },
+    {
+      "label": "Universal Building Set",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/universal-building-set.json",
+      "count": 100,
+      "part": 1,
+      "parts": 1,
+      "theme": "Universal Building Set"
+    },
+    {
+      "label": "Universe",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/universe.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Universe"
+    },
+    {
+      "label": "Valentine",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/valentine.json",
+      "count": 28,
+      "part": 1,
+      "parts": 1,
+      "theme": "Valentine"
+    },
+    {
+      "label": "Value Packs",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/value-packs.json",
+      "count": 37,
+      "part": 1,
+      "parts": 1,
+      "theme": "Value Packs"
+    },
+    {
+      "label": "Vehicle",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vehicle.json",
+      "count": 31,
+      "part": 1,
+      "parts": 1,
+      "theme": "Vehicle"
+    },
+    {
+      "label": "Video Games and Accessories",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/video-games-and-accessories.json",
+      "count": 291,
+      "part": 1,
+      "parts": 1,
+      "theme": "Video Games and Accessories"
+    },
+    {
+      "label": "VIDIYO",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vidiyo.json",
+      "count": 48,
+      "part": 1,
+      "parts": 1,
+      "theme": "VIDIYO"
+    },
+    {
+      "label": "Vikings",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vikings.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "Vikings"
+    },
+    {
+      "label": "Villains",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/villains.json",
+      "count": 33,
+      "part": 1,
+      "parts": 1,
+      "theme": "Villains"
+    },
+    {
+      "label": "VIP Add-On Packs",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vip-add-on-packs.json",
+      "count": 10,
+      "part": 1,
+      "parts": 1,
+      "theme": "VIP Add-On Packs"
+    },
+    {
+      "label": "Wednesday",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/wednesday.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "theme": "Wednesday"
+    },
+    {
+      "label": "WeDo",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/wedo.json",
+      "count": 37,
+      "part": 1,
+      "parts": 1,
+      "theme": "WeDo"
+    },
+    {
+      "label": "Western",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/western.json",
+      "count": 35,
+      "part": 1,
+      "parts": 1,
+      "theme": "Western"
+    },
+    {
+      "label": "Wicked",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/wicked.json",
+      "count": 11,
+      "part": 1,
+      "parts": 1,
+      "theme": "Wicked"
+    },
+    {
+      "label": "Winnie the Pooh",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/winnie-the-pooh.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Winnie the Pooh"
+    },
+    {
+      "label": "Wolfpack",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/wolfpack.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Wolfpack"
+    },
+    {
+      "label": "World City",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/world-city.json",
+      "count": 46,
+      "part": 1,
+      "parts": 1,
+      "theme": "World City"
+    },
+    {
+      "label": "World Racers",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/world-racers.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "World Racers"
+    },
+    {
+      "label": "X-Men",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/x-men.json",
+      "count": 9,
+      "part": 1,
+      "parts": 1,
+      "theme": "X-Men"
+    },
+    {
+      "label": "X-Pod",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/x-pod.json",
+      "count": 24,
+      "part": 1,
+      "parts": 1,
+      "theme": "X-Pod"
+    },
+    {
+      "label": "Xtra",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/xtra.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Xtra"
+    },
+    {
+      "label": "Znap",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/znap.json",
+      "count": 19,
+      "part": 1,
+      "parts": 1,
+      "theme": "Znap"
+    },
+    {
+      "label": "Zooters",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/zooters.json",
+      "count": 3,
+      "part": 1,
+      "parts": 1,
+      "theme": "Zooters"
+    }
+  ],
+  "minifigures": [
+    {
+      "label": "Star Wars (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p1.json",
+      "count": 800,
+      "part": 1,
+      "parts": 2,
+      "category": "Star Wars"
+    },
+    {
+      "label": "Star Wars (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p2.json",
+      "count": 751,
+      "part": 2,
+      "parts": 2,
+      "category": "Star Wars"
+    }
+  ],
+  "themes": [
+    "12V",
+    "4 Juniors",
+    "4.5V",
+    "9V",
+    "Action Wheelers",
+    "Activity Books",
+    "Activity Books with LEGO Parts",
+    "Advent",
+    "Agents",
+    "Airlines",
+    "Airport",
+    "Alien Conquest",
+    "Alpha Team",
+    "Angry Birds",
+    "Animal Crossing",
+    "Aquanauts",
+    "Aquaraiders I",
+    "Aquaraiders II",
+    "Aquasharks",
+    "Aquazone",
+    "Architecture",
+    "Arctic",
+    "Atlantis",
+    "Audio and Visual Media",
+    "Avatar",
+    "Avatar: The Last Airbender",
+    "Avengers",
+    "Bag and Luggage Tags",
+    "Bags, Totes, & Luggage",
+    "Basic",
+    "Basic Set",
+    "Basketball",
+    "Batman",
+    "Belville",
+    "Ben 10",
+    "Bionicle",
+    "Black Falcons",
+    "Black Knights",
+    "Blacktron I",
+    "Blacktron II",
+    "Bluey",
+    "Boat",
+    "Bob the Builder",
+    "Books",
+    "Botanicals",
+    "Brick Sketches",
+    "Brickheadz",
+    "BrickLink Designer Program",
+    "Bricks & More",
+    "Bricktober",
+    "Building",
+    "Building Set with People",
+    "Bulk Bricks",
+    "Captain America",
+    "Cargo",
+    "Cars",
+    "Castle",
+    "Chinese (Lunar) New Year",
+    "Chinese Traditional Festivals",
+    "Christmas",
+    "Cities of Wonders",
+    "City",
+    "City Center",
+    "Classic",
+    "Classic Basic",
+    "Classic Castle",
+    "Classic Space",
+    "Classic Town",
+    "Clikits",
+    "Clocks and Watches",
+    "Coast Guard",
+    "Collectible Minifigures",
+    "Competition",
+    "Constraction",
+    "Construction",
+    "Control Lab",
+    "Creator",
+    "Creator 3-in-1",
+    "Creator Expert",
+    "Dark Forest",
+    "Database Sets",
+    "DC Comics",
+    "DC Comics Super Heroes",
+    "DC Super Hero Girls",
+    "DC Super Heroes",
+    "Desert",
+    "Designer Sets",
+    "Despicable Me 4",
+    "DFB Minifigures",
+    "Dimensions",
+    "Dino",
+    "Dino Attack / Dino 2010",
+    "Dino Island",
+    "Dinosaurs",
+    "Discovery",
+    "Disney",
+    "Disney 100",
+    "Disney Princess",
+    "Disney Series 1",
+    "Disney Series 2",
+    "Divers",
+    "Doc McStuffins",
+    "Dolls",
+    "Dora the Explorer",
+    "DOTS",
+    "Dragon Knights",
+    "Dreamzzz",
+    "Dungeons & Dragons",
+    "Duplo",
+    "Duplo and Explore",
+    "Early Creator",
+    "Easter",
+    "Editions",
+    "Educational and Dacta",
+    "eLAB",
+    "Elves",
+    "EV3",
+    "Exo-Force",
+    "Expert Builder",
+    "Exploriens",
+    "Extreme Team",
+    "Fabuland",
+    "Factory",
+    "Fantastic Beasts",
+    "Fantasy Era",
+    "Farm",
+    "Ferrari",
+    "Ferries",
+    "Fire",
+    "FIRST LEGO League",
+    "Forestmen",
+    "Forma",
+    "Formula 1",
+    "Fortnite",
+    "Freestyle",
+    "Friends",
+    "Fright Knights",
+    "Frozen",
+    "Fusion",
+    "Futuron",
+    "Gabby's Dollhouse",
+    "Galaxy Squad",
+    "Galidor",
+    "Games",
+    "Gas Station",
+    "Gear",
+    "Gears",
+    "Ghostbusters",
+    "Gravity Games",
+    "Guardians of the Galaxy",
+    "Halloween",
+    "Harbor",
+    "Harry Potter",
+    "Harry Potter and Fantastic Beasts Series 1",
+    "Harry Potter and Fantastic Beasts Series 2",
+    "Hero Factory",
+    "Heroes",
+    "Hidden Side",
+    "HO 1:87 Vehicles",
+    "Hobby Sets",
+    "Hockey",
+    "Homemaker",
+    "Horizon Adventures",
+    "Hospital",
+    "Houseware",
+    "Hydronauts",
+    "Ice Planet 2002",
+    "Icons",
+    "Ideas Books",
+    "Incredibles 2",
+    "Indiana Jones",
+    "Insectoids",
+    "Inventor",
+    "Iron Man",
+    "Island Xtreme Stunts",
+    "Jack Stone",
+    "Jake and the Never Land Pirates",
+    "Jumbo Bricks",
+    "Jungle",
+    "Juniors",
+    "Jurassic Park III",
+    "Jurassic World",
+    "Jurassic World: Fallen Kingdom",
+    "Justice League",
+    "Key Chain",
+    "Kingdoms",
+    "Knights Kingdom I",
+    "Knights Kingdom II",
+    "Launch Command",
+    "Learning",
+    "Learning at Home",
+    "Legends of Chima",
+    "LEGO Art",
+    "LEGO Brand Store",
+    "LEGO Exclusive",
+    "LEGO Ideas and CUUSOO",
+    "LEGO Originals",
+    "Legoland Parks",
+    "Legoville",
+    "Life On Mars",
+    "Lion Knights",
+    "Little Forest Friends",
+    "Little Robots",
+    "Looney Tunes",
+    "M:Tron",
+    "Magnets",
+    "Make & Create",
+    "Mars Exploration",
+    "Mars Mission",
+    "Marvel",
+    "Marvel Series 1",
+    "Marvel Series 2",
+    "Marvel Super Heroes",
+    "Master Builder Academy",
+    "McDonalds",
+    "Mickey & Friends",
+    "Mickey Mouse",
+    "Miles From Tomorrowland",
+    "Mindstorms",
+    "Minecraft",
+    "Mini",
+    "Minions",
+    "Minitalia",
+    "Mission Deep Freeze",
+    "Mission Deep Sea",
+    "Mixels",
+    "Model Team",
+    "Modular Buildings",
+    "Modulex",
+    "Monkie Kid",
+    "Monster Fighters",
+    "Monthly Mini Model Build",
+    "Mosaic",
+    "My Town",
+    "Nexo Knights",
+    "Nike",
+    "Ninja",
+    "Ninjago",
+    "Non-fiction Books",
+    "NXT",
+    "Off-Road",
+    "One Piece",
+    "Orient Expedition",
+    "Other",
+    "Outback",
+    "Overwatch",
+    "Paradisa",
+    "Peppa Pig",
+    "Pharaoh's Quest",
+    "Pick A Model",
+    "Pirates",
+    "Pirates I",
+    "Pirates II",
+    "Pirates III",
+    "Pirates of the Caribbean",
+    "Planes",
+    "Playhouse",
+    "Playsets",
+    "Plush Toys",
+    "Pokémon",
+    "Police",
+    "Posters and Art Prints",
+    "Power Functions",
+    "Power Miners",
+    "Powered Up",
+    "Primo",
+    "Prince of Persia",
+    "Princess Castle",
+    "Promotional",
+    "Protectors",
+    "Quatro",
+    "Race",
+    "Racers",
+    "Rattles",
+    "RC",
+    "RCX",
+    "Res-Q",
+    "RoboForce",
+    "RoboRiders",
+    "Rock Raiders",
+    "Role Play Toys and Costumes",
+    "Royal Knights",
+    "Samsonite",
+    "Scala",
+    "Scooby-Doo",
+    "Sculptures",
+    "Seasonal",
+    "Series 1 Minifigures",
+    "Series 10 Minifigures",
+    "Series 11 Minifigures",
+    "Series 12 Minifigures",
+    "Series 13 Minifigures",
+    "Series 14 Minifigures",
+    "Series 15 Minifigures",
+    "Series 16 Minifigures",
+    "Series 17 Minifigures",
+    "Series 18 Minifigures",
+    "Series 19 Minifigures",
+    "Series 2 Minifigures",
+    "Series 20 Minifigures",
+    "Series 21 Minifigures",
+    "Series 22 Minifigures",
+    "Series 23 Minifigures",
+    "Series 24 Minifigures",
+    "Series 25 Minifigures",
+    "Series 26 Minifigures",
+    "Series 27 Minifigures",
+    "Series 28 Minifigures",
+    "Series 3 Minifigures",
+    "Series 4 Minifigures",
+    "Series 5 Minifigures",
+    "Series 6 Minifigures",
+    "Series 7 Minifigures",
+    "Series 8 Minifigures",
+    "Series 9 Minifigures",
+    "Serious Play",
+    "Service Packs",
+    "Skylines",
+    "Soccer",
+    "Sofia the First",
+    "Soft Bricks",
+    "Sonic The Hedgehog",
+    "Space",
+    "Space Police I",
+    "Space Police II",
+    "Space Police III",
+    "Space Port",
+    "Speed Champions",
+    "Speed Racer",
+    "Speed Slammers",
+    "Speedorz",
+    "Spider-Man",
+    "Spider-Man - Across the Spider-Verse",
+    "Spidey and His Amazing Friends",
+    "SPIKE",
+    "SpongeBob SquarePants",
+    "Sports",
+    "Spybotics",
+    "Spyrius",
+    "Star Wars",
+    "Stationery and Office Supplies",
+    "Stingrays",
+    "Storage",
+    "Story Books",
+    "Stranger Things",
+    "Studios",
+    "Stuntz",
+    "Super Heroes DC",
+    "Super Heroes Marvel",
+    "Super Mario",
+    "Superman",
+    "Supplemental",
+    "System",
+    "Tabletop Games and Puzzles",
+    "Team GB",
+    "Technic",
+    "Teenage Mutant Ninja Turtles",
+    "Thanksgiving",
+    "The Hobbit",
+    "The Infinity Saga",
+    "The Legend of Zelda",
+    "The LEGO Batman Movie",
+    "The LEGO Batman Movie Series 1",
+    "The LEGO Batman Movie Series 2",
+    "The LEGO Movie",
+    "The LEGO Movie II",
+    "The LEGO Ninjago Movie",
+    "The Lone Ranger",
+    "The Lord of the Rings",
+    "The Muppets",
+    "The Powerpuff Girls",
+    "The Simpsons Series 1",
+    "The Simpsons Series 2",
+    "Thomas & Friends",
+    "Throwbot Slizer",
+    "Time Cruisers",
+    "Toolo",
+    "Town",
+    "Town Jr.",
+    "Town Plan",
+    "Toy Story",
+    "Traffic",
+    "Train",
+    "Trains",
+    "Trolls: World Tour",
+    "UCS",
+    "UFO",
+    "Ultra Agents",
+    "Unikitty!",
+    "Unitron",
+    "Universal Building Set",
+    "Universe",
+    "Valentine",
+    "Value Packs",
+    "Vehicle",
+    "Video Games and Accessories",
+    "VIDIYO",
+    "Vikings",
+    "Villains",
+    "VIP Add-On Packs",
+    "Wednesday",
+    "WeDo",
+    "Western",
+    "Wicked",
+    "Winnie the Pooh",
+    "Wolfpack",
+    "World City",
+    "World Racers",
+    "X-Men",
+    "X-Pod",
+    "Xtra",
+    "Znap",
+    "Zooters"
+  ],
+  "summary": {
+    "setCount": 26074,
+    "minifigureCount": 1551,
+    "setChunkCount": 416,
+    "minifigureChunkCount": 2,
+    "marketDetailCount": 2260,
+    "maxItemsPerChunk": 800
+  }
+}

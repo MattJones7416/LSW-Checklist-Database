@@ -256,14 +256,14 @@ def write_chunk(path: Path, rows: List[Dict[str, Any]]) -> None:
 
 
 def make_manifest_url(base_url: str, manifest_path: Path, chunk_path: Path) -> str:
-    relative = chunk_path.as_posix()
+    # Always prefer manifest-relative paths for stable URL generation.
+    try:
+        relative = chunk_path.relative_to(manifest_path.parent).as_posix()
+    except ValueError:
+        relative = chunk_path.name
     if base_url:
         return f"{base_url.rstrip('/')}/{relative.lstrip('/')}"
-    # Relative URL fallback for local/testing manifests.
-    try:
-        return chunk_path.relative_to(manifest_path.parent).as_posix()
-    except ValueError:
-        return relative
+    return relative
 
 
 def emit_group_chunks(
