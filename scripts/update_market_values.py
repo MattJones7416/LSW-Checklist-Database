@@ -70,6 +70,21 @@ class FileUpdateStats:
     fetch_failures: int = 0
     parse_misses: int = 0
     cross_rows_changed: int = 0
+    last_index_processed: Optional[int] = None
+
+
+@dataclass
+class ApiRequestBudget:
+    max_calls: Optional[int]
+    used_calls: int = 0
+    exhausted: bool = False
+
+    def consume(self) -> bool:
+        if self.max_calls is not None and self.used_calls >= self.max_calls:
+            self.exhausted = True
+            return False
+        self.used_calls += 1
+        return True
 
 
 class RuntimeThrottle:
@@ -106,6 +121,7 @@ class BrickLinkClient:
         timeout: float,
         retries: int,
         verbose: bool,
+        request_budget: Optional[ApiRequestBudget] = None,
         base_url: str = BRICKLINK_API_BASE_URL,
     ) -> None:
         self.base_url = base_url.rstrip("/")
@@ -119,7 +135,15 @@ class BrickLinkClient:
             token_value,
             token_secret,
             signature_method="HMAC-SHA1",
+            signature_type="AUTH_HEADER",
         )
+        self.auth_failed = False
+        self.auth_error_message = ""
+        self.request_budget = request_budget or ApiRequestBudget(max_calls=None)
+
+    @property
+    def budget_exhausted(self) -> bool:
+        return bool(self.request_budget.exhausted)
 
     def fetch_price_matrix(
         self,
@@ -177,6 +201,13 @@ class BrickLinkClient:
         attempt = 0
         while True:
             attempt += 1
+            if not self.request_budget.consume():
+                if self.verbose:
+                    print(
+                        f"[API] request budget exhausted before {item_type}:{item_no}",
+                        flush=True,
+                    )
+                return None
             throttle.sleep_between_requests()
             try:
                 response = self.session.get(
@@ -215,6 +246,12 @@ class BrickLinkClient:
                 continue
 
             if response.status_code >= 400:
+                if response.status_code == 401:
+                    self.auth_failed = True
+                    self.auth_error_message = (
+                        "BrickLink API authentication failed (HTTP 401). "
+                        "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
+                    )
                 if self.verbose:
                     print(
                         f"[API] HTTP {response.status_code} {item_type}:{item_no} params={params}",
@@ -233,6 +270,19 @@ class BrickLinkClient:
             if isinstance(meta, dict):
                 code = _parse_int(meta.get("code"))
                 if code is not None and code >= 400:
+                    if code == 401:
+                        self.auth_failed = True
+                        message = collapse_ws(meta.get("message"))
+                        if message:
+                            self.auth_error_message = (
+                                f"BrickLink API authentication failed ({message}). "
+                                "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
+                            )
+                        else:
+                            self.auth_error_message = (
+                                "BrickLink API authentication failed (meta code 401). "
+                                "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
+                            )
                     if self.verbose:
                         print(
                             f"[API] meta code={code} {item_type}:{item_no} msg={meta.get('message')}",
@@ -643,6 +693,7 @@ def apply_market_to_row(
     row["PriceTrendAnnualizedNewPercent"] = gn
     row["PriceTrendAnnualizedUsedPercent"] = gu
     row["PriceForecastMethod"] = "bricklink_api_monthly_trend"
+    row["MarketLastUpdatedUTC"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     return True
 
@@ -725,6 +776,37 @@ def maybe_write_json(path: Path, rows: List[Dict[str, Any]]) -> bool:
     return True
 
 
+def load_json_object(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    if isinstance(data, dict):
+        return data
+    return {}
+
+
+def write_json_object(path: Path, data: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def rotating_indices(total: int, start_index: int, excluded: set[int]) -> List[int]:
+    if total <= 0:
+        return []
+    start = start_index % total
+    ordered: List[int] = []
+    for idx in range(start, total):
+        if idx not in excluded:
+            ordered.append(idx)
+    for idx in range(0, start):
+        if idx not in excluded:
+            ordered.append(idx)
+    return ordered
+
+
 def print_summary(label: str, stats: FileUpdateStats) -> None:
     print(
         (
@@ -739,6 +821,17 @@ def print_summary(label: str, stats: FileUpdateStats) -> None:
     )
 
 
+def merge_update_stats(base: FileUpdateStats, add: FileUpdateStats) -> FileUpdateStats:
+    base.rows_considered += add.rows_considered
+    base.rows_changed += add.rows_changed
+    base.fetch_failures += add.fetch_failures
+    base.parse_misses += add.parse_misses
+    base.cross_rows_changed += add.cross_rows_changed
+    if add.last_index_processed is not None:
+        base.last_index_processed = add.last_index_processed
+    return base
+
+
 def update_rows(
     rows: List[Dict[str, Any]],
     *,
@@ -749,17 +842,28 @@ def update_rows(
     month_key: str,
     start_index: int,
     limit: Optional[int],
+    indexes: Optional[Sequence[int]],
     label: str,
 ) -> FileUpdateStats:
     stats = FileUpdateStats(total_rows=len(rows))
+    if indexes is not None:
+        iter_indices = [i for i in indexes if 0 <= i < len(rows)]
+    else:
+        iter_indices = list(range(len(rows)))
 
-    for idx, row in enumerate(rows):
-        if idx < start_index:
+    for idx in iter_indices:
+        if client.auth_failed:
+            break
+        if client.budget_exhausted:
+            break
+        if indexes is None and idx < start_index:
             continue
         if limit is not None and stats.rows_considered >= limit:
             break
 
+        row = rows[idx]
         stats.rows_considered += 1
+        stats.last_index_processed = idx
 
         if item_type == "SET":
             item_no = normalize_set_code(row.get("Number"), row.get("Variant"))
@@ -784,6 +888,10 @@ def update_rows(
             stats.fetch_failures += 1
             if cfg.verbose:
                 print(f"[{label}] failed: {item_no}", flush=True)
+            if client.auth_failed:
+                break
+            if client.budget_exhausted:
+                break
             continue
 
         after = json.dumps(row, sort_keys=True, ensure_ascii=False)
@@ -816,6 +924,28 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser.add_argument("--retries", type=int, default=2, help="Retries after first attempt.")
     parser.add_argument("--delay", type=float, default=0.15, help="Minimum delay between API requests.")
     parser.add_argument("--jitter", type=float, default=0.05, help="Random jitter added to delay.")
+    parser.add_argument(
+        "--max-api-calls",
+        type=int,
+        default=4800,
+        help="Hard cap on BrickLink API requests for this run.",
+    )
+    parser.add_argument(
+        "--market-state-json",
+        default="dist/market-sync-state.json",
+        help="State file for rotating market refresh cursor.",
+    )
+    parser.add_argument(
+        "--catalog-sync-state-json",
+        default="dist/sync-state.json",
+        help="Optional sync state file used to prioritize recently changed set entries.",
+    )
+    parser.add_argument(
+        "--priority-updated-limit",
+        type=int,
+        default=1200,
+        help="Maximum recently changed set numbers to prioritize from catalog sync state.",
+    )
     parser.add_argument("--limit", type=int, default=None, help="Optional per-file row limit for testing.")
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
@@ -855,6 +985,9 @@ def main(argv: Sequence[str]) -> int:
         currency_code=collapse_ws(args.currency_code).upper() or "GBP",
     )
 
+    request_budget = ApiRequestBudget(
+        max_calls=max(0, args.max_api_calls) if args.max_api_calls is not None else None
+    )
     client = BrickLinkClient(
         consumer_key=required["BRICKLINK_CONSUMER_KEY"],
         consumer_secret=required["BRICKLINK_CONSUMER_SECRET"],
@@ -863,16 +996,86 @@ def main(argv: Sequence[str]) -> int:
         timeout=cfg.timeout,
         retries=cfg.retries,
         verbose=cfg.verbose,
+        request_budget=request_budget,
         base_url=args.bricklink_base_url,
     )
-
-    sets_rows = load_json_array(sets_path)
-    minifigs_rows = load_json_array(minifigs_path)
 
     now = datetime.now(timezone.utc)
     month_key = now.strftime("%Y-%m")
 
     throttle = RuntimeThrottle(min_delay=cfg.delay, jitter=cfg.jitter)
+
+    # Fail fast on invalid BrickLink OAuth credentials.
+    _ = client.fetch_price_matrix(
+        item_type="SET",
+        item_no="7101-1",
+        currency_code=cfg.currency_code,
+        throttle=throttle,
+    )
+    if client.auth_failed:
+        print(client.auth_error_message or "BrickLink API authentication failed.", file=sys.stderr)
+        return 1
+
+    sets_rows = load_json_array(sets_path)
+    minifigs_rows = load_json_array(minifigs_path)
+    market_state_path = Path(args.market_state_json)
+    market_state = load_json_object(market_state_path)
+    catalog_state = load_json_object(Path(args.catalog_sync_state_json))
+
+    raw_changed_set_codes = catalog_state.get("lastUpdatedSetCodes")
+    changed_set_codes: List[str] = []
+    if isinstance(raw_changed_set_codes, list):
+        for value in raw_changed_set_codes:
+            code = collapse_ws(value).lower()
+            if code:
+                changed_set_codes.append(code)
+    if args.priority_updated_limit is not None and args.priority_updated_limit >= 0:
+        changed_set_codes = changed_set_codes[: args.priority_updated_limit]
+    changed_set_lookup = set(changed_set_codes)
+
+    def build_unique_plan(priority: List[int], rotating: List[int]) -> List[int]:
+        out: List[int] = []
+        seen: set[int] = set()
+        for idx in priority + rotating:
+            if idx in seen:
+                continue
+            seen.add(idx)
+            out.append(idx)
+        return out
+
+    set_priority_indices: List[int] = []
+    for idx, row in enumerate(sets_rows):
+        code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
+        has_new = bool(collapse_ws(row.get("New")))
+        has_used = bool(collapse_ws(row.get("Used")))
+        if (not has_new) or (not has_used) or (code in changed_set_lookup):
+            set_priority_indices.append(idx)
+
+    minifig_priority_indices: List[int] = []
+    for idx, row in enumerate(minifigs_rows):
+        has_new = bool(collapse_ws(row.get("New")))
+        has_used = bool(collapse_ws(row.get("Used")))
+        if (not has_new) or (not has_used):
+            minifig_priority_indices.append(idx)
+
+    stored_set_cursor = _parse_int(market_state.get("nextSetIndex"))
+    stored_minifig_cursor = _parse_int(market_state.get("nextMinifigIndex"))
+    set_cursor = stored_set_cursor if stored_set_cursor is not None else max(0, args.start_index)
+    minifig_cursor = stored_minifig_cursor if stored_minifig_cursor is not None else max(0, args.start_index)
+
+    set_rotating_indices = rotating_indices(len(sets_rows), set_cursor, set(set_priority_indices))
+    minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor, set(minifig_priority_indices))
+    set_plan = build_unique_plan(set_priority_indices, set_rotating_indices)
+    minifig_plan = build_unique_plan(minifig_priority_indices, minifig_rotating_indices)
+
+    if cfg.verbose:
+        print(
+            (
+                f"[Plan] set_priority={len(set_priority_indices)} set_rotating={len(set_rotating_indices)} "
+                f"minifig_priority={len(minifig_priority_indices)} minifig_rotating={len(minifig_rotating_indices)}"
+            ),
+            flush=True,
+        )
 
     sets_stats = update_rows(
         sets_rows,
@@ -883,6 +1086,7 @@ def main(argv: Sequence[str]) -> int:
         month_key=month_key,
         start_index=max(0, args.start_index),
         limit=args.limit,
+        indexes=set_plan,
         label="Sets",
     )
 
@@ -895,8 +1099,20 @@ def main(argv: Sequence[str]) -> int:
         month_key=month_key,
         start_index=max(0, args.start_index),
         limit=args.limit,
+        indexes=minifig_plan,
         label="Minifigs",
     )
+
+    next_set_cursor = set_cursor
+    if sets_rows and sets_stats.last_index_processed is not None and sets_stats.last_index_processed in set(set_rotating_indices):
+        next_set_cursor = (sets_stats.last_index_processed + 1) % len(sets_rows)
+    next_minifig_cursor = minifig_cursor
+    if minifigs_rows and minifigs_stats.last_index_processed is not None and minifigs_stats.last_index_processed in set(minifig_rotating_indices):
+        next_minifig_cursor = (minifigs_stats.last_index_processed + 1) % len(minifigs_rows)
+
+    if client.auth_failed:
+        print(client.auth_error_message or "BrickLink API authentication failed.", file=sys.stderr)
+        return 1
 
     if not args.skip_cross_enrichment:
         set_cross, minifig_cross = apply_cross_catalog_enrichment(sets_rows, minifigs_rows)
@@ -906,9 +1122,35 @@ def main(argv: Sequence[str]) -> int:
     sets_written = maybe_write_json(sets_path, sets_rows)
     minifigs_written = maybe_write_json(minifigs_path, minifigs_rows)
 
+    market_state.update(
+        {
+            "nextSetIndex": next_set_cursor,
+            "nextMinifigIndex": next_minifig_cursor,
+            "lastRunUTC": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "lastMonthKey": month_key,
+            "lastApiRequestsUsed": client.request_budget.used_calls,
+            "lastApiRequestCap": client.request_budget.max_calls,
+            "lastApiBudgetExhausted": client.budget_exhausted,
+            "lastSetRowsConsidered": sets_stats.rows_considered,
+            "lastMinifigRowsConsidered": minifigs_stats.rows_considered,
+            "lastSetPriorityCount": len(set_priority_indices),
+            "lastMinifigPriorityCount": len(minifig_priority_indices),
+            "lastChangedSetPriorityCount": len(changed_set_codes),
+        }
+    )
+    write_json_object(market_state_path, market_state)
+
     if cfg.verbose:
         print(f"[Write] sets_written={sets_written} minifigs_written={minifigs_written}", flush=True)
 
+    cap_text = "unlimited" if client.request_budget.max_calls is None else str(client.request_budget.max_calls)
+    print(
+        (
+            f"[API] requests_used={client.request_budget.used_calls} "
+            f"cap={cap_text} exhausted={client.budget_exhausted}"
+        ),
+        flush=True,
+    )
     print_summary("Sets", sets_stats)
     print_summary("Minifigs", minifigs_stats)
     return 0

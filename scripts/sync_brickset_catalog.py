@@ -21,7 +21,7 @@ import re
 import sys
 import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from html import unescape
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
@@ -92,6 +92,38 @@ class MultiplicityStats:
     fetched: int = 0
     updated: int = 0
     failures: int = 0
+
+
+@dataclass
+class ThemeEntry:
+    name: str
+    set_count: int = 0
+
+
+@dataclass
+class ApiCallBudget:
+    max_calls: Optional[int]
+    used_calls: int = 0
+
+    def remaining(self) -> Optional[int]:
+        if self.max_calls is None:
+            return None
+        return max(0, self.max_calls - self.used_calls)
+
+    def consume(self) -> None:
+        if self.max_calls is not None and self.used_calls >= self.max_calls:
+            raise ApiBudgetExceededError(
+                f"api call budget exhausted ({self.used_calls}/{self.max_calls})"
+            )
+        self.used_calls += 1
+
+
+class ApiBudgetExceededError(RuntimeError):
+    pass
+
+
+class ApiLimitExceededError(RuntimeError):
+    pass
 
 
 def log(msg: str, *, enabled: bool) -> None:
@@ -661,6 +693,7 @@ def fetch_brickset_api(
     method: str,
     user_hash: str,
     method_params: Optional[Dict[str, Any]],
+    budget: Optional[ApiCallBudget] = None,
 ) -> Dict[str, Any]:
     base = api_base_url.rstrip("/")
     url = f"{base}/{method}"
@@ -687,6 +720,8 @@ def fetch_brickset_api(
 
     attempts = max(1, cfg.retries + 1)
     for attempt in range(1, attempts + 1):
+        if budget is not None:
+            budget.consume()
         try:
             response = session.get(url, params=query, headers=headers, timeout=cfg.timeout_seconds)
         except requests.RequestException as exc:
@@ -697,6 +732,8 @@ def fetch_brickset_api(
 
         if response.status_code >= 500:
             try:
+                if budget is not None:
+                    budget.consume()
                 post_response = session.post(url, data=query, headers=headers, timeout=cfg.timeout_seconds)
                 if post_response.status_code < 500:
                     response = post_response
@@ -750,6 +787,8 @@ def fetch_brickset_api(
         status = collapse_ws(str(payload.get("status") or "")).lower()
         if status and status not in {"success", "ok"}:
             message = collapse_ws(str(payload.get("message") or "unknown API error"))
+            if "api limit exceeded" in message.lower():
+                raise ApiLimitExceededError(f"api:{method}: {message}")
             raise RuntimeError(f"api:{method}: {message}")
 
         return payload
@@ -844,7 +883,8 @@ def fetch_themes_via_api(
     *,
     api_base_url: str,
     api_key: str,
-) -> List[str]:
+    budget: Optional[ApiCallBudget] = None,
+) -> List[ThemeEntry]:
     payload = fetch_brickset_api(
         session,
         cfg,
@@ -853,12 +893,13 @@ def fetch_themes_via_api(
         method="getThemes",
         user_hash="",
         method_params=None,
+        budget=budget,
     )
     raw_themes = payload.get("themes")
     if not isinstance(raw_themes, list):
         raise RuntimeError("api:getThemes: response missing themes array")
 
-    values: List[str] = []
+    values: List[ThemeEntry] = []
     seen: set[str] = set()
     for raw in raw_themes:
         if not isinstance(raw, dict):
@@ -870,11 +911,16 @@ def fetch_themes_via_api(
         if key in seen:
             continue
         seen.add(key)
-        values.append(theme)
+        values.append(
+            ThemeEntry(
+                name=theme,
+                set_count=parse_int(api_pick(raw, "setCount")) or 0,
+            )
+        )
 
     if not values:
         raise RuntimeError("api:getThemes: no themes returned")
-    values.sort(key=lambda t: t.lower())
+    values.sort(key=lambda t: t.name.lower())
     return values
 
 
@@ -886,11 +932,15 @@ def crawl_sets_via_api(
     api_key: str,
     page_size: int,
     max_pages: Optional[int],
-    theme_filter: str,
+    theme_filter: Optional[str] = None,
+    updated_since: Optional[str] = None,
+    allow_empty: bool = False,
+    budget: Optional[ApiCallBudget] = None,
 ) -> Tuple[Dict[Tuple[str, int], Dict[str, Any]], CrawlStats]:
     stats = CrawlStats()
     records: Dict[Tuple[str, int], Dict[str, Any]] = {}
     effective_page_size = max(50, min(500, page_size))
+    mode_label = f"theme={theme_filter}" if theme_filter else (f"updatedSince={updated_since}" if updated_since else "global")
 
     page = 1
     matches: Optional[int] = None
@@ -902,8 +952,11 @@ def crawl_sets_via_api(
             request_params: Dict[str, Any] = {
                 "pageSize": effective_page_size,
                 "pageNumber": page,
-                "theme": theme_filter,
             }
+            if theme_filter:
+                request_params["theme"] = theme_filter
+            if updated_since:
+                request_params["updatedSince"] = updated_since
 
             try:
                 payload = fetch_brickset_api(
@@ -914,6 +967,7 @@ def crawl_sets_via_api(
                     method="getSets",
                     user_hash="",
                     method_params=request_params,
+                    budget=budget,
                 )
                 stats.pages_fetched += 1
                 break
@@ -925,7 +979,7 @@ def crawl_sets_via_api(
                     if next_page_size < effective_page_size:
                         log(
                             (
-                                f"[API Sets] page {page}: {msg}; "
+                                f"[API Sets:{mode_label}] page {page}: {msg}; "
                                 f"reducing pageSize {effective_page_size}->{next_page_size} and retrying"
                             ),
                             enabled=True,
@@ -935,7 +989,7 @@ def crawl_sets_via_api(
                 if retryable_5xx and page_attempt < 4:
                     wait_seconds = float(min(240.0, max(20.0, page_attempt * 30.0)))
                     log(
-                        f"[API Sets] page {page}: {msg}; retrying in {wait_seconds:.0f}s",
+                        f"[API Sets:{mode_label}] page {page}: {msg}; retrying in {wait_seconds:.0f}s",
                         enabled=True,
                     )
                     time.sleep(wait_seconds)
@@ -971,7 +1025,7 @@ def crawl_sets_via_api(
 
         log(
             (
-                f"[API Sets:{theme_filter}] page {page}: parsed={len(api_sets)} unique_added={page_added} "
+                f"[API Sets:{mode_label}] page {page}: parsed={len(api_sets)} unique_added={page_added} "
                 f"total_unique={len(records)} pageSize={effective_page_size}"
             ),
             enabled=cfg.verbose,
@@ -985,7 +1039,7 @@ def crawl_sets_via_api(
         page += 1
         maybe_sleep(cfg.page_delay_seconds, cfg.page_jitter_seconds)
 
-    if not records:
+    if not records and not allow_empty:
         raise RuntimeError("api:getSets: no set records parsed")
     return records, stats
 
@@ -1506,6 +1560,85 @@ def write_json_array(path: Path, rows: List[Dict[str, Any]]) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def load_sync_state(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    if isinstance(data, dict):
+        return data
+    return {}
+
+
+def write_sync_state(path: Path, state: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    text = json.dumps(state, ensure_ascii=False, indent=2) + "\n"
+    path.write_text(text, encoding="utf-8")
+
+
+def parse_iso_date(raw: Any) -> Optional[datetime]:
+    text = collapse_ws(str(raw or ""))
+    if not text:
+        return None
+    for fmt in ("%Y-%m-%d", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S"):
+        try:
+            return datetime.strptime(text, fmt)
+        except ValueError:
+            continue
+    # Accept trailing Z without timezone math.
+    if text.endswith("Z"):
+        base = text[:-1]
+        for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S"):
+            try:
+                return datetime.strptime(base, fmt)
+            except ValueError:
+                continue
+    return None
+
+
+def fetch_api_usage_today(
+    session: requests.Session,
+    cfg: FetchConfig,
+    *,
+    api_base_url: str,
+    api_key: str,
+    budget: Optional[ApiCallBudget] = None,
+) -> Optional[int]:
+    try:
+        payload = fetch_brickset_api(
+            session,
+            cfg,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            method="getKeyUsageStats",
+            user_hash="",
+            method_params=None,
+            budget=budget,
+        )
+    except Exception:
+        return None
+
+    raw_rows = payload.get("apiKeyUsage")
+    if not isinstance(raw_rows, list):
+        return None
+
+    today = datetime.utcnow().date()
+    for raw in raw_rows:
+        if not isinstance(raw, dict):
+            continue
+        stamp = parse_iso_date(api_pick(raw, "dateStamp", "date", "timestamp"))
+        if stamp is None:
+            continue
+        if stamp.date() != today:
+            continue
+        count = parse_int(api_pick(raw, "count"))
+        if count is not None:
+            return max(0, count)
+    return None
+
+
 def build_theme_index(set_rows: List[Dict[str, Any]], minifig_rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     set_counts: Dict[str, int] = {}
     for row in set_rows:
@@ -1566,6 +1699,51 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         type=int,
         default=500,
         help="Page size for API getSets calls (max 500).",
+    )
+    parser.add_argument(
+        "--max-api-calls",
+        type=int,
+        default=80,
+        help="Hard cap on Brickset API calls for this run. Keeps scans under daily limits.",
+    )
+    parser.add_argument(
+        "--api-daily-limit",
+        type=int,
+        default=100,
+        help="Expected Brickset getSets daily cap. Used with getKeyUsageStats to avoid hard-limit failures.",
+    )
+    parser.add_argument(
+        "--api-usage-safety-margin",
+        type=int,
+        default=5,
+        help="Reserved calls below the daily limit to avoid edge-case overruns.",
+    )
+    parser.add_argument(
+        "--theme-batch-size",
+        type=int,
+        default=None,
+        help="Optional cap for number of themes processed in one run.",
+    )
+    parser.add_argument(
+        "--sync-state-json",
+        default="dist/sync-state.json",
+        help="State file tracking theme cursor between runs.",
+    )
+    parser.add_argument(
+        "--disable-theme-cursor",
+        action="store_true",
+        help="Disable cursor resume; always start from the first theme in alphabetical order.",
+    )
+    parser.add_argument(
+        "--updated-since-days",
+        type=int,
+        default=3,
+        help="When using incremental pass, query sets updated since N days ago if no prior cursor date is stored.",
+    )
+    parser.add_argument(
+        "--skip-updated-since-pass",
+        action="store_true",
+        help="Skip incremental updatedSince pass and rely only on theme cursor scan.",
     )
     parser.add_argument(
         "--sets-url",
@@ -1646,48 +1824,176 @@ def main(argv: Sequence[str]) -> int:
     )
 
     session = requests.Session()
+    sync_state_path = Path(args.sync_state_json)
+    sync_state = load_sync_state(sync_state_path)
+    requested_theme = collapse_ws(str(args.theme or ""))
+    usage_today: Optional[int] = None
+    theme_cursor_written = False
+    api_budget_limit: Optional[int] = max(0, args.max_api_calls) if args.max_api_calls is not None else None
+    if args.api_daily_limit > 0:
+        usage_today = fetch_api_usage_today(
+            session,
+            cfg,
+            api_base_url=args.api_base_url,
+            api_key=api_key,
+            budget=None,
+        )
+        if usage_today is not None:
+            remaining_daily = max(0, args.api_daily_limit - usage_today - max(0, args.api_usage_safety_margin))
+            api_budget_limit = remaining_daily if api_budget_limit is None else min(api_budget_limit, remaining_daily)
+            log(
+                f"[Sets] API usage today={usage_today}, remaining budget target={remaining_daily}",
+                enabled=cfg.verbose,
+            )
+
+    api_budget = ApiCallBudget(max_calls=api_budget_limit)
+    processed_theme_names: List[str] = []
+    stop_reason = "completed"
+    theme_cursor_start = 0
+    total_themes = 0
+    updated_since_cutoff = ""
+    updated_since_count = 0
+    updated_set_codes: List[str] = []
+
     try:
-        requested_theme = collapse_ws(str(args.theme or ""))
         if requested_theme:
-            themes_to_sync = [requested_theme]
+            ordered_themes: List[ThemeEntry] = [ThemeEntry(name=requested_theme, set_count=0)]
         else:
-            themes_to_sync = fetch_themes_via_api(
+            all_themes = fetch_themes_via_api(
                 session,
                 cfg,
                 api_base_url=args.api_base_url,
                 api_key=api_key,
+                budget=api_budget,
             )
+            total_themes = len(all_themes)
             log(
-                f"[Sets] Themes discovered via API: {len(themes_to_sync)}",
+                f"[Sets] Themes discovered via API: {total_themes}",
                 enabled=cfg.verbose,
             )
+            if all_themes and not args.disable_theme_cursor:
+                theme_cursor_start = parse_int(sync_state.get("nextThemeIndex")) or 0
+                theme_cursor_start %= len(all_themes)
+            ordered_themes = all_themes[theme_cursor_start:] + all_themes[:theme_cursor_start]
 
         scraped_sets_by_key: Dict[Tuple[str, int], Dict[str, Any]] = {}
         set_stats = CrawlStats()
 
-        for theme_name in themes_to_sync:
-            try:
-                theme_records, theme_stats = crawl_sets_via_api(
-                    session,
-                    cfg,
-                    api_base_url=args.api_base_url,
-                    api_key=api_key,
-                    page_size=max(50, min(500, args.api_page_size)),
-                    max_pages=args.max_set_pages,
-                    theme_filter=theme_name,
-                )
-                scraped_sets_by_key.update(theme_records)
-                set_stats.pages_fetched += theme_stats.pages_fetched
-                set_stats.articles_parsed += theme_stats.articles_parsed
-                set_stats.records_parsed += theme_stats.records_parsed
-                set_stats.failed_pages += theme_stats.failed_pages
-            except Exception as theme_exc:
-                set_stats.failed_pages += 1
-                print(f"[Sets] Theme sync failed ({theme_name}): {theme_exc}", flush=True)
-                continue
+        # Phase 1: prioritize new/changed entries globally using updatedSince.
+        if not requested_theme and not args.skip_updated_since_pass:
+            fallback_cutoff = (datetime.utcnow() - timedelta(days=max(1, args.updated_since_days))).strftime("%Y-%m-%d")
+            stored_cutoff = collapse_ws(sync_state.get("lastUpdatedSinceCutoffDate"))
+            updated_since_cutoff = stored_cutoff or fallback_cutoff
+            if api_budget.max_calls is not None and api_budget.max_calls <= api_budget.used_calls:
+                stop_reason = "budget exhausted before updatedSince pass"
+            else:
+                try:
+                    updated_records, updated_stats = crawl_sets_via_api(
+                        session,
+                        cfg,
+                        api_base_url=args.api_base_url,
+                        api_key=api_key,
+                        page_size=max(50, min(500, args.api_page_size)),
+                        max_pages=args.max_set_pages,
+                        theme_filter=None,
+                        updated_since=updated_since_cutoff,
+                        allow_empty=True,
+                        budget=api_budget,
+                    )
+                    if updated_records:
+                        scraped_sets_by_key.update(updated_records)
+                        updated_since_count = len(updated_records)
+                        updated_set_codes = [
+                            f"{number}-{variant}"
+                            for number, variant in sorted(updated_records.keys(), key=lambda item: (str(item[0]), item[1]))
+                        ]
+                    set_stats.pages_fetched += updated_stats.pages_fetched
+                    set_stats.articles_parsed += updated_stats.articles_parsed
+                    set_stats.records_parsed += updated_stats.records_parsed
+                    set_stats.failed_pages += updated_stats.failed_pages
+                    log(
+                        f"[Sets] updatedSince={updated_since_cutoff}: changed_or_new={updated_since_count}",
+                        enabled=True,
+                    )
+                except ApiBudgetExceededError as budget_exc:
+                    stop_reason = str(budget_exc)
+                except ApiLimitExceededError as limit_exc:
+                    stop_reason = str(limit_exc)
+                    print(f"[Sets] Incremental pass hit API cap: {limit_exc}", flush=True)
+                except Exception as inc_exc:
+                    set_stats.failed_pages += 1
+                    print(f"[Sets] Incremental pass failed ({updated_since_cutoff}): {inc_exc}", flush=True)
 
-        if not scraped_sets_by_key:
-            raise RuntimeError("all theme syncs failed")
+        # Phase 2: consume remaining budget for rolling minor refresh across themes.
+        if api_budget.max_calls is not None and api_budget.max_calls <= api_budget.used_calls:
+            if stop_reason == "completed":
+                stop_reason = "budget exhausted before theme sync"
+            log("[Sets] Skipping theme sync because API budget is exhausted.", enabled=True)
+        else:
+            for theme_entry in ordered_themes:
+                if args.theme_batch_size is not None and len(processed_theme_names) >= max(1, args.theme_batch_size):
+                    stop_reason = f"theme batch limit reached ({args.theme_batch_size})"
+                    break
+
+                try:
+                    theme_records, theme_stats = crawl_sets_via_api(
+                        session,
+                        cfg,
+                        api_base_url=args.api_base_url,
+                        api_key=api_key,
+                        page_size=max(50, min(500, args.api_page_size)),
+                        max_pages=args.max_set_pages,
+                        theme_filter=theme_entry.name or None,
+                        budget=api_budget,
+                    )
+                    scraped_sets_by_key.update(theme_records)
+                    set_stats.pages_fetched += theme_stats.pages_fetched
+                    set_stats.articles_parsed += theme_stats.articles_parsed
+                    set_stats.records_parsed += theme_stats.records_parsed
+                    set_stats.failed_pages += theme_stats.failed_pages
+                    processed_theme_names.append(theme_entry.name)
+                except ApiBudgetExceededError as budget_exc:
+                    stop_reason = str(budget_exc)
+                    break
+                except ApiLimitExceededError as limit_exc:
+                    stop_reason = str(limit_exc)
+                    print(f"[Sets] Stopping early due to API cap: {limit_exc}", flush=True)
+                    break
+                except Exception as theme_exc:
+                    set_stats.failed_pages += 1
+                    print(f"[Sets] Theme sync failed ({theme_entry.name}): {theme_exc}", flush=True)
+                    continue
+
+        if requested_theme and not scraped_sets_by_key:
+            raise RuntimeError(f"theme sync failed: {requested_theme}")
+
+        if not requested_theme:
+            next_index = theme_cursor_start
+            if total_themes > 0 and not args.disable_theme_cursor and processed_theme_names:
+                next_index = (theme_cursor_start + len(processed_theme_names)) % total_themes
+            sync_state.update(
+                {
+                    "nextThemeIndex": next_index,
+                    "themesTotal": total_themes,
+                    "lastRunUTC": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "lastThemesProcessed": processed_theme_names,
+                    "lastStopReason": stop_reason,
+                    "lastApiCallsUsed": api_budget.used_calls,
+                    "lastApiUsageToday": usage_today,
+                    "lastUpdatedSinceCutoffDate": updated_since_cutoff or sync_state.get("lastUpdatedSinceCutoffDate") or "",
+                    "lastUpdatedSinceMatched": updated_since_count,
+                    "lastUpdatedSetCodes": updated_set_codes[:1200],
+                    "scriptVersion": SCRIPT_VERSION,
+                }
+            )
+            if processed_theme_names and total_themes > 0 and next_index == 0:
+                sync_state["lastFullCycleUTC"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+            # Move the cutoff forward only if incremental pass was enabled.
+            if not args.skip_updated_since_pass:
+                sync_state["lastUpdatedSinceCutoffDate"] = datetime.utcnow().strftime("%Y-%m-%d")
+            if not args.dry_run:
+                write_sync_state(sync_state_path, sync_state)
+                theme_cursor_written = True
     except Exception as exc:
         print(
             (
@@ -1749,6 +2055,29 @@ def main(argv: Sequence[str]) -> int:
         flush=True,
     )
     print(f"[Themes] total={len(themes_index)}", flush=True)
+    budget_cap = "unlimited" if api_budget.max_calls is None else str(api_budget.max_calls)
+    print(
+        (
+            f"[API Budget] used={api_budget.used_calls} cap={budget_cap} "
+            f"usage_today={usage_today if usage_today is not None else 'unknown'}"
+        ),
+        flush=True,
+    )
+    if requested_theme:
+        print(f"[Cursor] disabled (explicit theme={requested_theme})", flush=True)
+    else:
+        if not args.skip_updated_since_pass:
+            print(
+                f"[Incremental] cutoff={updated_since_cutoff or 'n/a'} matched={updated_since_count}",
+                flush=True,
+            )
+        print(
+            (
+                f"[Cursor] processed={len(processed_theme_names)} "
+                f"state_saved={theme_cursor_written} path={sync_state_path}"
+            ),
+            flush=True,
+        )
 
     return 0
 

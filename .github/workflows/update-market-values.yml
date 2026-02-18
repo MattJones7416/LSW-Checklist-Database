@@ -33,6 +33,17 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests requests_oauthlib
 
+      - name: Bootstrap from Rebrickable CSV
+        run: |
+          python scripts/bootstrap_rebrickable_catalog.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --themes-json "dist/Themes.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --fill-missing-fields \
+            --timeout 45 \
+            --retries 5 \
+            --verbose
+
       - name: Sync sets and minifigures
         env:
           BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY || vars.BRICKSET_API_KEY }}
@@ -47,7 +58,11 @@ jobs:
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
             --themes-json "dist/Themes.json" \
             --api-key "${BRICKSET_API_KEY}" \
-            --api-page-size 200 \
+            --api-page-size 500 \
+            --max-api-calls 80 \
+            --api-daily-limit 100 \
+            --api-usage-safety-margin 5 \
+            --sync-state-json "dist/sync-state.json" \
             --page-delay 0.75 \
             --page-jitter 0.25 \
             --bricklink-delay 1.5 \
@@ -57,7 +72,38 @@ jobs:
             --max-multiplicity-fetches 250 \
             --verbose
 
-      - name: Refresh BrickLink market values (API)
+      - name: Commit and push catalog checkpoint (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
+          if [ -f "dist/sync-state.json" ]; then
+            git add "dist/sync-state.json"
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No catalog checkpoint changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: catalog checkpoint"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Catalog checkpoint push succeeded on attempt $attempt."
+              exit 0
+            fi
+
+            echo "Catalog checkpoint push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+
+          echo "Catalog checkpoint push failed after 3 attempts."
+          exit 1
+
+      - name: Refresh BrickLink market values (API checkpoints)
         env:
           BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
           BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
@@ -78,38 +124,60 @@ jobs:
             exit 1
           fi
 
-          python scripts/update_market_values.py \
-            --sets-json "dist/Lego Star Wars Database.json" \
-            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --currency-code "${BRICKLINK_CURRENCY}" \
-            --delay 0.18 \
-            --jitter 0.04 \
-            --timeout 20 \
-            --retries 3 \
-            --verbose
-
-      - name: Commit and push (if changed)
-        run: |
-          if git diff --quiet; then
-            echo "No catalog changes to commit."
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
-          git commit -m "chore: sync catalog and BrickLink API market data"
 
-          for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
-              echo "Push succeeded on attempt $attempt."
-              exit 0
+          checkpoint_commit() {
+            local message="$1"
+            git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
+            if [ -f "dist/sync-state.json" ]; then
+              git add "dist/sync-state.json"
+            fi
+            if [ -f "dist/market-sync-state.json" ]; then
+              git add "dist/market-sync-state.json"
             fi
 
-            echo "Push rejected on attempt $attempt; rebasing onto origin/main and retrying..."
-            git fetch origin main
-            git rebase origin/main
-          done
+            if git diff --cached --quiet; then
+              echo "No checkpoint changes to commit."
+              return 0
+            fi
 
-          echo "Push failed after 3 attempts."
-          exit 1
+            git commit -m "$message"
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then
+                echo "Checkpoint push succeeded on attempt $attempt."
+                return 0
+              fi
+              echo "Checkpoint push rejected on attempt $attempt; rebasing and retrying..."
+              git fetch origin main
+              git rebase origin/main
+            done
+            echo "Checkpoint push failed after 3 attempts."
+            return 1
+          }
+
+          for chunk in 1 2 3 4; do
+            echo "[Market] Starting chunk ${chunk}/4..."
+            set +e
+            python scripts/update_market_values.py \
+              --sets-json "dist/Lego Star Wars Database.json" \
+              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --currency-code "${BRICKLINK_CURRENCY}" \
+              --max-api-calls 1200 \
+              --market-state-json "dist/market-sync-state.json" \
+              --catalog-sync-state-json "dist/sync-state.json" \
+              --delay 0.18 \
+              --jitter 0.04 \
+              --timeout 20 \
+              --retries 3 \
+              --verbose
+            status=$?
+            set -e
+
+            checkpoint_commit "chore: market checkpoint chunk ${chunk}"
+
+            if [ "$status" -ne 0 ]; then
+              echo "Market chunk ${chunk} failed with exit code ${status}."
+              exit "$status"
+            fi
+          done
