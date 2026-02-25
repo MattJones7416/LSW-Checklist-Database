@@ -384,6 +384,23 @@ def collapse_ws(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def sanitize_secret(value: Any) -> str:
+    text = collapse_ws(value)
+    # Common copy/paste issues from UI fields / env files.
+    for ch in ("\ufeff", "\u200b", "\u200e", "\u200f"):
+        text = text.replace(ch, "")
+    if len(text) >= 2 and text[0] == text[-1] and text[0] in {"'", '"'}:
+        text = text[1:-1].strip()
+    return text
+
+
+def bricklink_auth_help_hint() -> str:
+    return (
+        "Use GitHub repository Actions secrets (Settings > Secrets and variables > Actions), "
+        "not Codespaces secrets, and paste the four BrickLink values without quotes."
+    )
+
+
 def currency_symbol(code: Optional[str]) -> str:
     if code == "GBP":
         return "£"
@@ -956,15 +973,17 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
 def main(argv: Sequence[str]) -> int:
     args = parse_args(argv)
 
-    required = {
+    raw_required = {
         "BRICKLINK_CONSUMER_KEY": collapse_ws(args.consumer_key),
         "BRICKLINK_CONSUMER_SECRET": collapse_ws(args.consumer_secret),
         "BRICKLINK_TOKEN_VALUE": collapse_ws(args.token_value),
         "BRICKLINK_TOKEN_SECRET": collapse_ws(args.token_secret),
     }
+    required = {key: sanitize_secret(value) for key, value in raw_required.items()}
     missing = [key for key, value in required.items() if not value]
     if missing:
         print("Missing BrickLink credentials: " + ", ".join(missing), file=sys.stderr)
+        print(bricklink_auth_help_hint(), file=sys.stderr)
         return 1
 
     sets_path = Path(args.sets_json)
@@ -1013,7 +1032,15 @@ def main(argv: Sequence[str]) -> int:
         throttle=throttle,
     )
     if client.auth_failed:
-        print(client.auth_error_message or "BrickLink API authentication failed.", file=sys.stderr)
+        msg = client.auth_error_message or "BrickLink API authentication failed."
+        msg = f"{msg} {bricklink_auth_help_hint()}"
+        print(msg, file=sys.stderr)
+        if cfg.verbose:
+            diag = ", ".join(
+                f"{k}:len={len(v)}{('*sanitized*' if raw_required.get(k) != v else '')}"
+                for k, v in required.items()
+            )
+            print(f"[AuthDiag] {diag}", file=sys.stderr)
         return 1
 
     sets_rows = load_json_array(sets_path)
@@ -1111,7 +1138,15 @@ def main(argv: Sequence[str]) -> int:
         next_minifig_cursor = (minifigs_stats.last_index_processed + 1) % len(minifigs_rows)
 
     if client.auth_failed:
-        print(client.auth_error_message or "BrickLink API authentication failed.", file=sys.stderr)
+        msg = client.auth_error_message or "BrickLink API authentication failed."
+        msg = f"{msg} {bricklink_auth_help_hint()}"
+        print(msg, file=sys.stderr)
+        if cfg.verbose:
+            diag = ", ".join(
+                f"{k}:len={len(v)}{('*sanitized*' if raw_required.get(k) != v else '')}"
+                for k, v in required.items()
+            )
+            print(f"[AuthDiag] {diag}", file=sys.stderr)
         return 1
 
     if not args.skip_cross_enrichment:
