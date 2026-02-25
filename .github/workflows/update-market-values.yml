@@ -58,8 +58,6 @@ jobs:
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
             --themes-json "dist/Themes.json" \
             --api-key "${BRICKSET_API_KEY}" \
-            --crawl-minifigs \
-            --minifigs-url "https://brickset.com/minifigs" \
             --api-page-size 500 \
             --max-api-calls 80 \
             --api-daily-limit 100 \
@@ -71,6 +69,7 @@ jobs:
             --bricklink-jitter 0.35 \
             --timeout 20 \
             --retries 5 \
+            --skip-multiplicity \
             --max-multiplicity-fetches 250 \
             --verbose
 
