@@ -131,8 +131,8 @@ def log(msg: str, *, enabled: bool) -> None:
         print(msg, flush=True)
 
 
-def collapse_ws(value: str) -> str:
-    return re.sub(r"\s+", " ", value).strip()
+def collapse_ws(value: Any) -> str:
+    return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
 def decode_entities(value: str) -> str:
