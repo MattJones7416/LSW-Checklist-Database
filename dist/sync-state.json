@@ -1,29 +1,13 @@
 {
   "nextThemeIndex": 145,
   "themesTotal": 172,
-  "lastRunUTC": "2026-02-26T17:41:11Z",
-  "lastThemesProcessed": [
-    "Star Wars",
-    "Stranger Things",
-    "Studios",
-    "Super Mario",
-    "System",
-    "tbd",
-    "Technic",
-    "Teenage Mutant Ninja Turtles",
-    "The Angry Birds Movie",
-    "The Hobbit"
-  ],
-  "lastStopReason": "api call budget exhausted (16/16)",
-  "lastApiCallsUsed": 16,
-  "lastApiUsageToday": 79,
+  "lastRunUTC": "2026-02-26T17:45:50Z",
+  "lastThemesProcessed": [],
+  "lastStopReason": "budget exhausted before updatedSince pass",
+  "lastApiCallsUsed": 1,
+  "lastApiUsageToday": 94,
   "lastUpdatedSinceCutoffDate": "2026-02-26",
-  "lastUpdatedSinceMatched": 4,
-  "lastUpdatedSetCodes": [
-    "40890-1",
-    "40892-1",
-    "40916-1",
-    "562601-1"
-  ],
+  "lastUpdatedSinceMatched": 0,
+  "lastUpdatedSetCodes": [],
   "scriptVersion": "2026-02-17.8"
 }
