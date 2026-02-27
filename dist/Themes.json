@@ -1,7 +1,7 @@
 [
   {
     "Theme": "12V",
-    "SetCount": 53,
+    "SetCount": 1,
     "MinifigCount": 18
   },
   {
@@ -11,12 +11,12 @@
   },
   {
     "Theme": "4.5V",
-    "SetCount": 85,
+    "SetCount": 0,
     "MinifigCount": 24
   },
   {
     "Theme": "9V",
-    "SetCount": 102,
+    "SetCount": 37,
     "MinifigCount": 73
   },
   {
@@ -56,12 +56,12 @@
   },
   {
     "Theme": "Airlines",
-    "SetCount": 5,
+    "SetCount": 0,
     "MinifigCount": 5
   },
   {
     "Theme": "Airport",
-    "SetCount": 2,
+    "SetCount": 1,
     "MinifigCount": 95
   },
   {
@@ -121,7 +121,7 @@
   },
   {
     "Theme": "Arctic",
-    "SetCount": 13,
+    "SetCount": 2,
     "MinifigCount": 53
   },
   {
@@ -176,12 +176,12 @@
   },
   {
     "Theme": "Basic",
-    "SetCount": 416,
+    "SetCount": 420,
     "MinifigCount": 26
   },
   {
     "Theme": "Basic Set",
-    "SetCount": 32,
+    "SetCount": 31,
     "MinifigCount": 0
   },
   {
@@ -236,7 +236,7 @@
   },
   {
     "Theme": "Boat",
-    "SetCount": 1,
+    "SetCount": 0,
     "MinifigCount": 17
   },
   {
@@ -270,13 +270,13 @@
     "MinifigCount": 0
   },
   {
-    "Theme": "Brickheadz",
-    "SetCount": 4,
+    "Theme": "BrickHeadz",
+    "SetCount": 192,
     "MinifigCount": 0
   },
   {
-    "Theme": "BrickHeadz",
-    "SetCount": 192,
+    "Theme": "Brickheadz",
+    "SetCount": 4,
     "MinifigCount": 0
   },
   {
@@ -311,12 +311,12 @@
   },
   {
     "Theme": "Building Set with People",
-    "SetCount": 28,
+    "SetCount": 29,
     "MinifigCount": 1
   },
   {
     "Theme": "Bulk Bricks",
-    "SetCount": 143,
+    "SetCount": 142,
     "MinifigCount": 0
   },
   {
@@ -336,7 +336,7 @@
   },
   {
     "Theme": "Castle",
-    "SetCount": 287,
+    "SetCount": 288,
     "MinifigCount": 47
   },
   {
@@ -351,7 +351,7 @@
   },
   {
     "Theme": "Christmas",
-    "SetCount": 39,
+    "SetCount": 37,
     "MinifigCount": 116
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "Theme": "City Center",
-    "SetCount": 22,
+    "SetCount": 1,
     "MinifigCount": 36
   },
   {
@@ -391,7 +391,7 @@
   },
   {
     "Theme": "Classic Town",
-    "SetCount": 420,
+    "SetCount": 19,
     "MinifigCount": 420
   },
   {
@@ -416,7 +416,7 @@
   },
   {
     "Theme": "Collectible Minifigures",
-    "SetCount": 4,
+    "SetCount": 3,
     "MinifigCount": 117
   },
   {
@@ -451,7 +451,7 @@
   },
   {
     "Theme": "Dacta",
-    "SetCount": 181,
+    "SetCount": 183,
     "MinifigCount": 0
   },
   {
@@ -576,7 +576,7 @@
   },
   {
     "Theme": "Divers",
-    "SetCount": 12,
+    "SetCount": 0,
     "MinifigCount": 21
   },
   {
@@ -585,13 +585,13 @@
     "MinifigCount": 0
   },
   {
-    "Theme": "DOTS",
-    "SetCount": 2,
+    "Theme": "Dots",
+    "SetCount": 82,
     "MinifigCount": 0
   },
   {
-    "Theme": "Dots",
-    "SetCount": 82,
+    "Theme": "DOTS",
+    "SetCount": 2,
     "MinifigCount": 0
   },
   {
@@ -611,7 +611,7 @@
   },
   {
     "Theme": "Duplo",
-    "SetCount": 1380,
+    "SetCount": 1379,
     "MinifigCount": 0
   },
   {
@@ -671,7 +671,7 @@
   },
   {
     "Theme": "Extreme Team",
-    "SetCount": 21,
+    "SetCount": 2,
     "MinifigCount": 16
   },
   {
@@ -791,13 +791,8 @@
   },
   {
     "Theme": "Gear",
-    "SetCount": 3778,
+    "SetCount": 3776,
     "MinifigCount": 6
-  },
-  {
-    "Theme": "Gears",
-    "SetCount": 8,
-    "MinifigCount": 0
   },
   {
     "Theme": "Ghostbusters",
@@ -1016,7 +1011,7 @@
   },
   {
     "Theme": "Launch Command",
-    "SetCount": 6,
+    "SetCount": 1,
     "MinifigCount": 6
   },
   {
@@ -1161,7 +1156,7 @@
   },
   {
     "Theme": "McDonalds",
-    "SetCount": 7,
+    "SetCount": 4,
     "MinifigCount": 2
   },
   {
@@ -1186,7 +1181,7 @@
   },
   {
     "Theme": "Minitalia",
-    "SetCount": 20,
+    "SetCount": 18,
     "MinifigCount": 0
   },
   {
@@ -1235,14 +1230,14 @@
     "MinifigCount": 22
   },
   {
-    "Theme": "Nexo Knights",
-    "SetCount": 111,
-    "MinifigCount": 134
-  },
-  {
     "Theme": "NEXO KNIGHTS",
     "SetCount": 1,
     "MinifigCount": 0
+  },
+  {
+    "Theme": "Nexo Knights",
+    "SetCount": 111,
+    "MinifigCount": 134
   },
   {
     "Theme": "Nike",
@@ -1286,12 +1281,12 @@
   },
   {
     "Theme": "Other",
-    "SetCount": 72,
+    "SetCount": 70,
     "MinifigCount": 88
   },
   {
     "Theme": "Outback",
-    "SetCount": 5,
+    "SetCount": 0,
     "MinifigCount": 5
   },
   {
@@ -1301,7 +1296,7 @@
   },
   {
     "Theme": "Paradisa",
-    "SetCount": 18,
+    "SetCount": 0,
     "MinifigCount": 39
   },
   {
@@ -1381,7 +1376,7 @@
   },
   {
     "Theme": "PreSchool",
-    "SetCount": 13,
+    "SetCount": 12,
     "MinifigCount": 0
   },
   {
@@ -1396,7 +1391,7 @@
   },
   {
     "Theme": "Promotional",
-    "SetCount": 921,
+    "SetCount": 917,
     "MinifigCount": 66
   },
   {
@@ -1406,7 +1401,7 @@
   },
   {
     "Theme": "Race",
-    "SetCount": 16,
+    "SetCount": 1,
     "MinifigCount": 8
   },
   {
@@ -1431,7 +1426,7 @@
   },
   {
     "Theme": "Res-Q",
-    "SetCount": 11,
+    "SetCount": 0,
     "MinifigCount": 12
   },
   {
@@ -1461,7 +1456,7 @@
   },
   {
     "Theme": "Samsonite",
-    "SetCount": 270,
+    "SetCount": 269,
     "MinifigCount": 0
   },
   {
@@ -1631,7 +1626,7 @@
   },
   {
     "Theme": "Soccer",
-    "SetCount": 32,
+    "SetCount": 14,
     "MinifigCount": 164
   },
   {
@@ -1651,7 +1646,7 @@
   },
   {
     "Theme": "Space",
-    "SetCount": 323,
+    "SetCount": 322,
     "MinifigCount": 4
   },
   {
@@ -1671,7 +1666,7 @@
   },
   {
     "Theme": "Space Port",
-    "SetCount": 23,
+    "SetCount": 2,
     "MinifigCount": 14
   },
   {
@@ -1716,7 +1711,7 @@
   },
   {
     "Theme": "Sports",
-    "SetCount": 139,
+    "SetCount": 135,
     "MinifigCount": 6
   },
   {
@@ -1736,7 +1731,7 @@
   },
   {
     "Theme": "Stationery and Office Supplies",
-    "SetCount": 468,
+    "SetCount": 467,
     "MinifigCount": 5
   },
   {
@@ -1791,12 +1786,12 @@
   },
   {
     "Theme": "Supplemental",
-    "SetCount": 61,
+    "SetCount": 53,
     "MinifigCount": 11
   },
   {
     "Theme": "System",
-    "SetCount": 439,
+    "SetCount": 435,
     "MinifigCount": 0
   },
   {
@@ -1851,7 +1846,7 @@
   },
   {
     "Theme": "The LEGO Batman Movie",
-    "SetCount": 44,
+    "SetCount": 45,
     "MinifigCount": 88
   },
   {
@@ -1870,13 +1865,18 @@
     "MinifigCount": 92
   },
   {
+    "Theme": "The LEGO Movie 2",
+    "SetCount": 40,
+    "MinifigCount": 0
+  },
+  {
     "Theme": "The LEGO Movie II",
-    "SetCount": 43,
+    "SetCount": 4,
     "MinifigCount": 100
   },
   {
     "Theme": "The LEGO Ninjago Movie",
-    "SetCount": 36,
+    "SetCount": 37,
     "MinifigCount": 109
   },
   {
@@ -1898,6 +1898,11 @@
     "Theme": "The Powerpuff Girls",
     "SetCount": 2,
     "MinifigCount": 2
+  },
+  {
+    "Theme": "The Simpsons",
+    "SetCount": 2,
+    "MinifigCount": 0
   },
   {
     "Theme": "The Simpsons Series 1",
@@ -1926,12 +1931,12 @@
   },
   {
     "Theme": "Town",
-    "SetCount": 39,
+    "SetCount": 659,
     "MinifigCount": 196
   },
   {
     "Theme": "Town Jr.",
-    "SetCount": 41,
+    "SetCount": 2,
     "MinifigCount": 53
   },
   {
@@ -1951,17 +1956,22 @@
   },
   {
     "Theme": "Train",
-    "SetCount": 17,
+    "SetCount": 16,
     "MinifigCount": 0
   },
   {
     "Theme": "Trains",
-    "SetCount": 7,
+    "SetCount": 215,
     "MinifigCount": 78
   },
   {
-    "Theme": "Trolls: World Tour",
+    "Theme": "Trolls World Tour",
     "SetCount": 9,
+    "MinifigCount": 0
+  },
+  {
+    "Theme": "Trolls: World Tour",
+    "SetCount": 0,
     "MinifigCount": 24
   },
   {
@@ -1985,8 +1995,13 @@
     "MinifigCount": 37
   },
   {
+    "Theme": "Unikitty",
+    "SetCount": 23,
+    "MinifigCount": 0
+  },
+  {
     "Theme": "Unikitty!",
-    "SetCount": 25,
+    "SetCount": 2,
     "MinifigCount": 37
   },
   {
@@ -1996,7 +2011,7 @@
   },
   {
     "Theme": "Universal Building Set",
-    "SetCount": 34,
+    "SetCount": 58,
     "MinifigCount": 7
   },
   {
@@ -2020,6 +2035,11 @@
     "MinifigCount": 0
   },
   {
+    "Theme": "Various",
+    "SetCount": 1,
+    "MinifigCount": 0
+  },
+  {
     "Theme": "Vehicle",
     "SetCount": 1,
     "MinifigCount": 8
@@ -2031,8 +2051,13 @@
   },
   {
     "Theme": "VIDIYO",
-    "SetCount": 48,
+    "SetCount": 9,
     "MinifigCount": 46
+  },
+  {
+    "Theme": "Vidiyo",
+    "SetCount": 41,
+    "MinifigCount": 0
   },
   {
     "Theme": "Vikings",
