@@ -68,6 +68,7 @@ class FileUpdateStats:
     rows_considered: int = 0
     rows_changed: int = 0
     fetch_failures: int = 0
+    no_price_data_skips: int = 0
     parse_misses: int = 0
     cross_rows_changed: int = 0
     last_index_processed: Optional[int] = None
@@ -139,7 +140,17 @@ class BrickLinkClient:
         )
         self.auth_failed = False
         self.auth_error_message = ""
+        self.last_error_kind = ""
+        self.last_http_status: Optional[int] = None
         self.request_budget = request_budget or ApiRequestBudget(max_calls=None)
+
+    def _mark_failure(self, kind: str, http_status: Optional[int] = None) -> None:
+        self.last_error_kind = kind
+        self.last_http_status = http_status
+
+    def _mark_success(self, http_status: Optional[int] = None) -> None:
+        self.last_error_kind = ""
+        self.last_http_status = http_status
 
     @property
     def budget_exhausted(self) -> bool:
@@ -202,6 +213,7 @@ class BrickLinkClient:
         while True:
             attempt += 1
             if not self.request_budget.consume():
+                self._mark_failure("budget")
                 if self.verbose:
                     print(
                         f"[API] request budget exhausted before {item_type}:{item_no}",
@@ -219,6 +231,7 @@ class BrickLinkClient:
                 )
             except requests.RequestException as exc:
                 if attempt > self.retries + 1:
+                    self._mark_failure("request_error")
                     if self.verbose:
                         print(f"[API] request failed {item_type}:{item_no}: {exc}", flush=True)
                     return None
@@ -229,6 +242,7 @@ class BrickLinkClient:
                 retry_after = _parse_retry_after(response.headers.get("Retry-After"))
                 throttle.apply_backoff(retry_after)
                 if attempt > self.retries + 1:
+                    self._mark_failure("rate_limited", 429)
                     if self.verbose:
                         print(f"[API] HTTP 429 {item_type}:{item_no}", flush=True)
                     return None
@@ -237,6 +251,7 @@ class BrickLinkClient:
             if response.status_code >= 500:
                 throttle.apply_backoff()
                 if attempt > self.retries + 1:
+                    self._mark_failure("server_error", response.status_code)
                     if self.verbose:
                         print(
                             f"[API] HTTP {response.status_code} {item_type}:{item_no}",
@@ -252,6 +267,11 @@ class BrickLinkClient:
                         "BrickLink API authentication failed (HTTP 401). "
                         "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
                     )
+                    self._mark_failure("auth", 401)
+                elif response.status_code == 404:
+                    self._mark_failure("not_found", 404)
+                else:
+                    self._mark_failure("http_error", response.status_code)
                 if self.verbose:
                     print(
                         f"[API] HTTP {response.status_code} {item_type}:{item_no} params={params}",
@@ -262,6 +282,7 @@ class BrickLinkClient:
             try:
                 payload = response.json()
             except ValueError:
+                self._mark_failure("invalid_json")
                 if self.verbose:
                     print(f"[API] invalid JSON {item_type}:{item_no}", flush=True)
                 return None
@@ -283,6 +304,11 @@ class BrickLinkClient:
                                 "BrickLink API authentication failed (meta code 401). "
                                 "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
                             )
+                        self._mark_failure("auth", 401)
+                    elif code == 404:
+                        self._mark_failure("not_found", 404)
+                    else:
+                        self._mark_failure("api_error", code)
                     if self.verbose:
                         print(
                             f"[API] meta code={code} {item_type}:{item_no} msg={meta.get('message')}",
@@ -292,6 +318,7 @@ class BrickLinkClient:
 
             data = payload.get("data") if isinstance(payload, dict) else None
             if not isinstance(data, list):
+                self._mark_failure("no_data", response.status_code)
                 if self.verbose:
                     print(f"[API] missing data array {item_type}:{item_no}", flush=True)
                 return None
@@ -307,6 +334,7 @@ class BrickLinkClient:
                 matrix[(guide_type, condition)] = row
 
             throttle.apply_success()
+            self._mark_success(response.status_code)
             return matrix
 
 
@@ -426,6 +454,44 @@ def normalize_set_code(number: Any, variant: Any) -> str:
         return raw
     var = _parse_int(variant) or 1
     return f"{raw}-{var}"
+
+
+def build_set_item_candidates(number: Any, variant: Any) -> List[str]:
+    primary = normalize_set_code(number, variant)
+    if not primary:
+        return []
+
+    candidates: List[str] = [primary]
+    seen: set[str] = {primary.lower()}
+
+    match = re.match(r"^(.+)-([0-9]+)$", primary)
+    if not match:
+        return candidates
+
+    base = match.group(1)
+    var = _parse_int(match.group(2)) or 1
+
+    # BrickLink often only exposes -1 for legacy/re-release variants.
+    if var != 1:
+        fallback = f"{base}-1"
+        key = fallback.lower()
+        if key not in seen:
+            candidates.append(fallback)
+            seen.add(key)
+
+    # Some imported set numbers contain punctuation not present in BrickLink item_no.
+    compact_base = re.sub(r"[^A-Za-z0-9]", "", base)
+    if compact_base and compact_base.lower() != base.lower():
+        compact_same_variant = f"{compact_base}-{var}"
+        compact_default_variant = f"{compact_base}-1"
+        for value in (compact_same_variant, compact_default_variant):
+            key = value.lower()
+            if key in seen:
+                continue
+            candidates.append(value)
+            seen.add(key)
+
+    return candidates
 
 
 def parse_minifig_numbers(raw: Any) -> List[str]:
@@ -831,6 +897,7 @@ def print_summary(label: str, stats: FileUpdateStats) -> None:
             f"considered={stats.rows_considered} "
             f"changed={stats.rows_changed} "
             f"fetch_failures={stats.fetch_failures} "
+            f"no_price_data_skips={stats.no_price_data_skips} "
             f"parse_misses={stats.parse_misses} "
             f"cross_changed={stats.cross_rows_changed}"
         ),
@@ -842,6 +909,7 @@ def merge_update_stats(base: FileUpdateStats, add: FileUpdateStats) -> FileUpdat
     base.rows_considered += add.rows_considered
     base.rows_changed += add.rows_changed
     base.fetch_failures += add.fetch_failures
+    base.no_price_data_skips += add.no_price_data_skips
     base.parse_misses += add.parse_misses
     base.cross_rows_changed += add.cross_rows_changed
     if add.last_index_processed is not None:
@@ -883,28 +951,44 @@ def update_rows(
         stats.last_index_processed = idx
 
         if item_type == "SET":
-            item_no = normalize_set_code(row.get("Number"), row.get("Variant"))
+            item_candidates = build_set_item_candidates(row.get("Number"), row.get("Variant"))
         else:
-            item_no = collapse_ws(row.get("Number"))
+            single = collapse_ws(row.get("Number"))
+            item_candidates = [single] if single else []
 
-        if not item_no:
+        if not item_candidates:
             stats.parse_misses += 1
             continue
 
+        item_no = item_candidates[0]
         before = json.dumps(row, sort_keys=True, ensure_ascii=False)
-        ok = apply_market_to_row(
-            row,
-            item_type=item_type,
-            item_no=item_no,
-            currency_code=cfg.currency_code,
-            client=client,
-            throttle=throttle,
-            month_key=month_key,
-        )
+        ok = False
+        used_item_no = item_no
+        for candidate in item_candidates:
+            used_item_no = candidate
+            ok = apply_market_to_row(
+                row,
+                item_type=item_type,
+                item_no=candidate,
+                currency_code=cfg.currency_code,
+                client=client,
+                throttle=throttle,
+                month_key=month_key,
+            )
+            if ok:
+                break
+            if client.auth_failed or client.budget_exhausted:
+                break
+
         if not ok:
-            stats.fetch_failures += 1
-            if cfg.verbose:
-                print(f"[{label}] failed: {item_no}", flush=True)
+            if item_type == "SET" and client.last_error_kind in {"not_found", "no_data"}:
+                stats.no_price_data_skips += 1
+                if cfg.verbose:
+                    print(f"[{label}] no price data: {item_no}", flush=True)
+            else:
+                stats.fetch_failures += 1
+                if cfg.verbose:
+                    print(f"[{label}] failed: {item_no}", flush=True)
             if client.auth_failed:
                 break
             if client.budget_exhausted:
@@ -916,8 +1000,9 @@ def update_rows(
             stats.rows_changed += 1
 
         if cfg.verbose:
+            resolved = used_item_no if used_item_no != item_no else item_no
             print(
-                f"[{label}] {stats.rows_considered}/{stats.total_rows}: {item_no} updated",
+                f"[{label}] {stats.rows_considered}/{stats.total_rows}: {item_no} -> {resolved} updated",
                 flush=True,
             )
 
