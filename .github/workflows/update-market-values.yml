@@ -33,45 +33,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests requests_oauthlib
 
-      - name: Bootstrap from Rebrickable CSV
-        run: |
-          python scripts/bootstrap_rebrickable_catalog.py \
-            --sets-json "dist/Lego Star Wars Database.json" \
-            --themes-json "dist/Themes.json" \
-            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --fill-missing-fields \
-            --timeout 45 \
-            --retries 5 \
-            --verbose
-
-      - name: Sync sets and minifigures
+      - name: Bootstrap from BrickLink catalog feed
         env:
-          BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY || vars.BRICKSET_API_KEY }}
+          BRICKLINK_CATALOG_COOKIE: ${{ secrets.BRICKLINK_CATALOG_COOKIE || vars.BRICKLINK_CATALOG_COOKIE }}
         run: |
-          if [ -z "${BRICKSET_API_KEY}" ]; then
-            echo "Missing BRICKSET_API_KEY. Set it in repository Secrets or Variables."
-            exit 1
-          fi
-
-          python scripts/sync_brickset_catalog.py \
-            --sets-json "dist/Lego Star Wars Database.json" \
-            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --themes-json "dist/Themes.json" \
-            --api-key "${BRICKSET_API_KEY}" \
-            --api-page-size 500 \
-            --max-api-calls 80 \
-            --api-daily-limit 100 \
-            --api-usage-safety-margin 5 \
-            --sync-state-json "dist/sync-state.json" \
-            --page-delay 0.75 \
-            --page-jitter 0.25 \
-            --bricklink-delay 1.5 \
-            --bricklink-jitter 0.35 \
-            --timeout 20 \
-            --retries 5 \
-            --skip-multiplicity \
-            --max-multiplicity-fetches 250 \
-            --verbose
+          python scripts/bootstrap_bricklink_catalog.py             --sets-json "dist/Lego Star Wars Database.json"             --themes-json "dist/Themes.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --timeout 45             --retries 5             --verbose
 
       - name: Commit and push catalog checkpoint (if changed)
         run: |
@@ -160,18 +126,7 @@ jobs:
           for chunk in 1 2 3 4; do
             echo "[Market] Starting chunk ${chunk}/4..."
             set +e
-            python scripts/update_market_values.py \
-              --sets-json "dist/Lego Star Wars Database.json" \
-              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-              --currency-code "${BRICKLINK_CURRENCY}" \
-              --max-api-calls 1200 \
-              --market-state-json "dist/market-sync-state.json" \
-              --catalog-sync-state-json "dist/sync-state.json" \
-              --delay 0.18 \
-              --jitter 0.04 \
-              --timeout 20 \
-              --retries 3 \
-              --verbose
+            python scripts/update_market_values.py               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 1200               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
@@ -187,15 +142,7 @@ jobs:
         run: |
           rm -rf "dist/chunks" "dist/market-details"
 
-          python scripts/split_catalog_chunks.py \
-            --sets-json "dist/Lego Star Wars Database.json" \
-            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-            --output-dir "dist/chunks" \
-            --manifest-path "dist/catalog-index.json" \
-            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist" \
-            --market-details-dir "dist/market-details" \
-            --strip-market-detail-fields \
-            --max-items-per-chunk 800
+          python scripts/split_catalog_chunks.py             --sets-json "dist/Lego Star Wars Database.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --output-dir "dist/chunks"             --manifest-path "dist/catalog-index.json"             --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist"             --market-details-dir "dist/market-details"             --strip-market-detail-fields             --max-items-per-chunk 800
 
       - name: Commit and push chunked catalog outputs (if changed)
         run: |
