@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T23:43:21.864631+00:00",
+  "generatedAt": "2026-02-28T05:31:31.205746+00:00",
   "sets": [
     {
       "label": "12V",
@@ -221,7 +221,7 @@
     {
       "label": "Basic",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic.json",
-      "count": 419,
+      "count": 418,
       "part": 1,
       "parts": 1,
       "theme": "Basic"
@@ -405,7 +405,7 @@
     {
       "label": "Building Set with People",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/building-set-with-people.json",
-      "count": 29,
+      "count": 28,
       "part": 1,
       "parts": 1,
       "theme": "Building Set with People"
@@ -525,7 +525,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 22,
+      "count": 23,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -621,7 +621,7 @@
     {
       "label": "Dacta",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dacta.json",
-      "count": 183,
+      "count": 181,
       "part": 1,
       "parts": 1,
       "theme": "Dacta"
@@ -845,7 +845,7 @@
     {
       "label": "Duplo (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo-p2.json",
-      "count": 583,
+      "count": 580,
       "part": 2,
       "parts": 2,
       "theme": "Duplo"
@@ -1101,7 +1101,7 @@
     {
       "label": "Gear (5/5)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p5.json",
-      "count": 576,
+      "count": 578,
       "part": 5,
       "parts": 5,
       "theme": "Gear"
@@ -1605,7 +1605,7 @@
     {
       "label": "Minitalia",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minitalia.json",
-      "count": 17,
+      "count": 21,
       "part": 1,
       "parts": 1,
       "theme": "Minitalia"
@@ -1613,7 +1613,7 @@
     {
       "label": "Miscellaneous",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/miscellaneous.json",
-      "count": 248,
+      "count": 249,
       "part": 1,
       "parts": 1,
       "theme": "Miscellaneous"
@@ -1869,7 +1869,7 @@
     {
       "label": "PreSchool",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/preschool.json",
-      "count": 11,
+      "count": 13,
       "part": 1,
       "parts": 1,
       "theme": "PreSchool"
@@ -1981,7 +1981,7 @@
     {
       "label": "Samsonite",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/samsonite.json",
-      "count": 269,
+      "count": 272,
       "part": 1,
       "parts": 1,
       "theme": "Samsonite"
@@ -2253,7 +2253,7 @@
     {
       "label": "Space",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/space.json",
-      "count": 322,
+      "count": 321,
       "part": 1,
       "parts": 1,
       "theme": "Space"
@@ -2445,7 +2445,7 @@
     {
       "label": "System",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/system.json",
-      "count": 435,
+      "count": 433,
       "part": 1,
       "parts": 1,
       "theme": "System"
@@ -2661,7 +2661,7 @@
     {
       "label": "Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/town.json",
-      "count": 659,
+      "count": 658,
       "part": 1,
       "parts": 1,
       "theme": "Town"
@@ -2757,7 +2757,7 @@
     {
       "label": "Universal Building Set",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/universal-building-set.json",
-      "count": 58,
+      "count": 57,
       "part": 1,
       "parts": 1,
       "theme": "Universal Building Set"
@@ -5536,8 +5536,8 @@
     "Boost",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -5632,8 +5632,8 @@
     "Harry Potter",
     "Harry Potter and Fantastic Beasts Series 1",
     "Harry Potter and Fantastic Beasts Series 2",
-    "Hero Factory",
     "HERO Factory",
+    "Hero Factory",
     "Heroes",
     "Hidden Side",
     "Hobby Set",
@@ -5668,8 +5668,8 @@
     "LEGO Ideas and CUUSOO",
     "LEGO Originals",
     "LEGO Universe",
-    "LEGOLAND",
     "Legoland",
+    "LEGOLAND",
     "Legoland Parks",
     "Legoville",
     "Life of George",
@@ -5694,8 +5694,8 @@
     "Modulex",
     "Monkie Kid",
     "Monster Fighters",
-    "Nexo Knights",
     "NEXO KNIGHTS",
+    "Nexo Knights",
     "Nike",
     "Ninja",
     "Ninjago",
@@ -5849,7 +5849,7 @@
     "Znap"
   ],
   "summary": {
-    "setCount": 28841,
+    "setCount": 28842,
     "minifigureCount": 18138,
     "setChunkCount": 363,
     "minifigureChunkCount": 323,
