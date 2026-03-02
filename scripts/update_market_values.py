@@ -66,6 +66,7 @@ class FetchConfig:
 class FileUpdateStats:
     total_rows: int = 0
     rows_considered: int = 0
+    rows_succeeded: int = 0
     rows_changed: int = 0
     fetch_failures: int = 0
     no_price_data_skips: int = 0
@@ -705,8 +706,8 @@ def apply_market_to_row(
     row["BrickLinkCurrentUsedQtyAvgPrice"] = round(_parse_float(stock_used.get("qty_avg_price") if stock_used else None), 2) if _parse_float(stock_used.get("qty_avg_price") if stock_used else None) is not None else None
     row["BrickLinkCurrentUsedMaxPrice"] = round(_parse_float(stock_used.get("max_price") if stock_used else None), 2) if _parse_float(stock_used.get("max_price") if stock_used else None) is not None else None
 
-    display_new = first_non_none([sold_new_avg, stock_new_avg])
-    display_used = first_non_none([sold_used_avg, stock_used_avg])
+    display_new = first_non_none([stock_new_avg, sold_new_avg])
+    display_used = first_non_none([stock_used_avg, sold_used_avg])
     row["New"] = format_display_price(display_new, currency)
     row["Used"] = format_display_price(display_used, currency)
 
@@ -876,18 +877,29 @@ def write_json_object(path: Path, data: Dict[str, Any]) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def rotating_indices(total: int, start_index: int, excluded: set[int]) -> List[int]:
+def rotating_indices(total: int, start_index: int) -> List[int]:
     if total <= 0:
         return []
     start = start_index % total
     ordered: List[int] = []
     for idx in range(start, total):
-        if idx not in excluded:
-            ordered.append(idx)
+        ordered.append(idx)
     for idx in range(0, start):
-        if idx not in excluded:
-            ordered.append(idx)
+        ordered.append(idx)
     return ordered
+
+
+def prioritize_rotating_indices(rotating: Sequence[int], priority: set[int]) -> List[int]:
+    if not rotating:
+        return []
+    prioritized: List[int] = []
+    non_prioritized: List[int] = []
+    for idx in rotating:
+        if idx in priority:
+            prioritized.append(idx)
+        else:
+            non_prioritized.append(idx)
+    return prioritized + non_prioritized
 
 
 def print_summary(label: str, stats: FileUpdateStats) -> None:
@@ -895,6 +907,7 @@ def print_summary(label: str, stats: FileUpdateStats) -> None:
         (
             f"[{label}] total={stats.total_rows} "
             f"considered={stats.rows_considered} "
+            f"succeeded={stats.rows_succeeded} "
             f"changed={stats.rows_changed} "
             f"fetch_failures={stats.fetch_failures} "
             f"no_price_data_skips={stats.no_price_data_skips} "
@@ -907,6 +920,7 @@ def print_summary(label: str, stats: FileUpdateStats) -> None:
 
 def merge_update_stats(base: FileUpdateStats, add: FileUpdateStats) -> FileUpdateStats:
     base.rows_considered += add.rows_considered
+    base.rows_succeeded += add.rows_succeeded
     base.rows_changed += add.rows_changed
     base.fetch_failures += add.fetch_failures
     base.no_price_data_skips += add.no_price_data_skips
@@ -995,6 +1009,7 @@ def update_rows(
                 break
             continue
 
+        stats.rows_succeeded += 1
         after = json.dumps(row, sort_keys=True, ensure_ascii=False)
         if before != after:
             stats.rows_changed += 1
@@ -1145,16 +1160,6 @@ def main(argv: Sequence[str]) -> int:
         changed_set_codes = changed_set_codes[: args.priority_updated_limit]
     changed_set_lookup = set(changed_set_codes)
 
-    def build_unique_plan(priority: List[int], rotating: List[int]) -> List[int]:
-        out: List[int] = []
-        seen: set[int] = set()
-        for idx in priority + rotating:
-            if idx in seen:
-                continue
-            seen.add(idx)
-            out.append(idx)
-        return out
-
     set_priority_indices: List[int] = []
     for idx, row in enumerate(sets_rows):
         code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
@@ -1175,10 +1180,12 @@ def main(argv: Sequence[str]) -> int:
     set_cursor = stored_set_cursor if stored_set_cursor is not None else max(0, args.start_index)
     minifig_cursor = stored_minifig_cursor if stored_minifig_cursor is not None else max(0, args.start_index)
 
-    set_rotating_indices = rotating_indices(len(sets_rows), set_cursor, set(set_priority_indices))
-    minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor, set(minifig_priority_indices))
-    set_plan = build_unique_plan(set_priority_indices, set_rotating_indices)
-    minifig_plan = build_unique_plan(minifig_priority_indices, minifig_rotating_indices)
+    set_priority_lookup = set(set_priority_indices)
+    minifig_priority_lookup = set(minifig_priority_indices)
+    set_rotating_indices = rotating_indices(len(sets_rows), set_cursor)
+    minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor)
+    set_plan = prioritize_rotating_indices(set_rotating_indices, set_priority_lookup)
+    minifig_plan = prioritize_rotating_indices(minifig_rotating_indices, minifig_priority_lookup)
 
     if cfg.verbose:
         print(
@@ -1216,11 +1223,16 @@ def main(argv: Sequence[str]) -> int:
     )
 
     next_set_cursor = set_cursor
-    if sets_rows and sets_stats.last_index_processed is not None and sets_stats.last_index_processed in set(set_rotating_indices):
+    if sets_rows and sets_stats.last_index_processed is not None:
         next_set_cursor = (sets_stats.last_index_processed + 1) % len(sets_rows)
     next_minifig_cursor = minifig_cursor
-    if minifigs_rows and minifigs_stats.last_index_processed is not None and minifigs_stats.last_index_processed in set(minifig_rotating_indices):
+    if minifigs_rows and minifigs_stats.last_index_processed is not None:
         next_minifig_cursor = (minifigs_stats.last_index_processed + 1) % len(minifigs_rows)
+
+    set_rows_with_new = sum(1 for row in sets_rows if bool(collapse_ws(row.get("New"))))
+    set_rows_with_used = sum(1 for row in sets_rows if bool(collapse_ws(row.get("Used"))))
+    minifig_rows_with_new = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("New"))))
+    minifig_rows_with_used = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("Used"))))
 
     if client.auth_failed:
         msg = client.auth_error_message or "BrickLink API authentication failed."
@@ -1252,10 +1264,18 @@ def main(argv: Sequence[str]) -> int:
             "lastApiRequestCap": client.request_budget.max_calls,
             "lastApiBudgetExhausted": client.budget_exhausted,
             "lastSetRowsConsidered": sets_stats.rows_considered,
+            "lastSetRowsSucceeded": sets_stats.rows_succeeded,
             "lastMinifigRowsConsidered": minifigs_stats.rows_considered,
+            "lastMinifigRowsSucceeded": minifigs_stats.rows_succeeded,
             "lastSetPriorityCount": len(set_priority_indices),
             "lastMinifigPriorityCount": len(minifig_priority_indices),
             "lastChangedSetPriorityCount": len(changed_set_codes),
+            "setRowsWithNew": set_rows_with_new,
+            "setRowsWithUsed": set_rows_with_used,
+            "setRowsTotal": len(sets_rows),
+            "minifigRowsWithNew": minifig_rows_with_new,
+            "minifigRowsWithUsed": minifig_rows_with_used,
+            "minifigRowsTotal": len(minifigs_rows),
         }
     )
     write_json_object(market_state_path, market_state)
