@@ -28,7 +28,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
-from urllib.parse import quote
+from urllib.parse import parse_qs, quote, urlparse
 
 import requests
 from requests_oauthlib import OAuth1
@@ -95,6 +95,8 @@ MARKET_PRESERVE_FIELDS = {
     "BrickLinkUsedPriceRangeMin",
     "BrickLinkUsedPriceRangeMax",
 }
+
+BRICKLINK_MINIFIG_CODE_RE = re.compile(r"^[A-Za-z][A-Za-z0-9]*$")
 
 
 
@@ -599,13 +601,54 @@ def normalize_set_code(number: Any, variant: Any) -> str:
     return f"{raw}-{var}"
 
 
-def build_set_item_candidates(number: Any, variant: Any) -> List[str]:
-    primary = normalize_set_code(number, variant)
-    if not primary:
-        return []
+def parse_bricklink_item_reference(link: Any) -> Optional[Tuple[str, str]]:
+    raw = collapse_ws(link)
+    if not raw:
+        return None
+    try:
+        parsed = urlparse(raw)
+    except Exception:
+        return None
+    host = (parsed.netloc or "").lower()
+    if "bricklink.com" not in host:
+        return None
+    query = parse_qs(parsed.query or "")
+    set_code = collapse_ws((query.get("S") or [""])[0])
+    if set_code:
+        return ("SET", set_code)
+    minifig_code = collapse_ws((query.get("M") or [""])[0])
+    if minifig_code:
+        return ("MINIFIG", minifig_code)
+    return None
 
-    candidates: List[str] = [primary]
-    seen: set[str] = {primary.lower()}
+
+def is_probable_bricklink_minifig_code(value: Any) -> bool:
+    code = collapse_ws(value)
+    if not code:
+        return False
+    lower = code.lower()
+    if lower.startswith("fig-"):
+        return False
+    return bool(BRICKLINK_MINIFIG_CODE_RE.match(code))
+
+
+def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> List[str]:
+    primary = normalize_set_code(number, variant)
+    candidates: List[str] = []
+    seen: set[str] = set()
+
+    ref = parse_bricklink_item_reference(link)
+    if ref and ref[0] == "SET":
+        ref_code = collapse_ws(ref[1])
+        if ref_code:
+            candidates.append(ref_code)
+            seen.add(ref_code.lower())
+
+    if not primary:
+        return candidates
+    if primary.lower() not in seen:
+        candidates.append(primary)
+        seen.add(primary.lower())
 
     match = re.match(r"^(.+)-([0-9]+)$", primary)
     if not match:
@@ -634,6 +677,26 @@ def build_set_item_candidates(number: Any, variant: Any) -> List[str]:
             candidates.append(value)
             seen.add(key)
 
+    return candidates
+
+
+def build_minifig_item_candidates(number: Any, link: Any = None) -> List[str]:
+    candidates: List[str] = []
+    seen: set[str] = set()
+
+    ref = parse_bricklink_item_reference(link)
+    if ref and ref[0] == "MINIFIG":
+        ref_code = collapse_ws(ref[1])
+        if ref_code:
+            candidates.append(ref_code)
+            seen.add(ref_code.lower())
+
+    code = collapse_ws(number)
+    if is_probable_bricklink_minifig_code(code):
+        lowered = code.lower()
+        if lowered not in seen:
+            candidates.append(code)
+            seen.add(lowered)
     return candidates
 
 
@@ -1154,25 +1217,35 @@ def update_rows(
         stats.last_index_processed = idx
 
         if item_type == "SET":
-            item_candidates = build_set_item_candidates(row.get("Number"), row.get("Variant"))
+            set_candidates = build_set_item_candidates(
+                row.get("Number"),
+                row.get("Variant"),
+                row.get("link"),
+            )
+            item_candidates: List[Tuple[str, str]] = [("SET", value) for value in set_candidates]
         else:
-            single = collapse_ws(row.get("Number"))
-            item_candidates = [single] if single else []
+            minifig_candidates = build_minifig_item_candidates(
+                row.get("Number"),
+                row.get("link"),
+            )
+            item_candidates = [("MINIFIG", value) for value in minifig_candidates]
 
         if not item_candidates:
             stats.parse_misses += 1
             continue
 
-        item_no = item_candidates[0]
+        item_no = item_candidates[0][1]
         before = json.dumps(row, sort_keys=True, ensure_ascii=False)
         ok = False
         used_item_no = item_no
-        for candidate in item_candidates:
-            used_item_no = candidate
+        used_item_type = item_type
+        for candidate_type, candidate_no in item_candidates:
+            used_item_type = candidate_type
+            used_item_no = candidate_no
             ok = apply_market_to_row(
                 row,
-                item_type=item_type,
-                item_no=candidate,
+                item_type=candidate_type,
+                item_no=candidate_no,
                 currency_code=cfg.currency_code,
                 client=client,
                 throttle=throttle,
@@ -1184,7 +1257,7 @@ def update_rows(
                 break
 
         if not ok:
-            if item_type == "SET" and client.last_error_kind in {"not_found", "no_data"}:
+            if client.last_error_kind in {"not_found", "no_data"}:
                 stats.no_price_data_skips += 1
                 if cfg.verbose:
                     print(f"[{label}] no price data: {item_no}", flush=True)
@@ -1206,7 +1279,7 @@ def update_rows(
         if cfg.verbose:
             resolved = used_item_no if used_item_no != item_no else item_no
             print(
-                f"[{label}] {stats.rows_considered}/{stats.total_rows}: {item_no} -> {resolved} updated",
+                f"[{label}] {stats.rows_considered}/{stats.total_rows}: {item_no} -> {resolved} ({used_item_type}) updated",
                 flush=True,
             )
 
