@@ -108,6 +108,7 @@ class FetchConfig:
     jitter: float
     verbose: bool
     currency_code: str
+    fallback_currency_codes: Tuple[str, ...] = ()
 
 
 @dataclass
@@ -222,19 +223,20 @@ class BrickLinkClient:
         if matrix is None:
             return None
 
+        # Prioritize sold data first (more consistently populated).
         needed: List[Tuple[str, str]] = [
-            ("stock", "N"),
-            ("stock", "U"),
             ("sold", "N"),
             ("sold", "U"),
+            ("stock", "N"),
+            ("stock", "U"),
         ]
         missing = [pair for pair in needed if pair not in matrix]
         if not missing:
             return matrix
 
-        # Throughput mode: keep calls low, but try to fill common gaps.
-        # If aggregate response is empty, allow up to two targeted probes.
-        max_probes = 2 if not matrix else 1
+        # If aggregate response is empty, probe all combinations once so we don't
+        # incorrectly classify rows as no-data when only a subset is populated.
+        max_probes = len(missing) if not matrix else min(2, len(missing))
         for guide_type, condition in missing:
             sub = self._fetch_matrix_once(
                 item_type=item_type,
@@ -591,6 +593,31 @@ def format_display_price(amount: Optional[float], currency_code: Optional[str]) 
     return f"~{currency_symbol(cc)}{amount:.2f}"
 
 
+def normalize_currency_code(value: Any) -> str:
+    code = collapse_ws(value).upper()
+    if not code:
+        return ""
+    return re.sub(r"[^A-Z]", "", code)
+
+
+def build_currency_try_order(primary: str, fallbacks: Sequence[str]) -> List[str]:
+    ordered: List[str] = []
+    seen: set[str] = set()
+
+    first = normalize_currency_code(primary)
+    if first:
+        ordered.append(first)
+        seen.add(first)
+
+    for value in fallbacks:
+        code = normalize_currency_code(value)
+        if not code or code in seen:
+            continue
+        ordered.append(code)
+        seen.add(code)
+    return ordered
+
+
 def normalize_set_code(number: Any, variant: Any) -> str:
     raw = collapse_ws(number)
     if not raw:
@@ -854,46 +881,81 @@ def apply_market_to_row(
     item_type: str,
     item_no: str,
     currency_code: str,
+    fallback_currency_codes: Sequence[str],
     client: BrickLinkClient,
     throttle: RuntimeThrottle,
     month_key: str,
 ) -> bool:
     previous_values = {key: row.get(key) for key in MARKET_PRESERVE_FIELDS}
 
-    matrix = client.fetch_price_matrix(item_type=item_type, item_no=item_no, currency_code=currency_code, throttle=throttle)
-    if matrix is None:
-        return False
+    matrix: Optional[Dict[Tuple[str, str], Dict[str, Any]]] = None
+    sold_new: Optional[Dict[str, Any]] = None
+    sold_used: Optional[Dict[str, Any]] = None
+    stock_new: Optional[Dict[str, Any]] = None
+    stock_used: Optional[Dict[str, Any]] = None
+    sold_new_avg: Optional[float] = None
+    sold_used_avg: Optional[float] = None
+    stock_new_avg: Optional[float] = None
+    stock_used_avg: Optional[float] = None
+    resolved_request_currency = normalize_currency_code(currency_code) or "USD"
 
-    sold_new = matrix.get(("sold", "N"))
-    sold_used = matrix.get(("sold", "U"))
-    stock_new = matrix.get(("stock", "N"))
-    stock_used = matrix.get(("stock", "U"))
-
-    sold_new_avg = _parse_float(sold_new.get("avg_price") if sold_new else None)
-    sold_used_avg = _parse_float(sold_used.get("avg_price") if sold_used else None)
-    stock_new_avg = _parse_float(stock_new.get("avg_price") if stock_new else None)
-    stock_used_avg = _parse_float(stock_used.get("avg_price") if stock_used else None)
-
-    any_numeric = any(
-        value is not None
-        for value in (
-            sold_new_avg,
-            sold_used_avg,
-            stock_new_avg,
-            stock_used_avg,
-            _parse_float(sold_new.get("min_price") if sold_new else None),
-            _parse_float(sold_used.get("min_price") if sold_used else None),
-            _parse_float(stock_new.get("min_price") if stock_new else None),
-            _parse_float(stock_used.get("min_price") if stock_used else None),
+    for cc in build_currency_try_order(currency_code, fallback_currency_codes):
+        candidate = client.fetch_price_matrix(
+            item_type=item_type,
+            item_no=item_no,
+            currency_code=cc,
+            throttle=throttle,
         )
-    )
-    if not any_numeric:
+        if candidate is None:
+            if client.last_error_kind == "not_found":
+                return False
+            continue
+
+        c_sold_new = candidate.get(("sold", "N"))
+        c_sold_used = candidate.get(("sold", "U"))
+        c_stock_new = candidate.get(("stock", "N"))
+        c_stock_used = candidate.get(("stock", "U"))
+
+        c_sold_new_avg = _parse_float(c_sold_new.get("avg_price") if c_sold_new else None)
+        c_sold_used_avg = _parse_float(c_sold_used.get("avg_price") if c_sold_used else None)
+        c_stock_new_avg = _parse_float(c_stock_new.get("avg_price") if c_stock_new else None)
+        c_stock_used_avg = _parse_float(c_stock_used.get("avg_price") if c_stock_used else None)
+
+        any_numeric = any(
+            value is not None
+            for value in (
+                c_sold_new_avg,
+                c_sold_used_avg,
+                c_stock_new_avg,
+                c_stock_used_avg,
+                _parse_float(c_sold_new.get("min_price") if c_sold_new else None),
+                _parse_float(c_sold_used.get("min_price") if c_sold_used else None),
+                _parse_float(c_stock_new.get("min_price") if c_stock_new else None),
+                _parse_float(c_stock_used.get("min_price") if c_stock_used else None),
+            )
+        )
+        if not any_numeric:
+            continue
+
+        matrix = candidate
+        sold_new = c_sold_new
+        sold_used = c_sold_used
+        stock_new = c_stock_new
+        stock_used = c_stock_used
+        sold_new_avg = c_sold_new_avg
+        sold_used_avg = c_sold_used_avg
+        stock_new_avg = c_stock_new_avg
+        stock_used_avg = c_stock_used_avg
+        resolved_request_currency = cc
+        break
+
+    if matrix is None:
         client._mark_failure("no_data", client.last_http_status)
         return False
 
     currency = collapse_ws(
         (sold_new or sold_used or stock_new or stock_used or {}).get("currency_code")
-    ).upper() or currency_code
+    ).upper() or resolved_request_currency
 
     # Summary prices and canonical display values.
     row["BrickLinkPriceGuideURL"] = to_price_guide_url(item_type, item_no)
@@ -1247,6 +1309,7 @@ def update_rows(
                 item_type=candidate_type,
                 item_no=candidate_no,
                 currency_code=cfg.currency_code,
+                fallback_currency_codes=cfg.fallback_currency_codes,
                 client=client,
                 throttle=throttle,
                 month_key=month_key,
@@ -1293,6 +1356,11 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
 
     parser.add_argument("--bricklink-base-url", default=BRICKLINK_API_BASE_URL, help="BrickLink API base URL.")
     parser.add_argument("--currency-code", default=os.getenv("BRICKLINK_CURRENCY", "GBP"), help="Price currency code (default GBP).")
+    parser.add_argument(
+        "--fallback-currencies",
+        default=os.getenv("BRICKLINK_FALLBACK_CURRENCIES", "USD,EUR"),
+        help="Comma-separated fallback currencies to try when primary currency has no rows (default USD,EUR).",
+    )
 
     parser.add_argument("--consumer-key", default=os.getenv("BRICKLINK_CONSUMER_KEY", ""), help="BrickLink consumer key.")
     parser.add_argument("--consumer-secret", default=os.getenv("BRICKLINK_CONSUMER_SECRET", ""), help="BrickLink consumer secret.")
@@ -1370,6 +1438,14 @@ def main(argv: Sequence[str]) -> int:
         jitter=max(0.0, args.jitter),
         verbose=bool(args.verbose),
         currency_code=collapse_ws(args.currency_code).upper() or "GBP",
+        fallback_currency_codes=tuple(
+            code
+            for code in (
+                normalize_currency_code(part)
+                for part in re.split(r"[,\s]+", str(args.fallback_currencies or ""))
+            )
+            if code
+        ),
     )
 
     request_budget = ApiRequestBudget(
