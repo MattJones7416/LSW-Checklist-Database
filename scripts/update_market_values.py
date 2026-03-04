@@ -220,18 +220,20 @@ class BrickLinkClient:
         if matrix is None:
             return None
 
-        # Throughput mode: keep to one API call per item whenever possible.
-        # Only probe targeted combinations when the aggregated response is empty.
-        if matrix:
-            return matrix
-
         needed: List[Tuple[str, str]] = [
             ("stock", "N"),
             ("stock", "U"),
             ("sold", "N"),
             ("sold", "U"),
         ]
-        for guide_type, condition in needed:
+        missing = [pair for pair in needed if pair not in matrix]
+        if not missing:
+            return matrix
+
+        # Throughput mode: keep calls low, but try to fill common gaps.
+        # If aggregate response is empty, allow up to two targeted probes.
+        max_probes = 2 if not matrix else 1
+        for guide_type, condition in missing:
             sub = self._fetch_matrix_once(
                 item_type=item_type,
                 item_no=item_no,
@@ -245,8 +247,11 @@ class BrickLinkClient:
             if not sub:
                 continue
             matrix.update(sub)
-            # One successful targeted probe is enough for this pass.
-            break
+            if all(pair in matrix for pair in needed):
+                break
+            max_probes -= 1
+            if max_probes <= 0:
+                break
 
         return matrix
 
@@ -369,14 +374,21 @@ class BrickLinkClient:
                     return None
 
             data = payload.get("data") if isinstance(payload, dict) else None
-            if not isinstance(data, list):
+            data_rows = _extract_matrix_rows(data)
+            if data_rows is None:
                 self._mark_failure("no_data", response.status_code)
                 if self.verbose:
-                    print(f"[API] missing data array {item_type}:{item_no}", flush=True)
+                    preview = ""
+                    if isinstance(data, dict):
+                        keys = [str(key) for key in list(data.keys())[:8]]
+                        preview = f" keys={keys}"
+                    elif data is not None:
+                        preview = f" type={type(data).__name__}"
+                    print(f"[API] missing data array {item_type}:{item_no}{preview}", flush=True)
                 return None
 
             matrix: Dict[Tuple[str, str], Dict[str, Any]] = {}
-            for row in data:
+            for row in data_rows:
                 if not isinstance(row, dict):
                     continue
                 guide_type = _normalize_guide_type(row.get("guide_type"))
@@ -402,12 +414,83 @@ def _parse_retry_after(value: Optional[str]) -> Optional[float]:
     return parsed
 
 
+def _extract_matrix_rows(data: Any) -> Optional[List[Dict[str, Any]]]:
+    if data is None:
+        return []
+    if isinstance(data, list):
+        return [row for row in data if isinstance(row, dict)]
+    if not isinstance(data, dict):
+        return None
+
+    # Some responses return a single row object instead of an array.
+    if data.get("guide_type") is not None and (
+        data.get("new_or_used") is not None or data.get("condition") is not None
+    ):
+        row = dict(data)
+        if row.get("new_or_used") is None and row.get("condition") is not None:
+            row["new_or_used"] = row.get("condition")
+        return [row]
+
+    # Common nested containers seen in API wrappers / gateway transforms.
+    for key in (
+        "price_detail",
+        "price_details",
+        "rows",
+        "items",
+        "guides",
+        "price_guides",
+        "data",
+    ):
+        nested = data.get(key)
+        if isinstance(nested, list):
+            return [row for row in nested if isinstance(row, dict)]
+        if isinstance(nested, dict):
+            inner = _extract_matrix_rows(nested)
+            if inner is not None:
+                return inner
+
+    # Flatten shaped keys like stock_new / sold_used.
+    synthesized: List[Dict[str, Any]] = []
+    for key, value in data.items():
+        if not isinstance(value, dict):
+            continue
+        normalized_key = str(key).strip().lower().replace("-", "_")
+        guide_type: Optional[str] = None
+        condition: Optional[str] = None
+        if "stock" in normalized_key or "current" in normalized_key:
+            guide_type = "stock"
+        elif "sold" in normalized_key:
+            guide_type = "sold"
+        if normalized_key.endswith("_n") or "new" in normalized_key:
+            condition = "N"
+        elif normalized_key.endswith("_u") or "used" in normalized_key:
+            condition = "U"
+        if not guide_type or not condition:
+            continue
+        row = dict(value)
+        row.setdefault("guide_type", guide_type)
+        row.setdefault("new_or_used", condition)
+        synthesized.append(row)
+
+    if synthesized:
+        return synthesized
+    return None
+
+
 def _normalize_guide_type(value: Any) -> Optional[str]:
     if value is None:
         return None
     text = str(value).strip().lower()
     if text in {"stock", "sold"}:
         return text
+    if text in {"s", "current", "available"}:
+        return "stock"
+    if text in {"c", "history", "sales"}:
+        return "sold"
+    if "stock" in text or "current" in text:
+        return "stock"
+    if "sold" in text:
+        return "sold"
     return None
 
 
@@ -417,6 +500,14 @@ def _normalize_condition(value: Any) -> Optional[str]:
     text = str(value).strip().upper()
     if text in {"N", "U"}:
         return text
+    if text in {"NEW", "SEALED", "MISB"}:
+        return "N"
+    if text in {"USED", "COMPLETE"}:
+        return "U"
+    if text.startswith("N"):
+        return "N"
+    if text.startswith("U"):
+        return "U"
     return None
 
 
