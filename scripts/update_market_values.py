@@ -51,6 +51,52 @@ MONTH_LABELS = {
     12: "December",
 }
 
+MARKET_PRESERVE_FIELDS = {
+    "BrickLinkSoldPriceNew",
+    "BrickLinkSoldPriceUsed",
+    "BrickLink6MSoldNewTimesSold",
+    "BrickLink6MSoldNewTotalQty",
+    "BrickLink6MSoldNewMinPrice",
+    "BrickLink6MSoldNewAvgPrice",
+    "BrickLink6MSoldNewQtyAvgPrice",
+    "BrickLink6MSoldNewMaxPrice",
+    "BrickLink6MSoldUsedTimesSold",
+    "BrickLink6MSoldUsedTotalQty",
+    "BrickLink6MSoldUsedMinPrice",
+    "BrickLink6MSoldUsedAvgPrice",
+    "BrickLink6MSoldUsedQtyAvgPrice",
+    "BrickLink6MSoldUsedMaxPrice",
+    "BrickLinkCurrentNewTotalLots",
+    "BrickLinkCurrentNewTotalQty",
+    "BrickLinkCurrentNewMinPrice",
+    "BrickLinkCurrentNewAvgPrice",
+    "BrickLinkCurrentNewQtyAvgPrice",
+    "BrickLinkCurrentNewMaxPrice",
+    "BrickLinkCurrentUsedTotalLots",
+    "BrickLinkCurrentUsedTotalQty",
+    "BrickLinkCurrentUsedMinPrice",
+    "BrickLinkCurrentUsedAvgPrice",
+    "BrickLinkCurrentUsedQtyAvgPrice",
+    "BrickLinkCurrentUsedMaxPrice",
+    "BrickLinkLatestSaleNewMonth",
+    "BrickLinkLatestSaleNewPrice",
+    "BrickLinkLatestSaleUsedMonth",
+    "BrickLinkLatestSaleUsedPrice",
+    "CurrentNewVsRRPAmount",
+    "CurrentNewVsRRPPercent",
+    "CurrentRRPBaseline",
+    "PriceForecast2YNew",
+    "PriceForecast5YNew",
+    "PriceForecast2YUsed",
+    "PriceForecast5YUsed",
+    "PriceTrendAnnualizedNewPercent",
+    "PriceTrendAnnualizedUsedPercent",
+    "PriceForecastMethod",
+    "BrickLinkUsedPriceRangeMin",
+    "BrickLinkUsedPriceRangeMax",
+}
+
+
 
 @dataclass
 class FetchConfig:
@@ -174,15 +220,18 @@ class BrickLinkClient:
         if matrix is None:
             return None
 
+        # Throughput mode: keep to one API call per item whenever possible.
+        # Only probe targeted combinations when the aggregated response is empty.
+        if matrix:
+            return matrix
+
         needed: List[Tuple[str, str]] = [
-            ("sold", "N"),
-            ("sold", "U"),
             ("stock", "N"),
             ("stock", "U"),
+            ("sold", "N"),
+            ("sold", "U"),
         ]
-
-        missing = [pair for pair in needed if pair not in matrix]
-        for guide_type, condition in missing:
+        for guide_type, condition in needed:
             sub = self._fetch_matrix_once(
                 item_type=item_type,
                 item_no=item_no,
@@ -196,6 +245,8 @@ class BrickLinkClient:
             if not sub:
                 continue
             matrix.update(sub)
+            # One successful targeted probe is enough for this pass.
+            break
 
         return matrix
 
@@ -653,6 +704,8 @@ def apply_market_to_row(
     throttle: RuntimeThrottle,
     month_key: str,
 ) -> bool:
+    previous_values = {key: row.get(key) for key in MARKET_PRESERVE_FIELDS}
+
     matrix = client.fetch_price_matrix(item_type=item_type, item_no=item_no, currency_code=currency_code, throttle=throttle)
     if matrix is None:
         return False
@@ -807,6 +860,22 @@ def apply_market_to_row(
     row["PriceTrendAnnualizedUsedPercent"] = gu
     row["PriceForecastMethod"] = "bricklink_api_monthly_trend"
     row["MarketLastUpdatedUTC"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Preserve prior analytics when the current API response does not include that facet.
+    for key, previous in previous_values.items():
+        current = row.get(key)
+        current_empty = (
+            current is None
+            or (isinstance(current, str) and collapse_ws(current) == "")
+            or (isinstance(current, (list, dict)) and len(current) == 0)
+        )
+        previous_has_value = not (
+            previous is None
+            or (isinstance(previous, str) and collapse_ws(previous) == "")
+            or (isinstance(previous, (list, dict)) and len(previous) == 0)
+        )
+        if current_empty and previous_has_value:
+            row[key] = previous
 
     return True
 
