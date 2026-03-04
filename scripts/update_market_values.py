@@ -667,6 +667,23 @@ def apply_market_to_row(
     stock_new_avg = _parse_float(stock_new.get("avg_price") if stock_new else None)
     stock_used_avg = _parse_float(stock_used.get("avg_price") if stock_used else None)
 
+    any_numeric = any(
+        value is not None
+        for value in (
+            sold_new_avg,
+            sold_used_avg,
+            stock_new_avg,
+            stock_used_avg,
+            _parse_float(sold_new.get("min_price") if sold_new else None),
+            _parse_float(sold_used.get("min_price") if sold_used else None),
+            _parse_float(stock_new.get("min_price") if stock_new else None),
+            _parse_float(stock_used.get("min_price") if stock_used else None),
+        )
+    )
+    if not any_numeric:
+        client._mark_failure("no_data", client.last_http_status)
+        return False
+
     currency = collapse_ws(
         (sold_new or sold_used or stock_new or stock_used or {}).get("currency_code")
     ).upper() or currency_code
@@ -708,8 +725,10 @@ def apply_market_to_row(
 
     display_new = first_non_none([stock_new_avg, sold_new_avg])
     display_used = first_non_none([stock_used_avg, sold_used_avg])
-    row["New"] = format_display_price(display_new, currency)
-    row["Used"] = format_display_price(display_used, currency)
+    existing_new = collapse_ws(row.get("New"))
+    existing_used = collapse_ws(row.get("Used"))
+    row["New"] = format_display_price(display_new, currency) if display_new is not None else (existing_new or None)
+    row["Used"] = format_display_price(display_used, currency) if display_used is not None else (existing_used or None)
 
     # Keep latest-sale fields aligned to the most recent API snapshot (month-level granularity).
     row["BrickLinkLatestSaleNewMonth"] = month_key if sold_new_avg is not None else None
@@ -731,19 +750,29 @@ def apply_market_to_row(
     row["BrickLinkUsedPriceRangeMax"] = round(used_max, 2) if used_max is not None else None
 
     # Monthly series = one API snapshot per run (stable, API-only, no scraping).
-    month_new = upsert_monthly_point(
-        row.get("BrickLinkMonthlySalesNew"),
-        month=month_key,
-        avg_price=sold_new_avg,
-        total_lots=_parse_int(sold_new.get("unit_quantity") if sold_new else None),
-        total_qty=_parse_int(sold_new.get("total_quantity") if sold_new else None),
+    existing_month_new = row.get("BrickLinkMonthlySalesNew") if isinstance(row.get("BrickLinkMonthlySalesNew"), list) else []
+    existing_month_used = row.get("BrickLinkMonthlySalesUsed") if isinstance(row.get("BrickLinkMonthlySalesUsed"), list) else []
+    month_new = (
+        upsert_monthly_point(
+            existing_month_new,
+            month=month_key,
+            avg_price=sold_new_avg,
+            total_lots=_parse_int(sold_new.get("unit_quantity") if sold_new else None),
+            total_qty=_parse_int(sold_new.get("total_quantity") if sold_new else None),
+        )
+        if sold_new_avg is not None
+        else existing_month_new
     )
-    month_used = upsert_monthly_point(
-        row.get("BrickLinkMonthlySalesUsed"),
-        month=month_key,
-        avg_price=sold_used_avg,
-        total_lots=_parse_int(sold_used.get("unit_quantity") if sold_used else None),
-        total_qty=_parse_int(sold_used.get("total_quantity") if sold_used else None),
+    month_used = (
+        upsert_monthly_point(
+            existing_month_used,
+            month=month_key,
+            avg_price=sold_used_avg,
+            total_lots=_parse_int(sold_used.get("unit_quantity") if sold_used else None),
+            total_qty=_parse_int(sold_used.get("total_quantity") if sold_used else None),
+        )
+        if sold_used_avg is not None
+        else existing_month_used
     )
     row["BrickLinkMonthlySalesNew"] = month_new
     row["BrickLinkMonthlySalesUsed"] = month_used
@@ -1064,6 +1093,12 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         help="Maximum recently changed set numbers to prioritize from catalog sync state.",
     )
     parser.add_argument("--limit", type=int, default=None, help="Optional per-file row limit for testing.")
+    parser.add_argument(
+        "--item-type",
+        choices=["both", "set", "minifig"],
+        default="both",
+        help="Choose whether to update sets, minifigs, or both (default both).",
+    )
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging.")
@@ -1160,20 +1195,25 @@ def main(argv: Sequence[str]) -> int:
         changed_set_codes = changed_set_codes[: args.priority_updated_limit]
     changed_set_lookup = set(changed_set_codes)
 
+    do_sets = args.item_type in {"both", "set"}
+    do_minifigs = args.item_type in {"both", "minifig"}
+
     set_priority_indices: List[int] = []
-    for idx, row in enumerate(sets_rows):
-        code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
-        has_new = bool(collapse_ws(row.get("New")))
-        has_used = bool(collapse_ws(row.get("Used")))
-        if (not has_new) or (not has_used) or (code in changed_set_lookup):
-            set_priority_indices.append(idx)
+    if do_sets:
+        for idx, row in enumerate(sets_rows):
+            code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
+            has_new = bool(collapse_ws(row.get("New")))
+            has_used = bool(collapse_ws(row.get("Used")))
+            if (not has_new) or (not has_used) or (code in changed_set_lookup):
+                set_priority_indices.append(idx)
 
     minifig_priority_indices: List[int] = []
-    for idx, row in enumerate(minifigs_rows):
-        has_new = bool(collapse_ws(row.get("New")))
-        has_used = bool(collapse_ws(row.get("Used")))
-        if (not has_new) or (not has_used):
-            minifig_priority_indices.append(idx)
+    if do_minifigs:
+        for idx, row in enumerate(minifigs_rows):
+            has_new = bool(collapse_ws(row.get("New")))
+            has_used = bool(collapse_ws(row.get("Used")))
+            if (not has_new) or (not has_used):
+                minifig_priority_indices.append(idx)
 
     stored_set_cursor = _parse_int(market_state.get("nextSetIndex"))
     stored_minifig_cursor = _parse_int(market_state.get("nextMinifigIndex"))
@@ -1182,8 +1222,8 @@ def main(argv: Sequence[str]) -> int:
 
     set_priority_lookup = set(set_priority_indices)
     minifig_priority_lookup = set(minifig_priority_indices)
-    set_rotating_indices = rotating_indices(len(sets_rows), set_cursor)
-    minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor)
+    set_rotating_indices = rotating_indices(len(sets_rows), set_cursor) if do_sets else []
+    minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor) if do_minifigs else []
     set_plan = prioritize_rotating_indices(set_rotating_indices, set_priority_lookup)
     minifig_plan = prioritize_rotating_indices(minifig_rotating_indices, minifig_priority_lookup)
 
@@ -1196,37 +1236,43 @@ def main(argv: Sequence[str]) -> int:
             flush=True,
         )
 
-    sets_stats = update_rows(
-        sets_rows,
-        item_type="SET",
-        cfg=cfg,
-        client=client,
-        throttle=throttle,
-        month_key=month_key,
-        start_index=max(0, args.start_index),
-        limit=args.limit,
-        indexes=set_plan,
-        label="Sets",
-    )
+    if do_sets:
+        sets_stats = update_rows(
+            sets_rows,
+            item_type="SET",
+            cfg=cfg,
+            client=client,
+            throttle=throttle,
+            month_key=month_key,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            indexes=set_plan,
+            label="Sets",
+        )
+    else:
+        sets_stats = FileUpdateStats(total_rows=len(sets_rows))
 
-    minifigs_stats = update_rows(
-        minifigs_rows,
-        item_type="MINIFIG",
-        cfg=cfg,
-        client=client,
-        throttle=throttle,
-        month_key=month_key,
-        start_index=max(0, args.start_index),
-        limit=args.limit,
-        indexes=minifig_plan,
-        label="Minifigs",
-    )
+    if do_minifigs:
+        minifigs_stats = update_rows(
+            minifigs_rows,
+            item_type="MINIFIG",
+            cfg=cfg,
+            client=client,
+            throttle=throttle,
+            month_key=month_key,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            indexes=minifig_plan,
+            label="Minifigs",
+        )
+    else:
+        minifigs_stats = FileUpdateStats(total_rows=len(minifigs_rows))
 
     next_set_cursor = set_cursor
-    if sets_rows and sets_stats.last_index_processed is not None:
+    if do_sets and sets_rows and sets_stats.last_index_processed is not None:
         next_set_cursor = (sets_stats.last_index_processed + 1) % len(sets_rows)
     next_minifig_cursor = minifig_cursor
-    if minifigs_rows and minifigs_stats.last_index_processed is not None:
+    if do_minifigs and minifigs_rows and minifigs_stats.last_index_processed is not None:
         next_minifig_cursor = (minifigs_stats.last_index_processed + 1) % len(minifigs_rows)
 
     set_rows_with_new = sum(1 for row in sets_rows if bool(collapse_ws(row.get("New"))))

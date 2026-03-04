@@ -124,16 +124,29 @@ jobs:
           }
 
           for chunk in 1 2 3 4; do
-            echo "[Market] Starting chunk ${chunk}/4..."
+            echo "[Market] Starting chunk ${chunk}/4 (sets)..."
             set +e
-            python scripts/update_market_values.py               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 1200               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            python scripts/update_market_values.py               --item-type set               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 900               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
-            checkpoint_commit "chore: market checkpoint chunk ${chunk}"
+            checkpoint_commit "chore: market checkpoint chunk ${chunk} sets"
 
             if [ "$status" -ne 0 ]; then
-              echo "Market chunk ${chunk} failed with exit code ${status}."
+              echo "Market chunk ${chunk} (sets) failed with exit code ${status}."
+              exit "$status"
+            fi
+
+            echo "[Market] Starting chunk ${chunk}/4 (minifigs)..."
+            set +e
+            python scripts/update_market_values.py               --item-type minifig               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 300               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            status=$?
+            set -e
+
+            checkpoint_commit "chore: market checkpoint chunk ${chunk} minifigs"
+
+            if [ "$status" -ne 0 ]; then
+              echo "Market chunk ${chunk} (minifigs) failed with exit code ${status}."
               exit "$status"
             fi
           done
