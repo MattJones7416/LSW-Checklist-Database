@@ -18,6 +18,7 @@ Updated fields include:
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import random
@@ -50,6 +51,14 @@ MONTH_LABELS = {
     11: "November",
     12: "December",
 }
+
+MONTH_NAME_TO_NUMBER = {name.lower(): idx for idx, name in MONTH_LABELS.items()}
+
+HTML_PRICE_GUIDE_BASE_URL = "https://www.bricklink.com/catalogPG.asp"
+HTML_MONTH_RE = re.compile(
+    r"<B>\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s*&nbsp;\s*(\d{4})\s*</B>",
+    re.IGNORECASE | re.DOTALL,
+)
 
 MARKET_PRESERVE_FIELDS = {
     "BrickLinkSoldPriceNew",
@@ -109,6 +118,7 @@ class FetchConfig:
     verbose: bool
     currency_code: str
     fallback_currency_codes: Tuple[str, ...] = ()
+    allow_html_fallback: bool = True
 
 
 @dataclass
@@ -193,6 +203,11 @@ class BrickLinkClient:
         self.last_error_kind = ""
         self.last_http_status: Optional[int] = None
         self.request_budget = request_budget or ApiRequestBudget(max_calls=None)
+        self.html_headers = {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-GB,en;q=0.9",
+            "User-Agent": "Mozilla/5.0 (compatible; lsw-checklist-market-sync/1.0)",
+        }
 
     def _mark_failure(self, kind: str, http_status: Optional[int] = None) -> None:
         self.last_error_kind = kind
@@ -420,6 +435,108 @@ class BrickLinkClient:
             self._mark_success(response.status_code)
             return matrix
 
+    def fetch_price_guide_html(
+        self,
+        item_type: str,
+        item_no: str,
+        throttle: RuntimeThrottle,
+    ) -> Optional[
+        Tuple[
+            Dict[Tuple[str, str], Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            str,
+        ]
+    ]:
+        code = collapse_ws(item_no)
+        if not code:
+            self._mark_failure("no_data")
+            return None
+
+        item_type_upper = collapse_ws(item_type).upper()
+        if item_type_upper == "SET":
+            query_key = "S"
+        elif item_type_upper == "MINIFIG":
+            query_key = "M"
+        else:
+            self._mark_failure("parse_error")
+            return None
+
+        url = f"{HTML_PRICE_GUIDE_BASE_URL}?{query_key}={quote(code, safe='')}&ColorID=0"
+
+        attempt = 0
+        while True:
+            attempt += 1
+            if not self.request_budget.consume():
+                self._mark_failure("budget")
+                if self.verbose:
+                    print(
+                        f"[HTML] request budget exhausted before {item_type}:{item_no}",
+                        flush=True,
+                    )
+                return None
+
+            throttle.sleep_between_requests()
+            try:
+                response = self.session.get(
+                    url,
+                    timeout=self.timeout,
+                    headers=self.html_headers,
+                )
+            except requests.RequestException as exc:
+                if attempt > self.retries + 1:
+                    self._mark_failure("request_error")
+                    if self.verbose:
+                        print(f"[HTML] request failed {item_type}:{item_no}: {exc}", flush=True)
+                    return None
+                throttle.apply_backoff()
+                continue
+
+            if response.status_code == 429:
+                retry_after = _parse_retry_after(response.headers.get("Retry-After"))
+                throttle.apply_backoff(retry_after)
+                if attempt > self.retries + 1:
+                    self._mark_failure("rate_limited", 429)
+                    if self.verbose:
+                        print(f"[HTML] HTTP 429 {item_type}:{item_no}", flush=True)
+                    return None
+                continue
+
+            if response.status_code >= 500:
+                throttle.apply_backoff()
+                if attempt > self.retries + 1:
+                    self._mark_failure("server_error", response.status_code)
+                    if self.verbose:
+                        print(f"[HTML] HTTP {response.status_code} {item_type}:{item_no}", flush=True)
+                    return None
+                continue
+
+            if response.status_code >= 400:
+                if response.status_code == 404:
+                    self._mark_failure("not_found", 404)
+                else:
+                    self._mark_failure("http_error", response.status_code)
+                if self.verbose:
+                    print(
+                        f"[HTML] HTTP {response.status_code} {item_type}:{item_no}",
+                        flush=True,
+                    )
+                return None
+
+            parsed = _parse_price_guide_html(response.text)
+            if parsed is None:
+                self._mark_failure("no_data", response.status_code)
+                if self.verbose:
+                    print(f"[HTML] no parseable price data {item_type}:{item_no}", flush=True)
+                return None
+
+            matrix, month_new, month_used, tx_new, tx_used, currency = parsed
+            throttle.apply_success()
+            self._mark_success(response.status_code)
+            return (matrix, month_new, month_used, tx_new, tx_used, currency)
+
 
 def _parse_retry_after(value: Optional[str]) -> Optional[float]:
     if not value:
@@ -509,6 +626,293 @@ def _extract_matrix_rows(data: Any) -> Optional[List[Dict[str, Any]]]:
     if synthesized:
         return synthesized
     return None
+
+
+def _html_to_text(raw: Any) -> str:
+    if raw is None:
+        return ""
+    text = re.sub(r"<[^>]+>", " ", str(raw))
+    text = html.unescape(text).replace("\xa0", " ")
+    return collapse_ws(text)
+
+
+def _extract_block_metric_text(block_html: str, label_pattern: str) -> str:
+    match = re.search(label_pattern + r".*?<B>(.*?)</B>", block_html, re.IGNORECASE | re.DOTALL)
+    if not match:
+        return ""
+    return _html_to_text(match.group(1))
+
+
+def _parse_price_and_currency(raw: Any) -> Tuple[Optional[float], Optional[str]]:
+    text = _html_to_text(raw).replace("~", " ").strip()
+    if not text:
+        return (None, None)
+
+    code_match = re.search(r"\b([A-Z]{3})\b\s*([-+]?[0-9][0-9,]*(?:\.[0-9]+)?)", text, re.IGNORECASE)
+    if code_match:
+        amount = _parse_float(code_match.group(2))
+        currency = collapse_ws(code_match.group(1)).upper() or None
+        return (amount, currency)
+
+    symbol_match = re.search(r"([£$€])\s*([-+]?[0-9][0-9,]*(?:\.[0-9]+)?)", text)
+    if symbol_match:
+        symbol = symbol_match.group(1)
+        amount = _parse_float(symbol_match.group(2))
+        symbol_map = {"£": "GBP", "$": "USD", "€": "EUR"}
+        return (amount, symbol_map.get(symbol))
+
+    return (_parse_float(text), None)
+
+
+def _parse_price_guide_summary_block(
+    block_html: str,
+    *,
+    guide_type: str,
+    condition: str,
+    fallback_currency: Optional[str],
+) -> Optional[Dict[str, Any]]:
+    qty_value = _extract_block_metric_text(block_html, r"(?:Times Sold|Total Lots):")
+    total_qty_value = _extract_block_metric_text(block_html, r"Total Qty:")
+    min_price_raw = _extract_block_metric_text(block_html, r"Min Price:")
+    avg_price_raw = _extract_block_metric_text(block_html, r"Avg Price:")
+    qty_avg_raw = _extract_block_metric_text(block_html, r"Qty Avg Price:")
+    max_price_raw = _extract_block_metric_text(block_html, r"Max Price:")
+
+    min_price, min_currency = _parse_price_and_currency(min_price_raw)
+    avg_price, avg_currency = _parse_price_and_currency(avg_price_raw)
+    qty_avg_price, qty_avg_currency = _parse_price_and_currency(qty_avg_raw)
+    max_price, max_currency = _parse_price_and_currency(max_price_raw)
+    currency = (
+        min_currency
+        or avg_currency
+        or qty_avg_currency
+        or max_currency
+        or (collapse_ws(fallback_currency).upper() or None)
+    )
+
+    row: Dict[str, Any] = {
+        "guide_type": guide_type,
+        "new_or_used": condition,
+        "unit_quantity": _parse_int(qty_value),
+        "total_quantity": _parse_int(total_qty_value),
+        "min_price": min_price,
+        "avg_price": avg_price,
+        "qty_avg_price": qty_avg_price,
+        "max_price": max_price,
+        "currency_code": currency,
+    }
+
+    if not any(
+        value is not None
+        for value in (
+            row.get("avg_price"),
+            row.get("min_price"),
+            row.get("max_price"),
+            row.get("qty_avg_price"),
+            row.get("unit_quantity"),
+            row.get("total_quantity"),
+        )
+    ):
+        return None
+    return row
+
+
+def _parse_monthly_sales_column_html(
+    column_html: str,
+    *,
+    fallback_currency: Optional[str],
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    month_matches = list(HTML_MONTH_RE.finditer(column_html))
+    if not month_matches:
+        return ([], [])
+
+    rows: List[Dict[str, Any]] = []
+    transactions: List[Dict[str, Any]] = []
+    seen_months: set[str] = set()
+
+    for idx, match in enumerate(month_matches):
+        month_name = collapse_ws(match.group(1))
+        year_text = collapse_ws(match.group(2))
+        month_num = MONTH_NAME_TO_NUMBER.get(month_name.lower())
+        year_num = _parse_int(year_text)
+        if month_num is None or year_num is None:
+            continue
+
+        start = match.start()
+        end = month_matches[idx + 1].start() if idx + 1 < len(month_matches) else len(column_html)
+        block = column_html[start:end]
+
+        avg_price_raw = _extract_block_metric_text(block, r"Avg Price:")
+        total_qty_raw = _extract_block_metric_text(block, r"Total Qty:")
+        times_sold_raw = _extract_block_metric_text(block, r"Times Sold:")
+
+        month_key = f"{year_num:04d}-{month_num:02d}"
+        if month_key in seen_months:
+            continue
+        seen_months.add(month_key)
+
+        monthly_tx: List[Dict[str, Any]] = []
+        for tx_match in re.finditer(
+            r"<TR\s+ALIGN=\"RIGHT\"[^>]*>\s*"
+            r"<TD[^>]*>.*?</TD>\s*"
+            r"<TD[^>]*>(.*?)</TD>\s*"
+            r"<TD[^>]*>(.*?)</TD>\s*"
+            r"</TR>",
+            block,
+            re.IGNORECASE | re.DOTALL,
+        ):
+            qty = _parse_int(_html_to_text(tx_match.group(1)))
+            each_price, tx_currency = _parse_price_and_currency(tx_match.group(2))
+            if qty is None or each_price is None:
+                continue
+            monthly_tx.append(
+                {
+                    "month": month_key,
+                    "monthLabel": month_label(month_key),
+                    "sequence": len(monthly_tx) + 1,
+                    "qty": max(1, qty),
+                    "eachPrice": round(each_price, 2),
+                    "currency": collapse_ws(tx_currency or fallback_currency).upper() or None,
+                }
+            )
+
+        avg_price, _currency = _parse_price_and_currency(avg_price_raw)
+        if avg_price is None and monthly_tx:
+            qty_weighted_total = 0.0
+            qty_total = 0
+            for tx in monthly_tx:
+                each = _parse_float(tx.get("eachPrice"))
+                qty = _parse_int(tx.get("qty")) or 0
+                if each is None or qty <= 0:
+                    continue
+                qty_weighted_total += each * qty
+                qty_total += qty
+            if qty_total > 0:
+                avg_price = qty_weighted_total / qty_total
+        if avg_price is None:
+            continue
+
+        total_qty = _parse_int(total_qty_raw)
+        if total_qty is None and monthly_tx:
+            total_qty = sum(_parse_int(tx.get("qty")) or 0 for tx in monthly_tx)
+        total_lots = _parse_int(times_sold_raw)
+        if total_lots is None and monthly_tx:
+            total_lots = len(monthly_tx)
+
+        rows.append(
+            {
+                "month": month_key,
+                "monthLabel": month_label(month_key),
+                "avgPrice": round(avg_price, 2),
+                "totalLots": total_lots,
+                "totalQty": total_qty,
+                "currency": collapse_ws(fallback_currency).upper() or None,
+            }
+        )
+        transactions.extend(monthly_tx)
+
+    rows.sort(key=lambda row: row.get("month") or "")
+    return (rows, transactions)
+
+
+def _parse_price_guide_html(
+    html_text: str,
+) -> Optional[
+    Tuple[
+        Dict[Tuple[str, str], Dict[str, Any]],
+        List[Dict[str, Any]],
+        List[Dict[str, Any]],
+        List[Dict[str, Any]],
+        List[Dict[str, Any]],
+        str,
+    ]
+]:
+    if not html_text:
+        return None
+    lower = html_text.lower()
+    if "internal server error" in lower and "catalogpg" not in lower:
+        return None
+
+    currency_match = re.search(r"Showing prices in.*?\(([A-Z]{3})\)", html_text, re.IGNORECASE | re.DOTALL)
+    page_currency = collapse_ws(currency_match.group(1)).upper() if currency_match else ""
+
+    summary_match = re.search(
+        r"<TR\s+BGCOLOR=\"#C0C0C0\"[^>]*>(.*?)<TR\s+VALIGN=\"TOP\"",
+        html_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not summary_match:
+        return None
+    summary_segment = summary_match.group(1)
+    summary_blocks = [
+        block
+        for block in re.split(r"<TD\s+VALIGN=\"TOP\"[^>]*>", summary_segment, flags=re.IGNORECASE | re.DOTALL)
+        if "Avg Price" in block and "Max Price" in block
+    ]
+    if len(summary_blocks) < 4:
+        return None
+
+    sold_new = _parse_price_guide_summary_block(
+        summary_blocks[0],
+        guide_type="sold",
+        condition="N",
+        fallback_currency=page_currency,
+    )
+    sold_used = _parse_price_guide_summary_block(
+        summary_blocks[1],
+        guide_type="sold",
+        condition="U",
+        fallback_currency=page_currency,
+    )
+    stock_new = _parse_price_guide_summary_block(
+        summary_blocks[2],
+        guide_type="stock",
+        condition="N",
+        fallback_currency=page_currency,
+    )
+    stock_used = _parse_price_guide_summary_block(
+        summary_blocks[3],
+        guide_type="stock",
+        condition="U",
+        fallback_currency=page_currency,
+    )
+
+    matrix: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    if sold_new is not None:
+        matrix[("sold", "N")] = sold_new
+    if sold_used is not None:
+        matrix[("sold", "U")] = sold_used
+    if stock_new is not None:
+        matrix[("stock", "N")] = stock_new
+    if stock_used is not None:
+        matrix[("stock", "U")] = stock_used
+    if not matrix:
+        return None
+
+    currency = ""
+    for row in matrix.values():
+        cc = collapse_ws(row.get("currency_code")).upper()
+        if cc:
+            currency = cc
+            break
+    if not currency:
+        currency = page_currency or "GBP"
+    for row in matrix.values():
+        if not collapse_ws(row.get("currency_code")):
+            row["currency_code"] = currency
+
+    column_positions = [m.start() for m in re.finditer(r"<TD\s+WIDTH=\"25%\"", html_text, re.IGNORECASE)]
+    month_new: List[Dict[str, Any]] = []
+    month_used: List[Dict[str, Any]] = []
+    tx_new: List[Dict[str, Any]] = []
+    tx_used: List[Dict[str, Any]] = []
+    if len(column_positions) >= 2:
+        new_col = html_text[column_positions[0] : column_positions[1]]
+        used_col = html_text[column_positions[1] : column_positions[2] if len(column_positions) > 2 else len(html_text)]
+        month_new, tx_new = _parse_monthly_sales_column_html(new_col, fallback_currency=currency)
+        month_used, tx_used = _parse_monthly_sales_column_html(used_col, fallback_currency=currency)
+
+    return (matrix, month_new, month_used, tx_new, tx_used, currency)
 
 
 def _normalize_guide_type(value: Any) -> Optional[str]:
@@ -859,6 +1263,31 @@ def monthly_series_to_transactions(series: List[Dict[str, Any]], currency_code: 
     return tx
 
 
+def latest_sale_from_transactions(transactions: Any) -> Tuple[Optional[str], Optional[float]]:
+    if not isinstance(transactions, list):
+        return (None, None)
+    best_month = ""
+    best_sequence = 10**9
+    best_price: Optional[float] = None
+    for tx in transactions:
+        if not isinstance(tx, dict):
+            continue
+        month = collapse_ws(tx.get("month"))
+        if not re.match(r"^\d{4}-\d{2}$", month):
+            continue
+        price = _parse_float(tx.get("eachPrice"))
+        if price is None:
+            continue
+        seq = _parse_int(tx.get("sequence")) or 10**9
+        if month > best_month or (month == best_month and seq < best_sequence):
+            best_month = month
+            best_sequence = seq
+            best_price = round(price, 2)
+    if not best_month or best_price is None:
+        return (None, None)
+    return (best_month, best_price)
+
+
 def first_non_none(values: Iterable[Optional[float]]) -> Optional[float]:
     for value in values:
         if value is not None:
@@ -912,6 +1341,7 @@ def apply_market_to_row(
     item_no: str,
     currency_code: str,
     fallback_currency_codes: Sequence[str],
+    allow_html_fallback: bool,
     client: BrickLinkClient,
     throttle: RuntimeThrottle,
     month_key: str,
@@ -928,60 +1358,171 @@ def apply_market_to_row(
     stock_new_avg: Optional[float] = None
     stock_used_avg: Optional[float] = None
     resolved_request_currency = normalize_currency_code(currency_code) or "USD"
+    fallback_month_new: Optional[List[Dict[str, Any]]] = None
+    fallback_month_used: Optional[List[Dict[str, Any]]] = None
+    fallback_transactions_new: Optional[List[Dict[str, Any]]] = None
+    fallback_transactions_used: Optional[List[Dict[str, Any]]] = None
 
-    for cc in build_currency_try_order(currency_code, fallback_currency_codes):
-        candidate = client.fetch_price_matrix(
-            item_type=item_type,
-            item_no=item_no,
-            currency_code=cc,
-            throttle=throttle,
-        )
-        if candidate is None:
-            if client.last_error_kind == "not_found":
-                return False
-            continue
+    currency_try_order = build_currency_try_order(currency_code, fallback_currency_codes)
+    if not currency_try_order:
+        currency_try_order = [normalize_currency_code(currency_code) or "GBP"]
 
-        c_sold_new = candidate.get(("sold", "N"))
-        c_sold_used = candidate.get(("sold", "U"))
-        c_stock_new = candidate.get(("stock", "N"))
-        c_stock_used = candidate.get(("stock", "U"))
-
-        c_sold_new_avg = _parse_float(c_sold_new.get("avg_price") if c_sold_new else None)
-        c_sold_used_avg = _parse_float(c_sold_used.get("avg_price") if c_sold_used else None)
-        c_stock_new_avg = _parse_float(c_stock_new.get("avg_price") if c_stock_new else None)
-        c_stock_used_avg = _parse_float(c_stock_used.get("avg_price") if c_stock_used else None)
-
-        any_numeric = any(
-            value is not None
-            for value in (
-                c_sold_new_avg,
-                c_sold_used_avg,
-                c_stock_new_avg,
-                c_stock_used_avg,
-                _parse_float(c_sold_new.get("min_price") if c_sold_new else None),
-                _parse_float(c_sold_used.get("min_price") if c_sold_used else None),
-                _parse_float(c_stock_new.get("min_price") if c_stock_new else None),
-                _parse_float(c_stock_used.get("min_price") if c_stock_used else None),
+    if not client.auth_failed:
+        for cc in currency_try_order:
+            candidate = client.fetch_price_matrix(
+                item_type=item_type,
+                item_no=item_no,
+                currency_code=cc,
+                throttle=throttle,
             )
-        )
-        if not any_numeric:
-            continue
+            if candidate is None:
+                if client.last_error_kind == "not_found":
+                    break
+                if client.last_error_kind == "auth":
+                    break
+                continue
 
-        matrix = candidate
-        sold_new = c_sold_new
-        sold_used = c_sold_used
-        stock_new = c_stock_new
-        stock_used = c_stock_used
-        sold_new_avg = c_sold_new_avg
-        sold_used_avg = c_sold_used_avg
-        stock_new_avg = c_stock_new_avg
-        stock_used_avg = c_stock_used_avg
-        resolved_request_currency = cc
-        break
+            c_sold_new = candidate.get(("sold", "N"))
+            c_sold_used = candidate.get(("sold", "U"))
+            c_stock_new = candidate.get(("stock", "N"))
+            c_stock_used = candidate.get(("stock", "U"))
+
+            c_sold_new_avg = _parse_float(c_sold_new.get("avg_price") if c_sold_new else None)
+            c_sold_used_avg = _parse_float(c_sold_used.get("avg_price") if c_sold_used else None)
+            c_stock_new_avg = _parse_float(c_stock_new.get("avg_price") if c_stock_new else None)
+            c_stock_used_avg = _parse_float(c_stock_used.get("avg_price") if c_stock_used else None)
+
+            any_numeric = any(
+                value is not None
+                for value in (
+                    c_sold_new_avg,
+                    c_sold_used_avg,
+                    c_stock_new_avg,
+                    c_stock_used_avg,
+                    _parse_float(c_sold_new.get("min_price") if c_sold_new else None),
+                    _parse_float(c_sold_used.get("min_price") if c_sold_used else None),
+                    _parse_float(c_stock_new.get("min_price") if c_stock_new else None),
+                    _parse_float(c_stock_used.get("min_price") if c_stock_used else None),
+                )
+            )
+            if not any_numeric:
+                continue
+
+            matrix = candidate
+            sold_new = c_sold_new
+            sold_used = c_sold_used
+            stock_new = c_stock_new
+            stock_used = c_stock_used
+            sold_new_avg = c_sold_new_avg
+            sold_used_avg = c_sold_used_avg
+            stock_new_avg = c_stock_new_avg
+            stock_used_avg = c_stock_used_avg
+            resolved_request_currency = cc
+            break
+
+    if matrix is None:
+        if allow_html_fallback:
+            fallback_result = client.fetch_price_guide_html(
+                item_type=item_type,
+                item_no=item_no,
+                throttle=throttle,
+            )
+            if fallback_result is not None:
+                candidate, html_month_new, html_month_used, html_tx_new, html_tx_used, html_currency = fallback_result
+                c_sold_new = candidate.get(("sold", "N"))
+                c_sold_used = candidate.get(("sold", "U"))
+                c_stock_new = candidate.get(("stock", "N"))
+                c_stock_used = candidate.get(("stock", "U"))
+
+                c_sold_new_avg = _parse_float(c_sold_new.get("avg_price") if c_sold_new else None)
+                c_sold_used_avg = _parse_float(c_sold_used.get("avg_price") if c_sold_used else None)
+                c_stock_new_avg = _parse_float(c_stock_new.get("avg_price") if c_stock_new else None)
+                c_stock_used_avg = _parse_float(c_stock_used.get("avg_price") if c_stock_used else None)
+
+                any_numeric = any(
+                    value is not None
+                    for value in (
+                        c_sold_new_avg,
+                        c_sold_used_avg,
+                        c_stock_new_avg,
+                        c_stock_used_avg,
+                        _parse_float(c_sold_new.get("min_price") if c_sold_new else None),
+                        _parse_float(c_sold_used.get("min_price") if c_sold_used else None),
+                        _parse_float(c_stock_new.get("min_price") if c_stock_new else None),
+                        _parse_float(c_stock_used.get("min_price") if c_stock_used else None),
+                    )
+                )
+                if any_numeric:
+                    matrix = candidate
+                    sold_new = c_sold_new
+                    sold_used = c_sold_used
+                    stock_new = c_stock_new
+                    stock_used = c_stock_used
+                    sold_new_avg = c_sold_new_avg
+                    sold_used_avg = c_sold_used_avg
+                    stock_new_avg = c_stock_new_avg
+                    stock_used_avg = c_stock_used_avg
+                    fallback_month_new = html_month_new
+                    fallback_month_used = html_month_used
+                    fallback_transactions_new = html_tx_new
+                    fallback_transactions_used = html_tx_used
+                    if collapse_ws(html_currency):
+                        resolved_request_currency = collapse_ws(html_currency).upper()
 
     if matrix is None:
         client._mark_failure("no_data", client.last_http_status)
         return False
+
+    if allow_html_fallback and (
+        not isinstance(row.get("BrickLinkMonthlySalesNew"), list)
+        or not row.get("BrickLinkMonthlySalesNew")
+        or not isinstance(row.get("BrickLinkMonthlySalesUsed"), list)
+        or not row.get("BrickLinkMonthlySalesUsed")
+        or not isinstance(row.get("BrickLinkTransactionsNew"), list)
+        or not row.get("BrickLinkTransactionsNew")
+        or not isinstance(row.get("BrickLinkTransactionsUsed"), list)
+        or not row.get("BrickLinkTransactionsUsed")
+    ):
+        history_result = client.fetch_price_guide_html(
+            item_type=item_type,
+            item_no=item_no,
+            throttle=throttle,
+        )
+        if history_result is not None:
+            history_matrix, html_month_new, html_month_used, html_tx_new, html_tx_used, html_currency = history_result
+            h_sold_new = history_matrix.get(("sold", "N"))
+            h_sold_used = history_matrix.get(("sold", "U"))
+            h_stock_new = history_matrix.get(("stock", "N"))
+            h_stock_used = history_matrix.get(("stock", "U"))
+            history_has_numeric = any(
+                value is not None
+                for value in (
+                    _parse_float(h_sold_new.get("avg_price") if h_sold_new else None),
+                    _parse_float(h_sold_used.get("avg_price") if h_sold_used else None),
+                    _parse_float(h_stock_new.get("avg_price") if h_stock_new else None),
+                    _parse_float(h_stock_used.get("avg_price") if h_stock_used else None),
+                )
+            )
+            if history_has_numeric:
+                matrix = history_matrix
+                sold_new = h_sold_new
+                sold_used = h_sold_used
+                stock_new = h_stock_new
+                stock_used = h_stock_used
+                sold_new_avg = _parse_float(sold_new.get("avg_price") if sold_new else None)
+                sold_used_avg = _parse_float(sold_used.get("avg_price") if sold_used else None)
+                stock_new_avg = _parse_float(stock_new.get("avg_price") if stock_new else None)
+                stock_used_avg = _parse_float(stock_used.get("avg_price") if stock_used else None)
+                if collapse_ws(html_currency):
+                    resolved_request_currency = collapse_ws(html_currency).upper()
+            if html_month_new:
+                fallback_month_new = html_month_new
+            if html_month_used:
+                fallback_month_used = html_month_used
+            if html_tx_new:
+                fallback_transactions_new = html_tx_new
+            if html_tx_used:
+                fallback_transactions_used = html_tx_used
 
     currency = collapse_ws(
         (sold_new or sold_used or stock_new or stock_used or {}).get("currency_code")
@@ -1029,12 +1570,6 @@ def apply_market_to_row(
     row["New"] = format_display_price(display_new, currency) if display_new is not None else (existing_new or None)
     row["Used"] = format_display_price(display_used, currency) if display_used is not None else (existing_used or None)
 
-    # Keep latest-sale fields aligned to the most recent API snapshot (month-level granularity).
-    row["BrickLinkLatestSaleNewMonth"] = month_key if sold_new_avg is not None else None
-    row["BrickLinkLatestSaleNewPrice"] = round(sold_new_avg, 2) if sold_new_avg is not None else None
-    row["BrickLinkLatestSaleUsedMonth"] = month_key if sold_used_avg is not None else None
-    row["BrickLinkLatestSaleUsedPrice"] = round(sold_used_avg, 2) if sold_used_avg is not None else None
-
     used_min_candidates = [
         _parse_float(sold_used.get("min_price") if sold_used else None),
         _parse_float(stock_used.get("min_price") if stock_used else None),
@@ -1051,37 +1586,50 @@ def apply_market_to_row(
     # Monthly series = one API snapshot per run (stable, API-only, no scraping).
     existing_month_new = row.get("BrickLinkMonthlySalesNew") if isinstance(row.get("BrickLinkMonthlySalesNew"), list) else []
     existing_month_used = row.get("BrickLinkMonthlySalesUsed") if isinstance(row.get("BrickLinkMonthlySalesUsed"), list) else []
-    month_new = (
-        upsert_monthly_point(
-            existing_month_new,
-            month=month_key,
-            avg_price=sold_new_avg,
-            total_lots=_parse_int(sold_new.get("unit_quantity") if sold_new else None),
-            total_qty=_parse_int(sold_new.get("total_quantity") if sold_new else None),
+    if fallback_month_new is not None:
+        month_new = fallback_month_new
+    else:
+        month_new = (
+            upsert_monthly_point(
+                existing_month_new,
+                month=month_key,
+                avg_price=sold_new_avg,
+                total_lots=_parse_int(sold_new.get("unit_quantity") if sold_new else None),
+                total_qty=_parse_int(sold_new.get("total_quantity") if sold_new else None),
+            )
+            if sold_new_avg is not None
+            else existing_month_new
         )
-        if sold_new_avg is not None
-        else existing_month_new
-    )
-    month_used = (
-        upsert_monthly_point(
-            existing_month_used,
-            month=month_key,
-            avg_price=sold_used_avg,
-            total_lots=_parse_int(sold_used.get("unit_quantity") if sold_used else None),
-            total_qty=_parse_int(sold_used.get("total_quantity") if sold_used else None),
+    if fallback_month_used is not None:
+        month_used = fallback_month_used
+    else:
+        month_used = (
+            upsert_monthly_point(
+                existing_month_used,
+                month=month_key,
+                avg_price=sold_used_avg,
+                total_lots=_parse_int(sold_used.get("unit_quantity") if sold_used else None),
+                total_qty=_parse_int(sold_used.get("total_quantity") if sold_used else None),
+            )
+            if sold_used_avg is not None
+            else existing_month_used
         )
-        if sold_used_avg is not None
-        else existing_month_used
-    )
     row["BrickLinkMonthlySalesNew"] = month_new
     row["BrickLinkMonthlySalesUsed"] = month_used
 
-    tx_new = monthly_series_to_transactions(month_new, currency)
-    tx_used = monthly_series_to_transactions(month_used, currency)
+    tx_new = fallback_transactions_new if isinstance(fallback_transactions_new, list) and fallback_transactions_new else monthly_series_to_transactions(month_new, currency)
+    tx_used = fallback_transactions_used if isinstance(fallback_transactions_used, list) and fallback_transactions_used else monthly_series_to_transactions(month_used, currency)
     row["BrickLinkTransactionsNew"] = tx_new
     row["BrickLinkTransactionsUsed"] = tx_used
     row["BrickLinkTransactionsNewCount"] = len(tx_new)
     row["BrickLinkTransactionsUsedCount"] = len(tx_used)
+
+    latest_new_month, latest_new_price = latest_sale_from_transactions(tx_new)
+    latest_used_month, latest_used_price = latest_sale_from_transactions(tx_used)
+    row["BrickLinkLatestSaleNewMonth"] = latest_new_month or (month_key if sold_new_avg is not None else None)
+    row["BrickLinkLatestSaleNewPrice"] = latest_new_price if latest_new_price is not None else (round(sold_new_avg, 2) if sold_new_avg is not None else None)
+    row["BrickLinkLatestSaleUsedMonth"] = latest_used_month or (month_key if sold_used_avg is not None else None)
+    row["BrickLinkLatestSaleUsedPrice"] = latest_used_price if latest_used_price is not None else (round(sold_used_avg, 2) if sold_used_avg is not None else None)
 
     # RRP and forecast helpers.
     rrp = _parse_float(row.get("UKRetailPrice"))
@@ -1295,7 +1843,7 @@ def update_rows(
         iter_indices = list(range(len(rows)))
 
     for idx in iter_indices:
-        if client.auth_failed:
+        if client.auth_failed and not cfg.allow_html_fallback:
             break
         if client.budget_exhausted:
             break
@@ -1340,13 +1888,14 @@ def update_rows(
                 item_no=candidate_no,
                 currency_code=cfg.currency_code,
                 fallback_currency_codes=cfg.fallback_currency_codes,
+                allow_html_fallback=cfg.allow_html_fallback,
                 client=client,
                 throttle=throttle,
                 month_key=month_key,
             )
             if ok:
                 break
-            if client.auth_failed or client.budget_exhausted:
+            if (client.auth_failed and not cfg.allow_html_fallback) or client.budget_exhausted:
                 break
 
         if not ok:
@@ -1358,7 +1907,7 @@ def update_rows(
                 stats.fetch_failures += 1
                 if cfg.verbose:
                     print(f"[{label}] failed: {item_no}", flush=True)
-            if client.auth_failed:
+            if client.auth_failed and not cfg.allow_html_fallback:
                 break
             if client.budget_exhausted:
                 break
@@ -1443,6 +1992,11 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging.")
+    parser.add_argument(
+        "--disable-html-fallback",
+        action="store_true",
+        help="Disable BrickLink catalogPG HTML fallback when API values are missing or auth fails.",
+    )
     return parser.parse_args(argv)
 
 
@@ -1486,6 +2040,7 @@ def main(argv: Sequence[str]) -> int:
             )
             if code
         ),
+        allow_html_fallback=not bool(args.disable_html_fallback),
     )
 
     request_budget = ApiRequestBudget(
@@ -1515,7 +2070,7 @@ def main(argv: Sequence[str]) -> int:
         currency_code=cfg.currency_code,
         throttle=throttle,
     )
-    if client.auth_failed:
+    if client.auth_failed and not cfg.allow_html_fallback:
         msg = client.auth_error_message or "BrickLink API authentication failed."
         msg = f"{msg} {bricklink_auth_help_hint()}"
         print(msg, file=sys.stderr)
@@ -1526,6 +2081,9 @@ def main(argv: Sequence[str]) -> int:
             )
             print(f"[AuthDiag] {diag}", file=sys.stderr)
         return 1
+    if client.auth_failed and cfg.allow_html_fallback and cfg.verbose:
+        msg = client.auth_error_message or "BrickLink API authentication failed."
+        print(f"[API] warning: {msg} Falling back to BrickLink catalogPG HTML parsing.", flush=True)
 
     sets_rows = load_json_array(sets_path)
     minifigs_rows = load_json_array(minifigs_path)
@@ -1651,7 +2209,7 @@ def main(argv: Sequence[str]) -> int:
     minifig_rows_with_new = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("New"))))
     minifig_rows_with_used = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("Used"))))
 
-    if client.auth_failed:
+    if client.auth_failed and not cfg.allow_html_fallback:
         msg = client.auth_error_message or "BrickLink API authentication failed."
         msg = f"{msg} {bricklink_auth_help_hint()}"
         print(msg, file=sys.stderr)
