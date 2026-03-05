@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "mode": "delta",
+  "generatedAt": "2026-03-05T17:26:41Z",
+  "sourceManifestGeneratedAt": "2026-03-05T05:59:00.377403+00:00",
+  "sets": [
+    {
+      "label": "Pokémon",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
+      "count": 23,
+      "part": 1,
+      "parts": 1,
+      "theme": "Pokémon"
+    },
+    {
+      "label": "Promotional (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional-p1.json",
+      "count": 800,
+      "part": 1,
+      "parts": 2,
+      "theme": "Promotional"
+    },
+    {
+      "label": "Promotional (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional-p2.json",
+      "count": 117,
+      "part": 2,
+      "parts": 2,
+      "theme": "Promotional"
+    }
+  ],
+  "minifigures": [],
+  "themes": [
+    "Pokémon",
+    "Promotional"
+  ],
+  "summary": {
+    "setChunkCount": 3,
+    "minifigureChunkCount": 0,
+    "setThemeCount": 2,
+    "minifigureCategoryCount": 0,
+    "changedSetCodes": 3,
+    "changedMinifigCodes": 0
+  }
+}

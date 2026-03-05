@@ -220,10 +220,15 @@ class BrickLinkClient:
             params={"currency_code": currency_code},
             throttle=throttle,
         )
-        if matrix is None:
-            return None
 
-        # Prioritize sold data first (more consistently populated).
+        # Some BrickLink responses only become parseable when explicitly scoped
+        # to guide_type + condition. Probe those combinations when the aggregate
+        # response is empty or structurally ambiguous.
+        if matrix is None:
+            if self.last_error_kind in {"auth", "budget", "not_found", "rate_limited", "server_error"}:
+                return None
+            matrix = {}
+
         needed: List[Tuple[str, str]] = [
             ("sold", "N"),
             ("sold", "U"),
@@ -234,8 +239,6 @@ class BrickLinkClient:
         if not missing:
             return matrix
 
-        # If aggregate response is empty, probe all combinations once so we don't
-        # incorrectly classify rows as no-data when only a subset is populated.
         max_probes = len(missing) if not matrix else min(2, len(missing))
         for guide_type, condition in missing:
             sub = self._fetch_matrix_once(
@@ -392,11 +395,23 @@ class BrickLinkClient:
                 return None
 
             matrix: Dict[Tuple[str, str], Dict[str, Any]] = {}
+            default_guide_type = _normalize_guide_type(params.get("guide_type"))
+            default_condition = _normalize_condition(params.get("new_or_used"))
+
             for row in data_rows:
                 if not isinstance(row, dict):
                     continue
-                guide_type = _normalize_guide_type(row.get("guide_type"))
-                condition = _normalize_condition(row.get("new_or_used"))
+                guide_type = _normalize_guide_type(row.get("guide_type")) or default_guide_type
+                condition = (
+                    _normalize_condition(row.get("new_or_used"))
+                    or _normalize_condition(row.get("condition"))
+                    or default_condition
+                )
+                if condition is None:
+                    is_new = row.get("is_new")
+                    if isinstance(is_new, bool):
+                        condition = "N" if is_new else "U"
+
                 if not guide_type or not condition:
                     continue
                 matrix[(guide_type, condition)] = row
@@ -434,6 +449,21 @@ def _extract_matrix_rows(data: Any) -> Optional[List[Dict[str, Any]]]:
         if row.get("new_or_used") is None and row.get("condition") is not None:
             row["new_or_used"] = row.get("condition")
         return [row]
+
+    # Single-row payloads may omit guide/condition fields when those values
+    # are implied by request parameters.
+    if any(
+        key in data
+        for key in (
+            "min_price",
+            "avg_price",
+            "max_price",
+            "qty_avg_price",
+            "unit_quantity",
+            "total_quantity",
+        )
+    ):
+        return [dict(data)]
 
     # Common nested containers seen in API wrappers / gateway transforms.
     for key in (
@@ -664,18 +694,24 @@ def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> Li
     candidates: List[str] = []
     seen: set[str] = set()
 
+    def add_candidate(value: Any) -> None:
+        code = collapse_ws(value)
+        if not code:
+            return
+        key = code.lower()
+        if key in seen:
+            return
+        seen.add(key)
+        candidates.append(code)
+
     ref = parse_bricklink_item_reference(link)
     if ref and ref[0] == "SET":
-        ref_code = collapse_ws(ref[1])
-        if ref_code:
-            candidates.append(ref_code)
-            seen.add(ref_code.lower())
+        add_candidate(ref[1])
 
     if not primary:
         return candidates
-    if primary.lower() not in seen:
-        candidates.append(primary)
-        seen.add(primary.lower())
+
+    add_candidate(primary)
 
     match = re.match(r"^(.+)-([0-9]+)$", primary)
     if not match:
@@ -684,25 +720,19 @@ def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> Li
     base = match.group(1)
     var = _parse_int(match.group(2)) or 1
 
+    # Some BrickLink API rows resolve by bare set number.
+    add_candidate(base)
+
     # BrickLink often only exposes -1 for legacy/re-release variants.
     if var != 1:
-        fallback = f"{base}-1"
-        key = fallback.lower()
-        if key not in seen:
-            candidates.append(fallback)
-            seen.add(key)
+        add_candidate(f"{base}-1")
 
     # Some imported set numbers contain punctuation not present in BrickLink item_no.
     compact_base = re.sub(r"[^A-Za-z0-9]", "", base)
     if compact_base and compact_base.lower() != base.lower():
-        compact_same_variant = f"{compact_base}-{var}"
-        compact_default_variant = f"{compact_base}-1"
-        for value in (compact_same_variant, compact_default_variant):
-            key = value.lower()
-            if key in seen:
-                continue
-            candidates.append(value)
-            seen.add(key)
+        add_candidate(compact_base)
+        add_candidate(f"{compact_base}-{var}")
+        add_candidate(f"{compact_base}-1")
 
     return candidates
 
@@ -1393,6 +1423,16 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         default=1200,
         help="Maximum recently changed set numbers to prioritize from catalog sync state.",
     )
+    parser.add_argument(
+        "--priority-themes",
+        default=os.getenv("MARKET_PRIORITY_THEMES", "Star Wars,Marvel Super Heroes,Disney,NINJAGO"),
+        help="Comma-separated set themes to prioritize before full rotation.",
+    )
+    parser.add_argument(
+        "--priority-minifig-categories",
+        default=os.getenv("MARKET_PRIORITY_MINIFIG_CATEGORIES", "Star Wars,Marvel Super Heroes,Disney,NINJAGO"),
+        help="Comma-separated minifig categories/themes to prioritize before full rotation.",
+    )
     parser.add_argument("--limit", type=int, default=None, help="Optional per-file row limit for testing.")
     parser.add_argument(
         "--item-type",
@@ -1504,6 +1544,17 @@ def main(argv: Sequence[str]) -> int:
         changed_set_codes = changed_set_codes[: args.priority_updated_limit]
     changed_set_lookup = set(changed_set_codes)
 
+    priority_themes = {
+        collapse_ws(value).casefold()
+        for value in re.split(r"[,;]", str(args.priority_themes or ""))
+        if collapse_ws(value)
+    }
+    priority_minifig_categories = {
+        collapse_ws(value).casefold()
+        for value in re.split(r"[,;]", str(args.priority_minifig_categories or ""))
+        if collapse_ws(value)
+    }
+
     do_sets = args.item_type in {"both", "set"}
     do_minifigs = args.item_type in {"both", "minifig"}
 
@@ -1513,7 +1564,13 @@ def main(argv: Sequence[str]) -> int:
             code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
             has_new = bool(collapse_ws(row.get("New")))
             has_used = bool(collapse_ws(row.get("Used")))
-            if (not has_new) or (not has_used) or (code in changed_set_lookup):
+            theme = collapse_ws(row.get("Theme")).casefold()
+            if (
+                (not has_new)
+                or (not has_used)
+                or (code in changed_set_lookup)
+                or (theme in priority_themes)
+            ):
                 set_priority_indices.append(idx)
 
     minifig_priority_indices: List[int] = []
@@ -1521,7 +1578,12 @@ def main(argv: Sequence[str]) -> int:
         for idx, row in enumerate(minifigs_rows):
             has_new = bool(collapse_ws(row.get("New")))
             has_used = bool(collapse_ws(row.get("Used")))
-            if (not has_new) or (not has_used):
+            category = collapse_ws(row.get("Category") or row.get("Theme")).casefold()
+            if (
+                (not has_new)
+                or (not has_used)
+                or (category in priority_minifig_categories)
+            ):
                 minifig_priority_indices.append(idx)
 
     stored_set_cursor = _parse_int(market_state.get("nextSetIndex"))

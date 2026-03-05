@@ -77,6 +77,8 @@ jobs:
           BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
           BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
           BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+          MARKET_PRIORITY_THEMES: ${{ vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+          MARKET_PRIORITY_MINIFIG_CATEGORIES: ${{ vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
         run: |
           missing=""
           for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
@@ -126,7 +128,7 @@ jobs:
           for chunk in 1 2 3 4; do
             echo "[Market] Starting chunk ${chunk}/4 (sets)..."
             set +e
-            python scripts/update_market_values.py               --item-type set               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 900               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            python scripts/update_market_values.py               --item-type set               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --priority-themes "${MARKET_PRIORITY_THEMES}"               --priority-minifig-categories "${MARKET_PRIORITY_MINIFIG_CATEGORIES}"               --max-api-calls 900               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
@@ -139,7 +141,7 @@ jobs:
 
             echo "[Market] Starting chunk ${chunk}/4 (minifigs)..."
             set +e
-            python scripts/update_market_values.py               --item-type minifig               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --max-api-calls 300               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            python scripts/update_market_values.py               --item-type minifig               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --priority-themes "${MARKET_PRIORITY_THEMES}"               --priority-minifig-categories "${MARKET_PRIORITY_MINIFIG_CATEGORIES}"               --max-api-calls 300               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
@@ -157,12 +159,14 @@ jobs:
 
           python scripts/split_catalog_chunks.py             --sets-json "dist/Lego Star Wars Database.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --output-dir "dist/chunks"             --manifest-path "dist/catalog-index.json"             --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist"             --market-details-dir "dist/market-details"             --strip-market-detail-fields             --max-items-per-chunk 800
 
+          python scripts/build_sync_artifacts.py             --manifest-path "dist/catalog-index.json"             --sync-state-path "dist/sync-state.json"             --sets-json "dist/Lego Star Wars Database.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --delta-manifest-path "dist/catalog-delta-index.json"             --client-config-path "dist/client-config.json"             --market-price-seed-path "dist/market-price-seed.json"             --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist"             --market-currency-code "${{ vars.BRICKLINK_CURRENCY || 'GBP' }}"             --verbose
+
       - name: Commit and push chunked catalog outputs (if changed)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add "dist/catalog-index.json" "dist/chunks" "dist/market-details"
+          git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
           if git diff --cached --quiet; then
             echo "No chunk output changes to commit."
             exit 0
