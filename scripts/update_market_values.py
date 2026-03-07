@@ -131,7 +131,13 @@ class FileUpdateStats:
     no_price_data_skips: int = 0
     parse_misses: int = 0
     cross_rows_changed: int = 0
+    cooldown_skips: int = 0
     last_index_processed: Optional[int] = None
+    processed_indices: List[int] = None
+
+    def __post_init__(self) -> None:
+        if self.processed_indices is None:
+            self.processed_indices = []
 
 
 @dataclass
@@ -240,7 +246,18 @@ class BrickLinkClient:
         # to guide_type + condition. Probe those combinations when the aggregate
         # response is empty or structurally ambiguous.
         if matrix is None:
-            if self.last_error_kind in {"auth", "budget", "not_found", "rate_limited", "server_error"}:
+            # Hard parameter/API failures should not fan out into 4 extra probes.
+            # That burns budget and repeatedly fails for malformed/nonexistent IDs.
+            if self.last_error_kind in {
+                "auth",
+                "budget",
+                "not_found",
+                "rate_limited",
+                "server_error",
+                "http_error",
+                "api_error",
+                "invalid_json",
+            }:
                 return None
             matrix = {}
 
@@ -255,7 +272,20 @@ class BrickLinkClient:
             return matrix
 
         max_probes = len(missing) if not matrix else min(2, len(missing))
+        terminal_probe_errors = {
+            "auth",
+            "budget",
+            "not_found",
+            "rate_limited",
+            "server_error",
+            "http_error",
+            "api_error",
+            "invalid_json",
+        }
         for guide_type, condition in missing:
+            if max_probes <= 0:
+                break
+            max_probes -= 1
             sub = self._fetch_matrix_once(
                 item_type=item_type,
                 item_no=item_no,
@@ -267,12 +297,11 @@ class BrickLinkClient:
                 throttle=throttle,
             )
             if not sub:
+                if self.last_error_kind in terminal_probe_errors:
+                    break
                 continue
             matrix.update(sub)
             if all(pair in matrix for pair in needed):
-                break
-            max_probes -= 1
-            if max_probes <= 0:
                 break
 
         return matrix
@@ -341,11 +370,25 @@ class BrickLinkClient:
 
             if response.status_code >= 400:
                 if response.status_code == 401:
+                    body_text = ""
+                    try:
+                        body_json = response.json()
+                        if isinstance(body_json, dict):
+                            meta_body = body_json.get("meta") if isinstance(body_json.get("meta"), dict) else {}
+                            body_text = collapse_ws(meta_body.get("description") or meta_body.get("message"))
+                    except Exception:
+                        body_text = ""
                     self.auth_failed = True
-                    self.auth_error_message = (
-                        "BrickLink API authentication failed (HTTP 401). "
-                        "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
-                    )
+                    if "TOKEN_IP_MISMATCHED" in body_text.upper():
+                        self.auth_error_message = (
+                            "BrickLink API authentication failed (TOKEN_IP_MISMATCHED). "
+                            "Update the BrickLink access token allowed IP/mask to include GitHub runner IPs."
+                        )
+                    else:
+                        self.auth_error_message = (
+                            "BrickLink API authentication failed (HTTP 401). "
+                            "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
+                        )
                     self._mark_failure("auth", 401)
                 elif response.status_code == 404:
                     self._mark_failure("not_found", 404)
@@ -373,7 +416,18 @@ class BrickLinkClient:
                     if code == 401:
                         self.auth_failed = True
                         message = collapse_ws(meta.get("message"))
-                        if message:
+                        description = collapse_ws(meta.get("description"))
+                        if "TOKEN_IP_MISMATCHED" in description.upper():
+                            self.auth_error_message = (
+                                "BrickLink API authentication failed (TOKEN_IP_MISMATCHED). "
+                                "Update the BrickLink access token allowed IP/mask to include GitHub runner IPs."
+                            )
+                        elif "BAD_OAUTH_REQUEST" in message.upper() and "TOKEN_IP_MISMATCHED" in description.upper():
+                            self.auth_error_message = (
+                                "BrickLink API authentication failed (BAD_OAUTH_REQUEST / TOKEN_IP_MISMATCHED). "
+                                "Update the BrickLink access token allowed IP/mask to include GitHub runner IPs."
+                            )
+                        elif message:
                             self.auth_error_message = (
                                 f"BrickLink API authentication failed ({message}). "
                                 "Check BRICKLINK_CONSUMER_KEY/SECRET and BRICKLINK_TOKEN_VALUE/SECRET."
@@ -761,8 +815,17 @@ def _parse_monthly_sales_column_html(
             block,
             re.IGNORECASE | re.DOTALL,
         ):
-            qty = _parse_int(_html_to_text(tx_match.group(1)))
-            each_price, tx_currency = _parse_price_and_currency(tx_match.group(2))
+            qty_raw = _html_to_text(tx_match.group(1))
+            each_raw = _html_to_text(tx_match.group(2))
+            # Guard against summary rows (e.g. "Total Qty", "Avg Price") that
+            # match the generic row regex but are not actual transaction lines.
+            if not re.search(r"([£$€]|~|\b[A-Z]{3}\b)", each_raw):
+                continue
+            qty_text = collapse_ws(qty_raw)
+            if not re.fullmatch(r"\d{1,3}", qty_text):
+                continue
+            qty = _parse_int(qty_text)
+            each_price, tx_currency = _parse_price_and_currency(each_raw)
             if qty is None or each_price is None:
                 continue
             monthly_tx.append(
@@ -844,12 +907,16 @@ def _parse_price_guide_html(
     if not summary_match:
         return None
     summary_segment = summary_match.group(1)
-    summary_blocks = [
-        block
-        for block in re.split(r"<TD\s+VALIGN=\"TOP\"[^>]*>", summary_segment, flags=re.IGNORECASE | re.DOTALL)
-        if "Avg Price" in block and "Max Price" in block
-    ]
-    if len(summary_blocks) < 4:
+    # Keep positional columns even when sold blocks are "(Unavailable)" and do
+    # not contain Avg/Max rows. Requiring all four parseable blocks causes valid
+    # pages to be dropped entirely (e.g. stock exists, sold unavailable).
+    split_blocks = re.split(
+        r"<TD\s+VALIGN=\"TOP\"[^>]*>",
+        summary_segment,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    summary_blocks = [block for block in split_blocks[1:] if collapse_ws(block)]
+    if len(summary_blocks) < 2:
         return None
 
     sold_new = _parse_price_guide_summary_block(
@@ -857,25 +924,25 @@ def _parse_price_guide_html(
         guide_type="sold",
         condition="N",
         fallback_currency=page_currency,
-    )
+    ) if len(summary_blocks) >= 1 else None
     sold_used = _parse_price_guide_summary_block(
         summary_blocks[1],
         guide_type="sold",
         condition="U",
         fallback_currency=page_currency,
-    )
+    ) if len(summary_blocks) >= 2 else None
     stock_new = _parse_price_guide_summary_block(
         summary_blocks[2],
         guide_type="stock",
         condition="N",
         fallback_currency=page_currency,
-    )
+    ) if len(summary_blocks) >= 3 else None
     stock_used = _parse_price_guide_summary_block(
         summary_blocks[3],
         guide_type="stock",
         condition="U",
         fallback_currency=page_currency,
-    )
+    ) if len(summary_blocks) >= 4 else None
 
     matrix: Dict[Tuple[str, str], Dict[str, Any]] = {}
     if sold_new is not None:
@@ -993,6 +1060,46 @@ def collapse_ws(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def parse_iso_utc(value: Any) -> Optional[datetime]:
+    text = collapse_ws(value)
+    if not text:
+        return None
+    normalized = text.replace("Z", "+00:00")
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def infer_fetch_status(last_error_kind: str, http_status: Optional[int]) -> str:
+    if last_error_kind == "not_found":
+        return "not_found"
+    if last_error_kind == "no_data":
+        return "no_data"
+    if last_error_kind == "budget":
+        return "budget_exhausted"
+    if last_error_kind == "auth":
+        return "auth_error"
+    if last_error_kind == "rate_limited":
+        return "rate_limited"
+    if last_error_kind == "server_error":
+        return "server_error"
+    if last_error_kind == "request_error":
+        return "request_error"
+    if last_error_kind in {"http_error", "api_error"} and http_status is not None:
+        return f"http_{http_status}"
+    if last_error_kind:
+        return last_error_kind
+    return "failed"
+
+
+def parse_status_retry_at(row: Dict[str, Any]) -> Optional[datetime]:
+    return parse_iso_utc(row.get("MarketNoDataRetryAfterUTC"))
+
+
 def sanitize_secret(value: Any) -> str:
     text = collapse_ws(value)
     # Common copy/paste issues from UI fields / env files.
@@ -1093,7 +1200,12 @@ def is_probable_bricklink_minifig_code(value: Any) -> bool:
     return bool(BRICKLINK_MINIFIG_CODE_RE.match(code))
 
 
-def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> List[str]:
+def build_set_item_candidates(
+    number: Any,
+    variant: Any,
+    link: Any = None,
+    price_guide_url: Any = None,
+) -> List[str]:
     primary = normalize_set_code(number, variant)
     candidates: List[str] = []
     seen: set[str] = set()
@@ -1111,6 +1223,9 @@ def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> Li
     ref = parse_bricklink_item_reference(link)
     if ref and ref[0] == "SET":
         add_candidate(ref[1])
+    guide_ref = parse_bricklink_item_reference(price_guide_url)
+    if guide_ref and guide_ref[0] == "SET":
+        add_candidate(guide_ref[1])
 
     if not primary:
         return candidates
@@ -1124,9 +1239,6 @@ def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> Li
     base = match.group(1)
     var = _parse_int(match.group(2)) or 1
 
-    # Some BrickLink API rows resolve by bare set number.
-    add_candidate(base)
-
     # BrickLink often only exposes -1 for legacy/re-release variants.
     if var != 1:
         add_candidate(f"{base}-1")
@@ -1134,14 +1246,22 @@ def build_set_item_candidates(number: Any, variant: Any, link: Any = None) -> Li
     # Some imported set numbers contain punctuation not present in BrickLink item_no.
     compact_base = re.sub(r"[^A-Za-z0-9]", "", base)
     if compact_base and compact_base.lower() != base.lower():
-        add_candidate(compact_base)
         add_candidate(f"{compact_base}-{var}")
         add_candidate(f"{compact_base}-1")
+
+    # Bare-number fallback is expensive and often returns HTTP 400.
+    # Only allow it for explicitly eligible non-numeric codes.
+    if re.search(r"[A-Za-z]", base):
+        add_candidate(base)
 
     return candidates
 
 
-def build_minifig_item_candidates(number: Any, link: Any = None) -> List[str]:
+def build_minifig_item_candidates(
+    number: Any,
+    link: Any = None,
+    price_guide_url: Any = None,
+) -> List[str]:
     candidates: List[str] = []
     seen: set[str] = set()
 
@@ -1149,6 +1269,12 @@ def build_minifig_item_candidates(number: Any, link: Any = None) -> List[str]:
     if ref and ref[0] == "MINIFIG":
         ref_code = collapse_ws(ref[1])
         if ref_code:
+            candidates.append(ref_code)
+            seen.add(ref_code.lower())
+    guide_ref = parse_bricklink_item_reference(price_guide_url)
+    if guide_ref and guide_ref[0] == "MINIFIG":
+        ref_code = collapse_ws(guide_ref[1])
+        if ref_code and ref_code.lower() not in seen:
             candidates.append(ref_code)
             seen.add(ref_code.lower())
 
@@ -1362,6 +1488,28 @@ def apply_market_to_row(
     fallback_month_used: Optional[List[Dict[str, Any]]] = None
     fallback_transactions_new: Optional[List[Dict[str, Any]]] = None
     fallback_transactions_used: Optional[List[Dict[str, Any]]] = None
+    html_probe_attempted = False
+    market_source = "api"
+
+    def fetch_html_once() -> Optional[
+        Tuple[
+            Dict[Tuple[str, str], Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            List[Dict[str, Any]],
+            str,
+        ]
+    ]:
+        nonlocal html_probe_attempted
+        if html_probe_attempted:
+            return None
+        html_probe_attempted = True
+        return client.fetch_price_guide_html(
+            item_type=item_type,
+            item_no=item_no,
+            throttle=throttle,
+        )
 
     currency_try_order = build_currency_try_order(currency_code, fallback_currency_codes)
     if not currency_try_order:
@@ -1422,11 +1570,7 @@ def apply_market_to_row(
 
     if matrix is None:
         if allow_html_fallback:
-            fallback_result = client.fetch_price_guide_html(
-                item_type=item_type,
-                item_no=item_no,
-                throttle=throttle,
-            )
+            fallback_result = fetch_html_once()
             if fallback_result is not None:
                 candidate, html_month_new, html_month_used, html_tx_new, html_tx_used, html_currency = fallback_result
                 c_sold_new = candidate.get(("sold", "N"))
@@ -1453,6 +1597,7 @@ def apply_market_to_row(
                     )
                 )
                 if any_numeric:
+                    market_source = "html"
                     matrix = candidate
                     sold_new = c_sold_new
                     sold_used = c_sold_used
@@ -1483,11 +1628,7 @@ def apply_market_to_row(
         or not isinstance(row.get("BrickLinkTransactionsUsed"), list)
         or not row.get("BrickLinkTransactionsUsed")
     ):
-        history_result = client.fetch_price_guide_html(
-            item_type=item_type,
-            item_no=item_no,
-            throttle=throttle,
-        )
+        history_result = fetch_html_once()
         if history_result is not None:
             history_matrix, html_month_new, html_month_used, html_tx_new, html_tx_used, html_currency = history_result
             h_sold_new = history_matrix.get(("sold", "N"))
@@ -1504,6 +1645,7 @@ def apply_market_to_row(
                 )
             )
             if history_has_numeric:
+                market_source = "html"
                 matrix = history_matrix
                 sold_new = h_sold_new
                 sold_used = h_sold_used
@@ -1563,62 +1705,63 @@ def apply_market_to_row(
     row["BrickLinkCurrentUsedQtyAvgPrice"] = round(_parse_float(stock_used.get("qty_avg_price") if stock_used else None), 2) if _parse_float(stock_used.get("qty_avg_price") if stock_used else None) is not None else None
     row["BrickLinkCurrentUsedMaxPrice"] = round(_parse_float(stock_used.get("max_price") if stock_used else None), 2) if _parse_float(stock_used.get("max_price") if stock_used else None) is not None else None
 
-    display_new = first_non_none([stock_new_avg, sold_new_avg])
-    display_used = first_non_none([stock_used_avg, sold_used_avg])
+    # Top-level New/Used should reflect current listing average first.
+    display_new = first_non_none([
+        stock_new_avg,
+        _parse_float(stock_new.get("min_price") if stock_new else None),
+        sold_new_avg,
+    ])
+    display_used = first_non_none([
+        stock_used_avg,
+        _parse_float(stock_used.get("min_price") if stock_used else None),
+        sold_used_avg,
+    ])
     existing_new = collapse_ws(row.get("New"))
     existing_used = collapse_ws(row.get("Used"))
     row["New"] = format_display_price(display_new, currency) if display_new is not None else (existing_new or None)
     row["Used"] = format_display_price(display_used, currency) if display_used is not None else (existing_used or None)
 
-    used_min_candidates = [
-        _parse_float(sold_used.get("min_price") if sold_used else None),
-        _parse_float(stock_used.get("min_price") if stock_used else None),
-    ]
-    used_max_candidates = [
-        _parse_float(sold_used.get("max_price") if sold_used else None),
-        _parse_float(stock_used.get("max_price") if stock_used else None),
-    ]
+    used_min_candidates = [_parse_float(stock_used.get("min_price") if stock_used else None)]
+    used_max_candidates = [_parse_float(stock_used.get("max_price") if stock_used else None)]
     used_min = min((v for v in used_min_candidates if v is not None), default=None)
     used_max = max((v for v in used_max_candidates if v is not None), default=None)
+    if used_min is None:
+        used_min = _parse_float(sold_used.get("min_price") if sold_used else None)
+    if used_max is None:
+        used_max = _parse_float(sold_used.get("max_price") if sold_used else None)
     row["BrickLinkUsedPriceRangeMin"] = round(used_min, 2) if used_min is not None else None
     row["BrickLinkUsedPriceRangeMax"] = round(used_max, 2) if used_max is not None else None
 
-    # Monthly series = one API snapshot per run (stable, API-only, no scraping).
+    # Prefer true historical rows from HTML when available. Keep existing values
+    # otherwise instead of synthesizing artificial month points every run.
     existing_month_new = row.get("BrickLinkMonthlySalesNew") if isinstance(row.get("BrickLinkMonthlySalesNew"), list) else []
     existing_month_used = row.get("BrickLinkMonthlySalesUsed") if isinstance(row.get("BrickLinkMonthlySalesUsed"), list) else []
+    existing_tx_new = row.get("BrickLinkTransactionsNew") if isinstance(row.get("BrickLinkTransactionsNew"), list) else []
+    existing_tx_used = row.get("BrickLinkTransactionsUsed") if isinstance(row.get("BrickLinkTransactionsUsed"), list) else []
     if fallback_month_new is not None:
         month_new = fallback_month_new
     else:
-        month_new = (
-            upsert_monthly_point(
-                existing_month_new,
-                month=month_key,
-                avg_price=sold_new_avg,
-                total_lots=_parse_int(sold_new.get("unit_quantity") if sold_new else None),
-                total_qty=_parse_int(sold_new.get("total_quantity") if sold_new else None),
-            )
-            if sold_new_avg is not None
-            else existing_month_new
-        )
+        month_new = existing_month_new
     if fallback_month_used is not None:
         month_used = fallback_month_used
     else:
-        month_used = (
-            upsert_monthly_point(
-                existing_month_used,
-                month=month_key,
-                avg_price=sold_used_avg,
-                total_lots=_parse_int(sold_used.get("unit_quantity") if sold_used else None),
-                total_qty=_parse_int(sold_used.get("total_quantity") if sold_used else None),
-            )
-            if sold_used_avg is not None
-            else existing_month_used
-        )
+        month_used = existing_month_used
     row["BrickLinkMonthlySalesNew"] = month_new
     row["BrickLinkMonthlySalesUsed"] = month_used
 
-    tx_new = fallback_transactions_new if isinstance(fallback_transactions_new, list) and fallback_transactions_new else monthly_series_to_transactions(month_new, currency)
-    tx_used = fallback_transactions_used if isinstance(fallback_transactions_used, list) and fallback_transactions_used else monthly_series_to_transactions(month_used, currency)
+    if isinstance(fallback_transactions_new, list) and fallback_transactions_new:
+        tx_new = fallback_transactions_new
+    elif existing_tx_new:
+        tx_new = existing_tx_new
+    else:
+        tx_new = monthly_series_to_transactions(month_new, currency)
+
+    if isinstance(fallback_transactions_used, list) and fallback_transactions_used:
+        tx_used = fallback_transactions_used
+    elif existing_tx_used:
+        tx_used = existing_tx_used
+    else:
+        tx_used = monthly_series_to_transactions(month_used, currency)
     row["BrickLinkTransactionsNew"] = tx_new
     row["BrickLinkTransactionsUsed"] = tx_used
     row["BrickLinkTransactionsNewCount"] = len(tx_new)
@@ -1654,6 +1797,8 @@ def apply_market_to_row(
     row["PriceTrendAnnualizedUsedPercent"] = gu
     row["PriceForecastMethod"] = "bricklink_api_monthly_trend"
     row["MarketLastUpdatedUTC"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    row["MarketFetchStatus"] = f"ok_{market_source}"
+    row["MarketNoDataRetryAfterUTC"] = None
 
     # Preserve prior analytics when the current API response does not include that facet.
     for key, previous in previous_values.items():
@@ -1794,6 +1939,52 @@ def prioritize_rotating_indices(rotating: Sequence[int], priority: set[int]) -> 
     return prioritized + non_prioritized
 
 
+def build_priority_plan(
+    rotating: Sequence[int],
+    primary_priority: set[int],
+    secondary_priority: set[int],
+) -> Tuple[List[int], List[int]]:
+    if not rotating:
+        return ([], [])
+    primary: List[int] = []
+    secondary: List[int] = []
+    non_priority: List[int] = []
+    for idx in rotating:
+        if idx in primary_priority:
+            primary.append(idx)
+        elif idx in secondary_priority:
+            secondary.append(idx)
+        else:
+            non_priority.append(idx)
+    return (primary + secondary + non_priority, non_priority)
+
+
+def advance_rotation_cursor(
+    *,
+    total_rows: int,
+    current_cursor: int,
+    processed_indices: Sequence[int],
+    non_priority_order: Sequence[int],
+) -> int:
+    if total_rows <= 0:
+        return 0
+    if not processed_indices:
+        return current_cursor % total_rows
+    if not non_priority_order:
+        return current_cursor % total_rows
+
+    non_priority_positions = {row_index: pos for pos, row_index in enumerate(non_priority_order)}
+    processed_positions = [
+        non_priority_positions[row_index]
+        for row_index in processed_indices
+        if row_index in non_priority_positions
+    ]
+    if not processed_positions:
+        return current_cursor % total_rows
+    last_non_priority_idx = non_priority_order[max(processed_positions)]
+    return (last_non_priority_idx + 1) % total_rows
+
+
 def print_summary(label: str, stats: FileUpdateStats) -> None:
     print(
         (
@@ -1803,6 +1994,7 @@ def print_summary(label: str, stats: FileUpdateStats) -> None:
             f"changed={stats.rows_changed} "
             f"fetch_failures={stats.fetch_failures} "
             f"no_price_data_skips={stats.no_price_data_skips} "
+            f"cooldown_skips={stats.cooldown_skips} "
             f"parse_misses={stats.parse_misses} "
             f"cross_changed={stats.cross_rows_changed}"
         ),
@@ -1816,8 +2008,10 @@ def merge_update_stats(base: FileUpdateStats, add: FileUpdateStats) -> FileUpdat
     base.rows_changed += add.rows_changed
     base.fetch_failures += add.fetch_failures
     base.no_price_data_skips += add.no_price_data_skips
+    base.cooldown_skips += add.cooldown_skips
     base.parse_misses += add.parse_misses
     base.cross_rows_changed += add.cross_rows_changed
+    base.processed_indices.extend(add.processed_indices)
     if add.last_index_processed is not None:
         base.last_index_processed = add.last_index_processed
     return base
@@ -1835,6 +2029,8 @@ def update_rows(
     limit: Optional[int],
     indexes: Optional[Sequence[int]],
     label: str,
+    run_started_at: datetime,
+    no_data_cooldown_hours: float,
 ) -> FileUpdateStats:
     stats = FileUpdateStats(total_rows=len(rows))
     if indexes is not None:
@@ -1853,20 +2049,28 @@ def update_rows(
             break
 
         row = rows[idx]
+        retry_at = parse_status_retry_at(row)
+        if retry_at is not None and run_started_at < retry_at:
+            stats.cooldown_skips += 1
+            continue
+
         stats.rows_considered += 1
         stats.last_index_processed = idx
+        stats.processed_indices.append(idx)
 
         if item_type == "SET":
             set_candidates = build_set_item_candidates(
                 row.get("Number"),
                 row.get("Variant"),
                 row.get("link"),
+                row.get("BrickLinkPriceGuideURL"),
             )
             item_candidates: List[Tuple[str, str]] = [("SET", value) for value in set_candidates]
         else:
             minifig_candidates = build_minifig_item_candidates(
                 row.get("Number"),
                 row.get("link"),
+                row.get("BrickLinkPriceGuideURL"),
             )
             item_candidates = [("MINIFIG", value) for value in minifig_candidates]
 
@@ -1899,6 +2103,18 @@ def update_rows(
                 break
 
         if not ok:
+            status_value = infer_fetch_status(client.last_error_kind, client.last_http_status)
+            row["MarketFetchStatus"] = status_value
+            row["MarketLastUpdatedUTC"] = run_started_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+            if status_value in {"not_found", "no_data", "http_400", "api_error"}:
+                retry_after = run_started_at.timestamp() + max(1.0, no_data_cooldown_hours) * 3600.0
+                row["MarketNoDataRetryAfterUTC"] = datetime.fromtimestamp(retry_after, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            else:
+                row["MarketNoDataRetryAfterUTC"] = None
+            after_failed = json.dumps(row, sort_keys=True, ensure_ascii=False)
+            if before != after_failed:
+                stats.rows_changed += 1
+
             if client.last_error_kind in {"not_found", "no_data"}:
                 stats.no_price_data_skips += 1
                 if cfg.verbose:
@@ -1914,6 +2130,7 @@ def update_rows(
             continue
 
         stats.rows_succeeded += 1
+        row["MarketNoDataRetryAfterUTC"] = None
         after = json.dumps(row, sort_keys=True, ensure_ascii=False)
         if before != after:
             stats.rows_changed += 1
@@ -1991,6 +2208,12 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     )
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
+    parser.add_argument(
+        "--no-data-cooldown-hours",
+        type=float,
+        default=float(os.getenv("MARKET_NO_DATA_COOLDOWN_HOURS", "72")),
+        help="Hours to defer retrying rows that returned hard no-data/not-found failures.",
+    )
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging.")
     parser.add_argument(
         "--disable-html-fallback",
@@ -2116,51 +2339,51 @@ def main(argv: Sequence[str]) -> int:
     do_sets = args.item_type in {"both", "set"}
     do_minifigs = args.item_type in {"both", "minifig"}
 
-    set_priority_indices: List[int] = []
+    set_theme_priority_indices: List[int] = []
+    set_changed_priority_indices: List[int] = []
     if do_sets:
         for idx, row in enumerate(sets_rows):
             code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
-            has_new = bool(collapse_ws(row.get("New")))
-            has_used = bool(collapse_ws(row.get("Used")))
             theme = collapse_ws(row.get("Theme")).casefold()
-            if (
-                (not has_new)
-                or (not has_used)
-                or (code in changed_set_lookup)
-                or (theme in priority_themes)
-            ):
-                set_priority_indices.append(idx)
+            if theme in priority_themes:
+                set_theme_priority_indices.append(idx)
+            elif code in changed_set_lookup:
+                set_changed_priority_indices.append(idx)
 
-    minifig_priority_indices: List[int] = []
+    minifig_theme_priority_indices: List[int] = []
     if do_minifigs:
         for idx, row in enumerate(minifigs_rows):
-            has_new = bool(collapse_ws(row.get("New")))
-            has_used = bool(collapse_ws(row.get("Used")))
             category = collapse_ws(row.get("Category") or row.get("Theme")).casefold()
-            if (
-                (not has_new)
-                or (not has_used)
-                or (category in priority_minifig_categories)
-            ):
-                minifig_priority_indices.append(idx)
+            if category in priority_minifig_categories:
+                minifig_theme_priority_indices.append(idx)
 
     stored_set_cursor = _parse_int(market_state.get("nextSetIndex"))
     stored_minifig_cursor = _parse_int(market_state.get("nextMinifigIndex"))
     set_cursor = stored_set_cursor if stored_set_cursor is not None else max(0, args.start_index)
     minifig_cursor = stored_minifig_cursor if stored_minifig_cursor is not None else max(0, args.start_index)
 
-    set_priority_lookup = set(set_priority_indices)
-    minifig_priority_lookup = set(minifig_priority_indices)
+    set_theme_priority_lookup = set(set_theme_priority_indices)
+    set_changed_priority_lookup = set(set_changed_priority_indices)
+    minifig_theme_priority_lookup = set(minifig_theme_priority_indices)
     set_rotating_indices = rotating_indices(len(sets_rows), set_cursor) if do_sets else []
     minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor) if do_minifigs else []
-    set_plan = prioritize_rotating_indices(set_rotating_indices, set_priority_lookup)
-    minifig_plan = prioritize_rotating_indices(minifig_rotating_indices, minifig_priority_lookup)
+    set_plan, set_non_priority_rotation = build_priority_plan(
+        set_rotating_indices,
+        set_theme_priority_lookup,
+        set_changed_priority_lookup,
+    )
+    minifig_plan, minifig_non_priority_rotation = build_priority_plan(
+        minifig_rotating_indices,
+        minifig_theme_priority_lookup,
+        set(),
+    )
 
     if cfg.verbose:
         print(
             (
-                f"[Plan] set_priority={len(set_priority_indices)} set_rotating={len(set_rotating_indices)} "
-                f"minifig_priority={len(minifig_priority_indices)} minifig_rotating={len(minifig_rotating_indices)}"
+                f"[Plan] set_priority={len(set_theme_priority_indices)} set_rotating={len(set_rotating_indices)} "
+                f"minifig_priority={len(minifig_theme_priority_indices)} minifig_rotating={len(minifig_rotating_indices)} "
+                f"set_changed_priority={len(set_changed_priority_indices)}"
             ),
             flush=True,
         )
@@ -2177,6 +2400,8 @@ def main(argv: Sequence[str]) -> int:
             limit=args.limit,
             indexes=set_plan,
             label="Sets",
+            run_started_at=now,
+            no_data_cooldown_hours=max(1.0, args.no_data_cooldown_hours),
         )
     else:
         sets_stats = FileUpdateStats(total_rows=len(sets_rows))
@@ -2193,16 +2418,28 @@ def main(argv: Sequence[str]) -> int:
             limit=args.limit,
             indexes=minifig_plan,
             label="Minifigs",
+            run_started_at=now,
+            no_data_cooldown_hours=max(1.0, args.no_data_cooldown_hours),
         )
     else:
         minifigs_stats = FileUpdateStats(total_rows=len(minifigs_rows))
 
     next_set_cursor = set_cursor
-    if do_sets and sets_rows and sets_stats.last_index_processed is not None:
-        next_set_cursor = (sets_stats.last_index_processed + 1) % len(sets_rows)
+    if do_sets and sets_rows:
+        next_set_cursor = advance_rotation_cursor(
+            total_rows=len(sets_rows),
+            current_cursor=set_cursor,
+            processed_indices=sets_stats.processed_indices,
+            non_priority_order=set_non_priority_rotation,
+        )
     next_minifig_cursor = minifig_cursor
-    if do_minifigs and minifigs_rows and minifigs_stats.last_index_processed is not None:
-        next_minifig_cursor = (minifigs_stats.last_index_processed + 1) % len(minifigs_rows)
+    if do_minifigs and minifigs_rows:
+        next_minifig_cursor = advance_rotation_cursor(
+            total_rows=len(minifigs_rows),
+            current_cursor=minifig_cursor,
+            processed_indices=minifigs_stats.processed_indices,
+            non_priority_order=minifig_non_priority_rotation,
+        )
 
     set_rows_with_new = sum(1 for row in sets_rows if bool(collapse_ws(row.get("New"))))
     set_rows_with_used = sum(1 for row in sets_rows if bool(collapse_ws(row.get("Used"))))
@@ -2240,11 +2477,14 @@ def main(argv: Sequence[str]) -> int:
             "lastApiBudgetExhausted": client.budget_exhausted,
             "lastSetRowsConsidered": sets_stats.rows_considered,
             "lastSetRowsSucceeded": sets_stats.rows_succeeded,
+            "lastSetCooldownSkips": sets_stats.cooldown_skips,
             "lastMinifigRowsConsidered": minifigs_stats.rows_considered,
             "lastMinifigRowsSucceeded": minifigs_stats.rows_succeeded,
-            "lastSetPriorityCount": len(set_priority_indices),
-            "lastMinifigPriorityCount": len(minifig_priority_indices),
+            "lastMinifigCooldownSkips": minifigs_stats.cooldown_skips,
+            "lastSetPriorityCount": len(set_theme_priority_indices),
+            "lastMinifigPriorityCount": len(minifig_theme_priority_indices),
             "lastChangedSetPriorityCount": len(changed_set_codes),
+            "lastNoDataCooldownHours": max(1.0, args.no_data_cooldown_hours),
             "setRowsWithNew": set_rows_with_new,
             "setRowsWithUsed": set_rows_with_used,
             "setRowsTotal": len(sets_rows),

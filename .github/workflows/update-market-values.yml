@@ -77,8 +77,9 @@ jobs:
           BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
           BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
           BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
-          MARKET_PRIORITY_THEMES: ${{ vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
-          MARKET_PRIORITY_MINIFIG_CATEGORIES: ${{ vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+          ACTIVE_SET_THEMES: ${{ vars.ACTIVE_SET_THEMES || vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+          ACTIVE_MINIFIG_CATEGORIES: ${{ vars.ACTIVE_MINIFIG_CATEGORIES || vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+          MARKET_NO_DATA_COOLDOWN_HOURS: ${{ vars.MARKET_NO_DATA_COOLDOWN_HOURS || '72' }}
         run: |
           missing=""
           for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
@@ -128,7 +129,7 @@ jobs:
           for chunk in 1 2 3 4; do
             echo "[Market] Starting chunk ${chunk}/4 (sets)..."
             set +e
-            python scripts/update_market_values.py               --item-type set               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --priority-themes "${MARKET_PRIORITY_THEMES}"               --priority-minifig-categories "${MARKET_PRIORITY_MINIFIG_CATEGORIES}"               --max-api-calls 900               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            python scripts/update_market_values.py               --item-type set               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --fallback-currencies "USD,EUR,GBP"               --priority-themes "${ACTIVE_SET_THEMES}"               --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}"               --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}"               --max-api-calls 850               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
@@ -141,7 +142,7 @@ jobs:
 
             echo "[Market] Starting chunk ${chunk}/4 (minifigs)..."
             set +e
-            python scripts/update_market_values.py               --item-type minifig               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --priority-themes "${MARKET_PRIORITY_THEMES}"               --priority-minifig-categories "${MARKET_PRIORITY_MINIFIG_CATEGORIES}"               --max-api-calls 300               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
+            python scripts/update_market_values.py               --item-type minifig               --sets-json "dist/Lego Star Wars Database.json"               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"               --currency-code "${BRICKLINK_CURRENCY}"               --fallback-currencies "USD,EUR,GBP"               --priority-themes "${ACTIVE_SET_THEMES}"               --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}"               --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}"               --max-api-calls 400               --market-state-json "dist/market-sync-state.json"               --catalog-sync-state-json "dist/sync-state.json"               --delay 0.18               --jitter 0.04               --timeout 20               --retries 3               --verbose
             status=$?
             set -e
 
