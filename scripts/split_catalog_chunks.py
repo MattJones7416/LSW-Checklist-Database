@@ -52,10 +52,17 @@ MARKET_DETAIL_FIELDS = {
     "PriceForecast5YNew",
     "PriceForecast2YUsed",
     "PriceForecast5YUsed",
+    "BrickLinkNewPriceRangeMin",
+    "BrickLinkNewPriceRangeMax",
     "BrickLinkUsedPriceRangeMin",
     "BrickLinkUsedPriceRangeMax",
+    "BrickLinkCurrentListingsNew",
+    "BrickLinkCurrentListingsUsed",
     "PriceTrendAnnualizedNewPercent",
     "PriceTrendAnnualizedUsedPercent",
+    "MarketFetchStatus",
+    "MarketLastUpdatedUTC",
+    "MarketNoDataRetryAfterUTC",
 }
 
 
