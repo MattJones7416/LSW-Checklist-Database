@@ -1381,10 +1381,8 @@ def build_set_item_candidates(
         add_candidate(f"{compact_base}-{var}")
         add_candidate(f"{compact_base}-1")
 
-    # Bare-number fallback is expensive and often returns HTTP 400.
-    # Only allow it for explicitly eligible non-numeric codes.
-    if re.search(r"[A-Za-z]", base):
-        add_candidate(base)
+    # Do not probe bare-number/base codes (e.g. "MAZKANATA") by default.
+    # These frequently return HTTP 400 and waste request budget.
 
     return candidates
 
