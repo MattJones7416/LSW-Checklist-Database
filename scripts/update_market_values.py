@@ -498,6 +498,7 @@ class BrickLinkClient:
         item_type: str,
         item_no: str,
         throttle: RuntimeThrottle,
+        quiet_no_data: bool = False,
     ) -> Optional[
         Tuple[
             Dict[Tuple[str, str], Dict[str, Any]],
@@ -584,7 +585,7 @@ class BrickLinkClient:
             parsed = _parse_price_guide_html(response.text)
             if parsed is None:
                 self._mark_failure("no_data", response.status_code)
-                if self.verbose:
+                if self.verbose and not quiet_no_data:
                     print(f"[HTML] no parseable price data {item_type}:{item_no}", flush=True)
                 return None
 
@@ -592,6 +593,63 @@ class BrickLinkClient:
             throttle.apply_success()
             self._mark_success(response.status_code)
             return (matrix, month_new, month_used, tx_new, tx_used, listings_new, listings_used, currency)
+
+    def fetch_set_alias_from_brickset(
+        self,
+        brickset_url: Any,
+        throttle: RuntimeThrottle,
+    ) -> Optional[str]:
+        raw = collapse_ws(brickset_url)
+        if not raw:
+            return None
+        try:
+            parsed = urlparse(raw)
+        except Exception:
+            return None
+        host = (parsed.netloc or "").lower()
+        if "brickset.com" not in host:
+            return None
+
+        attempt = 0
+        while True:
+            attempt += 1
+            throttle.sleep_between_requests()
+            try:
+                response = self.session.get(
+                    raw,
+                    timeout=self.timeout,
+                    headers=self.html_headers,
+                )
+            except requests.RequestException:
+                if attempt > self.retries + 1:
+                    return None
+                throttle.apply_backoff()
+                continue
+
+            if response.status_code == 429:
+                retry_after = _parse_retry_after(response.headers.get("Retry-After"))
+                throttle.apply_backoff(retry_after)
+                if attempt > self.retries + 1:
+                    return None
+                continue
+            if response.status_code >= 500:
+                throttle.apply_backoff()
+                if attempt > self.retries + 1:
+                    return None
+                continue
+            if response.status_code >= 400:
+                return None
+
+            html_text = response.text or ""
+            match = re.search(
+                r"https?://(?:www\.)?bricklink\.com/v2/catalog/catalogitem\.page\?S=([^#\"'&<>\s]+)",
+                html_text,
+                re.IGNORECASE,
+            )
+            if not match:
+                return None
+            alias = canonicalize_set_item_no(html.unescape(match.group(1)))
+            return alias or None
 
 
 def _parse_retry_after(value: Optional[str]) -> Optional[float]:
@@ -1262,6 +1320,29 @@ def normalize_set_code(number: Any, variant: Any) -> str:
     return f"{raw}-{var}"
 
 
+def resolve_rrp_from_row(row: Dict[str, Any]) -> Tuple[Optional[float], Optional[str]]:
+    existing_rrp = _parse_float(row.get("RRP"))
+    existing_currency = normalize_currency_code(row.get("RRPCurrency"))
+    if existing_rrp is not None and existing_rrp > 0 and existing_currency:
+        return (round(existing_rrp, 2), existing_currency)
+
+    # Prefer region-specific retail price fields in deterministic order.
+    candidate_fields: List[Tuple[str, str]] = [
+        ("GBP", "UKRetailPrice"),
+        ("USD", "USRetailPrice"),
+        ("CAD", "CARetailPrice"),
+        ("EUR", "DERetailPrice"),
+    ]
+    for currency_code, field_name in candidate_fields:
+        value = _parse_float(row.get(field_name))
+        if value is not None and value > 0:
+            return (round(value, 2), currency_code)
+
+    if existing_rrp is not None and existing_rrp > 0:
+        return (round(existing_rrp, 2), existing_currency or None)
+    return (None, None)
+
+
 def parse_bricklink_item_reference(link: Any) -> Optional[Tuple[str, str]]:
     raw = collapse_ws(link)
     if not raw:
@@ -1330,6 +1411,7 @@ def build_set_item_candidates(
     variant: Any,
     link: Any = None,
     price_guide_url: Any = None,
+    alias_set_code: Any = None,
 ) -> List[str]:
     primary = normalize_set_code(number, variant)
     candidates: List[str] = []
@@ -1354,7 +1436,11 @@ def build_set_item_candidates(
             add_candidate(guide_ref[1])
         return candidates
 
-    # Always prefer canonical Number+Variant first.
+    alias_code = canonicalize_set_item_no(alias_set_code)
+    if alias_code:
+        add_candidate(alias_code)
+
+    # Prefer canonical Number+Variant if alias is absent or fails later.
     add_candidate(primary)
 
     ref = parse_bricklink_item_reference(link)
@@ -1621,7 +1707,7 @@ def apply_market_to_row(
     html_probe_attempted = False
     market_source = "api"
 
-    def fetch_html_once() -> Optional[
+    def fetch_html_once(*, quiet_no_data: bool = False) -> Optional[
         Tuple[
             Dict[Tuple[str, str], Dict[str, Any]],
             List[Dict[str, Any]],
@@ -1641,6 +1727,7 @@ def apply_market_to_row(
             item_type=item_type,
             item_no=item_no,
             throttle=throttle,
+            quiet_no_data=quiet_no_data,
         )
 
     currency_try_order = build_currency_try_order(currency_code, fallback_currency_codes)
@@ -1702,7 +1789,7 @@ def apply_market_to_row(
 
     if matrix is None:
         if allow_html_fallback:
-            fallback_result = fetch_html_once()
+            fallback_result = fetch_html_once(quiet_no_data=False)
             if fallback_result is not None:
                 (
                     candidate,
@@ -1771,7 +1858,7 @@ def apply_market_to_row(
         or not isinstance(row.get("BrickLinkTransactionsUsed"), list)
         or not row.get("BrickLinkTransactionsUsed")
     ):
-        history_result = fetch_html_once()
+        history_result = fetch_html_once(quiet_no_data=True)
         if history_result is not None:
             (
                 history_matrix,
@@ -1964,9 +2051,16 @@ def apply_market_to_row(
     row["BrickLinkLatestSaleUsedPrice"] = latest_used_price if latest_used_price is not None else (round(sold_used_avg, 2) if sold_used_avg is not None else None)
 
     # RRP and forecast helpers.
-    rrp = _parse_float(row.get("UKRetailPrice"))
+    rrp, rrp_currency = resolve_rrp_from_row(row)
+    row["RRP"] = round(rrp, 2) if rrp is not None else None
+    row["RRPCurrency"] = rrp_currency
     current_new_for_compare = first_non_none([stock_new_avg, sold_new_avg])
-    if currency == "GBP" and rrp is not None and rrp > 0 and current_new_for_compare is not None:
+    if (
+        rrp is not None
+        and rrp > 0
+        and current_new_for_compare is not None
+        and collapse_ws(rrp_currency).upper() == collapse_ws(currency).upper()
+    ):
         delta = current_new_for_compare - rrp
         row["CurrentNewVsRRPAmount"] = round(delta, 2)
         row["CurrentNewVsRRPPercent"] = round((delta / rrp) * 100.0, 2)
@@ -1975,6 +2069,7 @@ def apply_market_to_row(
         row["CurrentNewVsRRPAmount"] = None
         row["CurrentNewVsRRPPercent"] = None
         row["CurrentRRPBaseline"] = round(rrp, 2) if rrp is not None else None
+    row["CurrentRRPBaselineCurrency"] = rrp_currency
 
     f2n, f5n, gn = compute_forecast_from_series(month_new)
     f2u, f5u, gu = compute_forecast_from_series(month_used)
@@ -2243,6 +2338,8 @@ def update_rows(
     label: str,
     run_started_at: datetime,
     no_data_cooldown_hours: float,
+    set_alias_cache: Optional[Dict[str, str]] = None,
+    alias_lookup_budget: Optional[List[int]] = None,
 ) -> FileUpdateStats:
     stats = FileUpdateStats(total_rows=len(rows))
     if indexes is not None:
@@ -2270,12 +2367,18 @@ def update_rows(
         stats.last_index_processed = idx
         stats.processed_indices.append(idx)
 
+        canonical_set_code = ""
         if item_type == "SET":
+            canonical_set_code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
+            cached_alias = None
+            if set_alias_cache is not None and canonical_set_code:
+                cached_alias = set_alias_cache.get(canonical_set_code)
             set_candidates = build_set_item_candidates(
                 row.get("Number"),
                 row.get("Variant"),
                 row.get("link"),
                 row.get("BrickLinkPriceGuideURL"),
+                alias_set_code=cached_alias,
             )
             item_candidates: List[Tuple[str, str]] = [("SET", value) for value in set_candidates]
         else:
@@ -2313,6 +2416,36 @@ def update_rows(
                 break
             if (client.auth_failed and not cfg.allow_html_fallback) or client.budget_exhausted:
                 break
+
+        if (
+            not ok
+            and item_type == "SET"
+            and set_alias_cache is not None
+            and canonical_set_code
+            and canonical_set_code not in set_alias_cache
+            and client.last_error_kind in {"not_found", "no_data", "http_error"}
+        ):
+            remaining_alias_lookups = alias_lookup_budget[0] if isinstance(alias_lookup_budget, list) and alias_lookup_budget else 0
+            if remaining_alias_lookups > 0:
+                alias_lookup_budget[0] = max(0, remaining_alias_lookups - 1)
+                discovered_alias = client.fetch_set_alias_from_brickset(row.get("link"), throttle)
+                discovered_alias = canonicalize_set_item_no(discovered_alias)
+                if discovered_alias and discovered_alias.lower() != used_item_no.lower():
+                    set_alias_cache[canonical_set_code] = discovered_alias
+                    ok = apply_market_to_row(
+                        row,
+                        item_type="SET",
+                        item_no=discovered_alias,
+                        currency_code=cfg.currency_code,
+                        fallback_currency_codes=cfg.fallback_currency_codes,
+                        allow_html_fallback=cfg.allow_html_fallback,
+                        client=client,
+                        throttle=throttle,
+                        month_key=month_key,
+                    )
+                    if ok:
+                        used_item_no = discovered_alias
+                        used_item_type = "SET"
 
         if not ok:
             status_value = infer_fetch_status(client.last_error_kind, client.last_http_status)
@@ -2396,6 +2529,11 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         help="Optional sync state file used to prioritize recently changed set entries.",
     )
     parser.add_argument(
+        "--set-aliases-json",
+        default="dist/bricklink-set-aliases.json",
+        help="Optional JSON map of canonical set numbers to BrickLink item_no aliases.",
+    )
+    parser.add_argument(
         "--priority-updated-limit",
         type=int,
         default=1200,
@@ -2425,6 +2563,12 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         type=float,
         default=float(os.getenv("MARKET_NO_DATA_COOLDOWN_HOURS", "72")),
         help="Hours to defer retrying rows that returned hard no-data/not-found failures.",
+    )
+    parser.add_argument(
+        "--max-alias-lookups-per-run",
+        type=int,
+        default=int(os.getenv("MARKET_MAX_ALIAS_LOOKUPS_PER_RUN", "80")),
+        help="Maximum Brickset page alias lookups per run for sets with no direct BrickLink item number.",
     )
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging.")
     parser.add_argument(
@@ -2535,6 +2679,22 @@ def main(argv: Sequence[str]) -> int:
     market_state_path = Path(args.market_state_json)
     market_state = load_json_object(market_state_path)
     catalog_state = load_json_object(Path(args.catalog_sync_state_json))
+    static_aliases = load_json_object(Path(args.set_aliases_json))
+    raw_alias_cache = market_state.get("setAliasByNumber")
+    set_alias_cache: Dict[str, str] = {}
+    if isinstance(raw_alias_cache, dict):
+        for k, v in raw_alias_cache.items():
+            key = normalize_set_code(k, 1).lower() if collapse_ws(k) else ""
+            val = canonicalize_set_item_no(v)
+            if key and val:
+                set_alias_cache[key] = val
+    if isinstance(static_aliases, dict):
+        for k, v in static_aliases.items():
+            key = normalize_set_code(k, 1).lower() if collapse_ws(k) else ""
+            val = canonicalize_set_item_no(v)
+            if key and val:
+                set_alias_cache[key] = val
+    alias_lookup_budget = [max(0, args.max_alias_lookups_per_run)]
 
     raw_changed_set_codes = catalog_state.get("lastUpdatedSetCodes")
     changed_set_codes: List[str] = []
@@ -2624,6 +2784,8 @@ def main(argv: Sequence[str]) -> int:
             label="Sets",
             run_started_at=now,
             no_data_cooldown_hours=max(1.0, args.no_data_cooldown_hours),
+            set_alias_cache=set_alias_cache,
+            alias_lookup_budget=alias_lookup_budget,
         )
     else:
         sets_stats = FileUpdateStats(total_rows=len(sets_rows))
@@ -2642,6 +2804,8 @@ def main(argv: Sequence[str]) -> int:
             label="Minifigs",
             run_started_at=now,
             no_data_cooldown_hours=max(1.0, args.no_data_cooldown_hours),
+            set_alias_cache=None,
+            alias_lookup_budget=None,
         )
     else:
         minifigs_stats = FileUpdateStats(total_rows=len(minifigs_rows))
@@ -2709,6 +2873,8 @@ def main(argv: Sequence[str]) -> int:
             "lastMinifigPriorityCount": len(minifig_theme_priority_indices),
             "lastChangedSetPriorityCount": len(changed_set_codes),
             "lastNoDataCooldownHours": max(1.0, args.no_data_cooldown_hours),
+            "lastAliasLookupsRemaining": alias_lookup_budget[0],
+            "setAliasByNumber": dict(sorted(set_alias_cache.items())),
             "setRowsWithNew": set_rows_with_new,
             "setRowsWithUsed": set_rows_with_used,
             "setRowsTotal": len(sets_rows),
