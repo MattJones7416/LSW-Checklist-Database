@@ -1,0 +1,202 @@
+name: Hydrate Sets + Minifigs Market (Release Prep)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sets_per_pass:
+        description: "Set rows processed per pass"
+        required: false
+        default: "4500"
+      minifigs_per_pass:
+        description: "Minifig rows processed per pass"
+        required: false
+        default: "4000"
+      sets_max_api_calls_per_pass:
+        description: "BrickLink API budget per set pass"
+        required: false
+        default: "30000"
+      minifigs_max_api_calls_per_pass:
+        description: "BrickLink API budget per minifig pass"
+        required: false
+        default: "20000"
+      max_set_passes:
+        description: "Maximum set passes"
+        required: false
+        default: "30"
+      max_minifig_passes:
+        description: "Maximum minifig passes"
+        required: false
+        default: "30"
+      no_progress_passes:
+        description: "Stop after this many no-progress passes"
+        required: false
+        default: "4"
+      timeout_seconds:
+        description: "HTTP timeout seconds"
+        required: false
+        default: "20"
+      retries:
+        description: "Retries per request"
+        required: false
+        default: "2"
+      delay_seconds:
+        description: "Request pacing delay"
+        required: false
+        default: "0.08"
+      jitter_seconds:
+        description: "Request pacing jitter"
+        required: false
+        default: "0.02"
+      commit_message:
+        description: "Commit message for hydrated outputs"
+        required: false
+        default: "chore: hydrate sets/minifigs market for release"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hydrate-sets-minifigs-market-release
+  cancel-in-progress: false
+
+jobs:
+  hydrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
+      BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
+      BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
+      BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
+      BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+      BRICKLINK_FALLBACK_CURRENCIES: ${{ vars.BRICKLINK_FALLBACK_CURRENCIES || 'USD,EUR,GBP' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests requests_oauthlib
+
+      - name: Validate credentials and required files
+        run: |
+          missing=""
+          for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
+            if [ -z "${!key}" ]; then
+              missing="$missing $key"
+            fi
+          done
+          if [ -n "$missing" ]; then
+            echo "Missing BrickLink credentials:$missing"
+            echo "Set repository Actions secrets/variables first."
+            exit 1
+          fi
+
+          if [ ! -f "dist/Lego Star Wars Database.json" ]; then
+            echo "Missing dist/Lego Star Wars Database.json"
+            exit 1
+          fi
+          if [ ! -f "dist/Lego-Star-Wars-Minifigure-Database.json" ]; then
+            echo "Missing dist/Lego-Star-Wars-Minifigure-Database.json"
+            exit 1
+          fi
+
+      - name: Hydrate sets + minifigs market values
+        env:
+          SETS_PER_PASS: ${{ inputs.sets_per_pass }}
+          MINIFIGS_PER_PASS: ${{ inputs.minifigs_per_pass }}
+          SETS_MAX_API_CALLS_PER_PASS: ${{ inputs.sets_max_api_calls_per_pass }}
+          MINIFIGS_MAX_API_CALLS_PER_PASS: ${{ inputs.minifigs_max_api_calls_per_pass }}
+          MAX_SET_PASSES: ${{ inputs.max_set_passes }}
+          MAX_MINIFIG_PASSES: ${{ inputs.max_minifig_passes }}
+          NO_PROGRESS_PASSES: ${{ inputs.no_progress_passes }}
+          TIMEOUT_SECONDS: ${{ inputs.timeout_seconds }}
+          RETRIES: ${{ inputs.retries }}
+          DELAY_SECONDS: ${{ inputs.delay_seconds }}
+          JITTER_SECONDS: ${{ inputs.jitter_seconds }}
+        run: |
+          chmod +x scripts/hydrate_sets_minifigs_market_release.sh
+          ./scripts/hydrate_sets_minifigs_market_release.sh
+
+      - name: Rebuild chunked outputs + market details
+        run: |
+          rm -rf "dist/chunks" "dist/market-details"
+
+          python scripts/split_catalog_chunks.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --output-dir "dist/chunks" \
+            --manifest-path "dist/catalog-index.json" \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist" \
+            --market-details-dir "dist/market-details" \
+            --strip-market-detail-fields \
+            --max-items-per-chunk 800
+
+          python scripts/build_sync_artifacts.py \
+            --manifest-path "dist/catalog-index.json" \
+            --sync-state-path "dist/sync-state.json" \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --delta-manifest-path "dist/catalog-delta-index.json" \
+            --client-config-path "dist/client-config.json" \
+            --market-price-seed-path "dist/market-price-seed.json" \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist" \
+            --market-currency-code "${{ vars.BRICKLINK_CURRENCY || 'GBP' }}" \
+            --verbose
+
+      - name: Commit and push hydrated artifacts
+        env:
+          COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Safety: keep monolith JSON out of commits to avoid GitHub's 100MB limit.
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
+          git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
+          if [ -f "dist/market-sync-state.json" ]; then
+            git add "dist/market-sync-state.json"
+          fi
+          if [ -f "dist/sync-state.json" ]; then
+            git add "dist/sync-state.json"
+          fi
+          if [ -f "dist/bricklink-set-aliases.json" ]; then
+            git add "dist/bricklink-set-aliases.json"
+          fi
+
+          # Re-apply guard after adds.
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No hydrated output changes to commit."
+            exit 0
+          fi
+
+          git commit -m "${COMMIT_MESSAGE}"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Hydrated output push succeeded on attempt $attempt."
+              exit 0
+            fi
+            echo "Hydrated output push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+
+          echo "Hydrated output push failed after 3 attempts."
+          exit 1
