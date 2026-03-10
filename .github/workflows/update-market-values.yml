@@ -47,10 +47,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
+          # Safety: never include monolithic catalog payloads in checkpoint commits.
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
+          git add "dist/Themes.json"
           if [ -f "dist/sync-state.json" ]; then
             git add "dist/sync-state.json"
           fi
+
+          # Re-apply guard after adds to ensure oversized monoliths are never committed.
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "No catalog checkpoint changes to commit."
@@ -108,13 +118,25 @@ jobs:
 
           checkpoint_commit() {
             local message="$1"
-            git add "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" "dist/Themes.json"
-            if [ -f "dist/sync-state.json" ]; then
-              git add "dist/sync-state.json"
-            fi
+            # Safety: prevent oversized monolith files from getting staged by mistake.
+            git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+            git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+            git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
             if [ -f "dist/market-sync-state.json" ]; then
               git add "dist/market-sync-state.json"
             fi
+            if [ -f "dist/sync-state.json" ]; then
+              git add "dist/sync-state.json"
+            fi
+            if [ -f "dist/bricklink-set-aliases.json" ]; then
+              git add "dist/bricklink-set-aliases.json"
+            fi
+
+            # Re-apply guard after adds to ensure monolith files are never committed.
+            git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+            git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+            git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
 
             if git diff --cached --quiet; then
               echo "No checkpoint changes to commit."
@@ -207,7 +229,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Safety: keep monolith JSON out of commits to avoid GitHub's 100MB limit.
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
           git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No chunk output changes to commit."
             exit 0

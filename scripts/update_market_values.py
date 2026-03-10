@@ -584,9 +584,24 @@ class BrickLinkClient:
 
             parsed = _parse_price_guide_html(response.text)
             if parsed is None:
-                self._mark_failure("no_data", response.status_code)
+                body = response.text or ""
+                has_price_guide_markers = (
+                    "Last 6 Months Sales" in body
+                    or "Current Items for Sale" in body
+                    or "catalogPG.asp" in body
+                )
+                # If the page appears to be a price-guide page but we couldn't
+                # parse it, treat as parse_error (transient/parser issue), not
+                # true no-data.
+                if has_price_guide_markers:
+                    self._mark_failure("parse_error", response.status_code)
+                else:
+                    self._mark_failure("no_data", response.status_code)
                 if self.verbose and not quiet_no_data:
-                    print(f"[HTML] no parseable price data {item_type}:{item_no}", flush=True)
+                    if has_price_guide_markers:
+                        print(f"[HTML] parse miss price guide {item_type}:{item_no}", flush=True)
+                    else:
+                        print(f"[HTML] no price-guide data {item_type}:{item_no}", flush=True)
                 return None
 
             matrix, month_new, month_used, tx_new, tx_used, listings_new, listings_used, currency = parsed
@@ -751,10 +766,39 @@ def _html_to_text(raw: Any) -> str:
 
 
 def _extract_block_metric_text(block_html: str, label_pattern: str) -> str:
+    # Primary path: metric rows in the summary table.
+    for row_match in re.finditer(r"<TR\b[^>]*>(.*?)</TR>", block_html, re.IGNORECASE | re.DOTALL):
+        row_html = row_match.group(1)
+        row_text = _html_to_text(row_html)
+        if not re.search(label_pattern, row_text, re.IGNORECASE):
+            continue
+
+        td_cells = re.findall(r"<TD\b[^>]*>(.*?)</TD>", row_html, re.IGNORECASE | re.DOTALL)
+        for cell in reversed(td_cells):
+            cell_text = _html_to_text(cell)
+            if not cell_text:
+                continue
+            if re.search(label_pattern, cell_text, re.IGNORECASE):
+                continue
+            return cell_text
+
+        stripped = re.sub(label_pattern, "", row_text, flags=re.IGNORECASE).strip(" :")
+        if stripped:
+            return stripped
+
+    # Fallback path: resilient to minor BrickLink markup changes where values
+    # are no longer wrapped in <B>.
     match = re.search(label_pattern + r".*?<B>(.*?)</B>", block_html, re.IGNORECASE | re.DOTALL)
-    if not match:
-        return ""
-    return _html_to_text(match.group(1))
+    if match:
+        return _html_to_text(match.group(1))
+    match = re.search(
+        label_pattern + r".*?<TD[^>]*>\s*([^<]+?)\s*</TD>",
+        block_html,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if match:
+        return _html_to_text(match.group(1))
+    return ""
 
 
 def build_html_price_guide_url(item_type: str, item_no: str) -> str:
@@ -895,7 +939,7 @@ def _parse_monthly_sales_column_html(
             if not re.search(r"([£$€]|~|\b[A-Z]{3}\b)", each_raw):
                 continue
             qty_text = collapse_ws(qty_raw)
-            if not re.fullmatch(r"\d{1,3}", qty_text):
+            if not re.fullmatch(r"\d{1,3}(?:,\d{3})*", qty_text):
                 continue
             qty = _parse_int(qty_text)
             each_price, tx_currency = _parse_price_and_currency(each_raw)
@@ -975,7 +1019,7 @@ def _parse_current_listings_column_html(
         if not re.search(r"([£$€]|~|\b[A-Z]{3}\b)", each_raw):
             continue
         qty_text = collapse_ws(qty_raw)
-        if not re.fullmatch(r"\d{1,3}", qty_text):
+        if not re.fullmatch(r"\d{1,3}(?:,\d{3})*", qty_text):
             continue
 
         qty = _parse_int(qty_text)
@@ -1034,50 +1078,96 @@ def _parse_price_guide_html(
     currency_match = re.search(r"Showing prices in.*?\(([A-Z]{3})\)", html_text, re.IGNORECASE | re.DOTALL)
     page_currency = collapse_ws(currency_match.group(1)).upper() if currency_match else ""
 
+    # Column anchors are generally stable across BrickLink table variants.
+    column_positions = [
+        m.start()
+        for m in re.finditer(r"<TD\b[^>]*\bWIDTH\s*=\s*['\"]?25%['\"]?[^>]*>", html_text, re.IGNORECASE)
+    ]
+    column_blocks: List[str] = []
+    for index, start in enumerate(column_positions):
+        end = column_positions[index + 1] if index + 1 < len(column_positions) else len(html_text)
+        column_blocks.append(html_text[start:end])
+
     summary_match = re.search(
-        r"<TR\b[^>]*BGCOLOR=['\"]#C0C0C0['\"][^>]*>(.*?)<TR\b[^>]*VALIGN=['\"]TOP['\"]",
+        r"<TR\b[^>]*BGCOLOR\s*=\s*['\"]?#C0C0C0['\"]?[^>]*>"
+        r"(.*?)"
+        r"<TR\b[^>]*(?:VALIGN\s*=\s*['\"]?TOP['\"]?|BGCOLOR\s*=\s*['\"]?#(?:EEEEEE|DDDDDD)['\"]?)[^>]*>",
         html_text,
         re.IGNORECASE | re.DOTALL,
     )
     if not summary_match:
-        return None
-    summary_segment = summary_match.group(1)
-    # Keep positional columns even when sold blocks are "(Unavailable)" and do
-    # not contain Avg/Max rows. Requiring all four parseable blocks causes valid
-    # pages to be dropped entirely (e.g. stock exists, sold unavailable).
-    split_blocks = re.split(
-        r"<TD\b[^>]*VALIGN=['\"]TOP['\"][^>]*>",
-        summary_segment,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
-    summary_blocks = [block for block in split_blocks[1:] if collapse_ws(block)]
-    if len(summary_blocks) < 2:
-        return None
+        summary_match = re.search(
+            r"<TR\b[^>]*BGCOLOR\s*=\s*['\"]?#C0C0C0['\"]?[^>]*>(.*?)</TR>",
+            html_text,
+            re.IGNORECASE | re.DOTALL,
+        )
+    summary_blocks: List[str] = []
+    if summary_match:
+        summary_segment = summary_match.group(1)
+        # Keep positional columns even when sold blocks are "(Unavailable)" and do
+        # not contain Avg/Max rows. Requiring all four parseable blocks causes valid
+        # pages to be dropped entirely (e.g. stock exists, sold unavailable).
+        split_blocks = re.split(
+            r"<TD\b[^>]*VALIGN\s*=\s*['\"]?TOP['\"]?[^>]*>",
+            summary_segment,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        summary_blocks = [block for block in split_blocks[1:] if collapse_ws(block)]
 
-    sold_new = _parse_price_guide_summary_block(
-        summary_blocks[0],
-        guide_type="sold",
-        condition="N",
-        fallback_currency=page_currency,
-    ) if len(summary_blocks) >= 1 else None
-    sold_used = _parse_price_guide_summary_block(
-        summary_blocks[1],
-        guide_type="sold",
-        condition="U",
-        fallback_currency=page_currency,
-    ) if len(summary_blocks) >= 2 else None
-    stock_new = _parse_price_guide_summary_block(
-        summary_blocks[2],
-        guide_type="stock",
-        condition="N",
-        fallback_currency=page_currency,
-    ) if len(summary_blocks) >= 3 else None
-    stock_used = _parse_price_guide_summary_block(
-        summary_blocks[3],
-        guide_type="stock",
-        condition="U",
-        fallback_currency=page_currency,
-    ) if len(summary_blocks) >= 4 else None
+    if len(summary_blocks) >= 2:
+        sold_new = _parse_price_guide_summary_block(
+            summary_blocks[0],
+            guide_type="sold",
+            condition="N",
+            fallback_currency=page_currency,
+        ) if len(summary_blocks) >= 1 else None
+        sold_used = _parse_price_guide_summary_block(
+            summary_blocks[1],
+            guide_type="sold",
+            condition="U",
+            fallback_currency=page_currency,
+        ) if len(summary_blocks) >= 2 else None
+        stock_new = _parse_price_guide_summary_block(
+            summary_blocks[2],
+            guide_type="stock",
+            condition="N",
+            fallback_currency=page_currency,
+        ) if len(summary_blocks) >= 3 else None
+        stock_used = _parse_price_guide_summary_block(
+            summary_blocks[3],
+            guide_type="stock",
+            condition="U",
+            fallback_currency=page_currency,
+        ) if len(summary_blocks) >= 4 else None
+    elif len(column_blocks) >= 2:
+        # Fallback path when BrickLink tweaks summary row wrappers:
+        # parse summary metrics directly from the 25%-width columns.
+        sold_new = _parse_price_guide_summary_block(
+            column_blocks[0],
+            guide_type="sold",
+            condition="N",
+            fallback_currency=page_currency,
+        )
+        sold_used = _parse_price_guide_summary_block(
+            column_blocks[1],
+            guide_type="sold",
+            condition="U",
+            fallback_currency=page_currency,
+        )
+        stock_new = _parse_price_guide_summary_block(
+            column_blocks[2],
+            guide_type="stock",
+            condition="N",
+            fallback_currency=page_currency,
+        ) if len(column_blocks) >= 3 else None
+        stock_used = _parse_price_guide_summary_block(
+            column_blocks[3],
+            guide_type="stock",
+            condition="U",
+            fallback_currency=page_currency,
+        ) if len(column_blocks) >= 4 else None
+    else:
+        return None
 
     matrix: Dict[Tuple[str, str], Dict[str, Any]] = {}
     if sold_new is not None:
@@ -1103,27 +1193,21 @@ def _parse_price_guide_html(
         if not collapse_ws(row.get("currency_code")):
             row["currency_code"] = currency
 
-    column_positions = [
-        m.start()
-        for m in re.finditer(r"<TD\b[^>]*\bWIDTH\s*=\s*['\"]?25%['\"]?[^>]*>", html_text, re.IGNORECASE)
-    ]
     month_new: List[Dict[str, Any]] = []
     month_used: List[Dict[str, Any]] = []
     tx_new: List[Dict[str, Any]] = []
     tx_used: List[Dict[str, Any]] = []
     listings_new: List[Dict[str, Any]] = []
     listings_used: List[Dict[str, Any]] = []
-    if len(column_positions) >= 2:
-        sold_new_col = html_text[column_positions[0] : column_positions[1]]
-        sold_used_col = html_text[
-            column_positions[1] : column_positions[2] if len(column_positions) > 2 else len(html_text)
-        ]
+    if len(column_blocks) >= 2:
+        sold_new_col = column_blocks[0]
+        sold_used_col = column_blocks[1]
         month_new, tx_new = _parse_monthly_sales_column_html(sold_new_col, fallback_currency=currency)
         month_used, tx_used = _parse_monthly_sales_column_html(sold_used_col, fallback_currency=currency)
 
-        if len(column_positions) >= 4:
-            stock_new_col = html_text[column_positions[2] : column_positions[3]]
-            stock_used_col = html_text[column_positions[3] : len(html_text)]
+        if len(column_blocks) >= 4:
+            stock_new_col = column_blocks[2]
+            stock_used_col = column_blocks[3]
             listings_new = _parse_current_listings_column_html(stock_new_col, fallback_currency=currency)
             listings_used = _parse_current_listings_column_html(stock_used_col, fallback_currency=currency)
         else:
@@ -2174,16 +2258,7 @@ def load_json_array(path: Path) -> List[Dict[str, Any]]:
 
 def maybe_write_json(path: Path, rows: List[Dict[str, Any]]) -> bool:
     original = path.read_text(encoding="utf-8")
-    # Keep the large catalog payloads compact to stay under GitHub's 100 MB
-    # object hard limit while preserving full data fidelity.
-    compact_targets = {
-        "Lego Star Wars Database.json",
-        "Lego-Star-Wars-Minifigure-Database.json",
-    }
-    if path.name in compact_targets:
-        updated = json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + "\n"
-    else:
-        updated = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
+    updated = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
     if original == updated:
         return False
     path.write_text(updated, encoding="utf-8")
