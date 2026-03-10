@@ -10,14 +10,14 @@
   "marketplaceDealsFallbackURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/marketplace-deals.json",
   "marketPriceSeedURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-price-seed.json",
   "marketCurrencyCode": "GBP",
-  "marketDataVersion": "2026-03-10T15:32:31Z",
-  "generatedAt": "2026-03-10T15:32:31Z",
+  "marketDataVersion": "2026-03-10T16:39:43Z",
+  "generatedAt": "2026-03-10T16:39:43Z",
   "summary": {
     "setCount": 28842,
     "minifigureCount": 18138,
     "deltaSetChunkCount": 3,
     "deltaMinifigureChunkCount": 0,
-    "marketSeedItemCount": 4528
+    "marketSeedItemCount": 4524
   },
   "sync": {
     "strategy": "chunked",
