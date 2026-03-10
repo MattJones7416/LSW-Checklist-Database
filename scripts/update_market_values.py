@@ -517,7 +517,7 @@ class BrickLinkClient:
             return None
 
         item_type_upper = collapse_ws(item_type).upper()
-        if item_type_upper not in {"SET", "MINIFIG"}:
+        if item_type_upper not in {"SET", "MINIFIG", "PART"}:
             self._mark_failure("parse_error")
             return None
 
@@ -802,8 +802,11 @@ def _extract_block_metric_text(block_html: str, label_pattern: str) -> str:
 
 
 def build_html_price_guide_url(item_type: str, item_no: str) -> str:
-    if collapse_ws(item_type).upper() == "SET":
+    item_type_upper = collapse_ws(item_type).upper()
+    if item_type_upper == "SET":
         key = "S"
+    elif item_type_upper == "PART":
+        key = "P"
     else:
         key = "M"
     # Keep parity with BrickLink's "Exclude incomplete sets" and
@@ -1445,6 +1448,9 @@ def parse_bricklink_item_reference(link: Any) -> Optional[Tuple[str, str]]:
     minifig_code = canonicalize_minifig_item_no((query.get("M") or [""])[0])
     if minifig_code:
         return ("MINIFIG", minifig_code)
+    part_code = canonicalize_part_item_no((query.get("P") or [""])[0])
+    if part_code:
+        return ("PART", part_code)
     return None
 
 
@@ -1472,6 +1478,15 @@ def canonicalize_set_item_no(value: Any) -> str:
 
 
 def canonicalize_minifig_item_no(value: Any) -> str:
+    raw = collapse_ws(value)
+    if not raw:
+        return ""
+    raw = raw.split("#", 1)[0]
+    raw = re.sub(r"\s+", "", raw)
+    return raw
+
+
+def canonicalize_part_item_no(value: Any) -> str:
     raw = collapse_ws(value)
     if not raw:
         return ""
@@ -1584,6 +1599,38 @@ def build_minifig_item_candidates(
         if lowered not in seen:
             candidates.append(code)
             seen.add(lowered)
+    return candidates
+
+
+def build_part_item_candidates(
+    part_num: Any,
+    link: Any = None,
+    price_guide_url: Any = None,
+    bricklink_part_num: Any = None,
+) -> List[str]:
+    candidates: List[str] = []
+    seen: set[str] = set()
+
+    def add_candidate(value: Any) -> None:
+        code = canonicalize_part_item_no(value)
+        if not code:
+            return
+        lowered = code.lower()
+        if lowered in seen:
+            return
+        seen.add(lowered)
+        candidates.append(code)
+
+    add_candidate(bricklink_part_num)
+    add_candidate(part_num)
+
+    ref = parse_bricklink_item_reference(link)
+    if ref and ref[0] == "PART":
+        add_candidate(ref[1])
+    guide_ref = parse_bricklink_item_reference(price_guide_url)
+    if guide_ref and guide_ref[0] == "PART":
+        add_candidate(guide_ref[1])
+
     return candidates
 
 
@@ -1996,6 +2043,43 @@ def apply_market_to_row(
     currency = collapse_ws(
         (sold_new or sold_used or stock_new or stock_used or {}).get("currency_code")
     ).upper() or resolved_request_currency
+
+    if collapse_ws(item_type).upper() == "PART":
+        display_new = first_non_none([
+            sold_new_avg,
+            stock_new_avg,
+            _parse_float(stock_new.get("min_price") if stock_new else None),
+            _parse_float(sold_new.get("min_price") if sold_new else None),
+        ])
+        display_used = first_non_none([
+            sold_used_avg,
+            stock_used_avg,
+            _parse_float(stock_used.get("min_price") if stock_used else None),
+            _parse_float(sold_used.get("min_price") if sold_used else None),
+        ])
+        existing_market_new = collapse_ws(row.get("market_price_new"))
+        existing_market_used = collapse_ws(row.get("market_price_used"))
+
+        row["market_price_new"] = (
+            format_display_price(display_new, currency)
+            if display_new is not None
+            else (existing_market_new or None)
+        )
+        row["market_price_used"] = (
+            format_display_price(display_used, currency)
+            if display_used is not None
+            else (existing_market_used or None)
+        )
+        row["market_currency_code"] = currency
+        row["market_price_guide_url"] = to_price_guide_url(item_type, item_no)
+        row["market_fetch_status"] = f"ok_{market_source}"
+        last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        row["market_last_updated_utc"] = last_updated
+        row["market_no_data_retry_after_utc"] = None
+        row["MarketFetchStatus"] = f"ok_{market_source}"
+        row["MarketLastUpdatedUTC"] = last_updated
+        row["MarketNoDataRetryAfterUTC"] = None
+        return True
 
     # Summary prices and canonical display values.
     row["BrickLinkPriceGuideURL"] = to_price_guide_url(item_type, item_no)
@@ -2451,8 +2535,9 @@ def update_rows(
         stats.last_index_processed = idx
         stats.processed_indices.append(idx)
 
+        item_type_upper = collapse_ws(item_type).upper()
         canonical_set_code = ""
-        if item_type == "SET":
+        if item_type_upper == "SET":
             canonical_set_code = normalize_set_code(row.get("Number"), row.get("Variant")).lower()
             cached_alias = None
             if set_alias_cache is not None and canonical_set_code:
@@ -2465,13 +2550,21 @@ def update_rows(
                 alias_set_code=cached_alias,
             )
             item_candidates: List[Tuple[str, str]] = [("SET", value) for value in set_candidates]
-        else:
+        elif item_type_upper == "MINIFIG":
             minifig_candidates = build_minifig_item_candidates(
                 row.get("Number"),
                 row.get("link"),
                 row.get("BrickLinkPriceGuideURL"),
             )
             item_candidates = [("MINIFIG", value) for value in minifig_candidates]
+        else:
+            part_candidates = build_part_item_candidates(
+                row.get("part_num"),
+                row.get("link"),
+                row.get("market_price_guide_url"),
+                row.get("bricklink_part_num"),
+            )
+            item_candidates = [("PART", value) for value in part_candidates]
 
         if not item_candidates:
             stats.parse_misses += 1
@@ -2481,7 +2574,7 @@ def update_rows(
         before = json.dumps(row, sort_keys=True, ensure_ascii=False)
         ok = False
         used_item_no = item_no
-        used_item_type = item_type
+        used_item_type = item_type_upper
         for candidate_type, candidate_no in item_candidates:
             used_item_type = candidate_type
             used_item_no = candidate_no
@@ -2503,7 +2596,7 @@ def update_rows(
 
         if (
             not ok
-            and item_type == "SET"
+            and item_type_upper == "SET"
             and set_alias_cache is not None
             and canonical_set_code
             and canonical_set_code not in set_alias_cache
@@ -2578,6 +2671,7 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Update LEGO market values via BrickLink API.")
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json", help="Path to sets JSON file.")
     parser.add_argument("--minifigs-json", default="dist/Lego-Star-Wars-Minifigure-Database.json", help="Path to minifig JSON file.")
+    parser.add_argument("--parts-json", default="dist/parts/parts-catalog.json", help="Path to parts catalog JSON file.")
 
     parser.add_argument("--bricklink-base-url", default=BRICKLINK_API_BASE_URL, help="BrickLink API base URL.")
     parser.add_argument("--currency-code", default=os.getenv("BRICKLINK_CURRENCY", "GBP"), help="Price currency code (default GBP).")
@@ -2633,12 +2727,17 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         default=os.getenv("MARKET_PRIORITY_MINIFIG_CATEGORIES", "Star Wars,Marvel Super Heroes,Disney,NINJAGO"),
         help="Comma-separated minifig categories/themes to prioritize before full rotation.",
     )
+    parser.add_argument(
+        "--priority-part-categories",
+        default=os.getenv("MARKET_PRIORITY_PART_CATEGORIES", ""),
+        help="Comma-separated part categories to prioritize before full rotation.",
+    )
     parser.add_argument("--limit", type=int, default=None, help="Optional per-file row limit for testing.")
     parser.add_argument(
         "--item-type",
-        choices=["both", "set", "minifig"],
+        choices=["both", "set", "minifig", "part", "all"],
         default="both",
-        help="Choose whether to update sets, minifigs, or both (default both).",
+        help="Choose whether to update sets, minifigs, parts, or all (default both = sets+minifigs).",
     )
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
@@ -2666,6 +2765,10 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
 def main(argv: Sequence[str]) -> int:
     args = parse_args(argv)
     allow_html_fallback = not bool(args.disable_html_fallback)
+    item_mode = collapse_ws(args.item_type).lower() or "both"
+    do_sets = item_mode in {"both", "set", "all"}
+    do_minifigs = item_mode in {"both", "minifig", "all"}
+    do_parts = item_mode in {"part", "all"}
 
     raw_required = {
         "BRICKLINK_CONSUMER_KEY": collapse_ws(args.consumer_key),
@@ -2691,11 +2794,15 @@ def main(argv: Sequence[str]) -> int:
 
     sets_path = Path(args.sets_json)
     minifigs_path = Path(args.minifigs_json)
+    parts_path = Path(args.parts_json)
     if not sets_path.exists():
         print(f"Missing sets JSON: {sets_path}", file=sys.stderr)
         return 1
     if not minifigs_path.exists():
         print(f"Missing minifig JSON: {minifigs_path}", file=sys.stderr)
+        return 1
+    if do_parts and not parts_path.exists():
+        print(f"Missing parts JSON: {parts_path}", file=sys.stderr)
         return 1
 
     cfg = FetchConfig(
@@ -2760,6 +2867,7 @@ def main(argv: Sequence[str]) -> int:
 
     sets_rows = load_json_array(sets_path)
     minifigs_rows = load_json_array(minifigs_path)
+    parts_rows = load_json_array(parts_path) if do_parts and parts_path.exists() else []
     market_state_path = Path(args.market_state_json)
     market_state = load_json_object(market_state_path)
     catalog_state = load_json_object(Path(args.catalog_sync_state_json))
@@ -2801,9 +2909,11 @@ def main(argv: Sequence[str]) -> int:
         for value in re.split(r"[,;]", str(args.priority_minifig_categories or ""))
         if collapse_ws(value)
     }
-
-    do_sets = args.item_type in {"both", "set"}
-    do_minifigs = args.item_type in {"both", "minifig"}
+    priority_part_categories = {
+        collapse_ws(value).casefold()
+        for value in re.split(r"[,;]", str(args.priority_part_categories or ""))
+        if collapse_ws(value)
+    }
 
     set_theme_priority_indices: List[int] = []
     set_changed_priority_indices: List[int] = []
@@ -2823,16 +2933,27 @@ def main(argv: Sequence[str]) -> int:
             if category in priority_minifig_categories:
                 minifig_theme_priority_indices.append(idx)
 
+    part_category_priority_indices: List[int] = []
+    if do_parts and priority_part_categories:
+        for idx, row in enumerate(parts_rows):
+            category = collapse_ws(row.get("category")).casefold()
+            if category in priority_part_categories:
+                part_category_priority_indices.append(idx)
+
     stored_set_cursor = _parse_int(market_state.get("nextSetIndex"))
     stored_minifig_cursor = _parse_int(market_state.get("nextMinifigIndex"))
+    stored_part_cursor = _parse_int(market_state.get("nextPartIndex"))
     set_cursor = stored_set_cursor if stored_set_cursor is not None else max(0, args.start_index)
     minifig_cursor = stored_minifig_cursor if stored_minifig_cursor is not None else max(0, args.start_index)
+    part_cursor = stored_part_cursor if stored_part_cursor is not None else max(0, args.start_index)
 
     set_theme_priority_lookup = set(set_theme_priority_indices)
     set_changed_priority_lookup = set(set_changed_priority_indices)
     minifig_theme_priority_lookup = set(minifig_theme_priority_indices)
+    part_category_priority_lookup = set(part_category_priority_indices)
     set_rotating_indices = rotating_indices(len(sets_rows), set_cursor) if do_sets else []
     minifig_rotating_indices = rotating_indices(len(minifigs_rows), minifig_cursor) if do_minifigs else []
+    part_rotating_indices = rotating_indices(len(parts_rows), part_cursor) if do_parts else []
     set_plan, set_non_priority_rotation = build_priority_plan(
         set_rotating_indices,
         set_theme_priority_lookup,
@@ -2843,12 +2964,18 @@ def main(argv: Sequence[str]) -> int:
         minifig_theme_priority_lookup,
         set(),
     )
+    part_plan, part_non_priority_rotation = build_priority_plan(
+        part_rotating_indices,
+        part_category_priority_lookup,
+        set(),
+    )
 
     if cfg.verbose:
         print(
             (
                 f"[Plan] set_priority={len(set_theme_priority_indices)} set_rotating={len(set_rotating_indices)} "
                 f"minifig_priority={len(minifig_theme_priority_indices)} minifig_rotating={len(minifig_rotating_indices)} "
+                f"part_priority={len(part_category_priority_indices)} part_rotating={len(part_rotating_indices)} "
                 f"set_changed_priority={len(set_changed_priority_indices)}"
             ),
             flush=True,
@@ -2894,6 +3021,26 @@ def main(argv: Sequence[str]) -> int:
     else:
         minifigs_stats = FileUpdateStats(total_rows=len(minifigs_rows))
 
+    if do_parts:
+        parts_stats = update_rows(
+            parts_rows,
+            item_type="PART",
+            cfg=cfg,
+            client=client,
+            throttle=throttle,
+            month_key=month_key,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            indexes=part_plan,
+            label="Parts",
+            run_started_at=now,
+            no_data_cooldown_hours=max(1.0, args.no_data_cooldown_hours),
+            set_alias_cache=None,
+            alias_lookup_budget=None,
+        )
+    else:
+        parts_stats = FileUpdateStats(total_rows=len(parts_rows))
+
     next_set_cursor = set_cursor
     if do_sets and sets_rows:
         next_set_cursor = advance_rotation_cursor(
@@ -2912,11 +3059,36 @@ def main(argv: Sequence[str]) -> int:
             non_priority_order=minifig_non_priority_rotation,
             rotating_order=minifig_rotating_indices,
         )
+    next_part_cursor = part_cursor
+    if do_parts and parts_rows:
+        next_part_cursor = advance_rotation_cursor(
+            total_rows=len(parts_rows),
+            current_cursor=part_cursor,
+            processed_indices=parts_stats.processed_indices,
+            non_priority_order=part_non_priority_rotation,
+            rotating_order=part_rotating_indices,
+        )
 
     set_rows_with_new = sum(1 for row in sets_rows if bool(collapse_ws(row.get("New"))))
     set_rows_with_used = sum(1 for row in sets_rows if bool(collapse_ws(row.get("Used"))))
     minifig_rows_with_new = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("New"))))
     minifig_rows_with_used = sum(1 for row in minifigs_rows if bool(collapse_ws(row.get("Used"))))
+    if do_parts:
+        part_rows_with_new = sum(1 for row in parts_rows if bool(collapse_ws(row.get("market_price_new"))))
+        part_rows_with_used = sum(1 for row in parts_rows if bool(collapse_ws(row.get("market_price_used"))))
+        part_rows_total = len(parts_rows)
+        last_part_rows_considered = parts_stats.rows_considered
+        last_part_rows_succeeded = parts_stats.rows_succeeded
+        last_part_cooldown_skips = parts_stats.cooldown_skips
+        last_part_priority_count = len(part_category_priority_indices)
+    else:
+        part_rows_with_new = _parse_int(market_state.get("partRowsWithNew")) or 0
+        part_rows_with_used = _parse_int(market_state.get("partRowsWithUsed")) or 0
+        part_rows_total = _parse_int(market_state.get("partRowsTotal")) or 0
+        last_part_rows_considered = _parse_int(market_state.get("lastPartRowsConsidered")) or 0
+        last_part_rows_succeeded = _parse_int(market_state.get("lastPartRowsSucceeded")) or 0
+        last_part_cooldown_skips = _parse_int(market_state.get("lastPartCooldownSkips")) or 0
+        last_part_priority_count = _parse_int(market_state.get("lastPartPriorityCount")) or 0
 
     if client.auth_failed and not cfg.allow_html_fallback:
         msg = client.auth_error_message or "BrickLink API authentication failed."
@@ -2930,18 +3102,20 @@ def main(argv: Sequence[str]) -> int:
             print(f"[AuthDiag] {diag}", file=sys.stderr)
         return 1
 
-    if not args.skip_cross_enrichment:
+    if not args.skip_cross_enrichment and (do_sets or do_minifigs):
         set_cross, minifig_cross = apply_cross_catalog_enrichment(sets_rows, minifigs_rows)
         sets_stats.cross_rows_changed = set_cross
         minifigs_stats.cross_rows_changed = minifig_cross
 
-    sets_written = maybe_write_json(sets_path, sets_rows)
-    minifigs_written = maybe_write_json(minifigs_path, minifigs_rows)
+    sets_written = maybe_write_json(sets_path, sets_rows) if do_sets else False
+    minifigs_written = maybe_write_json(minifigs_path, minifigs_rows) if do_minifigs else False
+    parts_written = maybe_write_json(parts_path, parts_rows) if do_parts else False
 
     market_state.update(
         {
             "nextSetIndex": next_set_cursor,
             "nextMinifigIndex": next_minifig_cursor,
+            "nextPartIndex": next_part_cursor,
             "lastRunUTC": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "lastMonthKey": month_key,
             "lastApiRequestsUsed": client.request_budget.used_calls,
@@ -2953,8 +3127,12 @@ def main(argv: Sequence[str]) -> int:
             "lastMinifigRowsConsidered": minifigs_stats.rows_considered,
             "lastMinifigRowsSucceeded": minifigs_stats.rows_succeeded,
             "lastMinifigCooldownSkips": minifigs_stats.cooldown_skips,
+            "lastPartRowsConsidered": last_part_rows_considered,
+            "lastPartRowsSucceeded": last_part_rows_succeeded,
+            "lastPartCooldownSkips": last_part_cooldown_skips,
             "lastSetPriorityCount": len(set_theme_priority_indices),
             "lastMinifigPriorityCount": len(minifig_theme_priority_indices),
+            "lastPartPriorityCount": last_part_priority_count,
             "lastChangedSetPriorityCount": len(changed_set_codes),
             "lastNoDataCooldownHours": max(1.0, args.no_data_cooldown_hours),
             "lastAliasLookupsRemaining": alias_lookup_budget[0],
@@ -2965,12 +3143,18 @@ def main(argv: Sequence[str]) -> int:
             "minifigRowsWithNew": minifig_rows_with_new,
             "minifigRowsWithUsed": minifig_rows_with_used,
             "minifigRowsTotal": len(minifigs_rows),
+            "partRowsWithNew": part_rows_with_new,
+            "partRowsWithUsed": part_rows_with_used,
+            "partRowsTotal": part_rows_total,
         }
     )
     write_json_object(market_state_path, market_state)
 
     if cfg.verbose:
-        print(f"[Write] sets_written={sets_written} minifigs_written={minifigs_written}", flush=True)
+        print(
+            f"[Write] sets_written={sets_written} minifigs_written={minifigs_written} parts_written={parts_written}",
+            flush=True,
+        )
 
     cap_text = "unlimited" if client.request_budget.max_calls is None else str(client.request_budget.max_calls)
     print(
@@ -2982,6 +3166,7 @@ def main(argv: Sequence[str]) -> int:
     )
     print_summary("Sets", sets_stats)
     print_summary("Minifigs", minifigs_stats)
+    print_summary("Parts", parts_stats)
     return 0
 
 

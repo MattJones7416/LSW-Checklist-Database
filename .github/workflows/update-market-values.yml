@@ -92,9 +92,11 @@ jobs:
           BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
           ACTIVE_SET_THEMES: ${{ vars.ACTIVE_SET_THEMES || vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
           ACTIVE_MINIFIG_CATEGORIES: ${{ vars.ACTIVE_MINIFIG_CATEGORIES || vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+          ACTIVE_PART_CATEGORIES: ${{ vars.ACTIVE_PART_CATEGORIES || vars.MARKET_PRIORITY_PART_CATEGORIES || '' }}
           MARKET_NO_DATA_COOLDOWN_HOURS: ${{ vars.MARKET_NO_DATA_COOLDOWN_HOURS || '72' }}
           MARKET_SETS_PER_RUN: ${{ vars.MARKET_SETS_PER_RUN || '1300' }}
           MARKET_MINIFIGS_DAILY_LIMIT: ${{ vars.MARKET_MINIFIGS_DAILY_LIMIT || '800' }}
+          MARKET_PARTS_PER_RUN: ${{ vars.MARKET_PARTS_PER_RUN || '500' }}
         run: |
           missing=""
           for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
@@ -132,6 +134,9 @@ jobs:
             if [ -f "dist/bricklink-set-aliases.json" ]; then
               git add "dist/bricklink-set-aliases.json"
             fi
+            if [ -f "dist/parts/parts-catalog.json" ]; then
+              git add "dist/parts/parts-catalog.json"
+            fi
 
             # Re-apply guard after adds to ensure monolith files are never committed.
             git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
@@ -163,10 +168,12 @@ jobs:
             --item-type set \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
             --currency-code "${BRICKLINK_CURRENCY}" \
             --fallback-currencies "USD,EUR,GBP" \
             --priority-themes "${ACTIVE_SET_THEMES}" \
             --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
+            --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
             --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
             --limit "${MARKET_SETS_PER_RUN}" \
             --max-api-calls 12000 \
@@ -185,6 +192,38 @@ jobs:
             exit "$status"
           fi
 
+          if [ -f "dist/parts/parts-catalog.json" ]; then
+            echo "[Market] Updating part price guide fields..."
+            set +e
+            python scripts/update_market_values.py \
+              --item-type part \
+              --sets-json "dist/Lego Star Wars Database.json" \
+              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --parts-json "dist/parts/parts-catalog.json" \
+              --currency-code "${BRICKLINK_CURRENCY}" \
+              --fallback-currencies "USD,EUR,GBP" \
+              --priority-themes "${ACTIVE_SET_THEMES}" \
+              --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
+              --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
+              --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
+              --limit "${MARKET_PARTS_PER_RUN}" \
+              --max-api-calls 5000 \
+              --market-state-json "dist/market-sync-state.json" \
+              --catalog-sync-state-json "dist/sync-state.json" \
+              --delay 0.08 \
+              --jitter 0.02 \
+              --timeout 20 \
+              --retries 2 \
+              --verbose
+            status=$?
+            set -e
+            checkpoint_commit "chore: market checkpoint parts"
+            if [ "$status" -ne 0 ]; then
+              echo "Market parts step failed with exit code ${status}."
+              exit "$status"
+            fi
+          fi
+
           # Minifigs are refreshed daily (or manual) so hourly runs focus on full set coverage.
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 3 * * *" ]; then
             echo "[Market] Daily minifigure refresh..."
@@ -193,10 +232,12 @@ jobs:
               --item-type minifig \
               --sets-json "dist/Lego Star Wars Database.json" \
               --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --parts-json "dist/parts/parts-catalog.json" \
               --currency-code "${BRICKLINK_CURRENCY}" \
               --fallback-currencies "USD,EUR,GBP" \
               --priority-themes "${ACTIVE_SET_THEMES}" \
               --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
+              --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
               --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
               --limit "${MARKET_MINIFIGS_DAILY_LIMIT}" \
               --max-api-calls 6000 \
