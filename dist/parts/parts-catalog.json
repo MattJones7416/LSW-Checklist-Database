@@ -12006,7 +12006,10 @@
     "image_url": null,
     "bricklink_part_num": "10112956",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10112961",
@@ -12015,7 +12018,10 @@
     "image_url": null,
     "bricklink_part_num": "10112961",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113",
@@ -12023,8 +12029,16 @@
     "category": "Minifig Headwear",
     "image_url": null,
     "bricklink_part_num": "10113",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.96",
+    "market_price_used": "~£0.53",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10113&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:11:27Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:27Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10113039",
@@ -12033,7 +12047,10 @@
     "image_url": null,
     "bricklink_part_num": "10113039",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113040",
@@ -12042,7 +12059,10 @@
     "image_url": null,
     "bricklink_part_num": "10113040",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113041",
@@ -12051,7 +12071,10 @@
     "image_url": null,
     "bricklink_part_num": "10113041",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113165",
@@ -12060,7 +12083,10 @@
     "image_url": null,
     "bricklink_part_num": "10113165",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113214",
@@ -12069,7 +12095,10 @@
     "image_url": null,
     "bricklink_part_num": "10113214",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113223",
@@ -12078,7 +12107,10 @@
     "image_url": null,
     "bricklink_part_num": "10113223",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113238",
@@ -12087,7 +12119,10 @@
     "image_url": null,
     "bricklink_part_num": "10113238",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113249",
@@ -12096,7 +12131,10 @@
     "image_url": null,
     "bricklink_part_num": "10113249",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113254",
@@ -12105,7 +12143,10 @@
     "image_url": null,
     "bricklink_part_num": "10113254",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113272",
@@ -12114,7 +12155,10 @@
     "image_url": null,
     "bricklink_part_num": "10113272",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113400",
@@ -12123,7 +12167,10 @@
     "image_url": null,
     "bricklink_part_num": "10113400",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113408",
@@ -12132,7 +12179,10 @@
     "image_url": null,
     "bricklink_part_num": "10113408",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113418",
@@ -12141,7 +12191,10 @@
     "image_url": null,
     "bricklink_part_num": "10113418",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113424",
@@ -12150,7 +12203,10 @@
     "image_url": null,
     "bricklink_part_num": "10113424",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113426",
@@ -12159,7 +12215,10 @@
     "image_url": null,
     "bricklink_part_num": "10113426",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113444",
@@ -12168,7 +12227,10 @@
     "image_url": null,
     "bricklink_part_num": "10113444",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113464",
@@ -12177,7 +12239,10 @@
     "image_url": null,
     "bricklink_part_num": "10113464",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113523",
@@ -12186,7 +12251,10 @@
     "image_url": null,
     "bricklink_part_num": "10113523",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113524",
@@ -12195,7 +12263,10 @@
     "image_url": null,
     "bricklink_part_num": "10113524",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113525",
@@ -12204,7 +12275,10 @@
     "image_url": null,
     "bricklink_part_num": "10113525",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113526",
@@ -12213,7 +12287,10 @@
     "image_url": null,
     "bricklink_part_num": "10113526",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113527",
@@ -12222,7 +12299,10 @@
     "image_url": null,
     "bricklink_part_num": "10113527",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113528",
@@ -12231,7 +12311,10 @@
     "image_url": null,
     "bricklink_part_num": "10113528",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113534",
@@ -12240,7 +12323,10 @@
     "image_url": null,
     "bricklink_part_num": "10113534",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113553",
@@ -12249,7 +12335,10 @@
     "image_url": null,
     "bricklink_part_num": "10113553",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113554",
@@ -12258,7 +12347,10 @@
     "image_url": null,
     "bricklink_part_num": "10113554",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113599",
@@ -12267,7 +12359,10 @@
     "image_url": null,
     "bricklink_part_num": "10113599",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113609",
@@ -12276,7 +12371,10 @@
     "image_url": null,
     "bricklink_part_num": "10113609",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113630",
@@ -12285,7 +12383,10 @@
     "image_url": null,
     "bricklink_part_num": "10113630",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113745",
@@ -12294,7 +12395,10 @@
     "image_url": null,
     "bricklink_part_num": "10113745",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113751",
@@ -12303,7 +12407,10 @@
     "image_url": null,
     "bricklink_part_num": "10113751",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113760",
@@ -12312,7 +12419,10 @@
     "image_url": null,
     "bricklink_part_num": "10113760",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113768",
@@ -12321,7 +12431,10 @@
     "image_url": null,
     "bricklink_part_num": "10113768",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113773",
@@ -12330,7 +12443,10 @@
     "image_url": null,
     "bricklink_part_num": "10113773",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113803",
@@ -12339,7 +12455,10 @@
     "image_url": null,
     "bricklink_part_num": "10113803",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113868",
@@ -12348,7 +12467,10 @@
     "image_url": null,
     "bricklink_part_num": "10113868",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113905",
@@ -12357,7 +12479,10 @@
     "image_url": null,
     "bricklink_part_num": "10113905",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113906",
@@ -12366,7 +12491,10 @@
     "image_url": null,
     "bricklink_part_num": "10113906",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113907",
@@ -12375,7 +12503,10 @@
     "image_url": null,
     "bricklink_part_num": "10113907",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113909",
@@ -12384,7 +12515,10 @@
     "image_url": null,
     "bricklink_part_num": "10113909",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113922",
@@ -12393,7 +12527,10 @@
     "image_url": null,
     "bricklink_part_num": "10113922",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113929",
@@ -12402,7 +12539,10 @@
     "image_url": null,
     "bricklink_part_num": "10113929",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113937",
@@ -12411,7 +12551,10 @@
     "image_url": null,
     "bricklink_part_num": "10113937",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113949",
@@ -12420,7 +12563,10 @@
     "image_url": null,
     "bricklink_part_num": "10113949",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113953",
@@ -12429,7 +12575,10 @@
     "image_url": null,
     "bricklink_part_num": "10113953",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113993",
@@ -12438,7 +12587,10 @@
     "image_url": null,
     "bricklink_part_num": "10113993",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113994",
@@ -12447,7 +12599,10 @@
     "image_url": null,
     "bricklink_part_num": "10113994",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113995",
@@ -12456,7 +12611,10 @@
     "image_url": null,
     "bricklink_part_num": "10113995",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113pr0001",
@@ -12465,7 +12623,10 @@
     "image_url": null,
     "bricklink_part_num": "10113pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113pr0002",
@@ -12474,7 +12635,10 @@
     "image_url": null,
     "bricklink_part_num": "10113pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113pr0003",
@@ -12483,7 +12647,10 @@
     "image_url": null,
     "bricklink_part_num": "10113pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113pr0004",
@@ -12492,7 +12659,10 @@
     "image_url": null,
     "bricklink_part_num": "10113pr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10113pr9999",
@@ -12501,7 +12671,10 @@
     "image_url": null,
     "bricklink_part_num": "10113pr9999",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114001",
@@ -12510,7 +12683,10 @@
     "image_url": null,
     "bricklink_part_num": "10114001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114011",
@@ -12519,7 +12695,10 @@
     "image_url": null,
     "bricklink_part_num": "10114011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114025",
@@ -12528,7 +12707,10 @@
     "image_url": null,
     "bricklink_part_num": "10114025",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114028",
@@ -12537,7 +12719,10 @@
     "image_url": null,
     "bricklink_part_num": "10114028",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114047",
@@ -12546,7 +12731,10 @@
     "image_url": null,
     "bricklink_part_num": "10114047",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114063",
@@ -12555,7 +12743,10 @@
     "image_url": null,
     "bricklink_part_num": "10114063",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114077",
@@ -12564,7 +12755,10 @@
     "image_url": null,
     "bricklink_part_num": "10114077",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114111",
@@ -12573,7 +12767,10 @@
     "image_url": null,
     "bricklink_part_num": "10114111",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114116",
@@ -12582,7 +12779,10 @@
     "image_url": null,
     "bricklink_part_num": "10114116",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114117",
@@ -12591,7 +12791,10 @@
     "image_url": null,
     "bricklink_part_num": "10114117",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114118",
@@ -12600,7 +12803,10 @@
     "image_url": null,
     "bricklink_part_num": "10114118",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114119",
@@ -12609,7 +12815,10 @@
     "image_url": null,
     "bricklink_part_num": "10114119",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114120",
@@ -12618,7 +12827,10 @@
     "image_url": null,
     "bricklink_part_num": "10114120",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114130",
@@ -12627,7 +12839,10 @@
     "image_url": null,
     "bricklink_part_num": "10114130",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114131",
@@ -12636,7 +12851,10 @@
     "image_url": null,
     "bricklink_part_num": "10114131",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114132",
@@ -12645,7 +12863,10 @@
     "image_url": null,
     "bricklink_part_num": "10114132",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114173",
@@ -12654,7 +12875,10 @@
     "image_url": null,
     "bricklink_part_num": "10114173",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114187",
@@ -12663,7 +12887,10 @@
     "image_url": null,
     "bricklink_part_num": "10114187",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114189",
@@ -12672,7 +12899,10 @@
     "image_url": null,
     "bricklink_part_num": "10114189",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114190",
@@ -12681,7 +12911,10 @@
     "image_url": null,
     "bricklink_part_num": "10114190",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114197",
@@ -12690,7 +12923,10 @@
     "image_url": null,
     "bricklink_part_num": "10114197",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114203",
@@ -12699,7 +12935,10 @@
     "image_url": null,
     "bricklink_part_num": "10114203",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114210",
@@ -12708,7 +12947,10 @@
     "image_url": null,
     "bricklink_part_num": "10114210",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114231",
@@ -12717,7 +12959,10 @@
     "image_url": null,
     "bricklink_part_num": "10114231",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114283",
@@ -12726,7 +12971,10 @@
     "image_url": null,
     "bricklink_part_num": "10114283",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114284",
@@ -12735,7 +12983,10 @@
     "image_url": null,
     "bricklink_part_num": "10114284",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114355",
@@ -12744,7 +12995,10 @@
     "image_url": null,
     "bricklink_part_num": "10114355",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114373",
@@ -12753,7 +13007,10 @@
     "image_url": null,
     "bricklink_part_num": "10114373",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114382",
@@ -12762,7 +13019,10 @@
     "image_url": null,
     "bricklink_part_num": "10114382",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114402",
@@ -12771,7 +13031,10 @@
     "image_url": null,
     "bricklink_part_num": "10114402",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114403",
@@ -12780,7 +13043,10 @@
     "image_url": null,
     "bricklink_part_num": "10114403",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114404",
@@ -12789,7 +13055,10 @@
     "image_url": null,
     "bricklink_part_num": "10114404",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114412",
@@ -12798,7 +13067,10 @@
     "image_url": null,
     "bricklink_part_num": "10114412",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114463",
@@ -12807,7 +13079,10 @@
     "image_url": null,
     "bricklink_part_num": "10114463",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114465",
@@ -12816,7 +13091,10 @@
     "image_url": null,
     "bricklink_part_num": "10114465",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114466",
@@ -12825,7 +13103,10 @@
     "image_url": null,
     "bricklink_part_num": "10114466",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114467",
@@ -12834,7 +13115,10 @@
     "image_url": null,
     "bricklink_part_num": "10114467",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114474",
@@ -12843,7 +13127,10 @@
     "image_url": null,
     "bricklink_part_num": "10114474",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114495",
@@ -12852,7 +13139,10 @@
     "image_url": null,
     "bricklink_part_num": "10114495",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114510",
@@ -12861,7 +13151,10 @@
     "image_url": null,
     "bricklink_part_num": "10114510",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114516",
@@ -12870,7 +13163,10 @@
     "image_url": null,
     "bricklink_part_num": "10114516",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114557",
@@ -12879,7 +13175,10 @@
     "image_url": null,
     "bricklink_part_num": "10114557",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114562",
@@ -12888,7 +13187,10 @@
     "image_url": null,
     "bricklink_part_num": "10114562",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114601",
@@ -12897,7 +13199,10 @@
     "image_url": null,
     "bricklink_part_num": "10114601",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114645",
@@ -12906,7 +13211,10 @@
     "image_url": null,
     "bricklink_part_num": "10114645",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114653",
@@ -12915,7 +13223,10 @@
     "image_url": null,
     "bricklink_part_num": "10114653",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114748",
@@ -12924,7 +13235,10 @@
     "image_url": null,
     "bricklink_part_num": "10114748",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114768",
@@ -12933,7 +13247,10 @@
     "image_url": null,
     "bricklink_part_num": "10114768",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114769",
@@ -12942,7 +13259,10 @@
     "image_url": null,
     "bricklink_part_num": "10114769",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114770",
@@ -12951,7 +13271,10 @@
     "image_url": null,
     "bricklink_part_num": "10114770",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114792",
@@ -12960,7 +13283,10 @@
     "image_url": null,
     "bricklink_part_num": "10114792",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114793",
@@ -12969,7 +13295,10 @@
     "image_url": null,
     "bricklink_part_num": "10114793",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114794",
@@ -12978,7 +13307,10 @@
     "image_url": null,
     "bricklink_part_num": "10114794",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114795",
@@ -12987,7 +13319,10 @@
     "image_url": null,
     "bricklink_part_num": "10114795",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114861",
@@ -12996,7 +13331,10 @@
     "image_url": null,
     "bricklink_part_num": "10114861",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114862",
@@ -13005,7 +13343,10 @@
     "image_url": null,
     "bricklink_part_num": "10114862",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114863",
@@ -13014,7 +13355,10 @@
     "image_url": null,
     "bricklink_part_num": "10114863",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114864",
@@ -13023,7 +13367,10 @@
     "image_url": null,
     "bricklink_part_num": "10114864",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114865",
@@ -13032,7 +13379,10 @@
     "image_url": null,
     "bricklink_part_num": "10114865",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114866",
@@ -13041,7 +13391,10 @@
     "image_url": null,
     "bricklink_part_num": "10114866",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114870",
@@ -13050,7 +13403,10 @@
     "image_url": null,
     "bricklink_part_num": "10114870",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114871",
@@ -13059,7 +13415,10 @@
     "image_url": null,
     "bricklink_part_num": "10114871",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114880",
@@ -13068,7 +13427,10 @@
     "image_url": null,
     "bricklink_part_num": "10114880",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114884",
@@ -13077,7 +13439,10 @@
     "image_url": null,
     "bricklink_part_num": "10114884",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114885",
@@ -13086,7 +13451,10 @@
     "image_url": null,
     "bricklink_part_num": "10114885",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114902",
@@ -13095,7 +13463,10 @@
     "image_url": null,
     "bricklink_part_num": "10114902",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10114947",
@@ -13104,7 +13475,10 @@
     "image_url": null,
     "bricklink_part_num": "10114947",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115052",
@@ -13113,7 +13487,10 @@
     "image_url": null,
     "bricklink_part_num": "10115052",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115055",
@@ -13122,7 +13499,10 @@
     "image_url": null,
     "bricklink_part_num": "10115055",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115056",
@@ -13131,7 +13511,10 @@
     "image_url": null,
     "bricklink_part_num": "10115056",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115057",
@@ -13140,7 +13523,10 @@
     "image_url": null,
     "bricklink_part_num": "10115057",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115058",
@@ -13149,7 +13535,10 @@
     "image_url": null,
     "bricklink_part_num": "10115058",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115059",
@@ -13158,7 +13547,10 @@
     "image_url": null,
     "bricklink_part_num": "10115059",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115114",
@@ -13167,7 +13559,10 @@
     "image_url": null,
     "bricklink_part_num": "10115114",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115115",
@@ -13176,7 +13571,10 @@
     "image_url": null,
     "bricklink_part_num": "10115115",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115116",
@@ -13185,7 +13583,10 @@
     "image_url": null,
     "bricklink_part_num": "10115116",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115117",
@@ -13194,7 +13595,10 @@
     "image_url": null,
     "bricklink_part_num": "10115117",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115118",
@@ -13203,7 +13607,10 @@
     "image_url": null,
     "bricklink_part_num": "10115118",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115119",
@@ -13212,7 +13619,10 @@
     "image_url": null,
     "bricklink_part_num": "10115119",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115128",
@@ -13221,7 +13631,10 @@
     "image_url": null,
     "bricklink_part_num": "10115128",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115129",
@@ -13230,7 +13643,10 @@
     "image_url": null,
     "bricklink_part_num": "10115129",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115235",
@@ -13239,7 +13655,10 @@
     "image_url": null,
     "bricklink_part_num": "10115235",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115245",
@@ -13248,7 +13667,10 @@
     "image_url": null,
     "bricklink_part_num": "10115245",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115251",
@@ -13257,7 +13679,10 @@
     "image_url": null,
     "bricklink_part_num": "10115251",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115252",
@@ -13266,7 +13691,10 @@
     "image_url": null,
     "bricklink_part_num": "10115252",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115254",
@@ -13275,7 +13703,10 @@
     "image_url": null,
     "bricklink_part_num": "10115254",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115255",
@@ -13284,7 +13715,10 @@
     "image_url": null,
     "bricklink_part_num": "10115255",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115265",
@@ -13293,7 +13727,10 @@
     "image_url": null,
     "bricklink_part_num": "10115265",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115266",
@@ -13302,7 +13739,10 @@
     "image_url": null,
     "bricklink_part_num": "10115266",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115267",
@@ -13311,7 +13751,10 @@
     "image_url": null,
     "bricklink_part_num": "10115267",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115268",
@@ -13320,7 +13763,10 @@
     "image_url": null,
     "bricklink_part_num": "10115268",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115269",
@@ -13329,7 +13775,10 @@
     "image_url": null,
     "bricklink_part_num": "10115269",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115308",
@@ -13338,7 +13787,10 @@
     "image_url": null,
     "bricklink_part_num": "10115308",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115309",
@@ -13347,7 +13799,10 @@
     "image_url": null,
     "bricklink_part_num": "10115309",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115310",
@@ -13356,7 +13811,10 @@
     "image_url": null,
     "bricklink_part_num": "10115310",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115311",
@@ -13365,7 +13823,10 @@
     "image_url": null,
     "bricklink_part_num": "10115311",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115312",
@@ -13374,7 +13835,10 @@
     "image_url": null,
     "bricklink_part_num": "10115312",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115313",
@@ -13383,7 +13847,10 @@
     "image_url": null,
     "bricklink_part_num": "10115313",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115314",
@@ -13392,7 +13859,10 @@
     "image_url": null,
     "bricklink_part_num": "10115314",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115315",
@@ -13401,7 +13871,10 @@
     "image_url": null,
     "bricklink_part_num": "10115315",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115316",
@@ -13410,7 +13883,10 @@
     "image_url": null,
     "bricklink_part_num": "10115316",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115317",
@@ -13419,7 +13895,10 @@
     "image_url": null,
     "bricklink_part_num": "10115317",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115334",
@@ -13428,7 +13907,10 @@
     "image_url": null,
     "bricklink_part_num": "10115334",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115399",
@@ -13437,7 +13919,10 @@
     "image_url": null,
     "bricklink_part_num": "10115399",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115425",
@@ -13446,7 +13931,10 @@
     "image_url": null,
     "bricklink_part_num": "10115425",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115430",
@@ -13455,7 +13943,10 @@
     "image_url": null,
     "bricklink_part_num": "10115430",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115441",
@@ -13464,7 +13955,10 @@
     "image_url": null,
     "bricklink_part_num": "10115441",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115453",
@@ -13473,7 +13967,10 @@
     "image_url": null,
     "bricklink_part_num": "10115453",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115470",
@@ -13482,7 +13979,10 @@
     "image_url": null,
     "bricklink_part_num": "10115470",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115489",
@@ -13491,7 +13991,10 @@
     "image_url": null,
     "bricklink_part_num": "10115489",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115593",
@@ -13500,7 +14003,10 @@
     "image_url": null,
     "bricklink_part_num": "10115593",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115594",
@@ -13509,7 +14015,10 @@
     "image_url": null,
     "bricklink_part_num": "10115594",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115595",
@@ -13518,7 +14027,10 @@
     "image_url": null,
     "bricklink_part_num": "10115595",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115627",
@@ -13527,7 +14039,10 @@
     "image_url": null,
     "bricklink_part_num": "10115627",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115628",
@@ -13536,7 +14051,10 @@
     "image_url": null,
     "bricklink_part_num": "10115628",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115636",
@@ -13545,7 +14063,10 @@
     "image_url": null,
     "bricklink_part_num": "10115636",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115681",
@@ -13554,7 +14075,10 @@
     "image_url": null,
     "bricklink_part_num": "10115681",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115725",
@@ -13563,7 +14087,10 @@
     "image_url": null,
     "bricklink_part_num": "10115725",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115852",
@@ -13572,7 +14099,10 @@
     "image_url": null,
     "bricklink_part_num": "10115852",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115853",
@@ -13581,7 +14111,10 @@
     "image_url": null,
     "bricklink_part_num": "10115853",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115854",
@@ -13590,7 +14123,10 @@
     "image_url": null,
     "bricklink_part_num": "10115854",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115855",
@@ -13599,7 +14135,10 @@
     "image_url": null,
     "bricklink_part_num": "10115855",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115856",
@@ -13608,7 +14147,10 @@
     "image_url": null,
     "bricklink_part_num": "10115856",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115857",
@@ -13617,7 +14159,10 @@
     "image_url": null,
     "bricklink_part_num": "10115857",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115859",
@@ -13626,7 +14171,10 @@
     "image_url": null,
     "bricklink_part_num": "10115859",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115860",
@@ -13635,7 +14183,10 @@
     "image_url": null,
     "bricklink_part_num": "10115860",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115874",
@@ -13644,7 +14195,10 @@
     "image_url": null,
     "bricklink_part_num": "10115874",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115886",
@@ -13653,7 +14207,10 @@
     "image_url": null,
     "bricklink_part_num": "10115886",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115896",
@@ -13662,7 +14219,10 @@
     "image_url": null,
     "bricklink_part_num": "10115896",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115904",
@@ -13671,7 +14231,10 @@
     "image_url": null,
     "bricklink_part_num": "10115904",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10115937",
@@ -13680,7 +14243,10 @@
     "image_url": null,
     "bricklink_part_num": "10115937",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116111",
@@ -13689,7 +14255,10 @@
     "image_url": null,
     "bricklink_part_num": "10116111",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116164",
@@ -13698,7 +14267,10 @@
     "image_url": null,
     "bricklink_part_num": "10116164",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116185",
@@ -13707,7 +14279,10 @@
     "image_url": null,
     "bricklink_part_num": "10116185",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116253",
@@ -13716,7 +14291,10 @@
     "image_url": null,
     "bricklink_part_num": "10116253",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116254",
@@ -13725,7 +14303,10 @@
     "image_url": null,
     "bricklink_part_num": "10116254",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116255",
@@ -13734,7 +14315,10 @@
     "image_url": null,
     "bricklink_part_num": "10116255",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116490",
@@ -13743,7 +14327,10 @@
     "image_url": null,
     "bricklink_part_num": "10116490",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116506",
@@ -13752,7 +14339,10 @@
     "image_url": null,
     "bricklink_part_num": "10116506",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116540",
@@ -13761,7 +14351,10 @@
     "image_url": null,
     "bricklink_part_num": "10116540",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116546",
@@ -13770,7 +14363,10 @@
     "image_url": null,
     "bricklink_part_num": "10116546",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116547",
@@ -13779,7 +14375,10 @@
     "image_url": null,
     "bricklink_part_num": "10116547",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116619",
@@ -13788,7 +14387,10 @@
     "image_url": null,
     "bricklink_part_num": "10116619",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116627",
@@ -13797,7 +14399,10 @@
     "image_url": null,
     "bricklink_part_num": "10116627",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116630",
@@ -13806,7 +14411,10 @@
     "image_url": null,
     "bricklink_part_num": "10116630",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116747",
@@ -13815,7 +14423,10 @@
     "image_url": null,
     "bricklink_part_num": "10116747",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10116748",
@@ -13824,7 +14435,10 @@
     "image_url": null,
     "bricklink_part_num": "10116748",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101170",
@@ -13832,8 +14446,16 @@
     "category": "Minifig Neckwear",
     "image_url": null,
     "bricklink_part_num": "101170",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£3.17",
+    "market_price_used": "~£1.85",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=101170&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:12:24Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:12:24Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10117134",
@@ -13842,7 +14464,10 @@
     "image_url": null,
     "bricklink_part_num": "10117134",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117141",
@@ -13851,7 +14476,10 @@
     "image_url": null,
     "bricklink_part_num": "10117141",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117251",
@@ -13860,7 +14488,10 @@
     "image_url": null,
     "bricklink_part_num": "10117251",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117256",
@@ -13869,7 +14500,10 @@
     "image_url": null,
     "bricklink_part_num": "10117256",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117458",
@@ -13878,7 +14512,10 @@
     "image_url": null,
     "bricklink_part_num": "10117458",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117459",
@@ -13887,7 +14524,10 @@
     "image_url": null,
     "bricklink_part_num": "10117459",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117460",
@@ -13896,7 +14536,10 @@
     "image_url": null,
     "bricklink_part_num": "10117460",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117675",
@@ -13905,7 +14548,10 @@
     "image_url": null,
     "bricklink_part_num": "10117675",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117702",
@@ -13914,7 +14560,10 @@
     "image_url": null,
     "bricklink_part_num": "10117702",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10117805",
@@ -13923,7 +14572,10 @@
     "image_url": null,
     "bricklink_part_num": "10117805",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101184",
@@ -13931,8 +14583,16 @@
     "category": "Minifig Neckwear",
     "image_url": null,
     "bricklink_part_num": "101184",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£2.33",
+    "market_price_used": "~£1.55",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=101184&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:12:28Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:12:28Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10118988",
@@ -13941,7 +14601,10 @@
     "image_url": null,
     "bricklink_part_num": "10118988",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10118989",
@@ -13950,7 +14613,10 @@
     "image_url": null,
     "bricklink_part_num": "10118989",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10118992",
@@ -13959,7 +14625,10 @@
     "image_url": null,
     "bricklink_part_num": "10118992",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10119706",
@@ -13968,7 +14637,10 @@
     "image_url": null,
     "bricklink_part_num": "10119706",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011A",
@@ -13977,7 +14649,10 @@
     "image_url": null,
     "bricklink_part_num": "1011A",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0001",
@@ -13986,7 +14661,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0002",
@@ -13995,7 +14673,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0003",
@@ -14004,7 +14685,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0004",
@@ -14013,7 +14697,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0005",
@@ -14022,7 +14709,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0006",
@@ -14031,7 +14721,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0006",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0007",
@@ -14040,7 +14733,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0007",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0008",
@@ -14049,7 +14745,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0008",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0009",
@@ -14058,7 +14757,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0009",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0010",
@@ -14067,7 +14769,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0010",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0011",
@@ -14076,7 +14781,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0012",
@@ -14085,7 +14793,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0012",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0013",
@@ -14094,7 +14805,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0013",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0014",
@@ -14103,7 +14817,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0014",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0015",
@@ -14112,7 +14829,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0015",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0016",
@@ -14121,7 +14841,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0016",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0017",
@@ -14130,7 +14853,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0017",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0018",
@@ -14139,7 +14865,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0018",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0019",
@@ -14148,7 +14877,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0019",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0020",
@@ -14157,7 +14889,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0020",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0021",
@@ -14166,7 +14901,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0021",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0022",
@@ -14175,7 +14913,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0022",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0023",
@@ -14184,7 +14925,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0023",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0024",
@@ -14193,7 +14937,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0024",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0025",
@@ -14202,7 +14949,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0025",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0026",
@@ -14211,7 +14961,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0026",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0027",
@@ -14220,7 +14973,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0027",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0028",
@@ -14229,7 +14985,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0028",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0029",
@@ -14238,7 +14997,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0029",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0030",
@@ -14247,7 +15009,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0030",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0031",
@@ -14256,7 +15021,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0031",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0032",
@@ -14265,7 +15033,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0032",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0033",
@@ -14274,7 +15045,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0033",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0034",
@@ -14283,7 +15057,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0034",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0035",
@@ -14292,7 +15069,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0035",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0036",
@@ -14301,7 +15081,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0036",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0037",
@@ -14310,7 +15093,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0037",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0038",
@@ -14319,7 +15105,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0038",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0039",
@@ -14328,7 +15117,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0039",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0040",
@@ -14337,7 +15129,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0040",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0041",
@@ -14346,7 +15141,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0041",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0042",
@@ -14355,7 +15153,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0042",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0043",
@@ -14364,7 +15165,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0043",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0044",
@@ -14373,7 +15177,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0044",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0045",
@@ -14382,7 +15189,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0045",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0046",
@@ -14391,7 +15201,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0046",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0047",
@@ -14400,7 +15213,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0047",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0048",
@@ -14409,7 +15225,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0048",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0049",
@@ -14418,7 +15237,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0049",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0050",
@@ -14427,7 +15249,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0050",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0051",
@@ -14436,7 +15261,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0051",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0052",
@@ -14445,7 +15273,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0052",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0053",
@@ -14454,7 +15285,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0053",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0054",
@@ -14463,7 +15297,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0054",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0055",
@@ -14472,7 +15309,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0055",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0056",
@@ -14481,7 +15321,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0056",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0057",
@@ -14490,7 +15333,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0057",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0058",
@@ -14499,7 +15345,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0058",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0059",
@@ -14508,7 +15357,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0059",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0060",
@@ -14517,7 +15369,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0060",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0061",
@@ -14526,7 +15381,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0061",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0062",
@@ -14535,7 +15393,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0062",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0063",
@@ -14544,7 +15405,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0063",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0064",
@@ -14553,7 +15417,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0064",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0065",
@@ -14562,7 +15429,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0065",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0066",
@@ -14571,7 +15441,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0066",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0067",
@@ -14580,7 +15453,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0067",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0068",
@@ -14589,7 +15465,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0068",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0069",
@@ -14598,7 +15477,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0069",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0070",
@@ -14607,7 +15489,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0070",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0071",
@@ -14616,7 +15501,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0071",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0072",
@@ -14625,7 +15513,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0072",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0073",
@@ -14634,7 +15525,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0073",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0074",
@@ -14643,7 +15537,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0074",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0075",
@@ -14652,7 +15549,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0075",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0076",
@@ -14661,7 +15561,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0076",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0077",
@@ -14670,7 +15573,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0077",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0078",
@@ -14679,7 +15585,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0078",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0079",
@@ -14688,7 +15597,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0079",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0080",
@@ -14697,7 +15609,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0080",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0081",
@@ -14706,7 +15621,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0081",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0082",
@@ -14715,7 +15633,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0082",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0083",
@@ -14724,7 +15645,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0083",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0084",
@@ -14733,7 +15657,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0084",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0085",
@@ -14742,7 +15669,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0085",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0086",
@@ -14751,7 +15681,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0086",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0087",
@@ -14760,7 +15693,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0087",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0088",
@@ -14769,7 +15705,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0088",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0089",
@@ -14778,7 +15717,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0089",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0090",
@@ -14787,7 +15729,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0090",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0091",
@@ -14796,7 +15741,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0091",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0092",
@@ -14805,7 +15753,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0092",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0093",
@@ -14814,7 +15765,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0093",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0094",
@@ -14823,7 +15777,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0094",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0095",
@@ -14832,7 +15789,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0095",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0096",
@@ -14841,7 +15801,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0096",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0097",
@@ -14850,7 +15813,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0097",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0098",
@@ -14859,7 +15825,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0098",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0099",
@@ -14868,7 +15837,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0099",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0100",
@@ -14877,7 +15849,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0100",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0101",
@@ -14886,7 +15861,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0101",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0102",
@@ -14895,7 +15873,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0102",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0103",
@@ -14904,7 +15885,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0103",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0104",
@@ -14913,7 +15897,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0104",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0105",
@@ -14922,7 +15909,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0105",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0106",
@@ -14931,7 +15921,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0106",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0107",
@@ -14940,7 +15933,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0107",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0108",
@@ -14949,7 +15945,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0108",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0109",
@@ -14958,7 +15957,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0109",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0110",
@@ -14967,7 +15969,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0110",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0111",
@@ -14976,7 +15981,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0111",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0112",
@@ -14985,7 +15993,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0112",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0113",
@@ -14994,7 +16005,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0113",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0114",
@@ -15003,7 +16017,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0114",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0115",
@@ -15012,7 +16029,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0115",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0116",
@@ -15021,7 +16041,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0116",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0117",
@@ -15030,7 +16053,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0117",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0118",
@@ -15039,7 +16065,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0118",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0119",
@@ -15048,7 +16077,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0119",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0120",
@@ -15057,7 +16089,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0120",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0121",
@@ -15066,7 +16101,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0121",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0122",
@@ -15075,7 +16113,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0122",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0123",
@@ -15084,7 +16125,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0123",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Apr0124",
@@ -15093,7 +16137,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Apr0124",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011B",
@@ -15102,7 +16149,10 @@
     "image_url": null,
     "bricklink_part_num": "1011B",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0001",
@@ -15111,7 +16161,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0002",
@@ -15120,7 +16173,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0003",
@@ -15129,7 +16185,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0004",
@@ -15138,7 +16197,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0005",
@@ -15147,7 +16209,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0006",
@@ -15156,7 +16221,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0006",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0007",
@@ -15165,7 +16233,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0007",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0008",
@@ -15174,7 +16245,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0008",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0009",
@@ -15183,7 +16257,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0009",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0010",
@@ -15192,7 +16269,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0010",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0011",
@@ -15201,7 +16281,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0012",
@@ -15210,7 +16293,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0012",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0013",
@@ -15219,7 +16305,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0013",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0014",
@@ -15228,7 +16317,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0014",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0015",
@@ -15237,7 +16329,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0015",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0016",
@@ -15246,7 +16341,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0016",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0017",
@@ -15255,7 +16353,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0017",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0018",
@@ -15264,7 +16365,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0018",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0019",
@@ -15273,7 +16377,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0019",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0020",
@@ -15282,7 +16389,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0020",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0021",
@@ -15291,7 +16401,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0021",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0022",
@@ -15300,7 +16413,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0022",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0023",
@@ -15309,7 +16425,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0023",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0024",
@@ -15318,7 +16437,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0024",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0025",
@@ -15327,7 +16449,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0025",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0026",
@@ -15336,7 +16461,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0026",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0027",
@@ -15345,7 +16473,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0027",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0028",
@@ -15354,7 +16485,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0028",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0029",
@@ -15363,7 +16497,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0029",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0030",
@@ -15372,7 +16509,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0030",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0031",
@@ -15381,7 +16521,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0031",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0032",
@@ -15390,7 +16533,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0032",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0033",
@@ -15399,7 +16545,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0033",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0034",
@@ -15408,7 +16557,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0034",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0035",
@@ -15417,7 +16569,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0035",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0036",
@@ -15426,7 +16581,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0036",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0037",
@@ -15435,7 +16593,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0037",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Bpr0038",
@@ -15444,7 +16605,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Bpr0038",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011C",
@@ -15453,7 +16617,10 @@
     "image_url": null,
     "bricklink_part_num": "1011C",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0001",
@@ -15462,7 +16629,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0002",
@@ -15471,7 +16641,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0003",
@@ -15480,7 +16653,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0004",
@@ -15489,7 +16665,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0005",
@@ -15498,7 +16677,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0006",
@@ -15507,7 +16689,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0006",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0007",
@@ -15516,7 +16701,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0007",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0008",
@@ -15525,7 +16713,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0008",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0009",
@@ -15534,7 +16725,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0009",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0010",
@@ -15543,7 +16737,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0010",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0011",
@@ -15552,7 +16749,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0012",
@@ -15561,7 +16761,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0012",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0013",
@@ -15570,7 +16773,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0013",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0014",
@@ -15579,7 +16785,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0014",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0015",
@@ -15588,7 +16797,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0015",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0016",
@@ -15597,7 +16809,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0016",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0017",
@@ -15606,7 +16821,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0017",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0018",
@@ -15615,7 +16833,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0018",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0019",
@@ -15624,7 +16845,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0019",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0020",
@@ -15633,7 +16857,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0020",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0021",
@@ -15642,7 +16869,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0021",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0022",
@@ -15651,7 +16881,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0022",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0023",
@@ -15660,7 +16893,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0023",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0024",
@@ -15669,7 +16905,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0024",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0025",
@@ -15678,7 +16917,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0025",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0027",
@@ -15687,7 +16929,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0027",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0028",
@@ -15696,7 +16941,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0028",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0029",
@@ -15705,7 +16953,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0029",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0030",
@@ -15714,7 +16965,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0030",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0031",
@@ -15723,7 +16977,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0031",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0032",
@@ -15732,7 +16989,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0032",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0033",
@@ -15741,7 +17001,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0033",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0034",
@@ -15750,7 +17013,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0034",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0035",
@@ -15759,7 +17025,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0035",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0036",
@@ -15768,7 +17037,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0036",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0037",
@@ -15777,7 +17049,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0037",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0038",
@@ -15786,7 +17061,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0038",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0039",
@@ -15795,7 +17073,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0039",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011Cpr0040",
@@ -15804,7 +17085,10 @@
     "image_url": null,
     "bricklink_part_num": "1011Cpr0040",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1011D",
@@ -15813,7 +17097,10 @@
     "image_url": null,
     "bricklink_part_num": "1011D",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012",
@@ -15822,7 +17109,10 @@
     "image_url": null,
     "bricklink_part_num": "1012",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10120456",
@@ -15830,8 +17120,16 @@
     "category": "Stickers",
     "image_url": null,
     "bricklink_part_num": "10120456",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.00",
+    "market_price_used": "~£0.00",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10120456&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:27Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:27Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10124",
@@ -15839,8 +17137,16 @@
     "category": "Minifig Upper Body",
     "image_url": null,
     "bricklink_part_num": "10124",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£1.82",
+    "market_price_used": "~£1.57",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10124&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:28Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:28Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10124pr0001",
@@ -15849,7 +17155,10 @@
     "image_url": null,
     "bricklink_part_num": "10124pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10124pr0002",
@@ -15858,7 +17167,10 @@
     "image_url": null,
     "bricklink_part_num": "10124pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10124pr0011",
@@ -15867,7 +17179,10 @@
     "image_url": null,
     "bricklink_part_num": "10124pr0011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10126",
@@ -15875,8 +17190,16 @@
     "category": "Minifig Upper Body",
     "image_url": null,
     "bricklink_part_num": "10126",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.75",
+    "market_price_used": "~£1.63",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10126&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:30Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:30Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10127",
@@ -15884,8 +17207,16 @@
     "category": "Minifig Upper Body",
     "image_url": null,
     "bricklink_part_num": "10127",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.68",
+    "market_price_used": "~£1.45",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10127&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:31Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:31Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10128pr0001",
@@ -15894,7 +17225,10 @@
     "image_url": null,
     "bricklink_part_num": "10128pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10128pr0002",
@@ -15903,7 +17237,10 @@
     "image_url": null,
     "bricklink_part_num": "10128pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10128pr0003",
@@ -15912,7 +17249,10 @@
     "image_url": null,
     "bricklink_part_num": "10128pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012pr0001",
@@ -15921,7 +17261,10 @@
     "image_url": null,
     "bricklink_part_num": "1012pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012pr0002",
@@ -15930,7 +17273,10 @@
     "image_url": null,
     "bricklink_part_num": "1012pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012pr0003",
@@ -15939,7 +17285,10 @@
     "image_url": null,
     "bricklink_part_num": "1012pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012pr0004",
@@ -15948,7 +17297,10 @@
     "image_url": null,
     "bricklink_part_num": "1012pr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "1012pr0005",
@@ -15957,7 +17309,10 @@
     "image_url": null,
     "bricklink_part_num": "1012pr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0001",
@@ -15966,7 +17321,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0002",
@@ -15975,7 +17333,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0003",
@@ -15984,7 +17345,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0004",
@@ -15993,7 +17357,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0171",
@@ -16002,7 +17369,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0171",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0176",
@@ -16011,7 +17381,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0176",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0179",
@@ -16020,7 +17393,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0179",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101347c01pr0183",
@@ -16029,7 +17405,10 @@
     "image_url": null,
     "bricklink_part_num": "101347c01pr0183",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101349",
@@ -16038,7 +17417,10 @@
     "image_url": null,
     "bricklink_part_num": "101349",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101536pr0001",
@@ -16047,7 +17429,10 @@
     "image_url": null,
     "bricklink_part_num": "101536pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10154",
@@ -16055,8 +17440,16 @@
     "category": "Minifig Upper Body",
     "image_url": null,
     "bricklink_part_num": "10154",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£1.86",
+    "market_price_used": "~£1.37",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10154&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:37Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:37Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10154pr0001",
@@ -16065,7 +17458,10 @@
     "image_url": null,
     "bricklink_part_num": "10154pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10154pr0002",
@@ -16074,7 +17470,10 @@
     "image_url": null,
     "bricklink_part_num": "10154pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10154pr0006",
@@ -16083,7 +17482,10 @@
     "image_url": null,
     "bricklink_part_num": "10154pr0006",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10154pr0011",
@@ -16092,7 +17494,10 @@
     "image_url": null,
     "bricklink_part_num": "10154pr0011",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101636",
@@ -16100,8 +17505,16 @@
     "category": "Minifig Neckwear",
     "image_url": null,
     "bricklink_part_num": "101636",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£3.72",
+    "market_price_used": "~£3.42",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=101636&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:39Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:39Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10164",
@@ -16109,8 +17522,16 @@
     "category": "Minifig Headwear",
     "image_url": null,
     "bricklink_part_num": "10164",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£1.07",
+    "market_price_used": "~£0.50",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10164&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:40Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:40Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101645",
@@ -16119,7 +17540,10 @@
     "image_url": null,
     "bricklink_part_num": "101645",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10164pr0001",
@@ -16128,7 +17552,10 @@
     "image_url": null,
     "bricklink_part_num": "10164pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10164pr0002",
@@ -16137,7 +17564,10 @@
     "image_url": null,
     "bricklink_part_num": "10164pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101651",
@@ -16146,7 +17576,10 @@
     "image_url": null,
     "bricklink_part_num": "101651",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101652",
@@ -16155,7 +17588,10 @@
     "image_url": null,
     "bricklink_part_num": "101652",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101653",
@@ -16164,7 +17600,10 @@
     "image_url": null,
     "bricklink_part_num": "101653",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101654",
@@ -16173,7 +17612,10 @@
     "image_url": null,
     "bricklink_part_num": "101654",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101655",
@@ -16182,7 +17624,10 @@
     "image_url": null,
     "bricklink_part_num": "101655",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101658",
@@ -16190,8 +17635,16 @@
     "category": "Minifig Neckwear",
     "image_url": null,
     "bricklink_part_num": "101658",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£1.89",
+    "market_price_used": "~£1.99",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=101658&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:43Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:43Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101659pr0001",
@@ -16200,7 +17653,10 @@
     "image_url": null,
     "bricklink_part_num": "101659pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10165c01",
@@ -16208,8 +17664,16 @@
     "category": "Minifig Headwear",
     "image_url": null,
     "bricklink_part_num": "10165c01",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£2.51",
+    "market_price_used": "~£1.50",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10165c01&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:44Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:44Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101660pr0001",
@@ -16218,7 +17682,10 @@
     "image_url": null,
     "bricklink_part_num": "101660pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101661pat0001",
@@ -16227,7 +17694,10 @@
     "image_url": null,
     "bricklink_part_num": "101661pat0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101662",
@@ -16235,8 +17705,16 @@
     "category": "Animal / Creature Accessories",
     "image_url": null,
     "bricklink_part_num": "101662",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.80",
+    "market_price_used": "~£0.00",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=101662&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:45Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:45Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10166pr0001",
@@ -16245,7 +17723,10 @@
     "image_url": null,
     "bricklink_part_num": "10166pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10166pr0003",
@@ -16254,7 +17735,10 @@
     "image_url": null,
     "bricklink_part_num": "10166pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10166pr0004",
@@ -16263,7 +17747,10 @@
     "image_url": null,
     "bricklink_part_num": "10166pr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10166pr0005",
@@ -16272,7 +17759,10 @@
     "image_url": null,
     "bricklink_part_num": "10166pr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10168",
@@ -16281,7 +17771,10 @@
     "image_url": null,
     "bricklink_part_num": "10168",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10168pr0001",
@@ -16290,7 +17783,10 @@
     "image_url": null,
     "bricklink_part_num": "10168pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10169",
@@ -16298,8 +17794,16 @@
     "category": "Minifig Accessories",
     "image_url": null,
     "bricklink_part_num": "10169",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.49",
+    "market_price_used": "~£0.39",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10169&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:48Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:48Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10169pr0001",
@@ -16308,7 +17812,10 @@
     "image_url": null,
     "bricklink_part_num": "10169pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10169pr0002",
@@ -16317,7 +17824,10 @@
     "image_url": null,
     "bricklink_part_num": "10169pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10169pr0003",
@@ -16326,7 +17836,10 @@
     "image_url": null,
     "bricklink_part_num": "10169pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10170",
@@ -16334,8 +17847,16 @@
     "category": "Minifig Accessories",
     "image_url": null,
     "bricklink_part_num": "10170",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.15",
+    "market_price_used": "~£0.18",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10170&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:50Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:50Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101700pr0001",
@@ -16344,7 +17865,10 @@
     "image_url": null,
     "bricklink_part_num": "101700pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10172",
@@ -16352,8 +17876,16 @@
     "category": "Minifig Accessories",
     "image_url": null,
     "bricklink_part_num": "10172",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£0.12",
+    "market_price_used": "~£0.12",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10172&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:52Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:52Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10172pr0001",
@@ -16362,7 +17894,10 @@
     "image_url": null,
     "bricklink_part_num": "10172pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10173",
@@ -16370,8 +17905,16 @@
     "category": "Minifig Headwear",
     "image_url": null,
     "bricklink_part_num": "10173",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£6.15",
+    "market_price_used": "~£4.99",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10173&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:53Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:53Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101777pr0001",
@@ -16380,7 +17923,10 @@
     "image_url": null,
     "bricklink_part_num": "101777pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101777pr0002",
@@ -16389,7 +17935,10 @@
     "image_url": null,
     "bricklink_part_num": "101777pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "101777pr0003",
@@ -16398,7 +17947,10 @@
     "image_url": null,
     "bricklink_part_num": "101777pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178",
@@ -16406,8 +17958,16 @@
     "category": "Rock",
     "image_url": null,
     "bricklink_part_num": "10178",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£1.12",
+    "market_price_used": "~£0.55",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10178&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:54Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:54Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "101784pr0001",
@@ -16416,7 +17976,10 @@
     "image_url": null,
     "bricklink_part_num": "101784pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0001",
@@ -16425,7 +17988,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0001",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0002",
@@ -16434,7 +18000,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0002",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0003",
@@ -16443,7 +18012,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0003",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0004",
@@ -16452,7 +18024,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0004",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0005",
@@ -16461,7 +18036,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0005",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0006",
@@ -16470,7 +18048,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0006",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0007",
@@ -16479,7 +18060,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0007",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10178pr0008",
@@ -16488,7 +18072,10 @@
     "image_url": null,
     "bricklink_part_num": "10178pr0008",
     "market_price_new": null,
-    "market_price_used": null
+    "market_price_used": null,
+    "MarketFetchStatus": "no_data",
+    "MarketLastUpdatedUTC": "2026-03-10T22:11:22Z",
+    "MarketNoDataRetryAfterUTC": "2026-03-13T22:11:22Z"
   },
   {
     "part_num": "10179cert",
@@ -16496,8 +18083,16 @@
     "category": "Gear Parts",
     "image_url": null,
     "bricklink_part_num": "10179cert",
-    "market_price_new": null,
-    "market_price_used": null
+    "market_price_new": "~£335.84",
+    "market_price_used": "~£0.00",
+    "market_currency_code": "GBP",
+    "market_price_guide_url": "https://www.bricklink.com/catalogPG.asp?P=10179cert&ColorID=0&v=D&viewExclude=Y&cID=Y",
+    "market_fetch_status": "ok_api",
+    "market_last_updated_utc": "2026-03-10T22:13:58Z",
+    "market_no_data_retry_after_utc": null,
+    "MarketFetchStatus": "ok_api",
+    "MarketLastUpdatedUTC": "2026-03-10T22:13:58Z",
+    "MarketNoDataRetryAfterUTC": null
   },
   {
     "part_num": "10183",
