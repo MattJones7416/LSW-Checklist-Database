@@ -44,6 +44,13 @@ class EbayApiError(RuntimeError):
     pass
 
 
+def clean_credential(value: Any) -> str:
+    raw = str(value or "").replace("\r", "").replace("\n", "").strip()
+    if len(raw) >= 2 and raw[0] == raw[-1] and raw[0] in {"'", '"'}:
+        raw = raw[1:-1].strip()
+    return raw
+
+
 def collapse_ws(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
@@ -179,6 +186,8 @@ def load_state(path: Path) -> Dict[str, Any]:
 
 
 def oauth_token(session: requests.Session, client_id: str, client_secret: str, timeout: float) -> str:
+    client_id = clean_credential(client_id)
+    client_secret = clean_credential(client_secret)
     if not client_id or not client_secret:
         raise EbayApiError("Missing EBAY_CLIENT_ID or EBAY_CLIENT_SECRET")
     basic = base64.b64encode(f"{client_id}:{client_secret}".encode("utf-8")).decode("ascii")
@@ -195,6 +204,13 @@ def oauth_token(session: requests.Session, client_id: str, client_secret: str, t
         timeout=timeout,
     )
     if response.status_code >= 400:
+        if response.status_code == 401:
+            raise EbayApiError(
+                "OAuth failed: HTTP 401 invalid_client. eBay rejected the client credentials. "
+                "Use the Production App ID as EBAY_CLIENT_ID and the matching Production Cert ID "
+                "as EBAY_CLIENT_SECRET, and make sure no quotes or trailing newlines were pasted "
+                "into the GitHub secret values."
+            )
         raise EbayApiError(f"OAuth failed: HTTP {response.status_code} {response.text[:200]}")
     data = response.json()
     token = collapse_ws(data.get("access_token"))

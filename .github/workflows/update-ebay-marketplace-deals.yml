@@ -41,12 +41,22 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests
 
+      - name: Normalize eBay credentials
+        shell: bash
+        run: |
+          {
+            printf 'EBAY_CLIENT_ID=%s\n' "$(printf '%s' "${EBAY_CLIENT_ID}" | tr -d '\r\n' | sed -E 's/^\"(.*)\"$/\1/; s/^'\''(.*)'\''$/\1/')"
+            printf 'EBAY_CLIENT_SECRET=%s\n' "$(printf '%s' "${EBAY_CLIENT_SECRET}" | tr -d '\r\n' | sed -E 's/^\"(.*)\"$/\1/; s/^'\''(.*)'\''$/\1/')"
+          } >> "$GITHUB_ENV"
+
       - name: Validate credentials and inputs
+        shell: bash
         run: |
           if [ -z "${EBAY_CLIENT_ID}" ] || [ -z "${EBAY_CLIENT_SECRET}" ]; then
             echo "Missing EBAY_CLIENT_ID or EBAY_CLIENT_SECRET"
             exit 1
           fi
+          echo "eBay credential lengths: client_id=$(printf '%s' "${EBAY_CLIENT_ID}" | wc -c | tr -d ' '), client_secret=$(printf '%s' "${EBAY_CLIENT_SECRET}" | wc -c | tr -d ' ')"
           if [ ! -f "dist/Lego Star Wars Database.json" ]; then
             echo "Missing dist/Lego Star Wars Database.json"
             exit 1
