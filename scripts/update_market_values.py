@@ -2342,7 +2342,7 @@ def load_json_array(path: Path) -> List[Dict[str, Any]]:
 
 def maybe_write_json(path: Path, rows: List[Dict[str, Any]]) -> bool:
     original = path.read_text(encoding="utf-8")
-    updated = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
+    updated = json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + "\n"
     if original == updated:
         return False
     path.write_text(updated, encoding="utf-8")

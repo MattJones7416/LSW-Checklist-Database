@@ -30,6 +30,14 @@ DEFAULT_MINIFIGS_CSV_URL = "https://cdn.rebrickable.com/media/downloads/minifigs
 DEFAULT_INVENTORIES_CSV_URL = "https://cdn.rebrickable.com/media/downloads/inventories.csv.gz"
 DEFAULT_INVENTORY_MINIFIGS_CSV_URL = "https://cdn.rebrickable.com/media/downloads/inventory_minifigs.csv.gz"
 
+LOCAL_CSV_CANDIDATES: Dict[str, Tuple[str, ...]] = {
+    "themes": ("themes.csv.gz", "themes.csv"),
+    "sets": ("sets.csv.gz", "sets.csv"),
+    "minifigs": ("minifigs.csv.gz", "minifigs.csv"),
+    "inventories": ("inventories.csv.gz", "inventories.csv"),
+    "inventory_minifigs": ("inventory_minifigs.csv.gz", "inventory_minifigs.csv"),
+}
+
 SET_NUM_RE = re.compile(r"^(.+)-([0-9]+)$")
 
 
@@ -119,7 +127,7 @@ def load_json_array(path: Path) -> List[Dict[str, Any]]:
 
 
 def write_json_array(path: Path, rows: List[Dict[str, Any]]) -> None:
-    path.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
 def ordered_columns(rows: List[Dict[str, Any]]) -> List[str]:
@@ -245,6 +253,26 @@ def download_gz_csv(
             continue
 
     raise RuntimeError(f"{label}: unreachable failure")
+
+
+def resolve_local_csv_path(base_dir: Path, key: str) -> Path:
+    for name in LOCAL_CSV_CANDIDATES[key]:
+        candidate = base_dir / name
+        if candidate.exists():
+            return candidate
+    expected = ", ".join(LOCAL_CSV_CANDIDATES[key])
+    raise FileNotFoundError(f"Missing local {key} CSV. Expected one of: {expected}")
+
+
+def load_csv_rows_from_path(path: Path, *, label: str) -> List[Dict[str, str]]:
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, mode="rt", encoding="utf-8", newline="") as fh:
+        reader = csv.DictReader(fh)
+        rows: List[Dict[str, str]] = []
+        for row in reader:
+            if isinstance(row, dict):
+                rows.append({str(k): str(v or "") for k, v in row.items()})
+        return rows
 
 
 def build_theme_maps(theme_rows: List[Dict[str, str]]) -> Dict[int, ThemeNode]:
@@ -431,6 +459,7 @@ def upsert_sets_from_rebrickable(
     set_minifig_numbers_by_code: Dict[str, List[str]],
     *,
     fill_missing_fields: bool,
+    refresh_existing_fields: bool,
 ) -> Tuple[List[Dict[str, Any]], BootstrapSummary]:
     summary = BootstrapSummary()
     summary.sets_scanned = len(set_meta_by_key)
@@ -482,33 +511,60 @@ def upsert_sets_from_rebrickable(
 
         if key in existing_by_key:
             row = existing_by_key[key]
-            if not fill_missing_fields:
+            if not fill_missing_fields and not refresh_existing_fields:
                 summary.sets_skipped += 1
                 continue
             changed = False
-            if (not collapse_ws(row.get("Theme"))) or collapse_ws(row.get("Theme")).lower() == "unknown":
+            if refresh_existing_fields and meta.theme_name and collapse_ws(row.get("Theme")) != meta.theme_name:
                 row["Theme"] = meta.theme_name
                 changed = True
-            if (not collapse_ws(row.get("ThemeGroup"))) or collapse_ws(row.get("ThemeGroup")).lower() == "unknown":
+            elif (not collapse_ws(row.get("Theme"))) or collapse_ws(row.get("Theme")).lower() == "unknown":
+                row["Theme"] = meta.theme_name
+                changed = True
+            if refresh_existing_fields and meta.theme_group and collapse_ws(row.get("ThemeGroup")) != meta.theme_group:
                 row["ThemeGroup"] = meta.theme_group
                 changed = True
-            if not collapse_ws(row.get("SetName")) and meta.set_name:
+            elif (not collapse_ws(row.get("ThemeGroup"))) or collapse_ws(row.get("ThemeGroup")).lower() == "unknown":
+                row["ThemeGroup"] = meta.theme_group
+                changed = True
+            if refresh_existing_fields and meta.set_name and collapse_ws(row.get("SetName")) != meta.set_name:
                 row["SetName"] = meta.set_name
                 changed = True
-            if parse_int(row.get("YearFrom")) is None and meta.year_from is not None:
+            elif not collapse_ws(row.get("SetName")) and meta.set_name:
+                row["SetName"] = meta.set_name
+                changed = True
+            if refresh_existing_fields and meta.year_from is not None and parse_int(row.get("YearFrom")) != meta.year_from:
                 row["YearFrom"] = meta.year_from
                 changed = True
-            if parse_int(row.get("Pieces")) is None and meta.pieces is not None:
+            elif parse_int(row.get("YearFrom")) is None and meta.year_from is not None:
+                row["YearFrom"] = meta.year_from
+                changed = True
+            if refresh_existing_fields and meta.pieces is not None and parse_int(row.get("Pieces")) != meta.pieces:
                 row["Pieces"] = meta.pieces
                 changed = True
-            if not collapse_ws(row.get("link")):
+            elif parse_int(row.get("Pieces")) is None and meta.pieces is not None:
+                row["Pieces"] = meta.pieces
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("link")) != default_link:
                 row["link"] = default_link
                 changed = True
-            if not collapse_ws(row.get("productImage")) and meta.product_image:
+            elif not collapse_ws(row.get("link")):
+                row["link"] = default_link
+                changed = True
+            if refresh_existing_fields and meta.product_image and collapse_ws(row.get("productImage")) != meta.product_image:
                 row["productImage"] = meta.product_image
                 changed = True
-            if not collapse_ws(row.get("type")):
+            elif not collapse_ws(row.get("productImage")) and meta.product_image:
+                row["productImage"] = meta.product_image
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("type")) != "Set":
                 row["type"] = "Set"
+                changed = True
+            elif not collapse_ws(row.get("type")):
+                row["type"] = "Set"
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("ImageFilename")) != meta.set_code:
+                row["ImageFilename"] = meta.set_code
                 changed = True
             # Refresh minifigure mappings from Rebrickable inventory data (CSV, not crawl).
             if minifigs_total is not None and parse_int(row.get("Minifigs")) != minifigs_total:
@@ -556,6 +612,9 @@ def upsert_minifigs_from_rebrickable(
     existing_minifigs: List[Dict[str, Any]],
     minifig_rows_csv: List[Dict[str, str]],
     minifig_aggregates: Dict[str, RebrickableMinifigAggregate],
+    *,
+    fill_missing_fields: bool,
+    refresh_existing_fields: bool,
 ) -> Tuple[List[Dict[str, Any]], BootstrapSummary]:
     summary = BootstrapSummary()
     summary.minifigs_scanned = len(minifig_rows_csv)
@@ -615,41 +674,80 @@ def upsert_minifigs_from_rebrickable(
 
         if number in existing_by_key:
             row = existing_by_key[number]
+            if not fill_missing_fields and not refresh_existing_fields:
+                summary.minifigs_skipped += 1
+                continue
             changed = False
-            if not collapse_ws(row.get("Number")):
+            if refresh_existing_fields and collapse_ws(row.get("Number")) != number:
                 row["Number"] = number
                 changed = True
-            if not collapse_ws(row.get("Minifig name")) and minifig_name:
+            elif not collapse_ws(row.get("Number")):
+                row["Number"] = number
+                changed = True
+            if refresh_existing_fields and minifig_name and collapse_ws(row.get("Minifig name")) != minifig_name:
                 row["Minifig name"] = minifig_name
                 changed = True
-            if not collapse_ws(row.get("Character name")) and character_name:
+            elif not collapse_ws(row.get("Minifig name")) and minifig_name:
+                row["Minifig name"] = minifig_name
+                changed = True
+            if refresh_existing_fields and character_name and collapse_ws(row.get("Character name")) != character_name:
                 row["Character name"] = character_name
                 changed = True
-            if (not collapse_ws(row.get("Category"))) or collapse_ws(row.get("Category")).lower() == "unknown":
+            elif not collapse_ws(row.get("Character name")) and character_name:
+                row["Character name"] = character_name
+                changed = True
+            if refresh_existing_fields and category and collapse_ws(row.get("Category")) != category:
                 row["Category"] = category
                 changed = True
-            if (not collapse_ws(row.get("Theme"))) or collapse_ws(row.get("Theme")).lower() == "unknown":
+            elif (not collapse_ws(row.get("Category"))) or collapse_ws(row.get("Category")).lower() == "unknown":
+                row["Category"] = category
+                changed = True
+            if refresh_existing_fields and theme and collapse_ws(row.get("Theme")) != theme:
                 row["Theme"] = theme
                 changed = True
-            if year_text and (not collapse_ws(row.get("Year"))):
+            elif (not collapse_ws(row.get("Theme"))) or collapse_ws(row.get("Theme")).lower() == "unknown":
+                row["Theme"] = theme
+                changed = True
+            if refresh_existing_fields and year_text and collapse_ws(row.get("Year")) != year_text:
                 row["Year"] = year_text
                 changed = True
-            if collapse_ws(row.get("In sets")) in {"", "0"} and in_sets != "0":
+            elif year_text and (not collapse_ws(row.get("Year"))):
+                row["Year"] = year_text
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("In sets")) != in_sets:
                 row["In sets"] = in_sets
                 changed = True
-            if appears_in and not collapse_ws(row.get("AppearsInSetNumbers")):
+            elif collapse_ws(row.get("In sets")) in {"", "0"} and in_sets != "0":
+                row["In sets"] = in_sets
+                changed = True
+            if refresh_existing_fields and appears_in and collapse_ws(row.get("AppearsInSetNumbers")) != appears_in:
                 row["AppearsInSetNumbers"] = appears_in
                 changed = True
-            if not collapse_ws(row.get("link")):
+            elif appears_in and not collapse_ws(row.get("AppearsInSetNumbers")):
+                row["AppearsInSetNumbers"] = appears_in
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("link")) != brickset_link:
                 row["link"] = brickset_link
                 changed = True
-            if not collapse_ws(row.get("productImage")) and product_image:
+            elif not collapse_ws(row.get("link")):
+                row["link"] = brickset_link
+                changed = True
+            if refresh_existing_fields and product_image and collapse_ws(row.get("productImage")) != product_image:
                 row["productImage"] = product_image
                 changed = True
-            if not collapse_ws(row.get("instructionsLink")):
+            elif not collapse_ws(row.get("productImage")) and product_image:
+                row["productImage"] = product_image
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("instructionsLink")) != "":
                 row["instructionsLink"] = ""
                 changed = True
-            if not collapse_ws(row.get("type")):
+            elif not collapse_ws(row.get("instructionsLink")):
+                row["instructionsLink"] = ""
+                changed = True
+            if refresh_existing_fields and collapse_ws(row.get("type")) != "Minifigure":
+                row["type"] = "Minifigure"
+                changed = True
+            elif not collapse_ws(row.get("type")):
                 row["type"] = "Minifigure"
                 changed = True
             if changed:
@@ -706,9 +804,19 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser.add_argument("--timeout", type=float, default=45.0, help="HTTP timeout.")
     parser.add_argument("--retries", type=int, default=4, help="Retry count.")
     parser.add_argument(
+        "--rebrickable-dir",
+        default="",
+        help="Optional local directory containing Rebrickable CSV/CSV.GZ files. Skips remote downloads when set.",
+    )
+    parser.add_argument(
         "--fill-missing-fields",
         action="store_true",
         help="Fill empty fields on existing rows (Theme/Pieces/link/productImage).",
+    )
+    parser.add_argument(
+        "--refresh-existing-fields",
+        action="store_true",
+        help="Refresh existing set/minifigure metadata from Rebrickable when values changed.",
     )
     parser.add_argument("--dry-run", action="store_true", help="Do not write files.")
     parser.add_argument("--verbose", action="store_true", help="Verbose logging.")
@@ -732,17 +840,32 @@ def main(argv: Sequence[str]) -> int:
 
     log(f"[Start] existing sets={len(existing_sets)} minifigs={len(existing_minifigs)}", enabled=cfg.verbose)
 
+    local_rebrickable_dir = Path(args.rebrickable_dir).expanduser().resolve() if collapse_ws(args.rebrickable_dir) else None
+    if local_rebrickable_dir and not local_rebrickable_dir.exists():
+        print(f"Missing Rebrickable directory: {local_rebrickable_dir}", file=sys.stderr)
+        return 1
+
     session = requests.Session()
-    theme_rows = download_gz_csv(session, args.themes_csv_url, cfg, label="Themes CSV")
-    set_rows = download_gz_csv(session, args.sets_csv_url, cfg, label="Sets CSV")
-    minifigs_rows = download_gz_csv(session, args.minifigs_csv_url, cfg, label="Minifigs CSV")
-    inventories_rows = download_gz_csv(session, args.inventories_csv_url, cfg, label="Inventories CSV")
-    inventory_minifigs_rows = download_gz_csv(
-        session,
-        args.inventory_minifigs_csv_url,
-        cfg,
-        label="Inventory Minifigs CSV",
-    )
+    if local_rebrickable_dir is not None:
+        theme_rows = load_csv_rows_from_path(resolve_local_csv_path(local_rebrickable_dir, "themes"), label="Themes CSV")
+        set_rows = load_csv_rows_from_path(resolve_local_csv_path(local_rebrickable_dir, "sets"), label="Sets CSV")
+        minifigs_rows = load_csv_rows_from_path(resolve_local_csv_path(local_rebrickable_dir, "minifigs"), label="Minifigs CSV")
+        inventories_rows = load_csv_rows_from_path(resolve_local_csv_path(local_rebrickable_dir, "inventories"), label="Inventories CSV")
+        inventory_minifigs_rows = load_csv_rows_from_path(
+            resolve_local_csv_path(local_rebrickable_dir, "inventory_minifigs"),
+            label="Inventory Minifigs CSV",
+        )
+    else:
+        theme_rows = download_gz_csv(session, args.themes_csv_url, cfg, label="Themes CSV")
+        set_rows = download_gz_csv(session, args.sets_csv_url, cfg, label="Sets CSV")
+        minifigs_rows = download_gz_csv(session, args.minifigs_csv_url, cfg, label="Minifigs CSV")
+        inventories_rows = download_gz_csv(session, args.inventories_csv_url, cfg, label="Inventories CSV")
+        inventory_minifigs_rows = download_gz_csv(
+            session,
+            args.inventory_minifigs_csv_url,
+            cfg,
+            label="Inventory Minifigs CSV",
+        )
 
     theme_nodes = build_theme_maps(theme_rows)
     set_meta_by_key = build_set_catalog_meta(set_rows, theme_nodes)
@@ -757,11 +880,14 @@ def main(argv: Sequence[str]) -> int:
         set_meta_by_key,
         set_minifig_numbers_by_code,
         fill_missing_fields=bool(args.fill_missing_fields),
+        refresh_existing_fields=bool(args.refresh_existing_fields),
     )
     existing_minifigs, minifig_summary = upsert_minifigs_from_rebrickable(
         existing_minifigs,
         minifigs_rows,
         minifig_aggregates,
+        fill_missing_fields=bool(args.fill_missing_fields),
+        refresh_existing_fields=bool(args.refresh_existing_fields),
     )
 
     themes_index = build_theme_index(existing_sets, existing_minifigs)

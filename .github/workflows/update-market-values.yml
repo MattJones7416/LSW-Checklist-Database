@@ -1,22 +1,46 @@
-name: Sync Catalog and Market Data
+name: Daily BrickLink Market Refresh
 
 on:
   workflow_dispatch:
+    inputs:
+      sets_per_run:
+        description: "Set rows processed this run"
+        required: false
+        default: "450"
+      minifigs_per_run:
+        description: "Minifig rows processed this run"
+        required: false
+        default: "300"
+      parts_per_run:
+        description: "Part rows processed this run"
+        required: false
+        default: "200"
   schedule:
-    - cron: "5 * * * *"
-    - cron: "0 3 * * *"
+    - cron: "25 2 * * *"
 
 permissions:
   contents: write
 
 concurrency:
-  group: sync-catalog-and-market
+  group: daily-bricklink-market-refresh
   cancel-in-progress: false
 
 jobs:
-  sync-catalog:
+  refresh-market:
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    env:
+      BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
+      BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
+      BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
+      BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
+      BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+      BRICKLINK_FALLBACK_CURRENCIES: ${{ vars.BRICKLINK_FALLBACK_CURRENCIES || 'USD,EUR,GBP' }}
+      DIST_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist
+      MARKET_NO_DATA_COOLDOWN_HOURS: ${{ vars.MARKET_NO_DATA_COOLDOWN_HOURS || '168' }}
+      ACTIVE_SET_THEMES: ${{ vars.ACTIVE_SET_THEMES || vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+      ACTIVE_MINIFIG_CATEGORIES: ${{ vars.ACTIVE_MINIFIG_CATEGORIES || vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
+      ACTIVE_PART_CATEGORIES: ${{ vars.ACTIVE_PART_CATEGORIES || vars.MARKET_PRIORITY_PART_CATEGORIES || 'Bricks,Plates,Tiles,Minifigure' }}
 
     steps:
       - name: Checkout
@@ -34,69 +58,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests requests_oauthlib
 
-      - name: Bootstrap from BrickLink catalog feed
-        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 3 * * *' }}
-        env:
-          BRICKLINK_CATALOG_COOKIE: ${{ secrets.BRICKLINK_CATALOG_COOKIE || vars.BRICKLINK_CATALOG_COOKIE }}
-        run: |
-          python scripts/bootstrap_bricklink_catalog.py             --sets-json "dist/Lego Star Wars Database.json"             --themes-json "dist/Themes.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --timeout 45             --retries 5             --verbose
-
-      - name: Commit and push catalog checkpoint (if changed)
-        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 3 * * *' }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Safety: never include monolithic catalog payloads in checkpoint commits.
-          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-
-          git add "dist/Themes.json"
-          if [ -f "dist/sync-state.json" ]; then
-            git add "dist/sync-state.json"
-          fi
-
-          # Re-apply guard after adds to ensure oversized monoliths are never committed.
-          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-
-          if git diff --cached --quiet; then
-            echo "No catalog checkpoint changes to commit."
-            exit 0
-          fi
-
-          git commit -m "chore: catalog checkpoint"
-
-          for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
-              echo "Catalog checkpoint push succeeded on attempt $attempt."
-              exit 0
-            fi
-
-            echo "Catalog checkpoint push rejected on attempt $attempt; rebasing and retrying..."
-            git fetch origin main
-            git rebase origin/main
-          done
-
-          echo "Catalog checkpoint push failed after 3 attempts."
-          exit 1
-
-      - name: Refresh BrickLink market values (API checkpoints)
-        env:
-          BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
-          BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
-          BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
-          BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
-          BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
-          ACTIVE_SET_THEMES: ${{ vars.ACTIVE_SET_THEMES || vars.MARKET_PRIORITY_THEMES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
-          ACTIVE_MINIFIG_CATEGORIES: ${{ vars.ACTIVE_MINIFIG_CATEGORIES || vars.MARKET_PRIORITY_MINIFIG_CATEGORIES || 'Star Wars,Marvel Super Heroes,Disney,NINJAGO' }}
-          ACTIVE_PART_CATEGORIES: ${{ vars.ACTIVE_PART_CATEGORIES || vars.MARKET_PRIORITY_PART_CATEGORIES || '' }}
-          MARKET_NO_DATA_COOLDOWN_HOURS: ${{ vars.MARKET_NO_DATA_COOLDOWN_HOURS || '72' }}
-          MARKET_SETS_PER_RUN: ${{ vars.MARKET_SETS_PER_RUN || '1300' }}
-          MARKET_MINIFIGS_DAILY_LIMIT: ${{ vars.MARKET_MINIFIGS_DAILY_LIMIT || '800' }}
-          MARKET_PARTS_PER_RUN: ${{ vars.MARKET_PARTS_PER_RUN || '500' }}
+      - name: Validate credentials and required files
         run: |
           missing=""
           for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
@@ -104,198 +66,187 @@ jobs:
               missing="$missing $key"
             fi
           done
-
           if [ -n "$missing" ]; then
             echo "Missing BrickLink credentials:$missing"
-            echo "Proceeding in HTML fallback mode (catalogPG) for this run."
-            for key in BRICKLINK_CONSUMER_KEY BRICKLINK_CONSUMER_SECRET BRICKLINK_TOKEN_VALUE BRICKLINK_TOKEN_SECRET; do
-              if [ -z "${!key}" ]; then
-                export "${key}=MISSING"
-              fi
-            done
+            exit 1
+          fi
+          if [ ! -f "dist/Lego Star Wars Database.json" ]; then
+            echo "Missing dist/Lego Star Wars Database.json"
+            exit 1
+          fi
+          if [ ! -f "dist/Lego-Star-Wars-Minifigure-Database.json" ]; then
+            echo "Missing dist/Lego-Star-Wars-Minifigure-Database.json"
+            exit 1
           fi
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          checkpoint_commit() {
-            local message="$1"
-            # Safety: prevent oversized monolith files from getting staged by mistake.
-            git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-            git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-            git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-
-            if [ -f "dist/market-sync-state.json" ]; then
-              git add "dist/market-sync-state.json"
-            fi
-            if [ -f "dist/sync-state.json" ]; then
-              git add "dist/sync-state.json"
-            fi
-            if [ -f "dist/bricklink-set-aliases.json" ]; then
-              git add "dist/bricklink-set-aliases.json"
-            fi
-            if [ -f "dist/parts/parts-catalog.json" ]; then
-              git add "dist/parts/parts-catalog.json"
-            fi
-
-            # Re-apply guard after adds to ensure monolith files are never committed.
-            git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-            git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-            git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-
-            if git diff --cached --quiet; then
-              echo "No checkpoint changes to commit."
-              return 0
-            fi
-
-            git commit -m "$message"
-            for attempt in 1 2 3; do
-              if git push origin HEAD:main; then
-                echo "Checkpoint push succeeded on attempt $attempt."
-                return 0
-              fi
-              echo "Checkpoint push rejected on attempt $attempt; rebasing and retrying..."
-              git fetch origin main
-              git rebase origin/main
-            done
-            echo "Checkpoint push failed after 3 attempts."
-            return 1
-          }
-
-          echo "[Market] Updating set price guide fields..."
-          set +e
+      - name: Refresh set market values
+        env:
+          SETS_PER_RUN: ${{ github.event.inputs.sets_per_run || vars.MARKET_SETS_PER_RUN || '450' }}
+        run: |
           python scripts/update_market_values.py \
             --item-type set \
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
             --parts-json "dist/parts/parts-catalog.json" \
             --currency-code "${BRICKLINK_CURRENCY}" \
-            --fallback-currencies "USD,EUR,GBP" \
+            --fallback-currencies "${BRICKLINK_FALLBACK_CURRENCIES}" \
             --priority-themes "${ACTIVE_SET_THEMES}" \
             --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
             --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
             --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
-            --limit "${MARKET_SETS_PER_RUN}" \
-            --max-api-calls 12000 \
+            --limit "${SETS_PER_RUN}" \
+            --max-api-calls 2200 \
             --market-state-json "dist/market-sync-state.json" \
             --catalog-sync-state-json "dist/sync-state.json" \
-            --delay 0.08 \
-            --jitter 0.02 \
+            --set-aliases-json "dist/bricklink-set-aliases.json" \
+            --delay 0.10 \
+            --jitter 0.03 \
             --timeout 20 \
             --retries 2 \
+            --disable-html-fallback \
             --verbose
-          status=$?
-          set -e
-          checkpoint_commit "chore: market checkpoint sets"
-          if [ "$status" -ne 0 ]; then
-            echo "Market sets step failed with exit code ${status}."
-            exit "$status"
-          fi
 
-          if [ -f "dist/parts/parts-catalog.json" ]; then
-            echo "[Market] Updating part price guide fields..."
-            set +e
-            python scripts/update_market_values.py \
-              --item-type part \
-              --sets-json "dist/Lego Star Wars Database.json" \
-              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-              --parts-json "dist/parts/parts-catalog.json" \
-              --currency-code "${BRICKLINK_CURRENCY}" \
-              --fallback-currencies "USD,EUR,GBP" \
-              --priority-themes "${ACTIVE_SET_THEMES}" \
-              --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
-              --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
-              --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
-              --limit "${MARKET_PARTS_PER_RUN}" \
-              --max-api-calls 5000 \
-              --market-state-json "dist/market-sync-state.json" \
-              --catalog-sync-state-json "dist/sync-state.json" \
-              --delay 0.08 \
-              --jitter 0.02 \
-              --timeout 20 \
-              --retries 2 \
-              --verbose
-            status=$?
-            set -e
-            checkpoint_commit "chore: market checkpoint parts"
-            if [ "$status" -ne 0 ]; then
-              echo "Market parts step failed with exit code ${status}."
-              exit "$status"
-            fi
-          fi
+      - name: Refresh minifigure market values
+        env:
+          MINIFIGS_PER_RUN: ${{ github.event.inputs.minifigs_per_run || vars.MARKET_MINIFIGS_PER_RUN || '300' }}
+        run: |
+          python scripts/update_market_values.py \
+            --item-type minifig \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --currency-code "${BRICKLINK_CURRENCY}" \
+            --fallback-currencies "${BRICKLINK_FALLBACK_CURRENCIES}" \
+            --priority-themes "${ACTIVE_SET_THEMES}" \
+            --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
+            --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
+            --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
+            --limit "${MINIFIGS_PER_RUN}" \
+            --max-api-calls 1200 \
+            --market-state-json "dist/market-sync-state.json" \
+            --catalog-sync-state-json "dist/sync-state.json" \
+            --set-aliases-json "dist/bricklink-set-aliases.json" \
+            --delay 0.10 \
+            --jitter 0.03 \
+            --timeout 20 \
+            --retries 2 \
+            --disable-html-fallback \
+            --verbose
 
-          # Minifigs are refreshed daily (or manual) so hourly runs focus on full set coverage.
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 3 * * *" ]; then
-            echo "[Market] Daily minifigure refresh..."
-            set +e
-            python scripts/update_market_values.py \
-              --item-type minifig \
-              --sets-json "dist/Lego Star Wars Database.json" \
-              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
-              --parts-json "dist/parts/parts-catalog.json" \
-              --currency-code "${BRICKLINK_CURRENCY}" \
-              --fallback-currencies "USD,EUR,GBP" \
-              --priority-themes "${ACTIVE_SET_THEMES}" \
-              --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
-              --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
-              --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
-              --limit "${MARKET_MINIFIGS_DAILY_LIMIT}" \
-              --max-api-calls 6000 \
-              --market-state-json "dist/market-sync-state.json" \
-              --catalog-sync-state-json "dist/sync-state.json" \
-              --delay 0.08 \
-              --jitter 0.02 \
-              --timeout 20 \
-              --retries 2 \
-              --verbose
-            status=$?
-            set -e
-            checkpoint_commit "chore: market checkpoint minifigs"
-            if [ "$status" -ne 0 ]; then
-              echo "Market minifigs step failed with exit code ${status}."
-              exit "$status"
-            fi
-          fi
+      - name: Refresh part market values
+        if: ${{ hashFiles('dist/parts/parts-catalog.json') != '' }}
+        env:
+          PARTS_PER_RUN: ${{ github.event.inputs.parts_per_run || vars.MARKET_PARTS_PER_RUN || '200' }}
+        run: |
+          python scripts/update_market_values.py \
+            --item-type part \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --currency-code "${BRICKLINK_CURRENCY}" \
+            --fallback-currencies "${BRICKLINK_FALLBACK_CURRENCIES}" \
+            --priority-themes "${ACTIVE_SET_THEMES}" \
+            --priority-minifig-categories "${ACTIVE_MINIFIG_CATEGORIES}" \
+            --priority-part-categories "${ACTIVE_PART_CATEGORIES}" \
+            --no-data-cooldown-hours "${MARKET_NO_DATA_COOLDOWN_HOURS}" \
+            --limit "${PARTS_PER_RUN}" \
+            --max-api-calls 800 \
+            --market-state-json "dist/market-sync-state.json" \
+            --catalog-sync-state-json "dist/sync-state.json" \
+            --set-aliases-json "dist/bricklink-set-aliases.json" \
+            --delay 0.10 \
+            --jitter 0.03 \
+            --timeout 20 \
+            --retries 2 \
+            --disable-html-fallback \
+            --verbose
 
-      - name: Build chunked catalog and per-item market details
+      - name: Rebuild chunked outputs + market details
         run: |
           rm -rf "dist/chunks" "dist/market-details"
 
-          python scripts/split_catalog_chunks.py             --sets-json "dist/Lego Star Wars Database.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --output-dir "dist/chunks"             --manifest-path "dist/catalog-index.json"             --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist"             --market-details-dir "dist/market-details"             --strip-market-detail-fields             --max-items-per-chunk 800
+          python scripts/split_catalog_chunks.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --output-dir "dist/chunks" \
+            --manifest-path "dist/catalog-index.json" \
+            --base-url "${DIST_BASE_URL}" \
+            --market-details-dir "dist/market-details" \
+            --strip-market-detail-fields \
+            --max-items-per-chunk 800
 
-          python scripts/build_sync_artifacts.py             --manifest-path "dist/catalog-index.json"             --sync-state-path "dist/sync-state.json"             --sets-json "dist/Lego Star Wars Database.json"             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"             --delta-manifest-path "dist/catalog-delta-index.json"             --client-config-path "dist/client-config.json"             --market-price-seed-path "dist/market-price-seed.json"             --base-url "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/dist"             --market-currency-code "${{ vars.BRICKLINK_CURRENCY || 'GBP' }}"             --verbose
+          python scripts/build_sync_artifacts.py \
+            --manifest-path "dist/catalog-index.json" \
+            --sync-state-path "dist/sync-state.json" \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --delta-manifest-path "dist/catalog-delta-index.json" \
+            --client-config-path "dist/client-config.json" \
+            --market-price-seed-path "dist/market-price-seed.json" \
+            --base-url "${DIST_BASE_URL}" \
+            --market-currency-code "${BRICKLINK_CURRENCY}" \
+            --verbose
 
-      - name: Commit and push chunked catalog outputs (if changed)
+      - name: Validate monolith sizes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          limit = 99_500_000
+          paths = [
+              Path("dist/Lego Star Wars Database.json"),
+              Path("dist/Lego-Star-Wars-Minifigure-Database.json"),
+          ]
+          for path in paths:
+              size = path.stat().st_size
+              print(f"[SizeCheck] {path} bytes={size}")
+              if size > limit:
+                  raise SystemExit(f"{path} exceeds safe GitHub commit size threshold ({size} > {limit})")
+          PY
+
+      - name: Commit and push refreshed market artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Safety: keep monolith JSON out of commits to avoid GitHub's 100MB limit.
-          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git add \
+            "dist/Lego Star Wars Database.json" \
+            "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            "dist/catalog-index.json" \
+            "dist/catalog-delta-index.json" \
+            "dist/client-config.json" \
+            "dist/market-price-seed.json" \
+            "dist/chunks" \
+            "dist/market-details"
 
-          git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
-          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
-          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
-          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          if [ -f "dist/market-sync-state.json" ]; then
+            git add "dist/market-sync-state.json"
+          fi
+          if [ -f "dist/sync-state.json" ]; then
+            git add "dist/sync-state.json"
+          fi
+          if [ -f "dist/bricklink-set-aliases.json" ]; then
+            git add "dist/bricklink-set-aliases.json"
+          fi
+          if [ -f "dist/parts/parts-catalog.json" ]; then
+            git add "dist/parts/parts-catalog.json"
+          fi
+
           if git diff --cached --quiet; then
-            echo "No chunk output changes to commit."
+            echo "No market refresh changes to commit."
             exit 0
           fi
 
-          git commit -m "chore: refresh chunked catalog outputs"
+          git commit -m "chore: refresh bricklink market data"
 
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
-              echo "Chunk output push succeeded on attempt $attempt."
+              echo "Market refresh push succeeded on attempt $attempt."
               exit 0
             fi
-
-            echo "Chunk output push rejected on attempt $attempt; rebasing and retrying..."
+            echo "Market refresh push rejected on attempt $attempt; rebasing and retrying..."
             git fetch origin main
             git rebase origin/main
           done
 
-          echo "Chunk output push failed after 3 attempts."
+          echo "Market refresh push failed after 3 attempts."
           exit 1
