@@ -17,7 +17,7 @@ import re
 import sys
 import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -96,6 +96,34 @@ def log(msg: str, *, enabled: bool) -> None:
 
 def collapse_ws(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def first_non_empty(*values: Any) -> str:
+    for value in values:
+        text = collapse_ws(value)
+        if text:
+            return text
+    return ""
+
+
+def now_iso_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def stamp_catalog_dates(
+    row: Dict[str, Any],
+    *,
+    created: bool,
+    changed: bool,
+    now_iso: str,
+    added_fallback: str = "",
+) -> None:
+    added_value = first_non_empty(row.get("CatalogDateAddedUTC"), added_fallback, now_iso)
+    row["CatalogDateAddedUTC"] = added_value
+    if created or changed:
+        row["CatalogLastUpdatedUTC"] = now_iso
+    else:
+        row["CatalogLastUpdatedUTC"] = first_non_empty(row.get("CatalogLastUpdatedUTC"), added_value, now_iso)
 
 
 def parse_int(value: Any) -> Optional[int]:
@@ -460,6 +488,7 @@ def upsert_sets_from_rebrickable(
     *,
     fill_missing_fields: bool,
     refresh_existing_fields: bool,
+    now_iso: str,
 ) -> Tuple[List[Dict[str, Any]], BootstrapSummary]:
     summary = BootstrapSummary()
     summary.sets_scanned = len(set_meta_by_key)
@@ -573,6 +602,13 @@ def upsert_sets_from_rebrickable(
             if minifig_numbers_value and collapse_ws(row.get("MinifigNumbers")) != minifig_numbers_value:
                 row["MinifigNumbers"] = minifig_numbers_value
                 changed = True
+            stamp_catalog_dates(
+                row,
+                created=False,
+                changed=changed,
+                now_iso=now_iso,
+                added_fallback=first_non_empty(row.get("USDateAdded"), row.get("LaunchDate")),
+            )
             if changed:
                 summary.sets_patched += 1
             else:
@@ -597,6 +633,8 @@ def upsert_sets_from_rebrickable(
                 "productImage": meta.product_image or "",
                 "ImageFilename": meta.set_code,
                 "type": "Set",
+                "CatalogDateAddedUTC": now_iso,
+                "CatalogLastUpdatedUTC": now_iso,
             }
         )
         next_id += 1
@@ -615,6 +653,7 @@ def upsert_minifigs_from_rebrickable(
     *,
     fill_missing_fields: bool,
     refresh_existing_fields: bool,
+    now_iso: str,
 ) -> Tuple[List[Dict[str, Any]], BootstrapSummary]:
     summary = BootstrapSummary()
     summary.minifigs_scanned = len(minifig_rows_csv)
@@ -750,6 +789,12 @@ def upsert_minifigs_from_rebrickable(
             elif not collapse_ws(row.get("type")):
                 row["type"] = "Minifigure"
                 changed = True
+            stamp_catalog_dates(
+                row,
+                created=False,
+                changed=changed,
+                now_iso=now_iso,
+            )
             if changed:
                 summary.minifigs_patched += 1
             else:
@@ -773,6 +818,8 @@ def upsert_minifigs_from_rebrickable(
                 "productImage": product_image or "",
                 "type": "Minifigure",
                 "AppearsInSetNumbers": appears_in,
+                "CatalogDateAddedUTC": now_iso,
+                "CatalogLastUpdatedUTC": now_iso,
             }
         )
         existing_minifigs.append(row)
@@ -839,6 +886,7 @@ def main(argv: Sequence[str]) -> int:
     existing_minifigs = load_json_array(minifigs_path) if minifigs_path.exists() else []
 
     log(f"[Start] existing sets={len(existing_sets)} minifigs={len(existing_minifigs)}", enabled=cfg.verbose)
+    catalog_timestamp = now_iso_utc()
 
     local_rebrickable_dir = Path(args.rebrickable_dir).expanduser().resolve() if collapse_ws(args.rebrickable_dir) else None
     if local_rebrickable_dir and not local_rebrickable_dir.exists():
@@ -881,6 +929,7 @@ def main(argv: Sequence[str]) -> int:
         set_minifig_numbers_by_code,
         fill_missing_fields=bool(args.fill_missing_fields),
         refresh_existing_fields=bool(args.refresh_existing_fields),
+        now_iso=catalog_timestamp,
     )
     existing_minifigs, minifig_summary = upsert_minifigs_from_rebrickable(
         existing_minifigs,
@@ -888,6 +937,7 @@ def main(argv: Sequence[str]) -> int:
         minifig_aggregates,
         fill_missing_fields=bool(args.fill_missing_fields),
         refresh_existing_fields=bool(args.refresh_existing_fields),
+        now_iso=catalog_timestamp,
     )
 
     themes_index = build_theme_index(existing_sets, existing_minifigs)

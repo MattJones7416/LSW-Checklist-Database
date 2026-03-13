@@ -24,6 +24,7 @@ import csv
 import gzip
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, Iterator, List, Optional, Tuple
 
@@ -112,6 +113,18 @@ def as_bool(raw: str) -> bool:
 
 def normalized_key(raw: str) -> str:
     return (raw or "").strip().lower()
+
+
+def now_iso_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def first_non_empty(*values: object) -> str:
+    for value in values:
+        text = str(value or "").strip()
+        if text:
+            return text
+    return ""
 
 
 def canonical_target_set_number(number: object, variant: object) -> str:
@@ -445,19 +458,53 @@ def write_outputs(
             if image_url:
                 fallback_image_by_part[part_num] = image_url
 
+    existing_catalog_path = output_dir / "parts-catalog.json"
+    existing_by_part_num: Dict[str, Dict[str, object]] = {}
+    if existing_catalog_path.exists():
+        try:
+            existing_rows = json.loads(existing_catalog_path.read_text(encoding="utf-8"))
+            if isinstance(existing_rows, list):
+                for row in existing_rows:
+                    if not isinstance(row, dict):
+                        continue
+                    part_num = str(row.get("part_num", "")).strip()
+                    if part_num:
+                        existing_by_part_num[part_num.lower()] = row
+        except Exception:
+            existing_by_part_num = {}
+
+    timestamp_now = now_iso_utc()
+
     catalog_rows: List[Dict[str, object]] = []
     for part_num in sorted(parts_by_num.keys(), key=lambda value: value.lower()):
         part = parts_by_num[part_num]
         image_url = part.get("part_img_url", "").strip() or fallback_image_by_part.get(part_num, "").strip()
+        existing = existing_by_part_num.get(part_num.lower(), {})
+        base_row = {
+            "part_num": part_num,
+            "name": part.get("name", "").strip() or part_num,
+            "category": part.get("category", "").strip() or None,
+            "image_url": image_url or None,
+            "bricklink_part_num": part_num,
+        }
+        existing_base_row = {
+            "part_num": str(existing.get("part_num", "")).strip(),
+            "name": str(existing.get("name", "")).strip() or part_num,
+            "category": (str(existing.get("category", "")).strip() or None),
+            "image_url": (str(existing.get("image_url", "")).strip() or None),
+            "bricklink_part_num": str(existing.get("bricklink_part_num", "")).strip() or part_num,
+        }
+        changed = not existing or base_row != existing_base_row
+        added_at = first_non_empty(existing.get("CatalogDateAddedUTC"), timestamp_now)
+        updated_at = timestamp_now if changed else first_non_empty(existing.get("CatalogLastUpdatedUTC"), added_at, timestamp_now)
         catalog_rows.append(
             {
-                "part_num": part_num,
-                "name": part.get("name", "").strip() or part_num,
-                "category": part.get("category", "").strip() or None,
-                "image_url": image_url or None,
-                "bricklink_part_num": part_num,
-                "market_price_new": None,
-                "market_price_used": None,
+                **base_row,
+                "market_price_new": existing.get("market_price_new"),
+                "market_price_used": existing.get("market_price_used"),
+                "MarketLastUpdatedUTC": existing.get("MarketLastUpdatedUTC"),
+                "CatalogDateAddedUTC": added_at,
+                "CatalogLastUpdatedUTC": updated_at,
             }
         )
 

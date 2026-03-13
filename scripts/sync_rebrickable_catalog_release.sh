@@ -78,4 +78,8 @@ python3 scripts/build_sync_artifacts.py \
   --market-currency-code "${MARKET_CURRENCY_CODE}" \
   "${EXTRA_ARGS[@]}"
 
+python3 scripts/compact_release_monoliths.py \
+  --sets-json "${SETS_JSON}" \
+  --minifigs-json "${MINIFIGS_JSON}"
+
 echo "[Sync] Rebrickable catalog + parts + chunk rebuild complete."

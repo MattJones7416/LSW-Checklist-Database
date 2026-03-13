@@ -187,6 +187,10 @@ jobs:
             --market-currency-code "${BRICKLINK_CURRENCY}" \
             --verbose
 
+          python scripts/compact_release_monoliths.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"
+
       - name: Validate monolith sizes
         run: |
           python - <<'PY'

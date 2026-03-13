@@ -109,6 +109,17 @@ MARKET_PRESERVE_FIELDS = {
     "BrickLinkCurrentListingsUsed",
 }
 
+COMPACTED_MONOLITH_FIELDS = {
+    "BrickLinkCurrentListingsNew",
+    "BrickLinkCurrentListingsUsed",
+    "BrickLinkTransactionsNew",
+    "BrickLinkTransactionsUsed",
+    "BrickLinkTransactionsNewCount",
+    "BrickLinkTransactionsUsedCount",
+    "BrickLinkMonthlySalesNew",
+    "BrickLinkMonthlySalesUsed",
+}
+
 BRICKLINK_MINIFIG_CODE_RE = re.compile(r"^[A-Za-z][A-Za-z0-9]*$")
 
 
@@ -1805,11 +1816,70 @@ def to_price_guide_url(item_type: str, item_no: str) -> str:
     return build_html_price_guide_url(item_type, item_no)
 
 
+def normalized_market_detail_key(item_no: str) -> str:
+    raw = collapse_ws(item_no).lower()
+    return re.sub(r"\s+", "", raw)
+
+
+def market_detail_kind(item_type: str) -> str:
+    normalized = collapse_ws(item_type).upper()
+    if normalized in {"MINIFIG", "MINIFIGURE"}:
+        return "minifigures"
+    return "sets"
+
+
+def market_detail_bucket(number_key: str) -> str:
+    compact = re.sub(r"[^a-z0-9]", "", collapse_ws(number_key).lower())
+    if not compact:
+        return "misc"
+    if len(compact) == 1:
+        return f"{compact}0"
+    return compact[:2]
+
+
+def market_detail_filename(number_key: str) -> str:
+    safe = re.sub(r"[^a-z0-9._-]+", "-", collapse_ws(number_key).lower()).strip("-")
+    return safe or "unknown"
+
+
+def load_existing_market_detail(
+    market_details_dir: Optional[Path],
+    *,
+    item_type: str,
+    item_no: str,
+    cache: Dict[Tuple[str, str], Dict[str, Any]],
+) -> Dict[str, Any]:
+    if market_details_dir is None:
+        return {}
+    normalized_no = normalized_market_detail_key(item_no)
+    if not normalized_no:
+        return {}
+    kind = market_detail_kind(item_type)
+    cache_key = (kind, normalized_no)
+    if cache_key in cache:
+        return cache[cache_key]
+
+    path = market_details_dir / kind / market_detail_bucket(normalized_no) / f"{market_detail_filename(normalized_no)}.json"
+    if not path.exists():
+        cache[cache_key] = {}
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        cache[cache_key] = {}
+        return {}
+    if isinstance(payload, list):
+        payload = next((row for row in payload if isinstance(row, dict)), {})
+    cache[cache_key] = payload if isinstance(payload, dict) else {}
+    return cache[cache_key]
+
+
 def apply_market_to_row(
     row: Dict[str, Any],
     *,
     item_type: str,
     item_no: str,
+    preserved_detail_row: Optional[Dict[str, Any]],
     currency_code: str,
     fallback_currency_codes: Sequence[str],
     allow_html_fallback: bool,
@@ -1817,7 +1887,17 @@ def apply_market_to_row(
     throttle: RuntimeThrottle,
     month_key: str,
 ) -> bool:
-    previous_values = {key: row.get(key) for key in MARKET_PRESERVE_FIELDS}
+    def preserved_value(key: str) -> Any:
+        current = row.get(key)
+        if current is None and preserved_detail_row is not None:
+            return preserved_detail_row.get(key)
+        if isinstance(current, str) and collapse_ws(current) == "" and preserved_detail_row is not None:
+            return preserved_detail_row.get(key)
+        if isinstance(current, (list, dict)) and len(current) == 0 and preserved_detail_row is not None:
+            return preserved_detail_row.get(key)
+        return current
+
+    previous_values = {key: preserved_value(key) for key in MARKET_PRESERVE_FIELDS}
 
     matrix: Optional[Dict[Tuple[str, str], Dict[str, Any]]] = None
     sold_new: Optional[Dict[str, Any]] = None
@@ -1980,14 +2060,14 @@ def apply_market_to_row(
         return False
 
     if allow_html_fallback and (
-        not isinstance(row.get("BrickLinkMonthlySalesNew"), list)
-        or not row.get("BrickLinkMonthlySalesNew")
-        or not isinstance(row.get("BrickLinkMonthlySalesUsed"), list)
-        or not row.get("BrickLinkMonthlySalesUsed")
-        or not isinstance(row.get("BrickLinkTransactionsNew"), list)
-        or not row.get("BrickLinkTransactionsNew")
-        or not isinstance(row.get("BrickLinkTransactionsUsed"), list)
-        or not row.get("BrickLinkTransactionsUsed")
+        not isinstance(previous_values.get("BrickLinkMonthlySalesNew"), list)
+        or not previous_values.get("BrickLinkMonthlySalesNew")
+        or not isinstance(previous_values.get("BrickLinkMonthlySalesUsed"), list)
+        or not previous_values.get("BrickLinkMonthlySalesUsed")
+        or not isinstance(previous_values.get("BrickLinkTransactionsNew"), list)
+        or not previous_values.get("BrickLinkTransactionsNew")
+        or not isinstance(previous_values.get("BrickLinkTransactionsUsed"), list)
+        or not previous_values.get("BrickLinkTransactionsUsed")
     ):
         history_result = fetch_html_once(quiet_no_data=True)
         if history_result is not None:
@@ -2158,13 +2238,13 @@ def apply_market_to_row(
     row["BrickLinkUsedPriceRangeMax"] = round(used_max, 2) if used_max is not None else None
 
     existing_current_listings_new = (
-        row.get("BrickLinkCurrentListingsNew")
-        if isinstance(row.get("BrickLinkCurrentListingsNew"), list)
+        previous_values.get("BrickLinkCurrentListingsNew")
+        if isinstance(previous_values.get("BrickLinkCurrentListingsNew"), list)
         else []
     )
     existing_current_listings_used = (
-        row.get("BrickLinkCurrentListingsUsed")
-        if isinstance(row.get("BrickLinkCurrentListingsUsed"), list)
+        previous_values.get("BrickLinkCurrentListingsUsed")
+        if isinstance(previous_values.get("BrickLinkCurrentListingsUsed"), list)
         else []
     )
     if isinstance(fallback_current_listings_new, list) and fallback_current_listings_new:
@@ -2178,10 +2258,10 @@ def apply_market_to_row(
 
     # Prefer true historical rows from HTML when available. Keep existing values
     # otherwise instead of synthesizing artificial month points every run.
-    existing_month_new = row.get("BrickLinkMonthlySalesNew") if isinstance(row.get("BrickLinkMonthlySalesNew"), list) else []
-    existing_month_used = row.get("BrickLinkMonthlySalesUsed") if isinstance(row.get("BrickLinkMonthlySalesUsed"), list) else []
-    existing_tx_new = row.get("BrickLinkTransactionsNew") if isinstance(row.get("BrickLinkTransactionsNew"), list) else []
-    existing_tx_used = row.get("BrickLinkTransactionsUsed") if isinstance(row.get("BrickLinkTransactionsUsed"), list) else []
+    existing_month_new = previous_values.get("BrickLinkMonthlySalesNew") if isinstance(previous_values.get("BrickLinkMonthlySalesNew"), list) else []
+    existing_month_used = previous_values.get("BrickLinkMonthlySalesUsed") if isinstance(previous_values.get("BrickLinkMonthlySalesUsed"), list) else []
+    existing_tx_new = previous_values.get("BrickLinkTransactionsNew") if isinstance(previous_values.get("BrickLinkTransactionsNew"), list) else []
+    existing_tx_used = previous_values.get("BrickLinkTransactionsUsed") if isinstance(previous_values.get("BrickLinkTransactionsUsed"), list) else []
     if fallback_month_new is not None:
         month_new = fallback_month_new
     else:
@@ -2496,6 +2576,7 @@ def update_rows(
     rows: List[Dict[str, Any]],
     *,
     item_type: str,
+    market_details_dir: Optional[Path],
     cfg: FetchConfig,
     client: BrickLinkClient,
     throttle: RuntimeThrottle,
@@ -2510,6 +2591,7 @@ def update_rows(
     alias_lookup_budget: Optional[List[int]] = None,
 ) -> FileUpdateStats:
     stats = FileUpdateStats(total_rows=len(rows))
+    market_detail_cache: Dict[Tuple[str, str], Dict[str, Any]] = {}
     if indexes is not None:
         iter_indices = [i for i in indexes if 0 <= i < len(rows)]
     else:
@@ -2578,10 +2660,17 @@ def update_rows(
         for candidate_type, candidate_no in item_candidates:
             used_item_type = candidate_type
             used_item_no = candidate_no
+            preserved_detail_row = load_existing_market_detail(
+                market_details_dir,
+                item_type=candidate_type,
+                item_no=candidate_no,
+                cache=market_detail_cache,
+            )
             ok = apply_market_to_row(
                 row,
                 item_type=candidate_type,
                 item_no=candidate_no,
+                preserved_detail_row=preserved_detail_row,
                 currency_code=cfg.currency_code,
                 fallback_currency_codes=cfg.fallback_currency_codes,
                 allow_html_fallback=cfg.allow_html_fallback,
@@ -2609,10 +2698,17 @@ def update_rows(
                 discovered_alias = canonicalize_set_item_no(discovered_alias)
                 if discovered_alias and discovered_alias.lower() != used_item_no.lower():
                     set_alias_cache[canonical_set_code] = discovered_alias
+                    preserved_detail_row = load_existing_market_detail(
+                        market_details_dir,
+                        item_type="SET",
+                        item_no=discovered_alias,
+                        cache=market_detail_cache,
+                    )
                     ok = apply_market_to_row(
                         row,
                         item_type="SET",
                         item_no=discovered_alias,
+                        preserved_detail_row=preserved_detail_row,
                         currency_code=cfg.currency_code,
                         fallback_currency_codes=cfg.fallback_currency_codes,
                         allow_html_fallback=cfg.allow_html_fallback,
@@ -2672,6 +2768,11 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json", help="Path to sets JSON file.")
     parser.add_argument("--minifigs-json", default="dist/Lego-Star-Wars-Minifigure-Database.json", help="Path to minifig JSON file.")
     parser.add_argument("--parts-json", default="dist/parts/parts-catalog.json", help="Path to parts catalog JSON file.")
+    parser.add_argument(
+        "--market-details-dir",
+        default="dist/market-details",
+        help="Directory containing persisted market-detail JSON used to preserve stripped analytics fields.",
+    )
 
     parser.add_argument("--bricklink-base-url", default=BRICKLINK_API_BASE_URL, help="BrickLink API base URL.")
     parser.add_argument("--currency-code", default=os.getenv("BRICKLINK_CURRENCY", "GBP"), help="Price currency code (default GBP).")
@@ -2795,6 +2896,7 @@ def main(argv: Sequence[str]) -> int:
     sets_path = Path(args.sets_json)
     minifigs_path = Path(args.minifigs_json)
     parts_path = Path(args.parts_json)
+    market_details_dir = Path(args.market_details_dir)
     if not sets_path.exists():
         print(f"Missing sets JSON: {sets_path}", file=sys.stderr)
         return 1
@@ -2985,6 +3087,7 @@ def main(argv: Sequence[str]) -> int:
         sets_stats = update_rows(
             sets_rows,
             item_type="SET",
+            market_details_dir=market_details_dir,
             cfg=cfg,
             client=client,
             throttle=throttle,
@@ -3005,6 +3108,7 @@ def main(argv: Sequence[str]) -> int:
         minifigs_stats = update_rows(
             minifigs_rows,
             item_type="MINIFIG",
+            market_details_dir=market_details_dir,
             cfg=cfg,
             client=client,
             throttle=throttle,
@@ -3025,6 +3129,7 @@ def main(argv: Sequence[str]) -> int:
         parts_stats = update_rows(
             parts_rows,
             item_type="PART",
+            market_details_dir=None,
             cfg=cfg,
             client=client,
             throttle=throttle,
