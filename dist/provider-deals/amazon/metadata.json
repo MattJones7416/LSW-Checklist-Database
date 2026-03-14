@@ -1,16 +1,20 @@
 {
   "provider": "amazon",
-  "generatedAt": "2026-03-14T16:18:22Z",
+  "generatedAt": "2026-03-14T22:48:32Z",
   "regions": {
     "UK": {
-      "nextSetIndex": 90,
-      "nextMinifigIndex": 15,
-      "nextPartIndex": 10,
-      "processed": 108,
-      "deals": 116,
-      "updatedAt": "2026-03-14T16:18:22Z"
+      "nextSetIndex": 0,
+      "nextMinifigIndex": 0,
+      "nextPartIndex": 0,
+      "processed": 1,
+      "deals": 0,
+      "updatedAt": "2026-03-14T22:48:32Z"
     }
   },
-  "searchErrors": 7,
-  "accessDenied": 7
+  "searchErrors": 0,
+  "accessDenied": 0,
+  "lastSingleRefreshAt": "2026-03-14T22:48:32Z",
+  "lastSingleRefreshNumber": "75425-1",
+  "lastSingleRefreshItemType": "set",
+  "lastSingleRefreshRegion": "UK"
 }
