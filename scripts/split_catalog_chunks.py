@@ -237,6 +237,29 @@ def has_meaningful_market_detail(detail: Dict[str, Any]) -> bool:
     return False
 
 
+def merge_market_detail_payload(
+    detail_payload: Dict[str, Any],
+    existing_payload: Dict[str, Any],
+) -> Dict[str, Any]:
+    merged = dict(existing_payload)
+    for key, value in detail_payload.items():
+        current_empty = (
+            value is None
+            or (isinstance(value, str) and value.strip() == "")
+            or (isinstance(value, (list, dict)) and len(value) == 0)
+        )
+        if current_empty:
+            continue
+        merged[key] = value
+
+    for key, value in detail_payload.items():
+        if key in merged:
+            continue
+        merged[key] = value
+
+    return merged
+
+
 def split_out_market_details(
     rows: List[Dict[str, Any]],
     market_details_dir: Path,
@@ -262,6 +285,13 @@ def split_out_market_details(
                 filename = market_detail_filename(number)
                 detail_path = market_details_dir / kind / bucket / f"{filename}.json"
                 detail_path.parent.mkdir(parents=True, exist_ok=True)
+                if detail_path.exists():
+                    try:
+                        existing_payload = json.loads(detail_path.read_text(encoding="utf-8"))
+                    except Exception:
+                        existing_payload = {}
+                    if isinstance(existing_payload, dict):
+                        detail_payload = merge_market_detail_payload(detail_payload, existing_payload)
                 detail_path.write_text(
                     json.dumps(detail_payload, ensure_ascii=False, separators=(",", ":")),
                     encoding="utf-8",

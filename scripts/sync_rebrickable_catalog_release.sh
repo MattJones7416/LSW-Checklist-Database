@@ -54,7 +54,7 @@ python3 scripts/build_parts_inventory_from_rebrickable.py \
   --sets-json "${SETS_JSON}" \
   --output-dir "${PARTS_OUTPUT_DIR}"
 
-rm -rf "dist/chunks" "dist/market-details"
+rm -rf "dist/chunks"
 
 python3 scripts/split_catalog_chunks.py \
   --sets-json "${SETS_JSON}" \
