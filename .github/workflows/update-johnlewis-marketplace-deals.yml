@@ -1,0 +1,77 @@
+name: Daily John Lewis Provider Deals
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-johnlewis-provider-deals
+  cancel-in-progress: false
+
+jobs:
+  update-johnlewis-deals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      JOHNLEWIS_SETS_PER_REGION: ${{ vars.JOHNLEWIS_SETS_PER_REGION || '220' }}
+      JOHNLEWIS_MAX_RESULTS_PER_ITEM: ${{ vars.JOHNLEWIS_MAX_RESULTS_PER_ITEM || '1' }}
+      JOHNLEWIS_MAX_PRODUCT_PAGES_PER_ITEM: ${{ vars.JOHNLEWIS_MAX_PRODUCT_PAGES_PER_ITEM || '3' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests beautifulsoup4
+
+      - name: Build John Lewis provider deals
+        run: |
+          python scripts/update_marketplace_provider_deals.py \
+            --provider johnlewis \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --output-dir "dist/provider-deals/johnlewis" \
+            --state-path "dist/provider-deals/johnlewis/state.json" \
+            --regions UK \
+            --sets-per-region "${JOHNLEWIS_SETS_PER_REGION}" \
+            --minifigs-per-region 0 \
+            --parts-per-region 0 \
+            --max-results-per-item "${JOHNLEWIS_MAX_RESULTS_PER_ITEM}" \
+            --max-product-pages-per-item "${JOHNLEWIS_MAX_PRODUCT_PAGES_PER_ITEM}" \
+            --verbose
+
+      - name: Commit and push John Lewis provider deals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dist/provider-deals/johnlewis"
+          if git diff --cached --quiet; then
+            echo "No John Lewis provider deal changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh john lewis provider deals"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "John Lewis provider push succeeded on attempt $attempt."
+              exit 0
+            fi
+            echo "John Lewis provider push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo "John Lewis provider push failed after 3 attempts."
+          exit 1

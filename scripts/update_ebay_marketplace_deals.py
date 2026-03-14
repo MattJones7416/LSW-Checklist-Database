@@ -38,6 +38,7 @@ class Candidate:
     item_type: str
     category: str
     search_term: str
+    priority_score: int = 0
 
 
 class EbayApiError(RuntimeError):
@@ -105,6 +106,31 @@ def rotating_slice(items: Sequence[Candidate], start_index: int, limit: int) -> 
     return output, (start + len(output)) % len(items)
 
 
+def current_year_utc() -> int:
+    return datetime.now(timezone.utc).year
+
+
+def parse_optional_int(value: Any) -> Optional[int]:
+    raw = collapse_ws(value)
+    if not raw:
+        return None
+    try:
+        return int(float(raw))
+    except ValueError:
+        return None
+
+
+def is_currentish_retail_set(row: Dict[str, Any]) -> bool:
+    availability = collapse_ws(row.get("Availability")).lower()
+    year_value = parse_optional_int(row.get("YearFrom"))
+    released = collapse_ws(row.get("Released")).lower()
+    if availability in {"retail", "retail - limited", "lego exclusive", "promotional", "legoland exclusive", "insiders reward"}:
+        return True
+    if year_value is not None and year_value >= current_year_utc() - 3 and released != "false":
+        return True
+    return False
+
+
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch eBay marketplace deals into dist/deals JSON artifacts.")
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json")
@@ -116,14 +142,14 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--client-id", default=os.getenv("EBAY_CLIENT_ID", ""))
     parser.add_argument("--client-secret", default=os.getenv("EBAY_CLIENT_SECRET", ""))
     parser.add_argument("--regions", default=os.getenv("EBAY_MARKET_REGIONS", "UK,US"))
-    parser.add_argument("--sets-per-region", type=int, default=int(os.getenv("EBAY_SETS_PER_REGION", "50")))
-    parser.add_argument("--minifigs-per-region", type=int, default=int(os.getenv("EBAY_MINIFIGS_PER_REGION", "35")))
-    parser.add_argument("--parts-per-region", type=int, default=int(os.getenv("EBAY_PARTS_PER_REGION", "25")))
+    parser.add_argument("--sets-per-region", type=int, default=int(os.getenv("EBAY_SETS_PER_REGION", "70")))
+    parser.add_argument("--minifigs-per-region", type=int, default=int(os.getenv("EBAY_MINIFIGS_PER_REGION", "25")))
+    parser.add_argument("--parts-per-region", type=int, default=int(os.getenv("EBAY_PARTS_PER_REGION", "15")))
     parser.add_argument("--max-results-per-item", type=int, default=int(os.getenv("EBAY_MAX_RESULTS_PER_ITEM", "5")))
     parser.add_argument("--timeout", type=float, default=20.0)
     parser.add_argument("--retries", type=int, default=2)
-    parser.add_argument("--priority-themes", default=os.getenv("EBAY_PRIORITY_THEMES", "Star Wars,Marvel Super Heroes,Disney,NINJAGO"))
-    parser.add_argument("--priority-minifig-categories", default=os.getenv("EBAY_PRIORITY_MINIFIG_CATEGORIES", "Star Wars,Marvel Super Heroes,Disney,NINJAGO"))
+    parser.add_argument("--priority-themes", default=os.getenv("EBAY_PRIORITY_THEMES", "Star Wars,Icons,Technic,Speed Champions,Marvel Super Heroes,Harry Potter,Disney,City,Botanicals,NINJAGO"))
+    parser.add_argument("--priority-minifig-categories", default=os.getenv("EBAY_PRIORITY_MINIFIG_CATEGORIES", "Star Wars,Marvel Super Heroes,Harry Potter,Disney,Collectable Minifigures,NINJAGO"))
     parser.add_argument("--priority-part-categories", default=os.getenv("EBAY_PRIORITY_PART_CATEGORIES", "Bricks,Plates,Tiles,Minifigure"))
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args(argv)
@@ -133,6 +159,50 @@ def parse_priority_list(value: str) -> List[str]:
     return [collapse_ws(part) for part in re.split(r"[,\n]", value or "") if collapse_ws(part)]
 
 
+def theme_priority_bonus(value: str, priority_values: Sequence[str]) -> int:
+    normalized = value.casefold()
+    for index, priority in enumerate(priority_values):
+        if normalized == priority.casefold():
+            return max(0, 240 - (index * 18))
+    return 0
+
+
+def score_candidate(row: Dict[str, Any], *, item_type: str, priority_values: Sequence[str]) -> int:
+    category = ""
+    if item_type == "set":
+        category = collapse_ws(row.get("Theme"))
+    elif item_type == "minifig":
+        category = collapse_ws(row.get("Category") or row.get("Theme"))
+    else:
+        category = collapse_ws(row.get("category"))
+
+    score = theme_priority_bonus(category, priority_values)
+    if item_type == "set":
+        year_value = parse_optional_int(row.get("YearFrom"))
+        availability = collapse_ws(row.get("Availability")).lower()
+        released = collapse_ws(row.get("Released")).lower()
+        pieces = parse_optional_int(row.get("Pieces")) or 0
+        if availability in {"retail", "retail - limited", "lego exclusive", "promotional", "legoland exclusive", "insiders reward"}:
+            score += 220
+        if year_value is not None:
+            score += max(0, 120 - max(0, current_year_utc() - year_value) * 20)
+        if released != "false":
+            score += 40
+        if pieces > 0:
+            score += min(24, pieces // 250)
+    elif item_type == "minifig":
+        year_value = parse_optional_int(row.get("Year released") or row.get("Year"))
+        if year_value is not None:
+            score += max(0, 80 - max(0, current_year_utc() - year_value) * 14)
+    else:
+        category_lower = category.casefold()
+        if "minifig" in category_lower:
+            score += 40
+        elif "tile" in category_lower or "plate" in category_lower or "brick" in category_lower:
+            score += 28
+    return score
+
+
 def prioritized_candidates(
     rows: Sequence[Dict[str, Any]],
     *,
@@ -140,19 +210,27 @@ def prioritized_candidates(
     priority_values: Sequence[str],
 ) -> List[Candidate]:
     priority_set = {value.casefold() for value in priority_values if value}
+    currentish_priority: List[Candidate] = []
     prioritized: List[Candidate] = []
     remainder: List[Candidate] = []
 
     for row in rows:
-        candidate = make_candidate(row, item_type=item_type)
+        candidate = make_candidate(row, item_type=item_type, priority_values=priority_values)
         if candidate is None:
             continue
-        bucket = prioritized if candidate.category.casefold() in priority_set else remainder
+        if item_type == "set" and is_currentish_retail_set(row):
+            bucket = currentish_priority
+        elif candidate.category.casefold() in priority_set:
+            bucket = prioritized
+        else:
+            bucket = remainder
         bucket.append(candidate)
-    return prioritized + remainder
+    def ordering(candidate: Candidate) -> tuple[int, str, str]:
+        return (-candidate.priority_score, candidate.category.casefold(), candidate.number.casefold())
+    return sorted(currentish_priority, key=ordering) + sorted(prioritized, key=ordering) + sorted(remainder, key=ordering)
 
 
-def make_candidate(row: Dict[str, Any], *, item_type: str) -> Optional[Candidate]:
+def make_candidate(row: Dict[str, Any], *, item_type: str, priority_values: Sequence[str]) -> Optional[Candidate]:
     if item_type == "set":
         number = normalize_set_number(row.get("Number"), row.get("Variant"))
         name = collapse_ws(row.get("SetName"))
@@ -172,7 +250,14 @@ def make_candidate(row: Dict[str, Any], *, item_type: str) -> Optional[Candidate
     compact_number = number.split("-", 1)[0] if item_type == "set" else number
     trimmed_name = " ".join(name.split()[:6])
     search_term = collapse_ws(f"LEGO {compact_number} {trimmed_name}")
-    return Candidate(number=number, name=name, item_type=item_type, category=category, search_term=search_term)
+    return Candidate(
+        number=number,
+        name=name,
+        item_type=item_type,
+        category=category,
+        search_term=search_term,
+        priority_score=score_candidate(row, item_type=item_type, priority_values=priority_values),
+    )
 
 
 def load_state(path: Path) -> Dict[str, Any]:

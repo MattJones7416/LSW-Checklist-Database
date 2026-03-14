@@ -1,0 +1,77 @@
+name: Daily Very Provider Deals
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-very-provider-deals
+  cancel-in-progress: false
+
+jobs:
+  update-very-deals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      VERY_SETS_PER_REGION: ${{ vars.VERY_SETS_PER_REGION || '220' }}
+      VERY_MAX_RESULTS_PER_ITEM: ${{ vars.VERY_MAX_RESULTS_PER_ITEM || '1' }}
+      VERY_MAX_PRODUCT_PAGES_PER_ITEM: ${{ vars.VERY_MAX_PRODUCT_PAGES_PER_ITEM || '3' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests beautifulsoup4
+
+      - name: Build Very provider deals
+        run: |
+          python scripts/update_marketplace_provider_deals.py \
+            --provider very \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --output-dir "dist/provider-deals/very" \
+            --state-path "dist/provider-deals/very/state.json" \
+            --regions UK \
+            --sets-per-region "${VERY_SETS_PER_REGION}" \
+            --minifigs-per-region 0 \
+            --parts-per-region 0 \
+            --max-results-per-item "${VERY_MAX_RESULTS_PER_ITEM}" \
+            --max-product-pages-per-item "${VERY_MAX_PRODUCT_PAGES_PER_ITEM}" \
+            --verbose
+
+      - name: Commit and push Very provider deals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dist/provider-deals/very"
+          if git diff --cached --quiet; then
+            echo "No Very provider deal changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh very provider deals"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Very provider push succeeded on attempt $attempt."
+              exit 0
+            fi
+            echo "Very provider push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo "Very provider push failed after 3 attempts."
+          exit 1

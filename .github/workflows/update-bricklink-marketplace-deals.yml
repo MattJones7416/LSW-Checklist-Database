@@ -1,0 +1,65 @@
+name: Daily BrickLink Provider Deals
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-bricklink-provider-deals
+  cancel-in-progress: false
+
+jobs:
+  update-bricklink-deals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests beautifulsoup4
+
+      - name: Build BrickLink provider deals
+        run: |
+          python scripts/update_marketplace_provider_deals.py \
+            --provider bricklink \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --output-dir "dist/provider-deals/bricklink" \
+            --state-path "dist/provider-deals/bricklink/state.json"
+
+      - name: Commit and push BrickLink provider deals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dist/provider-deals/bricklink"
+          if git diff --cached --quiet; then
+            echo "No BrickLink provider deal changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh bricklink provider deals"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "BrickLink provider push succeeded on attempt $attempt."
+              exit 0
+            fi
+            echo "BrickLink provider push rejected on attempt $attempt; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo "BrickLink provider push failed after 3 attempts."
+          exit 1
