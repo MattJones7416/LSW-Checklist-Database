@@ -73,22 +73,43 @@ jobs:
 
       - name: Commit and push refreshed marketplace artifacts
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "dist/provider-deals" "dist/deals" "dist/marketplace-deals.json" "dist/marketplace-refresh-status"
-          if git diff --cached --quiet; then
-            echo "No refreshed marketplace changes to commit."
-            exit 0
-          fi
-          git commit -m "chore: refresh marketplace model ${{ inputs.number }}"
+
+          run_refresh() {
+            python scripts/refresh_single_marketplace_model.py \
+              --number "${{ inputs.number }}" \
+              --item-type "${{ inputs.item_type }}" \
+              --region "${{ inputs.region }}" \
+              --request-key "${{ inputs.request_key }}" \
+              --sets-json "dist/Lego Star Wars Database.json" \
+              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --parts-json "dist/parts/parts-catalog.json" \
+              --provider-root "dist/provider-deals" \
+              --merged-output-dir "dist/deals" \
+              --merged-fallback-output "dist/marketplace-deals.json" \
+              --status-output-dir "dist/marketplace-refresh-status" \
+              --verbose
+          }
+
           for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            run_refresh
+
+            git add "dist/provider-deals" "dist/deals" "dist/marketplace-deals.json" "dist/marketplace-refresh-status"
+            if git diff --cached --quiet; then
+              echo "No refreshed marketplace changes to commit on attempt $attempt."
+              exit 0
+            fi
+
+            git commit -m "chore: refresh marketplace model ${{ inputs.number }}"
             if git push origin HEAD:main; then
               echo "Single marketplace refresh push succeeded on attempt $attempt."
               exit 0
             fi
-            echo "Single marketplace refresh push rejected on attempt $attempt; rebasing and retrying..."
-            git fetch origin main
-            git rebase origin/main
+            echo "Single marketplace refresh push rejected on attempt $attempt; refreshing on top of latest main and retrying..."
           done
           echo "Single marketplace refresh push failed after 3 attempts."
           exit 1
