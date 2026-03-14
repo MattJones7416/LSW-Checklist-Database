@@ -1,0 +1,87 @@
+{
+  "number": "11376-1",
+  "itemType": "set",
+  "region": "UK",
+  "requestKey": "fc9c1b35-759e-47ba-8ea0-384894389965",
+  "startedAt": "2026-03-14T08:40:41Z",
+  "finishedAt": "2026-03-14T08:42:26Z",
+  "overallStatus": "partial",
+  "providers": [
+    {
+      "provider": "bricklink",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "",
+      "error": "                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/LSW-Checklist-Database/LSW-Checklist-Database/scripts/update_marketplace_provider_deals.py\", line 981, in build_bricklink_provider_output\n    deals.extend(build_bricklink_deals_from_rows(sets, item_type=\"set\", region=region, max_results_per_item=args.max_results_per_item))\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/LSW-Checklist-Database/LSW-Checklist-Database/scripts/update_marketplace_provider_deals.py\", line 910, in build_bricklink_deals_from_rows\n    candidate = make_candidate(row, item_type=item_type)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: make_candidate() missing 2 required keyword-only arguments: 'provider' and 'priority_values'",
+      "exitCode": 1
+    },
+    {
+      "provider": "brickowl",
+      "status": "success",
+      "region": "UK",
+      "dealsFound": 3,
+      "dealsForModelAfterMerge": 3,
+      "stdoutTail": "[brickowl:UK] set 11376-1 -> 3 deals\n[brickowl:UK] deals=3",
+      "error": "",
+      "exitCode": 0
+    },
+    {
+      "provider": "amazon",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[amazon:UK] blocked 11376-1: Access blocked for https://www.amazon.co.uk/s?k=LEGO+11376+Ford+Model+T",
+      "error": "[marketplace] amazon produced no successful listing fetches",
+      "exitCode": 1
+    },
+    {
+      "provider": "lego",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[lego:UK] blocked 11376-1: Access blocked for https://www.lego.com/en-gb/search?q=LEGO+11376+Ford+Model+T",
+      "error": "[marketplace] lego produced no successful listing fetches",
+      "exitCode": 1
+    },
+    {
+      "provider": "very",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[very:UK] blocked 11376-1: Access blocked for https://www.very.co.uk/search?searchTerm=LEGO+11376+Ford+Model+T",
+      "error": "[marketplace] very produced no successful listing fetches",
+      "exitCode": 1
+    },
+    {
+      "provider": "vinted",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[vinted:UK] blocked 11376-1: Access blocked for https://www.vinted.co.uk/catalog?search_text=LEGO+11376+Ford+Model+T",
+      "error": "[marketplace] vinted produced no successful listing fetches",
+      "exitCode": 1
+    },
+    {
+      "provider": "johnlewis",
+      "status": "failed",
+      "region": "UK",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[johnlewis:UK] error 11376-1: Request failed for https://www.johnlewis.com/search?search-term=LEGO+11376+Ford+Model+T: HTTPSConnectionPool(host='www.johnlewis.com', port=443): Read timed out. (read timeout=20.0)",
+      "error": "[marketplace] johnlewis produced no successful listing fetches",
+      "exitCode": 1
+    }
+  ],
+  "merge": {
+    "status": "success",
+    "exitCode": 0,
+    "stdoutTail": "[merge:UK] deals=3\n[merge:US] deals=0\n[merge:EU] deals=0",
+    "error": ""
+  }
+}
