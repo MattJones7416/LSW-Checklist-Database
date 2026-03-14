@@ -23,7 +23,7 @@ jobs:
       EBAY_SETS_PER_REGION: ${{ vars.EBAY_SETS_PER_REGION || '70' }}
       EBAY_MINIFIGS_PER_REGION: ${{ vars.EBAY_MINIFIGS_PER_REGION || '25' }}
       EBAY_PARTS_PER_REGION: ${{ vars.EBAY_PARTS_PER_REGION || '15' }}
-      EBAY_MAX_RESULTS_PER_ITEM: ${{ vars.EBAY_MAX_RESULTS_PER_ITEM || '5' }}
+      EBAY_MAX_RESULTS_PER_ITEM: ${{ vars.EBAY_MAX_RESULTS_PER_ITEM || '3' }}
 
     steps:
       - name: Checkout

@@ -106,7 +106,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--merged-fallback-output", default="dist/marketplace-deals.json")
     parser.add_argument("--status-output-dir", default="dist/marketplace-refresh-status")
     parser.add_argument("--providers", default=",".join(PROVIDERS))
-    parser.add_argument("--max-results-per-item", type=int, default=5)
+    parser.add_argument("--max-results-per-item", type=int, default=3)
     parser.add_argument("--max-product-pages-per-item", type=int, default=4)
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args(argv)

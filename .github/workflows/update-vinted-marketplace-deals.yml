@@ -19,7 +19,7 @@ jobs:
     env:
       VINTED_SETS_PER_REGION: ${{ vars.VINTED_SETS_PER_REGION || '90' }}
       VINTED_MINIFIGS_PER_REGION: ${{ vars.VINTED_MINIFIGS_PER_REGION || '12' }}
-      VINTED_MAX_RESULTS_PER_ITEM: ${{ vars.VINTED_MAX_RESULTS_PER_ITEM || '5' }}
+      VINTED_MAX_RESULTS_PER_ITEM: ${{ vars.VINTED_MAX_RESULTS_PER_ITEM || '3' }}
 
     steps:
       - name: Checkout

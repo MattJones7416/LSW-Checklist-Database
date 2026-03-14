@@ -36,6 +36,78 @@ BLOCK_PATTERNS = (
     "blocked access",
     "request could not be satisfied",
 )
+PROVIDER_BLOCK_PATTERNS = {
+    "amazon": (
+        "enter the characters you see below",
+        "sorry, we just need to make sure you're not a robot",
+    ),
+    "lego": (
+        "/cdn-cgi/challenge-platform/",
+        "cf-chl-",
+        "cloudflare",
+    ),
+    "very": (
+        "you don't have permission to access",
+        "reference #18.",
+        "the requested url was rejected",
+        "vpn",
+    ),
+}
+LISTING_EXCLUSION_PATTERNS = (
+    r"\binstructions?\b",
+    r"\binstruction booklet\b",
+    r"\bmanuals?\b",
+    r"\bbooklets?\b",
+    r"\bbox only\b",
+    r"\bempty box\b",
+    r"\bsticker(?: sheet| pack)?\b",
+    r"\breplacement parts?\b",
+    r"\bspare parts?\b",
+    r"\blight(?:ing)? kit\b",
+    r"\blighting set\b",
+    r"\blight set\b",
+    r"\bdisplay case\b",
+    r"\bdisplay box\b",
+    r"\bdisplay stand\b",
+    r"\bdisplay mount\b",
+    r"\bwall mount\b",
+    r"\bacrylic display\b",
+    r"\bdustproof\b",
+    r"\bno model\b",
+    r"\bnot include models?\b",
+    r"\bmodel not included\b",
+    r"\bkit for lego\b",
+    r"\bbundle\b",
+    r"\+\s*\d{5}\b",
+    r"\bcompatible with lego\b",
+    r"\bmoc\b",
+    r"\bdigital instructions?\b",
+    r"\bpdf instructions?\b",
+)
+IDENTITY_STOP_WORDS = {
+    "a",
+    "an",
+    "and",
+    "bricklink",
+    "brickowl",
+    "build",
+    "buildable",
+    "building",
+    "collectible",
+    "edition",
+    "for",
+    "from",
+    "lego",
+    "new",
+    "of",
+    "set",
+    "star",
+    "the",
+    "toy",
+    "used",
+    "wars",
+    "with",
+}
 RETAIL_AVAILABILITY_HINTS = {
     "retail",
     "retail - limited",
@@ -92,6 +164,14 @@ def collapse_ws(value: Any) -> str:
 def clean_price_text(value: Any) -> str:
     raw = collapse_ws(unescape(str(value or "")))
     return raw.replace("\xa0", " ").strip()
+
+
+def compact_alnum(value: Any) -> str:
+    return re.sub(r"[^a-z0-9]+", "", collapse_ws(value).casefold())
+
+
+def identity_tokens(value: Any) -> List[str]:
+    return re.findall(r"[a-z0-9]+", collapse_ws(value).casefold())
 
 
 def parse_price_value(value: Any) -> Optional[float]:
@@ -223,6 +303,22 @@ def provider_search_term(provider: str, *, item_type: str, number: str, name: st
     else:
         number_token = number
     return collapse_ws(f"LEGO {number_token} {trimmed_name}")
+
+
+def provider_search_url(provider: str, candidate: Candidate) -> str:
+    query = quote_plus(candidate.search_term)
+    if provider == "brickowl":
+        base_url = PROVIDER_SEARCH_URLS[provider].format(query=query)
+        category_map = {
+            "part": "1",
+            "minifig": "2",
+            "set": "3",
+        }
+        category = category_map.get(candidate.item_type)
+        if category:
+            return f"{base_url}&cat={category}"
+        return base_url
+    return PROVIDER_SEARCH_URLS[provider].format(query=query)
 
 
 def theme_priority_bonus(value: str, priority_values: Sequence[str]) -> int:
@@ -401,7 +497,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--sets-per-region", type=int, default=80)
     parser.add_argument("--minifigs-per-region", type=int, default=40)
     parser.add_argument("--parts-per-region", type=int, default=30)
-    parser.add_argument("--max-results-per-item", type=int, default=5)
+    parser.add_argument("--max-results-per-item", type=int, default=3)
     parser.add_argument("--max-product-pages-per-item", type=int, default=4)
     parser.add_argument("--timeout", type=float, default=20.0)
     parser.add_argument("--retries", type=int, default=2)
@@ -453,6 +549,40 @@ def request_text(session: requests.Session, url: str, *, timeout: float, retries
     raise MarketplaceProviderError(f"Request failed for {url}: {last_error}")
 
 
+def request_provider_text(
+    session: requests.Session,
+    provider: str,
+    url: str,
+    *,
+    timeout: float,
+    retries: int,
+) -> str:
+    attempts = max(1, retries + 1)
+    last_error: Optional[Exception] = None
+    block_tokens = BLOCK_PATTERNS + PROVIDER_BLOCK_PATTERNS.get(provider, ())
+    for attempt in range(1, attempts + 1):
+        try:
+            response = session.get(url, timeout=timeout)
+            status = response.status_code
+            text = response.text or ""
+            lowered = text.casefold()
+            if any(token in lowered for token in block_tokens):
+                raise MarketplaceAccessDenied(f"Access blocked for {provider} at {url}")
+            if status in {403, 429} or status >= 500:
+                raise MarketplaceProviderError(f"HTTP {status} for {url}")
+            if status >= 400:
+                raise MarketplaceProviderError(f"HTTP {status} for {url}")
+            return text
+        except (requests.RequestException, MarketplaceProviderError) as exc:
+            last_error = exc
+            if attempt == attempts:
+                break
+            time.sleep(min(15.0, attempt * 1.5))
+    if isinstance(last_error, MarketplaceProviderError):
+        raise last_error
+    raise MarketplaceProviderError(f"Request failed for {url}: {last_error}")
+
+
 def strip_fragment(url: str) -> str:
     parsed = urlparse(url)
     return parsed._replace(fragment="").geturl()
@@ -487,6 +617,63 @@ def parse_json_ld_nodes(html: str) -> List[Dict[str, Any]]:
     return output
 
 
+def extract_balanced_json_block(value: str, start_index: int, *, open_char: str, close_char: str) -> Optional[str]:
+    if start_index < 0 or start_index >= len(value) or value[start_index] != open_char:
+        return None
+    depth = 0
+    in_string = False
+    escaped = False
+    for index in range(start_index, len(value)):
+        char = value[index]
+        if escaped:
+            escaped = False
+            continue
+        if char == "\\":
+            escaped = True
+            continue
+        if char == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if char == open_char:
+            depth += 1
+        elif char == close_char:
+            depth -= 1
+            if depth == 0:
+                return value[start_index:index + 1]
+    return None
+
+
+def extract_json_array_after_marker(
+    html: str,
+    *,
+    marker: str,
+    required_keys: Sequence[str],
+) -> List[Dict[str, Any]]:
+    search_from = 0
+    while True:
+        marker_index = html.find(marker, search_from)
+        if marker_index < 0:
+            return []
+        array_index = html.find("[", marker_index)
+        if array_index < 0:
+            return []
+        array_text = extract_balanced_json_block(html, array_index, open_char="[", close_char="]")
+        if not array_text:
+            return []
+        try:
+            parsed = json.loads(array_text)
+        except Exception:
+            search_from = marker_index + len(marker)
+            continue
+        if isinstance(parsed, list):
+            dict_rows = [row for row in parsed if isinstance(row, dict)]
+            if dict_rows and any(all(key in row for key in required_keys) for row in dict_rows):
+                return dict_rows
+        search_from = marker_index + len(marker)
+
+
 def title_matches_candidate(title: str, candidate: Candidate) -> bool:
     lowered = collapse_ws(title).casefold()
     number = candidate.number.casefold()
@@ -496,6 +683,93 @@ def title_matches_candidate(title: str, candidate: Candidate) -> bool:
     if candidate.item_type == "part" and compact_number in lowered:
         return True
     return False
+
+
+def listing_matches_candidate(
+    *,
+    title: str,
+    subtitle: Optional[str],
+    url: str,
+    candidate: Candidate,
+    extra_context: Optional[str] = None,
+    require_number: bool = False,
+) -> bool:
+    title_text = collapse_ws(title)
+    subtitle_text = collapse_ws(subtitle)
+    extra_text = collapse_ws(extra_context)
+    haystack = " ".join(part for part in [title_text, subtitle_text, extra_text, url] if part).casefold()
+    compact_haystack = compact_alnum(haystack)
+
+    if any(re.search(pattern, haystack) for pattern in LISTING_EXCLUSION_PATTERNS):
+        return False
+
+    full_number = candidate.number.casefold()
+    base_number = full_number.split("-", 1)[0]
+    compact_number = compact_alnum(full_number)
+    number_match = (
+        title_matches_candidate(title_text, candidate)
+        or full_number in haystack
+        or base_number in haystack
+        or compact_number in compact_haystack
+        or compact_alnum(base_number) in compact_haystack
+    )
+
+    if require_number and not number_match:
+        return False
+
+    name_tokens = [
+        token
+        for token in identity_tokens(candidate.name)
+        if len(token) >= 3 and token not in IDENTITY_STOP_WORDS and not token.isdigit()
+    ]
+    haystack_tokens = set(identity_tokens(haystack))
+    matched_name_tokens = sum(1 for token in name_tokens if token in haystack_tokens)
+
+    if candidate.item_type == "set":
+        set_confirmers = (
+            " set ",
+            " complete ",
+            " sealed ",
+            " new in box ",
+            " boxed ",
+            " building toy ",
+            " construction toy ",
+            " brand new ",
+        )
+        non_set_clues = (
+            " minifig ",
+            " minifigure ",
+            " figure only ",
+            " torso ",
+            " head only ",
+            " legs only ",
+            " sw1",
+            " sw2",
+            " sw3",
+            " sw4",
+            " sw5",
+            " sw6",
+            " sw7",
+            " sw8",
+            " sw9",
+        )
+        padded_haystack = f" {haystack} "
+        if any(clue in padded_haystack for clue in non_set_clues) and not any(token in padded_haystack for token in set_confirmers):
+            return False
+
+    if candidate.item_type == "part":
+        return number_match or matched_name_tokens >= min(2, len(name_tokens))
+
+    if number_match:
+        if not name_tokens:
+            return True
+        required_matches = 1 if candidate.item_type == "set" else min(2, len(name_tokens))
+        return matched_name_tokens >= required_matches
+
+    if "lego" not in haystack_tokens:
+        return False
+
+    return matched_name_tokens >= min(2, len(name_tokens))
 
 
 def build_deal(
@@ -509,6 +783,8 @@ def build_deal(
     price_text: Optional[str],
     currency_code: str,
     subtitle: Optional[str] = None,
+    match_context: Optional[str] = None,
+    require_number: bool = False,
     listed_at: Optional[str] = None,
     deal_id: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
@@ -516,7 +792,14 @@ def build_deal(
         return None
     source = PROVIDER_SOURCES[provider]
     normalized_title = collapse_ws(title)
-    if not title_matches_candidate(normalized_title, candidate) and candidate.number.split("-", 1)[0] not in url.casefold():
+    if not listing_matches_candidate(
+        title=normalized_title,
+        subtitle=subtitle,
+        url=url,
+        candidate=candidate,
+        extra_context=match_context,
+        require_number=require_number,
+    ):
         return None
     return {
         "id": deal_id or f"{candidate.number.lower()}|{provider}|{url.lower()}",
@@ -564,7 +847,7 @@ def trim_deals_per_number(deals: Iterable[Dict[str, Any]], *, max_results_per_it
     output: List[Dict[str, Any]] = []
     for key in sorted(grouped):
         rows = sorted(grouped[key], key=lambda row: float(row.get("priceValue") or 0.0))
-        output.extend(rows[:max(1, max_results_per_item)])
+        output.extend(rows[:max(1, min(3, max_results_per_item))])
     return output
 
 
@@ -643,6 +926,47 @@ def parse_johnlewis_product_page(html: str, *, provider: str, candidate: Candida
 
 
 def extract_vinted_deals(html: str, *, provider: str, candidate: Candidate, region: str, base_url: str, limit: int) -> List[Dict[str, Any]]:
+    embedded_items = extract_json_array_after_marker(
+        html,
+        marker='"items":[',
+        required_keys=("title", "price", "url"),
+    )
+    if embedded_items:
+        output: List[Dict[str, Any]] = []
+        for item in embedded_items:
+            title = collapse_ws(item.get("title"))
+            brand_title = collapse_ws(item.get("brand_title"))
+            if brand_title and brand_title.casefold() != "lego":
+                continue
+            raw_url = collapse_ws(item.get("url") or item.get("path"))
+            url = normalize_absolute_url(base_url, raw_url) if raw_url else ""
+            price_payload = item.get("price") if isinstance(item.get("price"), dict) else {}
+            currency_code = normalize_currency_code(price_payload.get("currency_code"), "GBP")
+            price_value = parse_price_value(price_payload.get("amount"))
+            if price_value is None:
+                continue
+            item_box = item.get("item_box") if isinstance(item.get("item_box"), dict) else {}
+            status_text = collapse_ws(item.get("status") or item_box.get("second_line"))
+            accessibility_label = collapse_ws(item_box.get("accessibility_label"))
+            subtitle_parts = [part for part in [status_text, brand_title or "Vinted"] if part]
+            deal = build_deal(
+                provider=provider,
+                candidate=candidate,
+                region=region,
+                url=url,
+                title=title,
+                price_value=price_value,
+                price_text=f"{currency_code} {price_value:.2f}",
+                currency_code=currency_code,
+            subtitle=" • ".join(subtitle_parts) or "Vinted",
+            match_context=accessibility_label,
+            require_number=(candidate.item_type == "set"),
+            deal_id=f"{candidate.number.lower()}|{provider}|{url.lower()}" if url else None,
+        )
+            if deal is not None:
+                output.append(deal)
+        return sorted(output, key=lambda row: float(row.get("priceValue") or 0.0))[:limit]
+
     soup = BeautifulSoup(html, "html.parser")
     output: List[Dict[str, Any]] = []
     for card in soup.select("div[data-testid='grid-item']"):
@@ -674,27 +998,43 @@ def extract_vinted_deals(html: str, *, provider: str, candidate: Candidate, regi
             price_text=price_text or total_price_text,
             currency_code="GBP",
             subtitle=" • ".join(subtitle_parts) or "Vinted",
+            match_context=card.get_text(" ", strip=True),
+            require_number=(candidate.item_type == "set"),
         )
         if deal is not None:
             output.append(deal)
-        if len(output) >= limit:
-            break
-    return output
+    return sorted(output, key=lambda row: float(row.get("priceValue") or 0.0))[:limit]
 
 
 def extract_amazon_deals(html: str, *, provider: str, candidate: Candidate, region: str, base_url: str, limit: int) -> List[Dict[str, Any]]:
     soup = BeautifulSoup(html, "html.parser")
     output: List[Dict[str, Any]] = []
-    for result in soup.select("div[data-component-type='s-search-result']"):
-        title_node = result.select_one("h2 a span")
-        link_node = result.select_one("h2 a[href]")
-        price_node = result.select_one("span.a-price span.a-offscreen")
-        if not title_node or not link_node or not price_node:
+    result_nodes = soup.select("div[data-component-type='s-search-result'][data-asin]")
+    for result in result_nodes[: max(24, limit * 10)]:
+        asin = collapse_ws(result.get("data-asin"))
+        if not asin:
+            continue
+        title_node = result.select_one("h2[aria-label]") or result.select_one("h2 a span")
+        link_node = result.select_one("a.a-link-normal.s-link-style[href]") or result.select_one("a[href*='/dp/']")
+        if not title_node or not link_node:
             continue
         url = normalize_absolute_url(base_url, link_node.get("href", ""))
-        title = collapse_ws(title_node.get_text(" ", strip=True))
-        price_text = clean_price_text(price_node.get_text(" ", strip=True))
+        title = collapse_ws(title_node.get("aria-label") or title_node.get_text(" ", strip=True))
+        brand_node = result.select_one("div.a-row.a-color-secondary h2 span")
+        brand_text = collapse_ws(brand_node.get_text(" ", strip=True) if brand_node else "")
+        price_text = ""
+        for node in result.select("span.a-price span.a-offscreen"):
+            candidate_price_text = clean_price_text(node.get_text(" ", strip=True))
+            if parse_price_value(candidate_price_text) is not None:
+                price_text = candidate_price_text
+                break
+        if not price_text:
+            secondary_offer = result.select_one("[data-cy='secondary-offer-recipe'] span.a-color-base")
+            if secondary_offer is not None:
+                price_text = clean_price_text(secondary_offer.get_text(" ", strip=True))
         price_value = parse_price_value(price_text)
+        if price_value is None:
+            continue
         subtitle_parts: List[str] = []
         condition = parse_condition_from_text(result.get_text(" ", strip=True), default="New")
         if condition:
@@ -710,30 +1050,59 @@ def extract_amazon_deals(html: str, *, provider: str, candidate: Candidate, regi
             price_text=price_text,
             currency_code="GBP",
             subtitle=" • ".join(subtitle_parts),
+            match_context=brand_text,
+            require_number=(candidate.item_type == "set"),
+            deal_id=f"{candidate.number.lower()}|{provider}|{asin.lower()}",
         )
         if deal is not None:
             output.append(deal)
-        if len(output) >= limit:
-            break
-    return output
+    return sorted(output, key=lambda row: float(row.get("priceValue") or 0.0))[:limit]
 
 
-def extract_product_urls_from_brickowl_search(html: str, *, limit: int, base_url: str) -> List[str]:
+def extract_product_urls_from_brickowl_search(
+    html: str,
+    *,
+    candidate: Candidate,
+    limit: int,
+    base_url: str,
+) -> List[str]:
     soup = BeautifulSoup(html, "html.parser")
-    urls: List[str] = []
+    scored_matches: List[Tuple[int, str]] = []
     seen: set[str] = set()
-    for anchor in soup.find_all("a", href=True):
-        href = anchor["href"]
+
+    for node in soup.select("li.category-item"):
+        anchor = node.select_one("h2 a[href]") or node.select_one("a.category-item-image[href]")
+        if anchor is None:
+            continue
+        href = collapse_ws(anchor.get("href"))
         if not href.startswith("/catalog/"):
             continue
         absolute = normalize_absolute_url(base_url, href)
         if absolute in seen:
             continue
+        title = collapse_ws(anchor.get("title") or anchor.get_text(" ", strip=True))
+        if not title:
+            continue
+        if not listing_matches_candidate(title=title, subtitle=None, url=absolute, candidate=candidate):
+            continue
+        lowered = title.casefold()
+        base_number = candidate.number.split("-", 1)[0].casefold()
+        score = 0
+        if base_number in lowered:
+            score += 90
+        if candidate.item_type == "set" and " set " in f" {lowered} ":
+            score += 160
+        if candidate.item_type == "minifig" and " minifig" in lowered:
+            score += 120
+        if candidate.item_type == "part" and any(token in lowered for token in ("brick", "plate", "tile", "slope", "part")):
+            score += 80
+        if any(token in lowered for token in ("instructions", "packaging", "sticker")):
+            score -= 1000
         seen.add(absolute)
-        urls.append(absolute)
-        if len(urls) >= limit:
-            break
-    return urls
+        scored_matches.append((score, absolute))
+
+    scored_matches.sort(key=lambda row: (-row[0], row[1]))
+    return [url for _score, url in scored_matches[:limit]]
 
 
 def parse_brickowl_product_page(html: str, *, provider: str, candidate: Candidate, region: str, url: str, limit: int) -> List[Dict[str, Any]]:
@@ -769,12 +1138,12 @@ def parse_brickowl_product_page(html: str, *, provider: str, candidate: Candidat
             price_text=price_text,
             currency_code="GBP",
             subtitle=" • ".join(part for part in subtitle_parts if part),
+            match_context=f"{title} {condition_text} {note} {store_text}",
+            require_number=(candidate.item_type == "set"),
         )
         if deal is not None:
             output.append(deal)
-        if len(output) >= limit:
-            break
-    return output
+    return sorted(output, key=lambda row: float(row.get("priceValue") or 0.0))[:limit]
 
 
 def extract_generic_product_urls(html: str, *, base_url: str, limit: int, href_pattern: str) -> List[str]:
@@ -835,6 +1204,7 @@ def parse_generic_product_offer_page(
             price_text=price_text,
             currency_code=currency_code,
             subtitle=" • ".join(part for part in subtitle_parts if part),
+            require_number=(candidate.item_type == "set"),
         )
         return [deal] if deal else []
     return []
@@ -851,8 +1221,8 @@ def fetch_search_deals(
     max_results_per_item: int,
     max_product_pages_per_item: int,
 ) -> List[Dict[str, Any]]:
-    search_url = PROVIDER_SEARCH_URLS[provider].format(query=quote_plus(candidate.search_term))
-    search_html = request_text(session, search_url, timeout=timeout, retries=retries)
+    search_url = provider_search_url(provider, candidate)
+    search_html = request_provider_text(session, provider, search_url, timeout=timeout, retries=retries)
     base_url = search_url
 
     if provider == "amazon":
@@ -863,16 +1233,21 @@ def fetch_search_deals(
         urls = extract_johnlewis_urls(search_html, limit=max_product_pages_per_item, base_url=base_url)
         output: List[Dict[str, Any]] = []
         for product_url in urls:
-            product_html = request_text(session, product_url, timeout=timeout, retries=retries)
+            product_html = request_provider_text(session, provider, product_url, timeout=timeout, retries=retries)
             output.extend(parse_johnlewis_product_page(product_html, provider=provider, candidate=candidate, region=region, url=product_url))
             if len(output) >= max_results_per_item:
                 break
         return output[:max_results_per_item]
     if provider == "brickowl":
-        urls = extract_product_urls_from_brickowl_search(search_html, limit=max_product_pages_per_item, base_url=base_url)
+        urls = extract_product_urls_from_brickowl_search(
+            search_html,
+            candidate=candidate,
+            limit=max_product_pages_per_item,
+            base_url=base_url,
+        )
         output: List[Dict[str, Any]] = []
         for product_url in urls:
-            product_html = request_text(session, product_url, timeout=timeout, retries=retries)
+            product_html = request_provider_text(session, provider, product_url, timeout=timeout, retries=retries)
             output.extend(parse_brickowl_product_page(product_html, provider=provider, candidate=candidate, region=region, url=product_url, limit=max_results_per_item))
             if len(output) >= max_results_per_item:
                 break
@@ -881,7 +1256,7 @@ def fetch_search_deals(
         urls = extract_generic_product_urls(search_html, base_url=base_url, limit=max_product_pages_per_item, href_pattern=rf"/product/[^\"']*{re.escape(candidate.number.split('-',1)[0])}")
         output: List[Dict[str, Any]] = []
         for product_url in urls:
-            product_html = request_text(session, product_url, timeout=timeout, retries=retries)
+            product_html = request_provider_text(session, provider, product_url, timeout=timeout, retries=retries)
             output.extend(parse_generic_product_offer_page(product_html, provider=provider, candidate=candidate, region=region, url=product_url))
             if len(output) >= max_results_per_item:
                 break
@@ -890,7 +1265,7 @@ def fetch_search_deals(
         urls = extract_generic_product_urls(search_html, base_url=base_url, limit=max_product_pages_per_item, href_pattern=rf"{re.escape(candidate.number.split('-',1)[0])}")
         output: List[Dict[str, Any]] = []
         for product_url in urls:
-            product_html = request_text(session, product_url, timeout=timeout, retries=retries)
+            product_html = request_provider_text(session, provider, product_url, timeout=timeout, retries=retries)
             output.extend(parse_generic_product_offer_page(product_html, provider=provider, candidate=candidate, region=region, url=product_url))
             if len(output) >= max_results_per_item:
                 break
@@ -907,7 +1282,7 @@ def build_bricklink_deals_from_rows(
 ) -> List[Dict[str, Any]]:
     output: List[Dict[str, Any]] = []
     for row in rows:
-        candidate = make_candidate(row, item_type=item_type)
+        candidate = make_candidate(row, provider="bricklink", item_type=item_type, priority_values=())
         if candidate is None:
             continue
         condition_lists = [

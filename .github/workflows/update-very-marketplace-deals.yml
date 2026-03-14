@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 45
     env:
       VERY_SETS_PER_REGION: ${{ vars.VERY_SETS_PER_REGION || '220' }}
-      VERY_MAX_RESULTS_PER_ITEM: ${{ vars.VERY_MAX_RESULTS_PER_ITEM || '1' }}
+      VERY_MAX_RESULTS_PER_ITEM: ${{ vars.VERY_MAX_RESULTS_PER_ITEM || '3' }}
       VERY_MAX_PRODUCT_PAGES_PER_ITEM: ${{ vars.VERY_MAX_PRODUCT_PAGES_PER_ITEM || '3' }}
 
     steps:
