@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-13T20:56:59.042631+00:00",
+  "generatedAt": "2026-03-14T03:15:14.650745+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 428,
+      "count": 429,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -949,7 +949,7 @@
     {
       "label": "Easter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/easter.json",
-      "count": 61,
+      "count": 62,
       "part": 1,
       "parts": 1,
       "theme": "Easter"
@@ -1429,7 +1429,7 @@
     {
       "label": "Ideas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ideas.json",
-      "count": 4,
+      "count": 3,
       "part": 1,
       "parts": 1,
       "theme": "Ideas"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
-      "count": 97,
+      "count": 98,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Ideas and CUUSOO"
@@ -2285,7 +2285,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 440,
+      "count": 441,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -6150,8 +6150,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6438,8 +6438,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,7 +6538,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28943,
+    "setCount": 28946,
     "minifigureCount": 18196,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
