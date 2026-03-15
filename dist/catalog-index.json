@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-14T03:15:14.650745+00:00",
+  "generatedAt": "2026-03-15T03:43:06.284760+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 429,
+      "count": 430,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 646,
+      "count": 659,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -4359,7 +4359,7 @@
     {
       "label": "Frozen",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/frozen.json",
-      "count": 65,
+      "count": 66,
       "part": 1,
       "parts": 1,
       "category": "Frozen"
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,8 +6538,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28946,
-    "minifigureCount": 18196,
+    "setCount": 28960,
+    "minifigureCount": 18197,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
     "marketDetailCount": 8028,
