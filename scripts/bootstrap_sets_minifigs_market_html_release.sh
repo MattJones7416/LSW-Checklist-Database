@@ -252,8 +252,8 @@ else
 fi
 
 if (( CURRENT_START >= END_INDEX )); then
-  rm -f "${PROGRESS_PATH}"
-  echo "[BootstrapHTMLRelease] all batches complete."
+  write_resume_state "${END_INDEX}"
+  echo "[BootstrapHTMLRelease] all batches complete. progress pinned at end=${END_INDEX}."
 else
   echo "[BootstrapHTMLRelease] progress saved to ${PROGRESS_PATH}; next_start=${CURRENT_START}."
 fi
