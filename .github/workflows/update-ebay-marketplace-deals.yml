@@ -77,22 +77,48 @@ jobs:
 
       - name: Commit and push eBay provider deals
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          run_update() {
+            python scripts/update_ebay_marketplace_deals.py \
+              --sets-json "dist/Lego Star Wars Database.json" \
+              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --parts-json "dist/parts/parts-catalog.json" \
+              --output-dir "dist/provider-deals/ebay" \
+              --fallback-output "dist/provider-deals/ebay/fallback.json" \
+              --state-path "dist/provider-deals/ebay/state.json" \
+              --regions "${EBAY_MARKET_REGIONS}" \
+              --sets-per-region "${EBAY_SETS_PER_REGION}" \
+              --minifigs-per-region "${EBAY_MINIFIGS_PER_REGION}" \
+              --parts-per-region "${EBAY_PARTS_PER_REGION}" \
+              --max-results-per-item "${EBAY_MAX_RESULTS_PER_ITEM}" \
+              --verbose
+          }
+
           git add "dist/provider-deals/ebay"
           if git diff --cached --quiet; then
             echo "No eBay provider deal changes to commit."
             exit 0
           fi
           git commit -m "chore: refresh ebay provider deals"
+
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
               echo "eBay provider push succeeded on attempt $attempt."
               exit 0
             fi
-            echo "eBay provider push rejected on attempt $attempt; rebasing and retrying..."
+            echo "eBay provider push rejected on attempt $attempt; rebuilding on top of latest main..."
             git fetch origin main
-            git rebase origin/main
+            git reset --hard origin/main
+            run_update
+            git add "dist/provider-deals/ebay"
+            if git diff --cached --quiet; then
+              echo "No eBay provider deal changes to commit after refresh on attempt $attempt."
+              exit 0
+            fi
+            git commit -m "chore: refresh ebay provider deals"
           done
           echo "eBay provider push failed after 3 attempts."
           exit 1

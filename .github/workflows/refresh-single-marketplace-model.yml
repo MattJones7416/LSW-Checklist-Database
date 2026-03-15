@@ -33,6 +33,9 @@ jobs:
   refresh-single-marketplace-model:
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    env:
+      EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID || vars.EBAY_CLIENT_ID }}
+      EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET || vars.EBAY_CLIENT_SECRET }}
 
     steps:
       - name: Checkout

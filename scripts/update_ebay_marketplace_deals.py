@@ -18,6 +18,30 @@ import requests
 OAUTH_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 BROWSE_SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
 APP_SCOPE = "https://api.ebay.com/oauth/api_scope"
+NOISE_PATTERNS = [
+    re.compile(pattern, re.IGNORECASE)
+    for pattern in (
+        r"\binstructions?\b",
+        r"\bmanual\b",
+        r"\bbooklet\b",
+        r"\bbox only\b",
+        r"\bempty box\b",
+        r"\bbox no\b",
+        r"\bsticker(?:s| sheet)?\b",
+        r"\blight kit\b",
+        r"\bled kit\b",
+        r"\bdisplay case\b",
+        r"\bacrylic case\b",
+        r"\bstand only\b",
+        r"\bdust cover\b",
+        r"\bcompatible with lego\b",
+        r"\bfor lego\b",
+        r"\bmoc\b",
+        r"\bcustom build\b",
+        r"\bbundle\b",
+        r"\blot of\b",
+    )
+]
 
 MARKETPLACE_BY_REGION = {
     "UK": "EBAY_GB",
@@ -151,6 +175,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--priority-themes", default=os.getenv("EBAY_PRIORITY_THEMES", "Star Wars,Icons,Technic,Speed Champions,Marvel Super Heroes,Harry Potter,Disney,City,Botanicals,NINJAGO"))
     parser.add_argument("--priority-minifig-categories", default=os.getenv("EBAY_PRIORITY_MINIFIG_CATEGORIES", "Star Wars,Marvel Super Heroes,Harry Potter,Disney,Collectable Minifigures,NINJAGO"))
     parser.add_argument("--priority-part-categories", default=os.getenv("EBAY_PRIORITY_PART_CATEGORIES", "Bricks,Plates,Tiles,Minifigure"))
+    parser.add_argument("--only-number", default="")
+    parser.add_argument("--only-item-type", choices=["", "set", "minifig", "part"], default="")
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args(argv)
 
@@ -260,6 +286,18 @@ def make_candidate(row: Dict[str, Any], *, item_type: str, priority_values: Sequ
     )
 
 
+def candidate_matches_requested_number(candidate: Candidate, requested_number: str) -> bool:
+    target = collapse_ws(requested_number).casefold()
+    if not target:
+        return True
+    candidate_number = candidate.number.casefold()
+    if candidate_number == target:
+        return True
+    if candidate.item_type == "set" and candidate_number.split("-", 1)[0] == target.split("-", 1)[0]:
+        return True
+    return False
+
+
 def load_state(path: Path) -> Dict[str, Any]:
     if not path.exists():
         return {}
@@ -318,6 +356,7 @@ def request_search(
         "q": query,
         "limit": str(max(1, min(limit, 50))),
         "filter": "buyingOptions:{FIXED_PRICE}",
+        "sort": "price",
     }
     headers = {
         "Authorization": f"Bearer {token}",
@@ -350,15 +389,81 @@ def request_search(
     return []
 
 
+def title_looks_like_noise(title: str) -> bool:
+    return any(pattern.search(title) for pattern in NOISE_PATTERNS)
+
+
+def number_appears_in_title(title: str, token: str) -> bool:
+    token = collapse_ws(token)
+    if not token:
+        return False
+    pattern = re.compile(rf"(?<![A-Za-z0-9]){re.escape(token)}(?![A-Za-z0-9])", re.IGNORECASE)
+    return pattern.search(title) is not None
+
+
 def title_matches_candidate(title: str, candidate: Candidate) -> bool:
     lowered = title.casefold()
+    if title_looks_like_noise(title):
+        return False
     number = candidate.number.casefold()
     compact_number = number.split("-", 1)[0]
-    if number in lowered or compact_number in lowered:
+    if "lego" not in lowered and candidate.item_type != "part":
+        return False
+    if number_appears_in_title(title, number):
         return True
-    if candidate.item_type == "part" and compact_number in lowered:
+    if number_appears_in_title(title, compact_number):
         return True
-    return False
+    return candidate.item_type == "part" and compact_number in lowered
+
+
+def first_shipping_option(item: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    options = item.get("shippingOptions")
+    if not isinstance(options, list):
+        return None
+    for option in options:
+        if isinstance(option, dict):
+            return option
+    return None
+
+
+def parse_optional_price_value(value: Any) -> Optional[float]:
+    raw = collapse_ws(value)
+    if not raw:
+        return None
+    try:
+        return float(raw)
+    except ValueError:
+        return None
+
+
+def extract_shipping_value(item: Dict[str, Any]) -> Tuple[float, Optional[str], Optional[str]]:
+    option = first_shipping_option(item)
+    if not option:
+        return 0.0, None, None
+    shipping_cost = option.get("shippingCost") if isinstance(option.get("shippingCost"), dict) else {}
+    shipping_value = parse_optional_price_value(shipping_cost.get("value"))
+    currency_code = collapse_ws(shipping_cost.get("currency")) or None
+    shipping_type = collapse_ws(option.get("shippingCostType") or option.get("type")).upper()
+    if shipping_value is None and shipping_type == "FREE":
+        return 0.0, currency_code, "Free delivery"
+    if shipping_value is None:
+        return 0.0, currency_code, None
+    if shipping_value <= 0:
+        return 0.0, currency_code, "Free delivery"
+    label = f"Postage {currency_code or ''} {shipping_value:.2f}".strip()
+    return shipping_value, currency_code, label
+
+
+def extract_item_location_country(item: Dict[str, Any]) -> Optional[str]:
+    direct = collapse_ws(item.get("itemLocationCountry"))
+    if direct:
+        return direct
+    item_location = item.get("itemLocation")
+    if isinstance(item_location, dict):
+        value = collapse_ws(item_location.get("country") or item_location.get("countryCode"))
+        if value:
+            return value
+    return None
 
 
 def parse_deal(item: Dict[str, Any], candidate: Candidate, region: str) -> Optional[Dict[str, Any]]:
@@ -381,9 +486,13 @@ def parse_deal(item: Dict[str, Any], candidate: Candidate, region: str) -> Optio
     if price_value is None:
         return None
 
+    shipping_value, shipping_currency_code, shipping_label = extract_shipping_value(item)
+    total_currency_code = currency_code or shipping_currency_code
+    total_price_value = round(price_value + shipping_value, 2)
     subtitle_parts = [
         collapse_ws(item.get("condition")),
-        collapse_ws(item.get("itemLocationCountry")),
+        extract_item_location_country(item),
+        shipping_label,
     ]
     subtitle = " • ".join(part for part in subtitle_parts if part) or None
 
@@ -394,9 +503,9 @@ def parse_deal(item: Dict[str, Any], candidate: Candidate, region: str) -> Optio
         "source": "eBay",
         "title": title,
         "subtitle": subtitle,
-        "priceValue": round(price_value, 2),
-        "priceText": f"{currency_code or ''} {price_value:.2f}".strip(),
-        "currencyCode": currency_code,
+        "priceValue": total_price_value,
+        "priceText": f"{total_currency_code or ''} {total_price_value:.2f}".strip(),
+        "currencyCode": total_currency_code,
         "url": url,
         "regionCode": region,
         "listedAt": listed_at,
@@ -439,6 +548,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     set_candidates = prioritized_candidates(sets, item_type="set", priority_values=parse_priority_list(args.priority_themes))
     minifig_candidates = prioritized_candidates(minifigs, item_type="minifig", priority_values=parse_priority_list(args.priority_minifig_categories))
     part_candidates = prioritized_candidates(parts, item_type="part", priority_values=parse_priority_list(args.priority_part_categories))
+    only_number = collapse_ws(args.only_number)
+    only_item_type = collapse_ws(args.only_item_type).lower()
 
     state = load_state(state_path)
     region_state = state.get("regions") if isinstance(state.get("regions"), dict) else {}
@@ -456,22 +567,42 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         minifig_start = int(current_state.get("nextMinifigIndex", 0) or 0)
         part_start = int(current_state.get("nextPartIndex", 0) or 0)
 
-        selected_sets, next_set_index = rotating_slice(set_candidates, set_start, args.sets_per_region)
-        selected_minifigs, next_minifig_index = rotating_slice(minifig_candidates, minifig_start, args.minifigs_per_region)
-        selected_parts, next_part_index = rotating_slice(part_candidates, part_start, args.parts_per_region)
+        if only_number:
+            selected_sets = (
+                [candidate for candidate in set_candidates if candidate_matches_requested_number(candidate, only_number)]
+                if only_item_type in {"", "set"} else []
+            )
+            selected_minifigs = (
+                [candidate for candidate in minifig_candidates if candidate_matches_requested_number(candidate, only_number)]
+                if only_item_type in {"", "minifig"} else []
+            )
+            selected_parts = (
+                [candidate for candidate in part_candidates if candidate_matches_requested_number(candidate, only_number)]
+                if only_item_type in {"", "part"} else []
+            )
+            next_set_index = set_start
+            next_minifig_index = minifig_start
+            next_part_index = part_start
+        else:
+            selected_sets, next_set_index = rotating_slice(set_candidates, set_start, args.sets_per_region)
+            selected_minifigs, next_minifig_index = rotating_slice(minifig_candidates, minifig_start, args.minifigs_per_region)
+            selected_parts, next_part_index = rotating_slice(part_candidates, part_start, args.parts_per_region)
 
         region_deals: List[Dict[str, Any]] = []
         for candidate in selected_sets + selected_minifigs + selected_parts:
+            search_limit = max(args.max_results_per_item * 4, 12)
             items = request_search(
                 session,
                 token,
                 marketplace_id,
                 candidate.search_term,
-                limit=args.max_results_per_item,
+                limit=search_limit,
                 timeout=args.timeout,
                 retries=args.retries,
             )
             parsed = [deal for deal in (parse_deal(item, candidate, region) for item in items) if deal is not None]
+            parsed = sorted(parsed, key=lambda deal: (float(deal.get("priceValue") or 0.0), collapse_ws(deal.get("id")).casefold()))
+            parsed = parsed[:max(1, args.max_results_per_item)]
             region_deals = merge_deals(region_deals, parsed)
             if args.verbose:
                 print(f"[eBay:{region}] {candidate.item_type} {candidate.number} -> {len(parsed)} deals", flush=True)

@@ -28,6 +28,7 @@ import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import Lock
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 from urllib.parse import parse_qs, quote, urlparse
 
@@ -175,22 +176,27 @@ class RuntimeThrottle:
         self.jitter = max(0.0, jitter)
         self.current_delay = self.min_delay
         self.max_delay = 6.0
+        self._lock = Lock()
 
     def sleep_between_requests(self) -> None:
-        delay = self.current_delay
+        with self._lock:
+            delay = self.current_delay
+            jitter = self.jitter
         if self.jitter > 0:
-            delay += random.uniform(0.0, self.jitter)
+            delay += random.uniform(0.0, jitter)
         if delay > 0:
             time.sleep(delay)
 
     def apply_success(self) -> None:
-        self.current_delay = max(self.min_delay, self.current_delay * 0.96)
+        with self._lock:
+            self.current_delay = max(self.min_delay, self.current_delay * 0.96)
 
     def apply_backoff(self, retry_after: Optional[float] = None) -> None:
-        candidate = max(self.current_delay * 1.6, self.min_delay * 1.5)
-        if retry_after is not None:
-            candidate = max(candidate, retry_after)
-        self.current_delay = min(self.max_delay, candidate)
+        with self._lock:
+            candidate = max(self.current_delay * 1.6, self.min_delay * 1.5)
+            if retry_after is not None:
+                candidate = max(candidate, retry_after)
+            self.current_delay = min(self.max_delay, candidate)
 
 
 class BrickLinkClient:
@@ -593,13 +599,25 @@ class BrickLinkClient:
                     )
                 return None
 
-            parsed = _parse_price_guide_html(response.text)
+            body = response.text or ""
+            body_lower = body.lower()
+            if "<title>oops, sorry! | bricklink</title>" in body_lower:
+                throttle.apply_backoff()
+                if attempt > self.retries + 1:
+                    self._mark_failure("html_error", response.status_code)
+                    if self.verbose:
+                        print(f"[HTML] BrickLink error page {item_type}:{item_no}", flush=True)
+                    return None
+                continue
+
+            parsed = _parse_price_guide_html(body)
             if parsed is None:
-                body = response.text or ""
                 has_price_guide_markers = (
-                    "Last 6 Months Sales" in body
-                    or "Current Items for Sale" in body
-                    or "catalogPG.asp" in body
+                    "last 6 months sales" in body_lower
+                    or "current items for sale" in body_lower
+                    or "currently available" in body_lower
+                    or "times sold" in body_lower
+                    or "total lots" in body_lower
                 )
                 # If the page appears to be a price-guide page but we couldn't
                 # parse it, treat as parse_error (transient/parser issue), not

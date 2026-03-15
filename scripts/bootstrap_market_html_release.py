@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from threading import local
+from threading import Lock, local
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -54,6 +54,8 @@ class TaskResult:
 
 
 THREAD_STATE = local()
+ALIAS_CACHE_LOCK = Lock()
+SHARED_THROTTLE: Optional[market.RuntimeThrottle] = None
 
 
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
@@ -86,7 +88,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
 
 def get_thread_resources(cfg: BootstrapConfig) -> Tuple[market.BrickLinkClient, market.RuntimeThrottle]:
     client = getattr(THREAD_STATE, "client", None)
-    throttle = getattr(THREAD_STATE, "throttle", None)
+    throttle = SHARED_THROTTLE or getattr(THREAD_STATE, "throttle", None)
     if client is None or throttle is None:
         client = market.BrickLinkClient(
             consumer_key="HTML_ONLY",
@@ -100,9 +102,10 @@ def get_thread_resources(cfg: BootstrapConfig) -> Tuple[market.BrickLinkClient, 
         )
         # Force apply_market_to_row down the HTML path.
         client.auth_failed = True
-        throttle = market.RuntimeThrottle(min_delay=cfg.delay, jitter=cfg.jitter)
+        throttle = SHARED_THROTTLE or market.RuntimeThrottle(min_delay=cfg.delay, jitter=cfg.jitter)
         THREAD_STATE.client = client
-        THREAD_STATE.throttle = throttle
+        if SHARED_THROTTLE is None:
+            THREAD_STATE.throttle = throttle
     return client, throttle
 
 
@@ -115,6 +118,12 @@ def load_set_alias_cache(path: Path) -> Dict[str, str]:
         if key and value:
             output[key] = value
     return output
+
+
+def write_set_alias_cache(path: Path, data: Dict[str, str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(dict(sorted(data.items())), ensure_ascii=False, indent=2) + "\n"
+    path.write_text(payload, encoding="utf-8")
 
 
 def row_needs_refresh(row: Dict[str, Any], *, item_type: str) -> bool:
@@ -161,7 +170,7 @@ def build_item_candidates(
     if item_type_upper == "SET":
         canonical_set_code = market.normalize_set_code(row.get("Number"), row.get("Variant")).lower()
         cached_alias = set_alias_cache.get(canonical_set_code) if canonical_set_code else None
-        candidates = market.build_set_item_candidates(
+        candidates = build_bootstrap_set_item_candidates(
             row.get("Number"),
             row.get("Variant"),
             row.get("link"),
@@ -187,6 +196,81 @@ def build_item_candidates(
     return ([("PART", value) for value in candidates], canonical_set_code)
 
 
+def build_bootstrap_set_item_candidates(
+    number: Any,
+    variant: Any,
+    link: Any = None,
+    price_guide_url: Any = None,
+    alias_set_code: Any = None,
+) -> List[str]:
+    primary = market.normalize_set_code(number, variant)
+    candidates: List[str] = []
+    seen: set[str] = set()
+
+    def add_candidate(value: Any) -> None:
+        code = market.collapse_ws(value)
+        if not code:
+            return
+        key = code.lower()
+        if key in seen:
+            return
+        seen.add(key)
+        candidates.append(code)
+
+    if not primary:
+        ref = market.parse_bricklink_item_reference(link)
+        if ref and ref[0] == "SET":
+            add_candidate(ref[1])
+        guide_ref = market.parse_bricklink_item_reference(price_guide_url)
+        if guide_ref and guide_ref[0] == "SET":
+            add_candidate(guide_ref[1])
+        return candidates
+
+    alias_code = market.canonicalize_set_item_no(alias_set_code)
+    if alias_code:
+        add_candidate(alias_code)
+
+    add_candidate(primary)
+
+    ref = market.parse_bricklink_item_reference(link)
+    if ref and ref[0] == "SET":
+        add_candidate(ref[1])
+    guide_ref = market.parse_bricklink_item_reference(price_guide_url)
+    if guide_ref and guide_ref[0] == "SET":
+        add_candidate(guide_ref[1])
+
+    match = re.match(r"^(.+)-([0-9]+)$", primary)
+    if not match:
+        return candidates
+
+    base = match.group(1)
+    var = market._parse_int(match.group(2)) or 1
+    if var != 1:
+        add_candidate(f"{base}-1")
+
+    return candidates
+
+
+def should_attempt_brickset_alias_lookup(canonical_set_code: str) -> bool:
+    if not canonical_set_code:
+        return False
+    base = canonical_set_code.rsplit("-", 1)[0]
+    return bool(re.search(r"[._]", base))
+
+
+def derive_compact_set_item_alias(canonical_set_code: str) -> str:
+    code = market.collapse_ws(canonical_set_code)
+    if not code or "-" not in code:
+        return ""
+    base, variant_text = code.rsplit("-", 1)
+    if not re.search(r"[._]", base):
+        return ""
+    compact_base = re.sub(r"[._]", "", base)
+    if not compact_base or compact_base == base:
+        return ""
+    return f"{compact_base.upper()}-{variant_text}"
+
+
 def process_task(
     task: Task,
     *,
@@ -201,7 +285,7 @@ def process_task(
     before = json.dumps(row, sort_keys=True, ensure_ascii=False)
     item_type_upper = market.collapse_ws(task.item_type).upper()
 
-    item_candidates, _ = build_item_candidates(
+    item_candidates, canonical_set_code = build_item_candidates(
         row,
         item_type_upper=item_type_upper,
         set_alias_cache=set_alias_cache,
@@ -245,6 +329,70 @@ def process_task(
         used_item_type = candidate_type
         if ok:
             break
+
+    if (
+        not ok
+        and item_type_upper == "SET"
+    ):
+        known_candidates = {candidate_no.lower() for _, candidate_no in item_candidates}
+        compact_alias = derive_compact_set_item_alias(canonical_set_code)
+        if compact_alias and compact_alias.lower() not in known_candidates:
+            if canonical_set_code:
+                with ALIAS_CACHE_LOCK:
+                    set_alias_cache[canonical_set_code] = compact_alias
+            preserved_detail_row = market.load_existing_market_detail(
+                market_details_dir,
+                item_type="SET",
+                item_no=compact_alias,
+                cache={},
+            )
+            ok = market.apply_market_to_row(
+                row,
+                item_type="SET",
+                item_no=compact_alias,
+                preserved_detail_row=preserved_detail_row,
+                currency_code=cfg.currency_code,
+                fallback_currency_codes=cfg.fallback_currency_codes,
+                allow_html_fallback=True,
+                client=client,
+                throttle=throttle,
+                month_key=month_key,
+            )
+            used_item_no = compact_alias
+            used_item_type = "SET"
+
+    if (
+        not ok
+        and item_type_upper == "SET"
+        and should_attempt_brickset_alias_lookup(canonical_set_code)
+    ):
+        discovered_alias = client.fetch_set_alias_from_brickset(row.get("link"), throttle)
+        discovered_alias = market.canonicalize_set_item_no(discovered_alias)
+        known_candidates = {candidate_no.lower() for _, candidate_no in item_candidates}
+        if discovered_alias and discovered_alias.lower() not in known_candidates:
+            if canonical_set_code:
+                with ALIAS_CACHE_LOCK:
+                    set_alias_cache[canonical_set_code] = discovered_alias
+            preserved_detail_row = market.load_existing_market_detail(
+                market_details_dir,
+                item_type="SET",
+                item_no=discovered_alias,
+                cache={},
+            )
+            ok = market.apply_market_to_row(
+                row,
+                item_type="SET",
+                item_no=discovered_alias,
+                preserved_detail_row=preserved_detail_row,
+                currency_code=cfg.currency_code,
+                fallback_currency_codes=cfg.fallback_currency_codes,
+                allow_html_fallback=True,
+                client=client,
+                throttle=throttle,
+                month_key=month_key,
+            )
+            used_item_no = discovered_alias
+            used_item_type = "SET"
 
     parse_miss = False
     no_price_data = False
@@ -334,6 +482,7 @@ def run_tasks(
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
+    global SHARED_THROTTLE
     args = parse_args(argv)
     item_mode = market.collapse_ws(args.item_type).lower() or "set"
     do_sets = item_mode in {"set", "both", "all"}
@@ -344,7 +493,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     minifigs_path = Path(args.minifigs_json)
     parts_path = Path(args.parts_json)
     market_details_dir = Path(args.market_details_dir)
-    set_alias_cache = load_set_alias_cache(Path(args.set_aliases_json))
+    set_aliases_path = Path(args.set_aliases_json)
+    set_alias_cache = load_set_alias_cache(set_aliases_path)
+    initial_set_alias_cache = dict(set_alias_cache)
 
     if do_sets and not sets_path.exists():
         print(f"Missing sets JSON: {sets_path}", file=sys.stderr)
@@ -376,6 +527,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     run_started_at = datetime.now(timezone.utc)
     month_key = run_started_at.strftime("%Y-%m")
     workers = max(1, args.workers)
+    SHARED_THROTTLE = market.RuntimeThrottle(min_delay=cfg.delay, jitter=cfg.jitter)
 
     sets_rows = market.load_json_array(sets_path) if do_sets else []
     minifigs_rows = market.load_json_array(minifigs_path) if do_minifigs else []
@@ -465,6 +617,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             f"[Write] sets_written={sets_written} minifigs_written={minifigs_written} parts_written={parts_written}",
             flush=True,
         )
+
+    if set_alias_cache != initial_set_alias_cache:
+        write_set_alias_cache(set_aliases_path, set_alias_cache)
+        if cfg.verbose:
+            print(f"[Write] set_aliases_written=True count={len(set_alias_cache)}", flush=True)
 
     market.print_summary("Sets", sets_stats)
     market.print_summary("Minifigs", minifigs_stats)

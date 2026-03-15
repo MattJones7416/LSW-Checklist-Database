@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence
 
 
-PROVIDERS = ("bricklink", "brickowl", "amazon", "lego", "very", "vinted", "johnlewis")
+PROVIDERS = ("bricklink", "lego", "ebay")
 OUTPUT_FILENAME_BY_REGION = {
     "UK": "uk.json",
     "US": "us.json",
@@ -136,24 +136,43 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             temp_provider_dir = temp_root / provider
             temp_provider_dir.mkdir(parents=True, exist_ok=True)
             state_path = temp_provider_dir / "state.json"
-            script_cmd = [
-                sys.executable,
-                str(repo_root / "scripts" / "update_marketplace_provider_deals.py"),
-                "--provider", provider,
-                "--sets-json", sets_json,
-                "--minifigs-json", minifigs_json,
-                "--parts-json", parts_json,
-                "--output-dir", str(temp_provider_dir),
-                "--state-path", str(state_path),
-                "--regions", region,
-                "--sets-per-region", "1" if requested_item_type == "set" else "0",
-                "--minifigs-per-region", "1" if requested_item_type == "minifig" else "0",
-                "--parts-per-region", "1" if requested_item_type == "part" else "0",
-                "--max-results-per-item", str(args.max_results_per_item),
-                "--max-product-pages-per-item", str(args.max_product_pages_per_item),
-                "--only-number", requested_number,
-                "--only-item-type", requested_item_type,
-            ]
+            if provider == "ebay":
+                script_cmd = [
+                    sys.executable,
+                    str(repo_root / "scripts" / "update_ebay_marketplace_deals.py"),
+                    "--sets-json", sets_json,
+                    "--minifigs-json", minifigs_json,
+                    "--parts-json", parts_json,
+                    "--output-dir", str(temp_provider_dir),
+                    "--fallback-output", str(temp_provider_dir / "fallback.json"),
+                    "--state-path", str(state_path),
+                    "--regions", region,
+                    "--sets-per-region", "1" if requested_item_type == "set" else "0",
+                    "--minifigs-per-region", "1" if requested_item_type == "minifig" else "0",
+                    "--parts-per-region", "1" if requested_item_type == "part" else "0",
+                    "--max-results-per-item", str(args.max_results_per_item),
+                    "--only-number", requested_number,
+                    "--only-item-type", requested_item_type,
+                ]
+            else:
+                script_cmd = [
+                    sys.executable,
+                    str(repo_root / "scripts" / "update_marketplace_provider_deals.py"),
+                    "--provider", provider,
+                    "--sets-json", sets_json,
+                    "--minifigs-json", minifigs_json,
+                    "--parts-json", parts_json,
+                    "--output-dir", str(temp_provider_dir),
+                    "--state-path", str(state_path),
+                    "--regions", region,
+                    "--sets-per-region", "1" if requested_item_type == "set" else "0",
+                    "--minifigs-per-region", "1" if requested_item_type == "minifig" else "0",
+                    "--parts-per-region", "1" if requested_item_type == "part" else "0",
+                    "--max-results-per-item", str(args.max_results_per_item),
+                    "--max-product-pages-per-item", str(args.max_product_pages_per_item),
+                    "--only-number", requested_number,
+                    "--only-item-type", requested_item_type,
+                ]
             if args.verbose:
                 script_cmd.append("--verbose")
 

@@ -36,22 +36,39 @@ jobs:
 
       - name: Commit and push merged marketplace deals
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          run_merge() {
+            python scripts/merge_marketplace_deals.py \
+              --provider-root "dist/provider-deals" \
+              --output-dir "dist/deals" \
+              --fallback-output "dist/marketplace-deals.json"
+          }
+
           git add "dist/deals" "dist/marketplace-deals.json"
           if git diff --cached --quiet; then
             echo "No merged marketplace deal changes to commit."
             exit 0
           fi
           git commit -m "chore: merge marketplace deals"
+
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
               echo "Merged marketplace deals push succeeded on attempt $attempt."
               exit 0
             fi
-            echo "Merged marketplace deals push rejected on attempt $attempt; rebasing and retrying..."
+            echo "Merged marketplace deals push rejected on attempt $attempt; rebuilding on top of latest main..."
             git fetch origin main
-            git rebase origin/main
+            git reset --hard origin/main
+            run_merge
+            git add "dist/deals" "dist/marketplace-deals.json"
+            if git diff --cached --quiet; then
+              echo "No merged marketplace deal changes to commit after refresh on attempt $attempt."
+              exit 0
+            fi
+            git commit -m "chore: merge marketplace deals"
           done
           echo "Merged marketplace deals push failed after 3 attempts."
           exit 1

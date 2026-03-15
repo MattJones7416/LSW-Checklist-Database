@@ -9,12 +9,7 @@ from typing import Any, Dict, Iterable, List, Sequence
 
 PROVIDER_ORDER = [
     "bricklink",
-    "brickowl",
-    "amazon",
     "lego",
-    "johnlewis",
-    "very",
-    "vinted",
     "ebay",
 ]
 REGIONS = ["UK", "US", "EU"]
