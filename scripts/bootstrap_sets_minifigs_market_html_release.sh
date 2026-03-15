@@ -21,8 +21,11 @@ START_INDEX="${START_INDEX:-0}"
 MISSING_ONLY="${MISSING_ONLY:-0}"
 BATCH_SIZE="${BATCH_SIZE:-250}"
 BATCH_PAUSE_SECONDS="${BATCH_PAUSE_SECONDS:-12}"
+MAX_BATCHES_PER_RUN="${MAX_BATCHES_PER_RUN:-0}"
 RESUME="${RESUME:-1}"
 PROGRESS_PATH="${PROGRESS_PATH:-dist/bootstrap-html-progress.json}"
+ONLY_ITEM_NOS_FILE="${ONLY_ITEM_NOS_FILE:-}"
+REBUILD_ARTIFACTS="${REBUILD_ARTIFACTS:-1}"
 
 if [[ ! -f "${SETS_JSON}" ]]; then
   echo "Missing sets JSON: ${SETS_JSON}" >&2
@@ -57,6 +60,22 @@ PY
 }
 
 determine_total_rows() {
+  if [[ -n "${ONLY_ITEM_NOS_FILE}" ]]; then
+    python3 - <<'PY' "${ONLY_ITEM_NOS_FILE}"
+import sys
+from pathlib import Path
+path = Path(sys.argv[1])
+if not path.exists():
+    print(0)
+    raise SystemExit(0)
+count = 0
+for line in path.read_text(encoding="utf-8").splitlines():
+    if line.strip():
+        count += 1
+print(count)
+PY
+    return
+  fi
   local sets_count=0
   local minifigs_count=0
   local parts_count=0
@@ -148,7 +167,12 @@ CURRENT_START="$(read_resume_start "${START_INDEX}")"
 if (( CURRENT_START >= END_INDEX )); then
   echo "[BootstrapHTMLRelease] nothing to do. start=${CURRENT_START} end=${END_INDEX}"
 else
+  BATCHES_RUN=0
   while (( CURRENT_START < END_INDEX )); do
+    if (( MAX_BATCHES_PER_RUN > 0 && BATCHES_RUN >= MAX_BATCHES_PER_RUN )); then
+      echo "[BootstrapHTMLRelease] reached MAX_BATCHES_PER_RUN=${MAX_BATCHES_PER_RUN}; pausing at start=${CURRENT_START}."
+      break
+    fi
     CURRENT_LIMIT="${BATCH_SIZE}"
     REMAINING="$(( END_INDEX - CURRENT_START ))"
     if (( CURRENT_LIMIT > REMAINING )); then
@@ -174,6 +198,10 @@ else
       --verbose
     )
 
+    if [[ -n "${ONLY_ITEM_NOS_FILE}" ]]; then
+      CMD+=(--only-item-nos-file "${ONLY_ITEM_NOS_FILE}")
+    fi
+
     if [[ "${MISSING_ONLY}" == "1" ]]; then
       CMD+=(--missing-only)
     fi
@@ -181,39 +209,53 @@ else
     "${CMD[@]}"
 
     CURRENT_START="$(( CURRENT_START + CURRENT_LIMIT ))"
+    BATCHES_RUN="$(( BATCHES_RUN + 1 ))"
     write_resume_state "${CURRENT_START}"
 
     if (( CURRENT_START < END_INDEX )); then
+      if (( MAX_BATCHES_PER_RUN > 0 && BATCHES_RUN >= MAX_BATCHES_PER_RUN )); then
+        echo "[BootstrapHTMLRelease] pausing after ${BATCHES_RUN} batch(es); next_start=${CURRENT_START}."
+        break
+      fi
       echo "[BootstrapHTMLRelease] cooling down for ${BATCH_PAUSE_SECONDS}s before next batch."
       sleep "${BATCH_PAUSE_SECONDS}"
     fi
   done
 fi
 
-rm -rf "dist/chunks" "dist/market-details"
+if [[ "${REBUILD_ARTIFACTS}" == "1" ]]; then
+  rm -rf "dist/chunks" "dist/market-details"
 
-python3 scripts/split_catalog_chunks.py \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --output-dir "dist/chunks" \
-  --manifest-path "dist/catalog-index.json" \
-  --base-url "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist" \
-  --market-details-dir "dist/market-details" \
-  --strip-market-detail-fields \
-  --max-items-per-chunk 800
+  python3 scripts/split_catalog_chunks.py \
+    --sets-json "${SETS_JSON}" \
+    --minifigs-json "${MINIFIGS_JSON}" \
+    --output-dir "dist/chunks" \
+    --manifest-path "dist/catalog-index.json" \
+    --base-url "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist" \
+    --market-details-dir "dist/market-details" \
+    --strip-market-detail-fields \
+    --max-items-per-chunk 800
 
-python3 scripts/build_sync_artifacts.py \
-  --manifest-path "dist/catalog-index.json" \
-  --sync-state-path "dist/sync-state.json" \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --delta-manifest-path "dist/catalog-delta-index.json" \
-  --client-config-path "dist/client-config.json" \
-  --market-price-seed-path "dist/market-price-seed.json" \
-  --base-url "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist" \
-  --market-currency-code "${BRICKLINK_CURRENCY:-GBP}" \
-  --verbose
+  python3 scripts/build_sync_artifacts.py \
+    --manifest-path "dist/catalog-index.json" \
+    --sync-state-path "dist/sync-state.json" \
+    --sets-json "${SETS_JSON}" \
+    --minifigs-json "${MINIFIGS_JSON}" \
+    --delta-manifest-path "dist/catalog-delta-index.json" \
+    --client-config-path "dist/client-config.json" \
+    --market-price-seed-path "dist/market-price-seed.json" \
+    --base-url "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist" \
+    --market-currency-code "${BRICKLINK_CURRENCY:-GBP}" \
+    --verbose
+else
+  echo "[BootstrapHTMLRelease] skipping chunk/sync artifact rebuild."
+fi
 
-rm -f "${PROGRESS_PATH}"
+if (( CURRENT_START >= END_INDEX )); then
+  rm -f "${PROGRESS_PATH}"
+  echo "[BootstrapHTMLRelease] all batches complete."
+else
+  echo "[BootstrapHTMLRelease] progress saved to ${PROGRESS_PATH}; next_start=${CURRENT_START}."
+fi
 
 echo "[BootstrapHTMLRelease] complete."

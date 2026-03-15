@@ -1,0 +1,146 @@
+name: Bootstrap BrickLink Market via HTML (Full Coverage Minifigures)
+
+on:
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: "Concurrent HTML workers"
+        required: false
+        default: "2"
+      batch_size:
+        description: "Minifigures per batch"
+        required: false
+        default: "140"
+      max_batches_per_run:
+        description: "Batches processed in this run"
+        required: false
+        default: "2"
+      batch_pause_seconds:
+        description: "Cooldown between batches"
+        required: false
+        default: "12"
+      delay_seconds:
+        description: "Request pacing delay"
+        required: false
+        default: "0.35"
+      jitter_seconds:
+        description: "Request pacing jitter"
+        required: false
+        default: "0.12"
+      missing_only:
+        description: "Only bootstrap rows missing values/history"
+        required: false
+        default: "1"
+      commit_message:
+        description: "Commit message for this coverage chunk"
+        required: false
+        default: "chore: bootstrap full minifigure market coverage chunk"
+  schedule:
+    - cron: "25 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bootstrap-market-html-full-minifigs
+  cancel-in-progress: false
+
+jobs:
+  bootstrap-minifigs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests requests_oauthlib
+
+      - name: Bootstrap minifigure chunk
+        env:
+          ITEM_TYPE: minifig
+          WORKERS: ${{ inputs.workers || '2' }}
+          BATCH_SIZE: ${{ inputs.batch_size || '140' }}
+          MAX_BATCHES_PER_RUN: ${{ inputs.max_batches_per_run || '2' }}
+          BATCH_PAUSE_SECONDS: ${{ inputs.batch_pause_seconds || '12' }}
+          DELAY_SECONDS: ${{ inputs.delay_seconds || '0.35' }}
+          JITTER_SECONDS: ${{ inputs.jitter_seconds || '0.12' }}
+          MISSING_ONLY: ${{ inputs.missing_only || '1' }}
+          PROGRESS_PATH: dist/bootstrap-html-progress-minifig.json
+          REBUILD_ARTIFACTS: "1"
+          BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+        run: |
+          chmod +x scripts/bootstrap_sets_minifigs_market_html_release.sh
+          ./scripts/bootstrap_sets_minifigs_market_html_release.sh
+
+      - name: Commit and push chunk
+        env:
+          COMMIT_MESSAGE: ${{ inputs.commit_message || 'chore: bootstrap full minifigure market coverage chunk' }}
+        run: |
+          set -euo pipefail
+
+          run_chunk() {
+            chmod +x scripts/bootstrap_sets_minifigs_market_html_release.sh
+            ITEM_TYPE=minifig \
+            WORKERS="${{ inputs.workers || '2' }}" \
+            BATCH_SIZE="${{ inputs.batch_size || '140' }}" \
+            MAX_BATCHES_PER_RUN="${{ inputs.max_batches_per_run || '2' }}" \
+            BATCH_PAUSE_SECONDS="${{ inputs.batch_pause_seconds || '12' }}" \
+            DELAY_SECONDS="${{ inputs.delay_seconds || '0.35' }}" \
+            JITTER_SECONDS="${{ inputs.jitter_seconds || '0.12' }}" \
+            MISSING_ONLY="${{ inputs.missing_only || '1' }}" \
+            PROGRESS_PATH="dist/bootstrap-html-progress-minifig.json" \
+            REBUILD_ARTIFACTS=1 \
+            BRICKLINK_CURRENCY="${{ vars.BRICKLINK_CURRENCY || 'GBP' }}" \
+            ./scripts/bootstrap_sets_minifigs_market_html_release.sh
+          }
+
+          stage_changes() {
+            git add "dist/Lego-Star-Wars-Minifigure-Database.json"
+            git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
+            if [ -f "dist/sync-state.json" ]; then
+              git add "dist/sync-state.json"
+            fi
+            git add -A "dist/bootstrap-html-progress-minifig.json"
+          }
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          stage_changes
+          if git diff --cached --quiet; then
+            echo "No minifigure coverage changes to commit."
+            exit 0
+          fi
+
+          git commit -m "${COMMIT_MESSAGE}"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Minifigure coverage push succeeded on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Minifigure coverage push rejected on attempt ${attempt}; resetting to latest main and rerunning chunk..."
+            git fetch origin main
+            git reset --hard origin/main
+            run_chunk
+            stage_changes
+            if git diff --cached --quiet; then
+              echo "No minifigure coverage changes after rerun."
+              exit 0
+            fi
+            git commit -m "${COMMIT_MESSAGE}"
+          done
+
+          echo "Minifigure coverage push failed after 3 attempts."
+          exit 1

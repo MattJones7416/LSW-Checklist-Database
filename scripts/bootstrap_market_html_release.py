@@ -80,6 +80,11 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--jitter", type=float, default=0.03)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--start-index", type=int, default=0)
+    parser.add_argument(
+        "--only-item-nos-file",
+        default="",
+        help="Optional newline-delimited list of primary item numbers to process in the listed order.",
+    )
     parser.add_argument("--missing-only", action="store_true", help="Only refresh rows missing current values or history.")
     parser.add_argument("--skip-cross-enrichment", action="store_true")
     parser.add_argument("--verbose", action="store_true")
@@ -158,6 +163,74 @@ def build_tasks(
         if limit is not None and len(tasks) >= limit:
             break
     return tasks
+
+
+def task_primary_item_no(row: Dict[str, Any], *, item_type: str) -> str:
+    item_type_upper = market.collapse_ws(item_type).upper()
+    if item_type_upper == "SET":
+        return market.normalize_set_code(row.get("Number"), row.get("Variant"))
+    if item_type_upper == "MINIFIG":
+        return market.collapse_ws(row.get("Number"))
+    if item_type_upper == "PART":
+        return market.collapse_ws(row.get("part_num") or row.get("Number"))
+    return ""
+
+
+def load_only_item_nos(path_value: str) -> List[str]:
+    path = Path(path_value)
+    if not path.exists():
+        raise FileNotFoundError(f"Missing only-item-nos file: {path}")
+    seen: set[str] = set()
+    ordered: List[str] = []
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        value = market.collapse_ws(raw_line)
+        if not value:
+            continue
+        key = value.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        ordered.append(value)
+    return ordered
+
+
+def build_selected_tasks(
+    rows: List[Dict[str, Any]],
+    *,
+    label: str,
+    item_type: str,
+    ordered_item_nos: Sequence[str],
+    start_index: int,
+    limit: Optional[int],
+    missing_only: bool,
+) -> List[Task]:
+    row_by_item_no: Dict[str, Tuple[int, Dict[str, Any]]] = {}
+    for idx, row in enumerate(rows):
+        item_no = task_primary_item_no(row, item_type=item_type)
+        if not item_no:
+            continue
+        row_by_item_no[item_no.lower()] = (idx, row)
+
+    selected: List[Task] = []
+    seen_indices: set[int] = set()
+    skipped = 0
+    for item_no in ordered_item_nos:
+        match = row_by_item_no.get(item_no.lower())
+        if match is None:
+            continue
+        idx, row = match
+        if idx in seen_indices:
+            continue
+        seen_indices.add(idx)
+        if missing_only and not row_needs_refresh(row, item_type=item_type):
+            continue
+        if skipped < start_index:
+            skipped += 1
+            continue
+        selected.append(Task(label=label, item_type=item_type, index=idx, row=row))
+        if limit is not None and len(selected) >= limit:
+            break
+    return selected
 
 
 def build_item_candidates(
@@ -494,6 +567,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parts_path = Path(args.parts_json)
     market_details_dir = Path(args.market_details_dir)
     set_aliases_path = Path(args.set_aliases_json)
+    ordered_item_nos = load_only_item_nos(args.only_item_nos_file) if market.collapse_ws(args.only_item_nos_file) else []
     set_alias_cache = load_set_alias_cache(set_aliases_path)
     initial_set_alias_cache = dict(set_alias_cache)
 
@@ -533,30 +607,59 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     minifigs_rows = market.load_json_array(minifigs_path) if do_minifigs else []
     parts_rows = market.load_json_array(parts_path) if do_parts else []
 
-    set_tasks = build_tasks(
-        sets_rows,
-        label="Sets",
-        item_type="SET",
-        start_index=max(0, args.start_index),
-        limit=args.limit,
-        missing_only=bool(args.missing_only),
-    ) if do_sets else []
-    minifig_tasks = build_tasks(
-        minifigs_rows,
-        label="Minifigs",
-        item_type="MINIFIG",
-        start_index=max(0, args.start_index),
-        limit=args.limit,
-        missing_only=bool(args.missing_only),
-    ) if do_minifigs else []
-    part_tasks = build_tasks(
-        parts_rows,
-        label="Parts",
-        item_type="PART",
-        start_index=max(0, args.start_index),
-        limit=args.limit,
-        missing_only=bool(args.missing_only),
-    ) if do_parts else []
+    if ordered_item_nos:
+        set_tasks = build_selected_tasks(
+            sets_rows,
+            label="Sets",
+            item_type="SET",
+            ordered_item_nos=ordered_item_nos,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_sets else []
+        minifig_tasks = build_selected_tasks(
+            minifigs_rows,
+            label="Minifigs",
+            item_type="MINIFIG",
+            ordered_item_nos=ordered_item_nos,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_minifigs else []
+        part_tasks = build_selected_tasks(
+            parts_rows,
+            label="Parts",
+            item_type="PART",
+            ordered_item_nos=ordered_item_nos,
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_parts else []
+    else:
+        set_tasks = build_tasks(
+            sets_rows,
+            label="Sets",
+            item_type="SET",
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_sets else []
+        minifig_tasks = build_tasks(
+            minifigs_rows,
+            label="Minifigs",
+            item_type="MINIFIG",
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_minifigs else []
+        part_tasks = build_tasks(
+            parts_rows,
+            label="Parts",
+            item_type="PART",
+            start_index=max(0, args.start_index),
+            limit=args.limit,
+            missing_only=bool(args.missing_only),
+        ) if do_parts else []
 
     if cfg.verbose:
         print(
