@@ -2,28 +2,28 @@
   "number": "75425-1",
   "itemType": "set",
   "region": "UK",
-  "requestKey": "c4c53c77-b50b-4a63-84b9-19fbe5353b21",
-  "startedAt": "2026-03-14T08:50:22Z",
-  "finishedAt": "2026-03-14T08:52:09Z",
+  "requestKey": "aac5076f-61b6-4f15-8f8c-a822acebe496",
+  "startedAt": "2026-03-14T22:48:24Z",
+  "finishedAt": "2026-03-14T22:50:05Z",
   "overallStatus": "partial",
   "providers": [
     {
       "provider": "bricklink",
-      "status": "failed",
+      "status": "success",
       "region": "UK",
       "dealsFound": 0,
       "dealsForModelAfterMerge": 0,
-      "stdoutTail": "",
-      "error": "                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/LSW-Checklist-Database/LSW-Checklist-Database/scripts/update_marketplace_provider_deals.py\", line 981, in build_bricklink_provider_output\n    deals.extend(build_bricklink_deals_from_rows(sets, item_type=\"set\", region=region, max_results_per_item=args.max_results_per_item))\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/LSW-Checklist-Database/LSW-Checklist-Database/scripts/update_marketplace_provider_deals.py\", line 910, in build_bricklink_deals_from_rows\n    candidate = make_candidate(row, item_type=item_type)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: make_candidate() missing 2 required keyword-only arguments: 'provider' and 'priority_values'",
-      "exitCode": 1
+      "stdoutTail": "[bricklink:UK] deals=0",
+      "error": "",
+      "exitCode": 0
     },
     {
       "provider": "brickowl",
       "status": "success",
       "region": "UK",
-      "dealsFound": 1,
-      "dealsForModelAfterMerge": 1,
-      "stdoutTail": "[brickowl:UK] set 75425-1 -> 1 deals\n[brickowl:UK] deals=1",
+      "dealsFound": 0,
+      "dealsForModelAfterMerge": 0,
+      "stdoutTail": "[brickowl:UK] set 75425-1 -> 0 deals\n[brickowl:UK] deals=0",
       "error": "",
       "exitCode": 0
     },
@@ -43,7 +43,7 @@
       "region": "UK",
       "dealsFound": 0,
       "dealsForModelAfterMerge": 0,
-      "stdoutTail": "[lego:UK] blocked 75425-1: Access blocked for https://www.lego.com/en-gb/search?q=LEGO+75425+Mos+Eisley+Cantina",
+      "stdoutTail": "[lego:UK] blocked 75425-1: Access blocked for lego at https://www.lego.com/en-gb/search?q=LEGO+75425+Mos+Eisley+Cantina",
       "error": "[marketplace] lego produced no successful listing fetches",
       "exitCode": 1
     },
@@ -53,7 +53,7 @@
       "region": "UK",
       "dealsFound": 0,
       "dealsForModelAfterMerge": 0,
-      "stdoutTail": "[very:UK] blocked 75425-1: Access blocked for https://www.very.co.uk/search?searchTerm=LEGO+75425+Mos+Eisley+Cantina",
+      "stdoutTail": "[very:UK] blocked 75425-1: Access blocked for very at https://www.very.co.uk/search?searchTerm=LEGO+75425+Mos+Eisley+Cantina",
       "error": "[marketplace] very produced no successful listing fetches",
       "exitCode": 1
     },
@@ -63,7 +63,7 @@
       "region": "UK",
       "dealsFound": 0,
       "dealsForModelAfterMerge": 0,
-      "stdoutTail": "[vinted:UK] blocked 75425-1: Access blocked for https://www.vinted.co.uk/catalog?search_text=LEGO+75425+Mos+Eisley+Cantina",
+      "stdoutTail": "[vinted:UK] blocked 75425-1: Access blocked for vinted at https://www.vinted.co.uk/catalog?search_text=LEGO+75425+Mos+Eisley+Cantina",
       "error": "[marketplace] vinted produced no successful listing fetches",
       "exitCode": 1
     },
@@ -81,7 +81,7 @@
   "merge": {
     "status": "success",
     "exitCode": 0,
-    "stdoutTail": "[merge:UK] deals=4\n[merge:US] deals=0\n[merge:EU] deals=0",
+    "stdoutTail": "[merge:UK] deals=119\n[merge:US] deals=0\n[merge:EU] deals=0",
     "error": ""
   }
 }

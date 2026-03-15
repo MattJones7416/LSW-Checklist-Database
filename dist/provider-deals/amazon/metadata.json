@@ -1,16 +1,16 @@
 {
   "provider": "amazon",
-  "generatedAt": "2026-03-14T16:18:22Z",
+  "generatedAt": "2026-03-15T05:48:07Z",
   "regions": {
     "UK": {
-      "nextSetIndex": 90,
-      "nextMinifigIndex": 15,
-      "nextPartIndex": 10,
-      "processed": 108,
-      "deals": 116,
-      "updatedAt": "2026-03-14T16:18:22Z"
+      "nextSetIndex": 180,
+      "nextMinifigIndex": 30,
+      "nextPartIndex": 20,
+      "processed": 100,
+      "deals": 117,
+      "updatedAt": "2026-03-15T05:48:07Z"
     }
   },
-  "searchErrors": 7,
-  "accessDenied": 7
+  "searchErrors": 15,
+  "accessDenied": 15
 }
