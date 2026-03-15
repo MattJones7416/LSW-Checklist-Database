@@ -1,0 +1,37 @@
+name: Update Retiring Soon Feed
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 6 * * *'
+
+jobs:
+  update-retiring-soon:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate retiring soon feed
+        run: python3 scripts/update_retiring_soon.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- dist/retiring-soon.json; then
+            echo "No retiring-soon changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/retiring-soon.json scripts/update_retiring_soon.py .github/workflows/update-retiring-soon.yml
+          git commit -m "chore: update retiring soon feed"
+          git push origin HEAD:main
