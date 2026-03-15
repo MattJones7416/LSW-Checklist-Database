@@ -1,0 +1,116 @@
+name: Bootstrap BrickLink Market via HTML (Release Prep)
+
+on:
+  workflow_dispatch:
+    inputs:
+      item_type:
+        description: "Catalog type to bootstrap"
+        required: false
+        default: "set"
+      workers:
+        description: "Concurrent HTML workers"
+        required: false
+        default: "8"
+      timeout_seconds:
+        description: "HTTP timeout seconds"
+        required: false
+        default: "20"
+      retries:
+        description: "Retries per request"
+        required: false
+        default: "2"
+      delay_seconds:
+        description: "Per-worker request pacing"
+        required: false
+        default: "0.10"
+      jitter_seconds:
+        description: "Per-worker pacing jitter"
+        required: false
+        default: "0.03"
+      limit:
+        description: "Optional cap per item type"
+        required: false
+        default: ""
+      missing_only:
+        description: "Only bootstrap rows missing values/history"
+        required: false
+        default: "0"
+      commit_message:
+        description: "Commit message for bootstrapped outputs"
+        required: false
+        default: "chore: bootstrap BrickLink market via HTML for release"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bootstrap-market-html-release
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests requests_oauthlib
+
+      - name: Bootstrap BrickLink HTML market data
+        env:
+          ITEM_TYPE: ${{ inputs.item_type }}
+          WORKERS: ${{ inputs.workers }}
+          TIMEOUT_SECONDS: ${{ inputs.timeout_seconds }}
+          RETRIES: ${{ inputs.retries }}
+          DELAY_SECONDS: ${{ inputs.delay_seconds }}
+          JITTER_SECONDS: ${{ inputs.jitter_seconds }}
+          LIMIT: ${{ inputs.limit }}
+          MISSING_ONLY: ${{ inputs.missing_only }}
+          BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+        run: |
+          chmod +x scripts/bootstrap_sets_minifigs_market_html_release.sh
+          ./scripts/bootstrap_sets_minifigs_market_html_release.sh
+
+      - name: Commit and push bootstrapped artifacts
+        env:
+          COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
+          git add "dist/catalog-index.json" "dist/catalog-delta-index.json" "dist/client-config.json" "dist/market-price-seed.json" "dist/chunks" "dist/market-details"
+          if [ -f "dist/sync-state.json" ]; then
+            git add "dist/sync-state.json"
+          fi
+          if [ -f "dist/bricklink-set-aliases.json" ]; then
+            git add "dist/bricklink-set-aliases.json"
+          fi
+
+          git restore --staged "dist/Lego Star Wars Database.json" 2>/dev/null || true
+          git restore --staged "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+          git reset HEAD -- "dist/Lego Star Wars Database.json" "dist/Lego-Star-Wars-Minifigure-Database.json" 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No bootstrapped output changes to commit."
+            exit 0
+          fi
+
+          git commit -m "${COMMIT_MESSAGE}"
+          git push origin HEAD:main
