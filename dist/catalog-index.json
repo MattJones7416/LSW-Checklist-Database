@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-15T09:55:26.465830+00:00",
+  "generatedAt": "2026-03-16T03:46:40.432290+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 438,
+      "count": 439,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 430,
+      "count": 431,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 659,
+      "count": 660,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -3543,7 +3543,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 184,
+      "count": 185,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -3719,7 +3719,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/batman.json",
-      "count": 215,
+      "count": 214,
       "part": 1,
       "parts": 1,
       "category": "Batman"
@@ -6150,8 +6150,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6438,8 +6438,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6538,7 +6538,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28960,
+    "setCount": 28963,
     "minifigureCount": 18197,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
