@@ -1,0 +1,271 @@
+name: Refresh Single Market Item
+
+on:
+  workflow_dispatch:
+    inputs:
+      item_type:
+        description: "Item type to refresh"
+        required: true
+        type: choice
+        options:
+          - set
+          - minifig
+          - piece
+      number:
+        description: "Set, minifigure, or piece number"
+        required: true
+        type: string
+      request_id:
+        description: "Client request identifier"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-single-market-item-${{ github.event.inputs.item_type }}-${{ github.event.inputs.number }}
+  cancel-in-progress: false
+
+jobs:
+  refresh-single-market-item:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      BRICKLINK_CONSUMER_KEY: ${{ secrets.BRICKLINK_CONSUMER_KEY || vars.BRICKLINK_CONSUMER_KEY }}
+      BRICKLINK_CONSUMER_SECRET: ${{ secrets.BRICKLINK_CONSUMER_SECRET || vars.BRICKLINK_CONSUMER_SECRET }}
+      BRICKLINK_TOKEN_VALUE: ${{ secrets.BRICKLINK_TOKEN_VALUE || vars.BRICKLINK_TOKEN_VALUE }}
+      BRICKLINK_TOKEN_SECRET: ${{ secrets.BRICKLINK_TOKEN_SECRET || vars.BRICKLINK_TOKEN_SECRET }}
+      BRICKLINK_CURRENCY: ${{ vars.BRICKLINK_CURRENCY || 'GBP' }}
+      BRICKLINK_FALLBACK_CURRENCIES: ${{ vars.BRICKLINK_FALLBACK_CURRENCIES || 'USD,EUR,GBP' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests requests_oauthlib
+
+      - name: Refresh requested item and publish status
+        env:
+          ITEM_TYPE: ${{ github.event.inputs.item_type }}
+          ITEM_NUMBER: ${{ github.event.inputs.number }}
+          REQUEST_ID: ${{ github.event.inputs.request_id }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          status_rel_path() {
+            python - <<'PY2'
+import os
+import re
+
+
+def safe(value: str) -> str:
+    text = re.sub(r'\s+', ' ', (value or '').strip())
+    text = text.replace('/', ' - ').replace('\\', ' - ')
+    text = re.sub(r'[:*?"<>|]+', '-', text)
+    text = re.sub(r'\s+', ' ', text).strip(' .')
+    print(text or 'Unknown')
+
+
+item_type = (os.environ.get('ITEM_TYPE') or '').strip().lower()
+number = os.environ.get('ITEM_NUMBER') or ''
+print(f"dist/market-refresh-status/{item_type}/{safe(number)}.json")
+PY2
+          }
+
+          write_status() {
+            local path
+            path="$(status_rel_path)"
+            mkdir -p "$(dirname "$path")"
+            STATUS_FILE_PATH="$path" python - <<'PY2'
+import json
+import os
+from datetime import datetime, timezone
+from pathlib import Path
+
+path = Path(os.environ['STATUS_FILE_PATH'])
+payload = {
+    'itemType': os.environ.get('ITEM_TYPE', '').strip().lower(),
+    'number': os.environ.get('ITEM_NUMBER', '').strip(),
+    'requestID': os.environ.get('REQUEST_ID', '').strip(),
+    'state': os.environ.get('STATUS_STATE', '').strip(),
+    'message': os.environ.get('STATUS_MESSAGE', '').strip(),
+    'updatedAt': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+    'completedAt': (os.environ.get('STATUS_COMPLETED_AT', '').strip() or None),
+    'runID': (os.environ.get('RUN_ID', '').strip() or None),
+    'runURL': (os.environ.get('RUN_URL', '').strip() or None),
+}
+path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+PY2
+          }
+
+          rebuild_item_catalog() {
+            python scripts/build_item_folder_catalog.py \
+              --sets-json "dist/Lego Star Wars Database.json" \
+              --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              --parts-json "dist/parts/parts-catalog.json" \
+              --set-parts-index-json "dist/parts/set-parts-index.json" \
+              --set-parts-dir "dist/parts/set-parts" \
+              --market-details-dir "dist/market-details" \
+              --piece-live-pricing-json "dist/parts/piece-live-pricing.json" \
+              --output-dir "dist/catalog" \
+              --item-type "$ITEM_TYPE" \
+              --number "$ITEM_NUMBER"
+          }
+
+          run_refresh() {
+            if [ "$ITEM_TYPE" = "piece" ]; then
+              python scripts/update_piece_live_pricing.py \
+                --parts-json "dist/parts/parts-catalog.json" \
+                --output "dist/parts/piece-live-pricing.json" \
+                --state-path "dist/parts/piece-live-pricing-state.json" \
+                --only-part "$ITEM_NUMBER" \
+                --limit 1 \
+                --workers 1 \
+                --html-delay-seconds 0.35 \
+                --html-jitter-seconds 0.15
+            elif [ "$ITEM_TYPE" = "set" ]; then
+              python scripts/update_market_values.py \
+                --item-type set \
+                --only-number "$ITEM_NUMBER" \
+                --sets-json "dist/Lego Star Wars Database.json" \
+                --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+                --parts-json "dist/parts/parts-catalog.json" \
+                --market-details-dir "dist/market-details" \
+                --currency-code "${BRICKLINK_CURRENCY}" \
+                --fallback-currencies "${BRICKLINK_FALLBACK_CURRENCIES}" \
+                --market-state-json "dist/market-sync-state.json" \
+                --catalog-sync-state-json "dist/sync-state.json" \
+                --set-aliases-json "dist/bricklink-set-aliases.json" \
+                --delay 0.10 \
+                --jitter 0.03 \
+                --timeout 20 \
+                --retries 2 \
+                --disable-html-fallback \
+                --verbose
+            else
+              python scripts/update_market_values.py \
+                --item-type minifig \
+                --only-number "$ITEM_NUMBER" \
+                --sets-json "dist/Lego Star Wars Database.json" \
+                --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+                --parts-json "dist/parts/parts-catalog.json" \
+                --market-details-dir "dist/market-details" \
+                --currency-code "${BRICKLINK_CURRENCY}" \
+                --fallback-currencies "${BRICKLINK_FALLBACK_CURRENCIES}" \
+                --market-state-json "dist/market-sync-state.json" \
+                --catalog-sync-state-json "dist/sync-state.json" \
+                --set-aliases-json "dist/bricklink-set-aliases.json" \
+                --delay 0.10 \
+                --jitter 0.03 \
+                --timeout 20 \
+                --retries 2 \
+                --disable-html-fallback \
+                --verbose
+            fi
+            rebuild_item_catalog
+          }
+
+          stage_outputs() {
+            git add \
+              "dist/Lego Star Wars Database.json" \
+              "dist/Lego-Star-Wars-Minifigure-Database.json" \
+              "dist/parts/parts-catalog.json" \
+              "dist/parts/piece-live-pricing.json" \
+              "dist/parts/piece-live-pricing-state.json" \
+              "dist/market-sync-state.json" \
+              "dist/bricklink-set-aliases.json" \
+              "dist/market-details" \
+              "dist/catalog" \
+              "dist/market-refresh-status"
+          }
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          export STATUS_STATE="running"
+          export STATUS_MESSAGE="Refreshing market data on GitHub"
+          export STATUS_COMPLETED_AT=""
+          write_status
+
+          refresh_ok=0
+          if run_refresh; then
+            refresh_ok=1
+            export STATUS_STATE="succeeded"
+            export STATUS_MESSAGE="Market data refreshed"
+            export STATUS_COMPLETED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          else
+            export STATUS_STATE="failed"
+            export STATUS_MESSAGE="Market refresh failed. See workflow logs."
+            export STATUS_COMPLETED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          fi
+          write_status
+
+          stage_outputs
+          if git diff --cached --quiet; then
+            echo "No single-item refresh changes to commit."
+            if [ "$refresh_ok" -ne 1 ]; then
+              exit 1
+            fi
+            exit 0
+          fi
+
+          git commit -m "chore: refresh market item ${ITEM_TYPE} ${ITEM_NUMBER}"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Single item refresh push succeeded on attempt $attempt."
+              if [ "$refresh_ok" -ne 1 ]; then
+                exit 1
+              fi
+              exit 0
+            fi
+
+            echo "Single item refresh push rejected on attempt $attempt; rebuilding on top of latest main..."
+            git fetch origin main
+            git reset --hard origin/main
+
+            export STATUS_STATE="running"
+            export STATUS_MESSAGE="Refreshing market data on GitHub"
+            export STATUS_COMPLETED_AT=""
+            write_status
+
+            refresh_ok=0
+            if run_refresh; then
+              refresh_ok=1
+              export STATUS_STATE="succeeded"
+              export STATUS_MESSAGE="Market data refreshed"
+              export STATUS_COMPLETED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            else
+              export STATUS_STATE="failed"
+              export STATUS_MESSAGE="Market refresh failed. See workflow logs."
+              export STATUS_COMPLETED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            fi
+            write_status
+
+            stage_outputs
+            if git diff --cached --quiet; then
+              echo "No single-item refresh changes to commit after rebuild on attempt $attempt."
+              if [ "$refresh_ok" -ne 1 ]; then
+                exit 1
+              fi
+              exit 0
+            fi
+
+            git commit -m "chore: refresh market item ${ITEM_TYPE} ${ITEM_NUMBER}"
+          done
+
+          echo "Single item refresh push failed after 3 attempts."
+          exit 1

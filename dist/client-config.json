@@ -6,8 +6,9 @@
   "chunkManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-index.json",
   "deltaManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-delta-index.json",
   "marketDetailsBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-details",
-  "marketplaceDealsURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/deals",
-  "marketplaceDealsFallbackURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/marketplace-deals.json",
+  "itemCatalogBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog",
+  "marketplaceDealsURL": "",
+  "marketplaceDealsFallbackURL": "",
   "marketPriceSeedURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-price-seed.json",
   "marketCurrencyCode": "GBP",
   "marketDataVersion": "2026-03-16T03:46:41Z",
@@ -26,9 +27,10 @@
     "chunkManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-index.json",
     "deltaManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-delta-index.json",
     "marketDetailsBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-details",
+    "itemCatalogBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog",
     "marketPriceSeedURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-price-seed.json",
-    "marketplaceDealsURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/deals",
-    "marketplaceDealsFallbackURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/marketplace-deals.json",
+    "marketplaceDealsURL": "",
+    "marketplaceDealsFallbackURL": "",
     "marketCurrencyCode": "GBP"
   }
 }

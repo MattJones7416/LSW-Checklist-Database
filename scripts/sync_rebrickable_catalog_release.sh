@@ -78,6 +78,18 @@ python3 scripts/build_sync_artifacts.py \
   --market-currency-code "${MARKET_CURRENCY_CODE}" \
   "${EXTRA_ARGS[@]}"
 
+python3 scripts/build_item_folder_catalog.py \
+  --sets-json "${SETS_JSON}" \
+  --minifigs-json "${MINIFIGS_JSON}" \
+  --parts-json "${PARTS_OUTPUT_DIR}/parts-catalog.json" \
+  --set-parts-index-json "${PARTS_OUTPUT_DIR}/set-parts-index.json" \
+  --set-parts-dir "${PARTS_OUTPUT_DIR}/set-parts" \
+  --market-details-dir "dist/market-details" \
+  --piece-live-pricing-json "${PARTS_OUTPUT_DIR}/piece-live-pricing.json" \
+  --output-dir "dist/catalog" \
+  --full-rebuild \
+  "${EXTRA_ARGS[@]}"
+
 python3 scripts/compact_release_monoliths.py \
   --sets-json "${SETS_JSON}" \
   --minifigs-json "${MINIFIGS_JSON}"

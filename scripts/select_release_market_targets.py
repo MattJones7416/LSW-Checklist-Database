@@ -37,7 +37,7 @@ POPULAR_THEMES: List[str] = [
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Select release-priority BrickLink bootstrap targets.")
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json")
-    parser.add_argument("--deals-json", default="dist/deals/uk.json")
+    parser.add_argument("--deals-json", default="")
     parser.add_argument("--output-path", default="dist/bootstrap-release-targets.txt")
     parser.add_argument("--metadata-path", default="dist/bootstrap-release-targets.json")
     parser.add_argument("--max-total", type=int, default=1500)
@@ -318,7 +318,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parse_args(argv)
     now = datetime.now(timezone.utc)
     rows = parse_list(json.loads(Path(args.sets_json).read_text(encoding="utf-8")))
-    deals_by_number = load_deals(Path(args.deals_json))
+    deals_by_number = load_deals(Path(args.deals_json)) if args.deals_json.strip() else {}
 
     buildable_rows = [row for row in rows if is_buildable(row)]
     popular_theme_rank = {theme.lower(): idx for idx, theme in enumerate(POPULAR_THEMES)}

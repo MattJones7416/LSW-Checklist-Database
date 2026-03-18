@@ -2859,6 +2859,7 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         help="Choose whether to update sets, minifigs, parts, or all (default both = sets+minifigs).",
     )
     parser.add_argument("--start-index", type=int, default=0, help="Optional per-file start index.")
+    parser.add_argument("--only-number", default="", help="Optional single item number/part number to refresh.")
     parser.add_argument("--skip-cross-enrichment", action="store_true", help="Skip exclusivity/appears-in enrichment.")
     parser.add_argument(
         "--no-data-cooldown-hours",
@@ -3090,6 +3091,35 @@ def main(argv: Sequence[str]) -> int:
         set(),
     )
 
+    only_number = collapse_ws(args.only_number).lower()
+    if only_number:
+        if do_sets:
+            set_plan = [
+                idx for idx, row in enumerate(sets_rows)
+                if normalize_set_code(row.get("Number"), row.get("Variant")).lower() == only_number
+                or collapse_ws(row.get("Number")).lower() == only_number
+            ]
+            if not set_plan:
+                print(f"Missing set number: {args.only_number}", file=sys.stderr)
+                return 1
+        if do_minifigs:
+            minifig_plan = [
+                idx for idx, row in enumerate(minifigs_rows)
+                if collapse_ws(row.get("Number")).lower() == only_number
+            ]
+            if not minifig_plan:
+                print(f"Missing minifigure number: {args.only_number}", file=sys.stderr)
+                return 1
+        if do_parts:
+            part_plan = [
+                idx for idx, row in enumerate(parts_rows)
+                if collapse_ws(row.get("part_num")).lower() == only_number
+                or collapse_ws(row.get("bricklink_part_num")).lower() == only_number
+            ]
+            if not part_plan:
+                print(f"Missing part number: {args.only_number}", file=sys.stderr)
+                return 1
+
     if cfg.verbose:
         print(
             (
@@ -3234,6 +3264,32 @@ def main(argv: Sequence[str]) -> int:
     minifigs_written = maybe_write_json(minifigs_path, minifigs_rows) if do_minifigs else False
     parts_written = maybe_write_json(parts_path, parts_rows) if do_parts else False
 
+    last_updated_set_codes = [
+        normalize_set_code(sets_rows[idx].get("Number"), sets_rows[idx].get("Variant")).lower()
+        for idx in sets_stats.processed_indices
+        if 0 <= idx < len(sets_rows)
+    ] if do_sets else []
+    last_updated_minifig_numbers = [
+        collapse_ws(minifigs_rows[idx].get("Number")).lower()
+        for idx in minifigs_stats.processed_indices
+        if 0 <= idx < len(minifigs_rows)
+    ] if do_minifigs else []
+    last_updated_part_numbers = [
+        collapse_ws(parts_rows[idx].get("part_num")).lower()
+        for idx in parts_stats.processed_indices
+        if 0 <= idx < len(parts_rows)
+    ] if do_parts else []
+
+    def _dedupe(values):
+        seen = set()
+        out = []
+        for value in values:
+            if not value or value in seen:
+                continue
+            seen.add(value)
+            out.append(value)
+        return out
+
     market_state.update(
         {
             "nextSetIndex": next_set_cursor,
@@ -3269,6 +3325,9 @@ def main(argv: Sequence[str]) -> int:
             "partRowsWithNew": part_rows_with_new,
             "partRowsWithUsed": part_rows_with_used,
             "partRowsTotal": part_rows_total,
+            "lastUpdatedSetCodes": _dedupe(last_updated_set_codes),
+            "lastUpdatedMinifigNumbers": _dedupe(last_updated_minifig_numbers),
+            "lastUpdatedPartNumbers": _dedupe(last_updated_part_numbers),
         }
     )
     write_json_object(market_state_path, market_state)

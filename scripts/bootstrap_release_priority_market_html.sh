@@ -5,7 +5,6 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT_DIR}"
 
 SETS_JSON="${SETS_JSON:-dist/Lego Star Wars Database.json}"
-DEALS_JSON="${DEALS_JSON:-dist/deals/uk.json}"
 TARGETS_PATH="${TARGETS_PATH:-dist/bootstrap-release-targets.txt}"
 TARGETS_METADATA_PATH="${TARGETS_METADATA_PATH:-dist/bootstrap-release-targets.json}"
 MAX_TOTAL="${MAX_TOTAL:-1500}"
@@ -15,7 +14,6 @@ PER_THEME_CAP="${PER_THEME_CAP:-40}"
 
 python3 scripts/select_release_market_targets.py \
   --sets-json "${SETS_JSON}" \
-  --deals-json "${DEALS_JSON}" \
   --output-path "${TARGETS_PATH}" \
   --metadata-path "${TARGETS_METADATA_PATH}" \
   --max-total "${MAX_TOTAL}" \

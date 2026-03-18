@@ -191,6 +191,17 @@ jobs:
             --sets-json "dist/Lego Star Wars Database.json" \
             --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"
 
+          python scripts/build_item_folder_catalog.py \
+            --sets-json "dist/Lego Star Wars Database.json" \
+            --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json" \
+            --parts-json "dist/parts/parts-catalog.json" \
+            --set-parts-index-json "dist/parts/set-parts-index.json" \
+            --set-parts-dir "dist/parts/set-parts" \
+            --market-details-dir "dist/market-details" \
+            --piece-live-pricing-json "dist/parts/piece-live-pricing.json" \
+            --output-dir "dist/catalog" \
+            --changed-state-json "dist/market-sync-state.json"
+
       - name: Validate monolith sizes
         run: |
           python - <<'PY'
@@ -220,7 +231,8 @@ jobs:
             "dist/client-config.json" \
             "dist/market-price-seed.json" \
             "dist/chunks" \
-            "dist/market-details"
+            "dist/market-details" \
+            "dist/catalog"
 
           if [ -f "dist/market-sync-state.json" ]; then
             git add "dist/market-sync-state.json"

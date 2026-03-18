@@ -223,10 +223,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     chunk_manifest_url = resolve_url(base_url, manifest_path.name)
     delta_manifest_url = resolve_url(base_url, delta_manifest_path.name)
     market_details_base_url = resolve_url(base_url, "market-details")
+    item_catalog_base_url = resolve_url(base_url, "catalog")
     market_seed_url = resolve_url(base_url, market_seed_path.name)
 
-    deals_url = collapse_ws(args.marketplace_deals_url) or resolve_url(base_url, "deals")
-    deals_fallback_url = collapse_ws(args.marketplace_deals_fallback_url) or resolve_url(base_url, "marketplace-deals.json")
+    deals_url = collapse_ws(args.marketplace_deals_url)
+    deals_fallback_url = collapse_ws(args.marketplace_deals_fallback_url)
 
     client_config = {
         "profileName": collapse_ws(args.profile_name) or "github-chunked-v2",
@@ -236,6 +237,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "chunkManifestURL": chunk_manifest_url,
         "deltaManifestURL": delta_manifest_url,
         "marketDetailsBaseURL": market_details_base_url,
+        "itemCatalogBaseURL": item_catalog_base_url,
         "marketplaceDealsURL": deals_url,
         "marketplaceDealsFallbackURL": deals_fallback_url,
         "marketPriceSeedURL": market_seed_url,
@@ -256,6 +258,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "chunkManifestURL": chunk_manifest_url,
             "deltaManifestURL": delta_manifest_url,
             "marketDetailsBaseURL": market_details_base_url,
+            "itemCatalogBaseURL": item_catalog_base_url,
             "marketPriceSeedURL": market_seed_url,
             "marketplaceDealsURL": deals_url,
             "marketplaceDealsFallbackURL": deals_fallback_url,
