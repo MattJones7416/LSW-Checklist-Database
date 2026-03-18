@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-16T03:46:40.432290+00:00",
+  "generatedAt": "2026-03-18T03:32:44.885192+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 431,
+      "count": 433,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1149,7 +1149,7 @@
     {
       "label": "Freestyle",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/freestyle.json",
-      "count": 75,
+      "count": 76,
       "part": 1,
       "parts": 1,
       "theme": "Freestyle"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 660,
+      "count": 664,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1397,7 +1397,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 547,
+      "count": 553,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -2285,7 +2285,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 441,
+      "count": 442,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -6538,7 +6538,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28963,
+    "setCount": 28977,
     "minifigureCount": 18197,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
