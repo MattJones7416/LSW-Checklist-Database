@@ -67,22 +67,22 @@ jobs:
 
           status_rel_path() {
             python - <<'PY2'
-import os
-import re
-
-
-def safe(value: str) -> str:
-    text = re.sub(r'\s+', ' ', (value or '').strip())
-    text = text.replace('/', ' - ').replace('\\', ' - ')
-    text = re.sub(r'[:*?"<>|]+', '-', text)
-    text = re.sub(r'\s+', ' ', text).strip(' .')
-    print(text or 'Unknown')
-
-
-item_type = (os.environ.get('ITEM_TYPE') or '').strip().lower()
-number = os.environ.get('ITEM_NUMBER') or ''
-print(f"dist/market-refresh-status/{item_type}/{safe(number)}.json")
-PY2
+            import os
+            import re
+            
+            
+            def safe(value: str) -> str:
+                text = re.sub(r'\s+', ' ', (value or '').strip())
+                text = text.replace('/', ' - ').replace('\\', ' - ')
+                text = re.sub(r'[:*?"<>|]+', '-', text)
+                text = re.sub(r'\s+', ' ', text).strip(' .')
+                print(text or 'Unknown')
+            
+            
+            item_type = (os.environ.get('ITEM_TYPE') or '').strip().lower()
+            number = os.environ.get('ITEM_NUMBER') or ''
+            print(f"dist/market-refresh-status/{item_type}/{safe(number)}.json")
+            PY2
           }
 
           write_status() {
@@ -90,25 +90,25 @@ PY2
             path="$(status_rel_path)"
             mkdir -p "$(dirname "$path")"
             STATUS_FILE_PATH="$path" python - <<'PY2'
-import json
-import os
-from datetime import datetime, timezone
-from pathlib import Path
-
-path = Path(os.environ['STATUS_FILE_PATH'])
-payload = {
-    'itemType': os.environ.get('ITEM_TYPE', '').strip().lower(),
-    'number': os.environ.get('ITEM_NUMBER', '').strip(),
-    'requestID': os.environ.get('REQUEST_ID', '').strip(),
-    'state': os.environ.get('STATUS_STATE', '').strip(),
-    'message': os.environ.get('STATUS_MESSAGE', '').strip(),
-    'updatedAt': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-    'completedAt': (os.environ.get('STATUS_COMPLETED_AT', '').strip() or None),
-    'runID': (os.environ.get('RUN_ID', '').strip() or None),
-    'runURL': (os.environ.get('RUN_URL', '').strip() or None),
-}
-path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-PY2
+            import json
+            import os
+            from datetime import datetime, timezone
+            from pathlib import Path
+            
+            path = Path(os.environ['STATUS_FILE_PATH'])
+            payload = {
+                'itemType': os.environ.get('ITEM_TYPE', '').strip().lower(),
+                'number': os.environ.get('ITEM_NUMBER', '').strip(),
+                'requestID': os.environ.get('REQUEST_ID', '').strip(),
+                'state': os.environ.get('STATUS_STATE', '').strip(),
+                'message': os.environ.get('STATUS_MESSAGE', '').strip(),
+                'updatedAt': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                'completedAt': (os.environ.get('STATUS_COMPLETED_AT', '').strip() or None),
+                'runID': (os.environ.get('RUN_ID', '').strip() or None),
+                'runURL': (os.environ.get('RUN_URL', '').strip() or None),
+            }
+            path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            PY2
           }
 
           rebuild_item_catalog() {
