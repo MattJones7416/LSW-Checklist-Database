@@ -1,0 +1,5 @@
+GITHUB_OWNER=MattJones7416
+GITHUB_REPO=LSW-Checklist-Database
+GITHUB_WORKFLOW_FILE=refresh-single-market-item.yml
+GITHUB_REF=main
+GITHUB_TOKEN=replace-with-github-token-that-can-dispatch-actions

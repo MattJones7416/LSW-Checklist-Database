@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -132,6 +133,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--market-currency-code", default="GBP", help="Market currency code.")
     parser.add_argument("--marketplace-deals-url", default="", help="Primary marketplace deals URL.")
     parser.add_argument("--marketplace-deals-fallback-url", default="", help="Fallback marketplace deals URL.")
+    parser.add_argument("--market-refresh-dispatch-url", default=os.environ.get("MARKET_REFRESH_DISPATCH_URL", ""), help="Public dispatch endpoint for anonymous market refresh requests.")
     parser.add_argument("--verbose", action="store_true", help="Verbose logging.")
     return parser.parse_args(argv)
 
@@ -228,6 +230,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     deals_url = collapse_ws(args.marketplace_deals_url)
     deals_fallback_url = collapse_ws(args.marketplace_deals_fallback_url)
+    market_refresh_dispatch_url = collapse_ws(args.market_refresh_dispatch_url)
 
     client_config = {
         "profileName": collapse_ws(args.profile_name) or "github-chunked-v2",
@@ -238,6 +241,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "deltaManifestURL": delta_manifest_url,
         "marketDetailsBaseURL": market_details_base_url,
         "itemCatalogBaseURL": item_catalog_base_url,
+        "marketRefreshDispatchURL": market_refresh_dispatch_url,
         "marketplaceDealsURL": deals_url,
         "marketplaceDealsFallbackURL": deals_fallback_url,
         "marketPriceSeedURL": market_seed_url,
@@ -259,6 +263,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "deltaManifestURL": delta_manifest_url,
             "marketDetailsBaseURL": market_details_base_url,
             "itemCatalogBaseURL": item_catalog_base_url,
+            "marketRefreshDispatchURL": market_refresh_dispatch_url,
             "marketPriceSeedURL": market_seed_url,
             "marketplaceDealsURL": deals_url,
             "marketplaceDealsFallbackURL": deals_fallback_url,
