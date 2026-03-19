@@ -9,63 +9,6 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
 
 
-MARKET_DETAIL_FIELDS = {
-    "BrickLinkPriceGuideURL",
-    "BrickLinkMonthlySalesNew",
-    "BrickLinkMonthlySalesUsed",
-    "BrickLinkTransactionsNew",
-    "BrickLinkTransactionsUsed",
-    "BrickLinkTransactionsNewCount",
-    "BrickLinkTransactionsUsedCount",
-    "PriceForecastMethod",
-    "BrickLinkPriceGuideCurrency",
-    "BrickLink6MSoldNewTimesSold",
-    "BrickLink6MSoldNewTotalQty",
-    "BrickLink6MSoldNewMinPrice",
-    "BrickLink6MSoldNewAvgPrice",
-    "BrickLink6MSoldNewQtyAvgPrice",
-    "BrickLink6MSoldNewMaxPrice",
-    "BrickLink6MSoldUsedTimesSold",
-    "BrickLink6MSoldUsedTotalQty",
-    "BrickLink6MSoldUsedMinPrice",
-    "BrickLink6MSoldUsedAvgPrice",
-    "BrickLink6MSoldUsedQtyAvgPrice",
-    "BrickLink6MSoldUsedMaxPrice",
-    "BrickLinkCurrentNewTotalLots",
-    "BrickLinkCurrentNewTotalQty",
-    "BrickLinkCurrentNewMinPrice",
-    "BrickLinkCurrentNewAvgPrice",
-    "BrickLinkCurrentNewQtyAvgPrice",
-    "BrickLinkCurrentNewMaxPrice",
-    "BrickLinkCurrentUsedTotalLots",
-    "BrickLinkCurrentUsedTotalQty",
-    "BrickLinkCurrentUsedMinPrice",
-    "BrickLinkCurrentUsedAvgPrice",
-    "BrickLinkCurrentUsedQtyAvgPrice",
-    "BrickLinkCurrentUsedMaxPrice",
-    "BrickLinkLatestSaleNewMonth",
-    "BrickLinkLatestSaleNewPrice",
-    "BrickLinkLatestSaleUsedMonth",
-    "BrickLinkLatestSaleUsedPrice",
-    "CurrentNewVsRRPPercent",
-    "PriceForecast2YNew",
-    "PriceForecast5YNew",
-    "PriceForecast2YUsed",
-    "PriceForecast5YUsed",
-    "BrickLinkNewPriceRangeMin",
-    "BrickLinkNewPriceRangeMax",
-    "BrickLinkUsedPriceRangeMin",
-    "BrickLinkUsedPriceRangeMax",
-    "BrickLinkCurrentListingsNew",
-    "BrickLinkCurrentListingsUsed",
-    "PriceTrendAnnualizedNewPercent",
-    "PriceTrendAnnualizedUsedPercent",
-    "MarketFetchStatus",
-    "MarketLastUpdatedUTC",
-    "MarketNoDataRetryAfterUTC",
-}
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -130,16 +73,6 @@ def parse_args() -> argparse.Namespace:
         default=800,
         help="Maximum records per emitted chunk file (default: 800).",
     )
-    parser.add_argument(
-        "--market-details-dir",
-        type=Path,
-        help="Optional output dir for per-item market details JSON files.",
-    )
-    parser.add_argument(
-        "--strip-market-detail-fields",
-        action="store_true",
-        help="Remove heavy market-detail fields from the main catalog chunks.",
-    )
     return parser.parse_args()
 
 
@@ -195,118 +128,6 @@ def chunk_iter(rows: List[Dict[str, Any]], max_items: int) -> Iterable[List[Dict
         yield rows[start : start + max_items]
 
 
-def normalized_number_key(row: Dict[str, Any]) -> str:
-    number = row.get("Number")
-    if number is None:
-        number = row.get("number")
-    raw = str(number or "").strip().lower()
-    raw = re.sub(r"\s+", "", raw)
-    return raw
-
-
-def market_detail_kind(row: Dict[str, Any]) -> str:
-    row_type = normalize_type(row.get("type"))
-    return "minifigures" if row_type == "minifigure" else "sets"
-
-
-def market_detail_bucket(number_key: str) -> str:
-    compact = re.sub(r"[^a-z0-9]", "", number_key.lower())
-    if not compact:
-        return "misc"
-    if len(compact) == 1:
-        return f"{compact}0"
-    return compact[:2]
-
-
-def market_detail_filename(number_key: str) -> str:
-    safe = re.sub(r"[^a-z0-9._-]+", "-", number_key.lower()).strip("-")
-    return safe or "unknown"
-
-
-def has_meaningful_market_detail(detail: Dict[str, Any]) -> bool:
-    for key, value in detail.items():
-        if key == "Number":
-            continue
-        if value is None:
-            continue
-        if isinstance(value, str) and value.strip() == "":
-            continue
-        if isinstance(value, (list, dict)) and len(value) == 0:
-            continue
-        return True
-    return False
-
-
-def merge_market_detail_payload(
-    detail_payload: Dict[str, Any],
-    existing_payload: Dict[str, Any],
-) -> Dict[str, Any]:
-    merged = dict(existing_payload)
-    for key, value in detail_payload.items():
-        current_empty = (
-            value is None
-            or (isinstance(value, str) and value.strip() == "")
-            or (isinstance(value, (list, dict)) and len(value) == 0)
-        )
-        if current_empty:
-            continue
-        merged[key] = value
-
-    for key, value in detail_payload.items():
-        if key in merged:
-            continue
-        merged[key] = value
-
-    return merged
-
-
-def split_out_market_details(
-    rows: List[Dict[str, Any]],
-    market_details_dir: Path,
-    strip_from_catalog: bool,
-) -> Tuple[List[Dict[str, Any]], int]:
-    cleaned_rows: List[Dict[str, Any]] = []
-    written = 0
-    market_details_dir.mkdir(parents=True, exist_ok=True)
-
-    for row in rows:
-        number = normalized_number_key(row)
-        cleaned = dict(row)
-
-        if number:
-            detail_payload: Dict[str, Any] = {"Number": row.get("Number") or row.get("number") or number}
-            for field in MARKET_DETAIL_FIELDS:
-                if field in row:
-                    detail_payload[field] = row[field]
-
-            if has_meaningful_market_detail(detail_payload):
-                kind = market_detail_kind(row)
-                bucket = market_detail_bucket(number)
-                filename = market_detail_filename(number)
-                detail_path = market_details_dir / kind / bucket / f"{filename}.json"
-                detail_path.parent.mkdir(parents=True, exist_ok=True)
-                if detail_path.exists():
-                    try:
-                        existing_payload = json.loads(detail_path.read_text(encoding="utf-8"))
-                    except Exception:
-                        existing_payload = {}
-                    if isinstance(existing_payload, dict):
-                        detail_payload = merge_market_detail_payload(detail_payload, existing_payload)
-                detail_path.write_text(
-                    json.dumps(detail_payload, ensure_ascii=False, separators=(",", ":")),
-                    encoding="utf-8",
-                )
-                written += 1
-
-        if strip_from_catalog:
-            for field in MARKET_DETAIL_FIELDS:
-                cleaned.pop(field, None)
-
-        cleaned_rows.append(cleaned)
-
-    return cleaned_rows, written
-
-
 def write_chunk(path: Path, rows: List[Dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
@@ -341,12 +162,16 @@ def emit_group_chunks(
         grouped.setdefault(label, []).append(row)
 
     entries: List[Dict[str, Any]] = []
+    slug_occurrences: Dict[str, int] = {}
     for label in sorted(grouped.keys(), key=lambda s: s.lower()):
         records = sorted(grouped[label], key=number_sort_key)
         total = len(records)
         parts = list(chunk_iter(records, max_items_per_chunk))
         total_parts = max(1, len(parts))
-        label_slug = slugify(label)
+        base_slug = slugify(label)
+        occurrence = slug_occurrences.get(base_slug, 0) + 1
+        slug_occurrences[base_slug] = occurrence
+        label_slug = base_slug if occurrence == 1 else f"{base_slug}-{occurrence}"
         for index, part_rows in enumerate(parts, start=1):
             suffix = f"-p{index}" if total_parts > 1 else ""
             filename = f"{label_slug}{suffix}.json"
@@ -396,20 +221,6 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.manifest_path.parent.mkdir(parents=True, exist_ok=True)
 
-    market_detail_count = 0
-    if args.market_details_dir is not None:
-        sets, set_detail_count = split_out_market_details(
-            rows=sets,
-            market_details_dir=args.market_details_dir,
-            strip_from_catalog=args.strip_market_detail_fields,
-        )
-        minifigs, minifig_detail_count = split_out_market_details(
-            rows=minifigs,
-            market_details_dir=args.market_details_dir,
-            strip_from_catalog=args.strip_market_detail_fields,
-        )
-        market_detail_count = set_detail_count + minifig_detail_count
-
     set_chunk_root = args.output_dir / "sets"
     minifig_chunk_root = args.output_dir / "minifigures"
 
@@ -458,7 +269,6 @@ def main() -> int:
             "minifigureCount": len(minifigs),
             "setChunkCount": len(set_entries),
             "minifigureChunkCount": len(minifig_entries),
-            "marketDetailCount": market_detail_count,
             "maxItemsPerChunk": args.max_items_per_chunk,
         },
     }
@@ -476,12 +286,6 @@ def main() -> int:
     )
     if args.base_url:
         print(f"[Done] base_url={args.base_url.rstrip('/')}")
-    if args.market_details_dir is not None:
-        print(
-            f"[Done] marketDetails={market_detail_count} "
-            f"dir={args.market_details_dir.as_posix()} "
-            f"stripped={args.strip_market_detail_fields}"
-        )
     return 0
 
 

@@ -1,27 +1,39 @@
 # LSW-Checklist-Database
 
-This repo auto-maintains the set and minifigure catalogs consumed by the app.
+This repo maintains the set, minifigure, and piece catalogs consumed by the app.
+
+## Current model
+
+The catalog is now split into two layers:
+
+1. Core catalog data from Rebrickable and the curated app catalog.
+2. Optional per-item market data written into `dist/catalog/.../market.json`.
+
+The old BrickLink market-refresh pipeline has been removed from this repo.
+Market data is now expected to come from an external scraper import step.
 
 ## Automated daily sync
 
-GitHub Actions runs daily and can also be triggered manually.
+GitHub Actions runs the Rebrickable catalog sync daily and can also be triggered manually.
 
-- Workflow: `.github/workflows/update-market-values.yml`
-- Scripts:
-  - `scripts/bootstrap_bricklink_catalog.py` (catalog bootstrap/update from BrickLink feeds)
-  - `scripts/update_market_values.py` (BrickLink API market refresh)
-  - `scripts/split_catalog_chunks.py` (chunked catalog + market-details files)
-  - `scripts/build_sync_artifacts.py` (client config + delta manifest + compact market seed)
+- Workflow: `.github/workflows/sync-rebrickable-catalog.yml`
+- Core scripts:
+  - `scripts/sync_rebrickable_catalog_release.sh`
+  - `scripts/build_parts_inventory_from_rebrickable.py`
+  - `scripts/compact_release_monoliths.py`
+  - `scripts/split_catalog_chunks.py`
+  - `scripts/build_sync_artifacts.py`
+  - `scripts/build_item_folder_catalog.py`
 
 ## Pipeline summary
 
-1. Bootstrap/update sets + minifigs from BrickLink catalog feeds.
-2. Commit/push a catalog checkpoint if changed.
-3. Refresh market fields via BrickLink API in request-budgeted chunks.
-4. Commit/push market checkpoints after each chunk.
-5. Build chunked catalog + per-item market detail files.
-6. Build client sync artifacts for the app.
-7. Commit/push final chunk/artifact outputs.
+1. Download the latest Rebrickable source files.
+2. Rebuild the core set and minifigure catalogs.
+3. Rebuild the parts catalog and set-parts index.
+4. Strip legacy market fields from the monolith JSON files.
+5. Rebuild chunked sync artifacts.
+6. Rebuild per-item folders under `dist/catalog`.
+7. Commit/push the refreshed catalog artifacts.
 
 ## Published artifacts
 
@@ -30,51 +42,53 @@ Core catalogs:
 - `dist/Lego Star Wars Database.json`
 - `dist/Lego-Star-Wars-Minifigure-Database.json`
 - `dist/Themes.json`
+- `dist/parts/parts-catalog.json`
+- `dist/parts/set-parts-index.json`
+- `dist/parts/set-parts/**`
 
 Chunked sync artifacts:
 
 - `dist/catalog-index.json`
 - `dist/catalog-delta-index.json`
 - `dist/chunks/**`
-- `dist/market-details/**`
 - `dist/client-config.json`
-- `dist/market-price-seed.json`
 
-State files:
+Per-item catalog:
 
-- `dist/sync-state.json`
-- `dist/market-sync-state.json`
+- `dist/catalog/sets/<theme>/<setnumber-itemname>/item.json`
+- `dist/catalog/minifigs/<theme>/<minifignumber-itemname>/item.json`
+- `dist/catalog/pieces/<partnumber-itemname>/item.json`
 
-## Required GitHub Secrets / Variables
+Optional per-item companion files:
 
-Required (Secrets or Variables):
+- `market.json`
+- `parts.json`
+- `minifigures.json`
+- `appears-in-sets.json`
 
-- `BRICKLINK_CONSUMER_KEY`
-- `BRICKLINK_CONSUMER_SECRET`
-- `BRICKLINK_TOKEN_VALUE`
-- `BRICKLINK_TOKEN_SECRET`
+## External market import
 
-Optional:
+When the standalone scraper is ready, import its output into the per-item catalog with:
 
-- `BRICKLINK_CATALOG_COOKIE` (if feed endpoints require authenticated cookie)
-- `BRICKLINK_CURRENCY` (default `GBP`)
-- `MARKET_PRIORITY_THEMES` (default `Star Wars,Marvel Super Heroes,Disney,NINJAGO`)
-- `MARKET_PRIORITY_MINIFIG_CATEGORIES` (default `Star Wars,Marvel Super Heroes,Disney,NINJAGO`)
+```bash
+python scripts/import_scraper_market_data.py \
+  --scraper-dist-dir "/path/to/Scraper/dist" \
+  --catalog-dir "dist/catalog" \
+  --verbose
+```
+
+That step writes normalized `market.json` files beside each item folder.
 
 ## Local run
 
 ```bash
-export BRICKLINK_CONSUMER_KEY="..."
-export BRICKLINK_CONSUMER_SECRET="..."
-export BRICKLINK_TOKEN_VALUE="..."
-export BRICKLINK_TOKEN_SECRET="..."
-export BRICKLINK_CURRENCY="GBP"
+./scripts/sync_rebrickable_catalog_release.sh
+```
 
-python scripts/bootstrap_bricklink_catalog.py   --sets-json "dist/Lego Star Wars Database.json"   --themes-json "dist/Themes.json"   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"   --timeout 45   --retries 5   --verbose
+Then, when market scraper output is ready:
 
-python scripts/update_market_values.py   --item-type both   --sets-json "dist/Lego Star Wars Database.json"   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"   --currency-code "$BRICKLINK_CURRENCY"   --priority-themes "Star Wars,Marvel Super Heroes,Disney,NINJAGO"   --priority-minifig-categories "Star Wars,Marvel Super Heroes,Disney,NINJAGO"   --max-api-calls 4800   --market-state-json "dist/market-sync-state.json"   --catalog-sync-state-json "dist/sync-state.json"   --delay 0.18   --jitter 0.04   --timeout 20   --retries 3   --verbose
-
-python scripts/split_catalog_chunks.py   --sets-json "dist/Lego Star Wars Database.json"   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"   --output-dir "dist/chunks"   --manifest-path "dist/catalog-index.json"   --base-url "https://raw.githubusercontent.com/<owner>/<repo>/refs/heads/main/dist"   --market-details-dir "dist/market-details"   --strip-market-detail-fields   --max-items-per-chunk 800
-
-python scripts/build_sync_artifacts.py   --manifest-path "dist/catalog-index.json"   --sync-state-path "dist/sync-state.json"   --sets-json "dist/Lego Star Wars Database.json"   --minifigs-json "dist/Lego-Star-Wars-Minifigure-Database.json"   --delta-manifest-path "dist/catalog-delta-index.json"   --client-config-path "dist/client-config.json"   --market-price-seed-path "dist/market-price-seed.json"   --base-url "https://raw.githubusercontent.com/<owner>/<repo>/refs/heads/main/dist"   --market-currency-code "$BRICKLINK_CURRENCY"   --verbose
+```bash
+python scripts/import_scraper_market_data.py \
+  --scraper-dist-dir "/path/to/Scraper/dist" \
+  --catalog-dir "dist/catalog"
 ```

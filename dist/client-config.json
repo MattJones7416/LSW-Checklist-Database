@@ -1,24 +1,21 @@
 {
-  "profileName": "github-chunked-v2",
+  "profileName": "github-chunked-v3",
   "strategy": "chunked",
   "setCatalogURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/Lego%20Star%20Wars%20Database.json",
   "minifigureCatalogURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/Lego-Star-Wars-Minifigure-Database.json",
   "chunkManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-index.json",
   "deltaManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-delta-index.json",
-  "marketDetailsBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-details",
   "itemCatalogBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog",
   "marketplaceDealsURL": "",
   "marketplaceDealsFallbackURL": "",
-  "marketPriceSeedURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-price-seed.json",
   "marketCurrencyCode": "GBP",
-  "marketDataVersion": "2026-03-18T03:32:46Z",
-  "generatedAt": "2026-03-18T03:32:46Z",
+  "marketDataVersion": "2026-03-19T12:56:26Z",
+  "generatedAt": "2026-03-19T12:56:26Z",
   "summary": {
     "setCount": 28977,
     "minifigureCount": 18197,
     "deltaSetChunkCount": 3,
-    "deltaMinifigureChunkCount": 0,
-    "marketSeedItemCount": 4450
+    "deltaMinifigureChunkCount": 0
   },
   "sync": {
     "strategy": "chunked",
@@ -26,13 +23,9 @@
     "minifigureCatalogURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/Lego-Star-Wars-Minifigure-Database.json",
     "chunkManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-index.json",
     "deltaManifestURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog-delta-index.json",
-    "marketDetailsBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-details",
     "itemCatalogBaseURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/catalog",
-    "marketPriceSeedURL": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/market-price-seed.json",
     "marketplaceDealsURL": "",
     "marketplaceDealsFallbackURL": "",
-    "marketCurrencyCode": "GBP",
-    "marketRefreshDispatchURL": ""
-  },
-  "marketRefreshDispatchURL": ""
+    "marketCurrencyCode": "GBP"
+  }
 }

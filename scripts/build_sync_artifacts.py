@@ -4,18 +4,16 @@
 Outputs:
 - client-config.json (remote endpoint profile for the app)
 - catalog-delta-index.json (subset manifest for recently changed chunks)
-- market-price-seed.json (compact number/new/used rows)
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Sequence
 
 
 def collapse_ws(value: Any) -> str:
@@ -65,7 +63,7 @@ def parse_codes(values: Any) -> List[str]:
     return output
 
 
-def dedupe_entries(entries: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def dedupe_entries(entries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     deduped: List[Dict[str, Any]] = []
     seen: set[str] = set()
     for entry in entries:
@@ -78,35 +76,14 @@ def dedupe_entries(entries: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return deduped
 
 
-def build_market_price_seed_rows(rows: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    out: List[Dict[str, Any]] = []
-    for row in rows:
-        number = collapse_ws(row.get("Number"))
-        if not number:
-            continue
-        new_value = collapse_ws(row.get("New"))
-        used_value = collapse_ws(row.get("Used"))
-        if not new_value and not used_value:
-            continue
-
-        out.append(
-            {
-                "Number": number,
-                "New": new_value if new_value else None,
-                "Used": used_value if used_value else None,
-            }
-        )
-    return out
-
-
-def chunk_entries_for_themes(entries: Sequence[Dict[str, Any]], themes: set[str]) -> List[Dict[str, Any]]:
+def chunk_entries_for_themes(entries: List[Dict[str, Any]], themes: set[str]) -> List[Dict[str, Any]]:
     if not themes:
         return []
     selected = [entry for entry in entries if collapse_ws(entry.get("theme")).casefold() in themes]
     return dedupe_entries(selected)
 
 
-def chunk_entries_for_categories(entries: Sequence[Dict[str, Any]], categories: set[str]) -> List[Dict[str, Any]]:
+def chunk_entries_for_categories(entries: List[Dict[str, Any]], categories: set[str]) -> List[Dict[str, Any]]:
     if not categories:
         return []
     selected = [entry for entry in entries if collapse_ws(entry.get("category")).casefold() in categories]
@@ -126,14 +103,12 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--minifigs-json", default="dist/Lego-Star-Wars-Minifigure-Database.json", help="Minifigs JSON path.")
     parser.add_argument("--delta-manifest-path", default="dist/catalog-delta-index.json", help="Output delta manifest path.")
     parser.add_argument("--client-config-path", default="dist/client-config.json", help="Output client config path.")
-    parser.add_argument("--market-price-seed-path", default="dist/market-price-seed.json", help="Output compact market seed path.")
     parser.add_argument("--base-url", required=True, help="Base raw URL for dist artifacts.")
     parser.add_argument("--strategy", default="chunked", help="Client default sync strategy.")
-    parser.add_argument("--profile-name", default="github-chunked-v2", help="Client profile name.")
+    parser.add_argument("--profile-name", default="github-chunked-v3", help="Client profile name.")
     parser.add_argument("--market-currency-code", default="GBP", help="Market currency code.")
     parser.add_argument("--marketplace-deals-url", default="", help="Primary marketplace deals URL.")
     parser.add_argument("--marketplace-deals-fallback-url", default="", help="Fallback marketplace deals URL.")
-    parser.add_argument("--market-refresh-dispatch-url", default=os.environ.get("MARKET_REFRESH_DISPATCH_URL", ""), help="Public dispatch endpoint for anonymous market refresh requests.")
     parser.add_argument("--verbose", action="store_true", help="Verbose logging.")
     return parser.parse_args(argv)
 
@@ -147,7 +122,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     minifigs_path = Path(args.minifigs_json)
     delta_manifest_path = Path(args.delta_manifest_path)
     client_config_path = Path(args.client_config_path)
-    market_seed_path = Path(args.market_price_seed_path)
 
     manifest = load_json_object(manifest_path)
     sync_state = load_json_object(sync_state_path)
@@ -167,16 +141,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     set_theme_by_code: Dict[str, str] = {}
     for row in sets:
         code = normalize_set_code(row.get("Number"), row.get("Variant"))
-        if not code:
-            continue
-        set_theme_by_code[code] = collapse_ws(row.get("Theme"))
+        if code:
+            set_theme_by_code[code] = collapse_ws(row.get("Theme"))
 
     minifig_category_by_code: Dict[str, str] = {}
     for row in minifigs:
         code = collapse_ws(row.get("Number")).lower()
-        if not code:
-            continue
-        minifig_category_by_code[code] = collapse_ws(row.get("Category") or row.get("Theme"))
+        if code:
+            minifig_category_by_code[code] = collapse_ws(row.get("Category") or row.get("Theme"))
 
     changed_set_themes = {
         collapse_ws(set_theme_by_code.get(code)).casefold()
@@ -201,7 +173,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "sourceManifestGeneratedAt": manifest.get("generatedAt"),
         "sets": delta_set_entries,
         "minifigures": delta_minifig_entries,
-        "themes": sorted({collapse_ws(e.get("theme")) for e in delta_set_entries if collapse_ws(e.get("theme"))}, key=lambda v: v.casefold()),
+        "themes": sorted(
+            {collapse_ws(e.get("theme")) for e in delta_set_entries if collapse_ws(e.get("theme"))},
+            key=lambda v: v.casefold(),
+        ),
         "summary": {
             "setChunkCount": len(delta_set_entries),
             "minifigureChunkCount": len(delta_minifig_entries),
@@ -215,36 +190,25 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     delta_manifest_path.parent.mkdir(parents=True, exist_ok=True)
     delta_manifest_path.write_text(json.dumps(delta_manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    market_seed_rows = build_market_price_seed_rows(sets) + build_market_price_seed_rows(minifigs)
-    market_seed_path.parent.mkdir(parents=True, exist_ok=True)
-    market_seed_path.write_text(json.dumps(market_seed_rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-
     base_url = args.base_url.rstrip("/")
     set_catalog_url = resolve_url(base_url, "Lego%20Star%20Wars%20Database.json")
     minifigure_catalog_url = resolve_url(base_url, "Lego-Star-Wars-Minifigure-Database.json")
     chunk_manifest_url = resolve_url(base_url, manifest_path.name)
     delta_manifest_url = resolve_url(base_url, delta_manifest_path.name)
-    market_details_base_url = resolve_url(base_url, "market-details")
     item_catalog_base_url = resolve_url(base_url, "catalog")
-    market_seed_url = resolve_url(base_url, market_seed_path.name)
-
     deals_url = collapse_ws(args.marketplace_deals_url)
     deals_fallback_url = collapse_ws(args.marketplace_deals_fallback_url)
-    market_refresh_dispatch_url = collapse_ws(args.market_refresh_dispatch_url)
 
     client_config = {
-        "profileName": collapse_ws(args.profile_name) or "github-chunked-v2",
+        "profileName": collapse_ws(args.profile_name) or "github-chunked-v3",
         "strategy": collapse_ws(args.strategy) or "chunked",
         "setCatalogURL": set_catalog_url,
         "minifigureCatalogURL": minifigure_catalog_url,
         "chunkManifestURL": chunk_manifest_url,
         "deltaManifestURL": delta_manifest_url,
-        "marketDetailsBaseURL": market_details_base_url,
         "itemCatalogBaseURL": item_catalog_base_url,
-        "marketRefreshDispatchURL": market_refresh_dispatch_url,
         "marketplaceDealsURL": deals_url,
         "marketplaceDealsFallbackURL": deals_fallback_url,
-        "marketPriceSeedURL": market_seed_url,
         "marketCurrencyCode": collapse_ws(args.market_currency_code).upper() or "GBP",
         "marketDataVersion": generated_at,
         "generatedAt": generated_at,
@@ -253,7 +217,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "minifigureCount": len(minifigs),
             "deltaSetChunkCount": len(delta_set_entries),
             "deltaMinifigureChunkCount": len(delta_minifig_entries),
-            "marketSeedItemCount": len(market_seed_rows),
         },
         "sync": {
             "strategy": collapse_ws(args.strategy) or "chunked",
@@ -261,10 +224,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "minifigureCatalogURL": minifigure_catalog_url,
             "chunkManifestURL": chunk_manifest_url,
             "deltaManifestURL": delta_manifest_url,
-            "marketDetailsBaseURL": market_details_base_url,
             "itemCatalogBaseURL": item_catalog_base_url,
-            "marketRefreshDispatchURL": market_refresh_dispatch_url,
-            "marketPriceSeedURL": market_seed_url,
             "marketplaceDealsURL": deals_url,
             "marketplaceDealsFallbackURL": deals_fallback_url,
             "marketCurrencyCode": collapse_ws(args.market_currency_code).upper() or "GBP",
@@ -276,20 +236,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.verbose:
         print(
-            (
-                f"[Artifacts] sets={len(sets)} minifigs={len(minifigs)} "
-                f"delta_sets={len(delta_set_entries)} delta_minifigs={len(delta_minifig_entries)} "
-                f"market_seed_items={len(market_seed_rows)}"
-            ),
+            f"[Artifacts] sets={len(sets)} minifigs={len(minifigs)} delta_sets={len(delta_set_entries)} delta_minifigs={len(delta_minifig_entries)}",
             flush=True,
         )
 
-    print(
-        (
-            f"[Artifacts] wrote {delta_manifest_path} {client_config_path} {market_seed_path}"
-        ),
-        flush=True,
-    )
+    print(f"[Artifacts] wrote {delta_manifest_path} {client_config_path}", flush=True)
     return 0
 
 

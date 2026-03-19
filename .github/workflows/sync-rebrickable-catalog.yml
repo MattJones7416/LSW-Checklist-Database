@@ -69,9 +69,7 @@ jobs:
             "dist/catalog-index.json" \
             "dist/catalog-delta-index.json" \
             "dist/client-config.json" \
-            "dist/market-price-seed.json" \
             "dist/chunks" \
-            "dist/market-details" \
             "dist/catalog" \
             "dist/parts/parts-catalog.json" \
             "dist/parts/set-parts-index.json" \

@@ -7,23 +7,70 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
-# Keep root catalog files small enough for GitHub while leaving rich analytics in
-# dist/market-details/<kind>/<bucket>/<number>.json. These are the fields that
-# dominate size and can be restored from market-details on the next market run.
-COMPACT_MONOLITH_FIELDS = {
-    "BrickLinkCurrentListingsNew",
-    "BrickLinkCurrentListingsUsed",
+LEGACY_MARKET_FIELDS = {
+    "New",
+    "Used",
+    "BrickLinkPriceGuideURL",
+    "BrickLinkMonthlySalesNew",
+    "BrickLinkMonthlySalesUsed",
     "BrickLinkTransactionsNew",
     "BrickLinkTransactionsUsed",
     "BrickLinkTransactionsNewCount",
     "BrickLinkTransactionsUsedCount",
-    "BrickLinkMonthlySalesNew",
-    "BrickLinkMonthlySalesUsed",
+    "PriceForecastMethod",
+    "BrickLinkPriceGuideCurrency",
+    "BrickLink6MSoldNewTimesSold",
+    "BrickLink6MSoldNewTotalQty",
+    "BrickLink6MSoldNewMinPrice",
+    "BrickLink6MSoldNewAvgPrice",
+    "BrickLink6MSoldNewQtyAvgPrice",
+    "BrickLink6MSoldNewMaxPrice",
+    "BrickLink6MSoldUsedTimesSold",
+    "BrickLink6MSoldUsedTotalQty",
+    "BrickLink6MSoldUsedMinPrice",
+    "BrickLink6MSoldUsedAvgPrice",
+    "BrickLink6MSoldUsedQtyAvgPrice",
+    "BrickLink6MSoldUsedMaxPrice",
+    "BrickLinkCurrentNewTotalLots",
+    "BrickLinkCurrentNewTotalQty",
+    "BrickLinkCurrentNewMinPrice",
+    "BrickLinkCurrentNewAvgPrice",
+    "BrickLinkCurrentNewQtyAvgPrice",
+    "BrickLinkCurrentNewMaxPrice",
+    "BrickLinkCurrentUsedTotalLots",
+    "BrickLinkCurrentUsedTotalQty",
+    "BrickLinkCurrentUsedMinPrice",
+    "BrickLinkCurrentUsedAvgPrice",
+    "BrickLinkCurrentUsedQtyAvgPrice",
+    "BrickLinkCurrentUsedMaxPrice",
+    "BrickLinkLatestSaleNewMonth",
+    "BrickLinkLatestSaleNewPrice",
+    "BrickLinkLatestSaleUsedMonth",
+    "BrickLinkLatestSaleUsedPrice",
+    "CurrentNewVsRRPPercent",
+    "CurrentNewVsRRPAmount",
+    "PriceForecast2YNew",
+    "PriceForecast5YNew",
+    "PriceForecast2YUsed",
+    "PriceForecast5YUsed",
+    "BrickLinkNewPriceRangeMin",
+    "BrickLinkNewPriceRangeMax",
+    "BrickLinkUsedPriceRangeMin",
+    "BrickLinkUsedPriceRangeMax",
+    "BrickLinkCurrentListingsNew",
+    "BrickLinkCurrentListingsUsed",
+    "PriceTrendAnnualizedNewPercent",
+    "PriceTrendAnnualizedUsedPercent",
+    "BrickLinkSoldPriceNew",
+    "BrickLinkSoldPriceUsed",
+    "MarketFetchStatus",
+    "MarketLastUpdatedUTC",
+    "MarketNoDataRetryAfterUTC",
 }
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Strip heavy market-detail fields from release monolith JSON files.")
+    parser = argparse.ArgumentParser(description="Strip legacy market fields from release monolith JSON files.")
     parser.add_argument("--sets-json", default="dist/Lego Star Wars Database.json")
     parser.add_argument("--minifigs-json", default="dist/Lego-Star-Wars-Minifigure-Database.json")
     return parser.parse_args()
@@ -39,7 +86,7 @@ def load_rows(path: Path) -> List[Dict[str, Any]]:
 def compact_rows(rows: List[Dict[str, Any]]) -> int:
     removed = 0
     for row in rows:
-        for field in COMPACT_MONOLITH_FIELDS:
+        for field in LEGACY_MARKET_FIELDS:
             if field in row:
                 row.pop(field, None)
                 removed += 1

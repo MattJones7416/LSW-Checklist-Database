@@ -415,8 +415,6 @@ def build_set_parts(
             "is_spare": as_bool(row.get("is_spare", "")),
             "image_url": image_url or None,
             "bricklink_part_num": part_num,
-            "market_price_new": None,
-            "market_price_used": None,
         }
         inventory_part_rows[inventory_id].append(entry)
 
@@ -500,9 +498,6 @@ def write_outputs(
         catalog_rows.append(
             {
                 **base_row,
-                "market_price_new": existing.get("market_price_new"),
-                "market_price_used": existing.get("market_price_used"),
-                "MarketLastUpdatedUTC": existing.get("MarketLastUpdatedUTC"),
                 "CatalogDateAddedUTC": added_at,
                 "CatalogLastUpdatedUTC": updated_at,
             }

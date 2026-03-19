@@ -40,58 +40,19 @@ fetch_csv "part_categories.csv.gz"
 fetch_csv "colors.csv.gz"
 fetch_csv "inventory_parts.csv.gz"
 
-python3 scripts/bootstrap_rebrickable_catalog.py \
-  --rebrickable-dir "${REBRICKABLE_DIR}" \
-  --sets-json "${SETS_JSON}" \
-  --themes-json "${THEMES_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --fill-missing-fields \
-  --refresh-existing-fields \
-  "${EXTRA_ARGS[@]}"
+python3 scripts/bootstrap_rebrickable_catalog.py           --rebrickable-dir "${REBRICKABLE_DIR}"           --sets-json "${SETS_JSON}"           --themes-json "${THEMES_JSON}"           --minifigs-json "${MINIFIGS_JSON}"           --fill-missing-fields           --refresh-existing-fields           "${EXTRA_ARGS[@]}"
 
-python3 scripts/build_parts_inventory_from_rebrickable.py \
-  --rebrickable-dir "${REBRICKABLE_DIR}" \
-  --sets-json "${SETS_JSON}" \
-  --output-dir "${PARTS_OUTPUT_DIR}"
+python3 scripts/build_parts_inventory_from_rebrickable.py           --rebrickable-dir "${REBRICKABLE_DIR}"           --sets-json "${SETS_JSON}"           --output-dir "${PARTS_OUTPUT_DIR}"
 
-rm -rf "dist/chunks"
+rm -rf "dist/chunks" "dist/market-details" "dist/market-sync-state.json" "dist/market-price-seed.json"
+rm -f "${PARTS_OUTPUT_DIR}/piece-live-pricing.json" "${PARTS_OUTPUT_DIR}/piece-live-pricing-state.json"
 
-python3 scripts/split_catalog_chunks.py \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --output-dir "dist/chunks" \
-  --manifest-path "dist/catalog-index.json" \
-  --base-url "${DIST_BASE_URL}" \
-  --market-details-dir "dist/market-details" \
-  --strip-market-detail-fields \
-  --max-items-per-chunk 800
+python3 scripts/compact_release_monoliths.py           --sets-json "${SETS_JSON}"           --minifigs-json "${MINIFIGS_JSON}"
 
-python3 scripts/build_sync_artifacts.py \
-  --manifest-path "dist/catalog-index.json" \
-  --sync-state-path "dist/sync-state.json" \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --delta-manifest-path "dist/catalog-delta-index.json" \
-  --client-config-path "dist/client-config.json" \
-  --market-price-seed-path "dist/market-price-seed.json" \
-  --base-url "${DIST_BASE_URL}" \
-  --market-currency-code "${MARKET_CURRENCY_CODE}" \
-  "${EXTRA_ARGS[@]}"
+python3 scripts/split_catalog_chunks.py           --sets-json "${SETS_JSON}"           --minifigs-json "${MINIFIGS_JSON}"           --output-dir "dist/chunks"           --manifest-path "dist/catalog-index.json"           --base-url "${DIST_BASE_URL}"           --max-items-per-chunk 800
 
-python3 scripts/build_item_folder_catalog.py \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}" \
-  --parts-json "${PARTS_OUTPUT_DIR}/parts-catalog.json" \
-  --set-parts-index-json "${PARTS_OUTPUT_DIR}/set-parts-index.json" \
-  --set-parts-dir "${PARTS_OUTPUT_DIR}/set-parts" \
-  --market-details-dir "dist/market-details" \
-  --piece-live-pricing-json "${PARTS_OUTPUT_DIR}/piece-live-pricing.json" \
-  --output-dir "dist/catalog" \
-  --full-rebuild \
-  "${EXTRA_ARGS[@]}"
+python3 scripts/build_sync_artifacts.py           --manifest-path "dist/catalog-index.json"           --sync-state-path "dist/sync-state.json"           --sets-json "${SETS_JSON}"           --minifigs-json "${MINIFIGS_JSON}"           --delta-manifest-path "dist/catalog-delta-index.json"           --client-config-path "dist/client-config.json"           --base-url "${DIST_BASE_URL}"           --market-currency-code "${MARKET_CURRENCY_CODE}"           "${EXTRA_ARGS[@]}"
 
-python3 scripts/compact_release_monoliths.py \
-  --sets-json "${SETS_JSON}" \
-  --minifigs-json "${MINIFIGS_JSON}"
+python3 scripts/build_item_folder_catalog.py           --sets-json "${SETS_JSON}"           --minifigs-json "${MINIFIGS_JSON}"           --parts-json "${PARTS_OUTPUT_DIR}/parts-catalog.json"           --set-parts-index-json "${PARTS_OUTPUT_DIR}/set-parts-index.json"           --set-parts-dir "${PARTS_OUTPUT_DIR}/set-parts"           --output-dir "dist/catalog"           --full-rebuild           "${EXTRA_ARGS[@]}"
 
-echo "[Sync] Rebrickable catalog + parts + chunk rebuild complete."
+echo "[Sync] Rebrickable catalog + parts + chunk rebuild complete. Market data now comes only from external item imports."
