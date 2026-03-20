@@ -1,0 +1,449 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "10328-1",
+  "updatedAtUTC": "2026-03-20T11:36:41.525Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=10328-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=10328-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 3.26,
+      "avgPrice": 42.19,
+      "maxPrice": 77.74
+    },
+    "used": {
+      "minPrice": 4.5,
+      "avgPrice": 21.28,
+      "maxPrice": 30.24
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 23.26,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 27.76,
+        "totalQty": 4,
+        "timesSold": 4
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 29.25,
+        "totalQty": 18,
+        "timesSold": 9
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 24.5,
+        "totalQty": 27,
+        "timesSold": 10
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 26.68,
+        "totalQty": 10,
+        "timesSold": 9
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "avgPrice": 26.21,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 10.9,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 18.6,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 15.83,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 21.2,
+        "totalQty": 3,
+        "timesSold": 3
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 21.78,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 24.75,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 25.2,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 26.33,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 29.44,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 30.08,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 21.29,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 24.8,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 25.31,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 25.83,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 5,
+        "quantity": 5,
+        "price": 26.07,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 29.01,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 7,
+        "quantity": 5,
+        "price": 31.69,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 8,
+        "quantity": 2,
+        "price": 36.0,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 43.3,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 19.88,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 20.68,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 3,
+        "quantity": 5,
+        "price": 20.77,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 4,
+        "quantity": 2,
+        "price": 21.04,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 5,
+        "quantity": 5,
+        "price": 21.17,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 6,
+        "quantity": 9,
+        "price": 21.25,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 22.0,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 24.29,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 25.86,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 48.04,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 20.97,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 2,
+        "price": 21.49,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 22.12,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 22.12,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 23.79,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 26.67,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 28.2,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 31.93,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 42.81,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 26.21,
+        "currencyCode": "GBP"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 10.9,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 18.6,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 12.8,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 18.85,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 14.8,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 18.79,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 30.0,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-03",
+      "price": 23.26
+    },
+    "used": {
+      "month": "2026-02",
+      "price": 10.9
+    }
+  }
+}

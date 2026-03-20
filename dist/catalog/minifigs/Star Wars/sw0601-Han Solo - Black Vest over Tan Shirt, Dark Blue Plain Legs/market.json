@@ -1,0 +1,414 @@
+{
+  "version": 1,
+  "itemType": "minifig",
+  "number": "sw0601",
+  "updatedAtUTC": "2026-03-19T19:13:14.077Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?M=sw0601",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?M=sw0601",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 43.42,
+      "avgPrice": 121.69,
+      "maxPrice": 431.83
+    },
+    "used": {
+      "minPrice": 22.29,
+      "avgPrice": 42.7,
+      "maxPrice": 245.69
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 58.88,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 81.87,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 83.82,
+        "totalQty": 3,
+        "timesSold": 3
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 80.12,
+        "totalQty": 6,
+        "timesSold": 2
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 35.12,
+        "totalQty": 3,
+        "timesSold": 3
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 116.19,
+        "totalQty": 2,
+        "timesSold": 2
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 45.29,
+        "totalQty": 5,
+        "timesSold": 5
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 31.27,
+        "totalQty": 7,
+        "timesSold": 7
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 38.52,
+        "totalQty": 4,
+        "timesSold": 4
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 23.87,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 34.67,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 29.43,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2022-11",
+        "monthLabel": "November 2022",
+        "avgPrice": 49.8,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 58.88,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 81.87,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 42.15,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 104.19,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 105.12,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 5,
+        "price": 62.94,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 97.29,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 10.85,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 47.06,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 47.44,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 113.23,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 119.15,
+        "currencyCode": "PLN"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 26.66,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 34.18,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 36.27,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 55.17,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 74.17,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 25.05,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 26.8,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 30.72,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 31.86,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 31.97,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 35.7,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 36.83,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 32.49,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 34.25,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 37.04,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 50.31,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 23.37,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 24.37,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 29.66,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 39.68,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 27.31,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 31.55,
+        "currencyCode": "PLN"
+      },
+      {
+        "month": "2022-11",
+        "monthLabel": "November 2022",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 49.8,
+        "currencyCode": "PLN"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-03",
+      "price": 58.88
+    },
+    "used": {
+      "month": "2026-03",
+      "price": 45.29
+    }
+  }
+}

@@ -1,0 +1,1394 @@
+{
+  "version": 1,
+  "itemType": "minifig",
+  "number": "sw0490",
+  "updatedAtUTC": "2026-03-19T19:46:10.442Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?M=sw0490",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?M=sw0490",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 45.84,
+      "avgPrice": 79.49,
+      "maxPrice": 207.77
+    },
+    "used": {
+      "minPrice": 28.04,
+      "avgPrice": 54.93,
+      "maxPrice": 142.46
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 58.23,
+        "totalQty": 10,
+        "timesSold": 8
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 63.1,
+        "totalQty": 10,
+        "timesSold": 7
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 67.2,
+        "totalQty": 12,
+        "timesSold": 11
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 55.21,
+        "totalQty": 9,
+        "timesSold": 9
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 63.11,
+        "totalQty": 9,
+        "timesSold": 9
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 53.87,
+        "totalQty": 7,
+        "timesSold": 7
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "avgPrice": 59.99,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2023-07",
+        "monthLabel": "July 2023",
+        "avgPrice": 27.17,
+        "totalQty": 5,
+        "timesSold": 3
+      },
+      {
+        "month": "2019-10",
+        "monthLabel": "October 2019",
+        "avgPrice": 12.0,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 50.79,
+        "totalQty": 8,
+        "timesSold": 7
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 49.68,
+        "totalQty": 18,
+        "timesSold": 18
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 46.81,
+        "totalQty": 16,
+        "timesSold": 16
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 44.77,
+        "totalQty": 19,
+        "timesSold": 19
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 42.6,
+        "totalQty": 18,
+        "timesSold": 16
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 46.1,
+        "totalQty": 15,
+        "timesSold": 15
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "avgPrice": 39.53,
+        "totalQty": 6,
+        "timesSold": 6
+      },
+      {
+        "month": "2017-12",
+        "monthLabel": "December 2017",
+        "avgPrice": 14.99,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 42.64,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 51.11,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 55.19,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 55.19,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 5,
+        "quantity": 2,
+        "price": 55.45,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 58.12,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 7,
+        "quantity": 2,
+        "price": 69.17,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 79.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 42.27,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 2,
+        "quantity": 4,
+        "price": 49.88,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 68.13,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 68.41,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 75.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 78.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 45.57,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 50.35,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 52.26,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 58.59,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 61.97,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 62.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 62.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 63.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 67.49,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 10,
+        "quantity": 2,
+        "price": 69.98,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 143.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 44.31,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 49.21,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 52.45,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 55.69,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 55.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 57.65,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 58.64,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 62.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 51.09,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 59.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 61.8,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 62.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 65.6,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 67.49,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 79.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 30.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 49.06,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 53.78,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 56.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 59.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 60.79,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 67.49,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 59.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-07",
+        "monthLabel": "July 2023",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 26.71,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-07",
+        "monthLabel": "July 2023",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 26.71,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-07",
+        "monthLabel": "July 2023",
+        "sequence": 3,
+        "quantity": 3,
+        "price": 28.08,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2019-10",
+        "monthLabel": "October 2019",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 12.0,
+        "currencyCode": "US $"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 45.4,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 49.82,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 3,
+        "quantity": 2,
+        "price": 49.96,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 51.43,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 52.28,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 53.12,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 53.54,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 29.59,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 35.14,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 38.21,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 39.39,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 40.01,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 41.51,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 42.26,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 43.54,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 44.55,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 45.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 48.91,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 12,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 13,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 14,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 15,
+        "quantity": 1,
+        "price": 64.6,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 16,
+        "quantity": 1,
+        "price": 64.79,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 17,
+        "quantity": 1,
+        "price": 67.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 18,
+        "quantity": 1,
+        "price": 68.73,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 34.1,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 34.32,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 38.46,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 40.97,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 41.09,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 41.4,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 41.66,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 41.96,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 42.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 44.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 50.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 12,
+        "quantity": 1,
+        "price": 53.76,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 13,
+        "quantity": 1,
+        "price": 54.85,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 14,
+        "quantity": 1,
+        "price": 59.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 15,
+        "quantity": 1,
+        "price": 63.41,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 16,
+        "quantity": 1,
+        "price": 65.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 32.13,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 38.71,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 40.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 40.06,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 40.48,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 40.5,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 40.53,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 41.17,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 41.74,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 41.76,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 42.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 12,
+        "quantity": 1,
+        "price": 44.49,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 13,
+        "quantity": 1,
+        "price": 45.05,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 14,
+        "quantity": 1,
+        "price": 45.44,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 15,
+        "quantity": 1,
+        "price": 48.36,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 16,
+        "quantity": 1,
+        "price": 53.11,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 17,
+        "quantity": 1,
+        "price": 55.07,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 18,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 19,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 33.27,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 37.11,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 38.38,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 38.66,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 39.24,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 39.75,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 39.75,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 8,
+        "quantity": 2,
+        "price": 39.75,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 9,
+        "quantity": 2,
+        "price": 40.26,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 40.77,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 45.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 12,
+        "quantity": 1,
+        "price": 45.76,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 13,
+        "quantity": 1,
+        "price": 48.37,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 14,
+        "quantity": 1,
+        "price": 49.75,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 15,
+        "quantity": 1,
+        "price": 50.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 16,
+        "quantity": 1,
+        "price": 55.79,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 32.09,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 39.85,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 40.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 40.3,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 40.88,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 41.79,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 7,
+        "quantity": 1,
+        "price": 42.67,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 8,
+        "quantity": 1,
+        "price": 43.42,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 9,
+        "quantity": 1,
+        "price": 45.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 10,
+        "quantity": 1,
+        "price": 46.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 11,
+        "quantity": 1,
+        "price": 46.45,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 12,
+        "quantity": 1,
+        "price": 50.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 13,
+        "quantity": 1,
+        "price": 58.59,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 14,
+        "quantity": 1,
+        "price": 60.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 15,
+        "quantity": 1,
+        "price": 64.53,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 23.46,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 37.4,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 38.66,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 4,
+        "quantity": 1,
+        "price": 43.17,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 5,
+        "quantity": 1,
+        "price": 47.16,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 6,
+        "quantity": 1,
+        "price": 47.33,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2017-12",
+        "monthLabel": "December 2017",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 14.99,
+        "currencyCode": "US $"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-03",
+      "price": 58.23
+    },
+    "used": {
+      "month": "2026-03",
+      "price": 50.79
+    }
+  }
+}

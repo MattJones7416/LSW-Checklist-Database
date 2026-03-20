@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "BL19002-1",
+  "updatedAtUTC": "2026-03-20T12:13:06.687Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=BL19002-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=BL19002-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 365.56,
+      "avgPrice": 511.97,
+      "maxPrice": 699.0
+    },
+    "used": {
+      "minPrice": 364.62,
+      "avgPrice": 568.77,
+      "maxPrice": 772.92
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 361.7,
+        "totalQty": 3,
+        "timesSold": 3
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 359.29,
+        "totalQty": 3,
+        "timesSold": 3
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 358.11,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 363.5,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 363.5,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 348.57,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 363.51,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 3,
+        "quantity": 1,
+        "price": 365.78,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-01",
+      "price": 361.7
+    }
+  }
+}

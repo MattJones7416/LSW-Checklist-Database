@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "213-1",
+  "updatedAtUTC": "2026-03-20T12:42:01.086Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=213-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=213-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 187.98,
+      "avgPrice": 187.98,
+      "maxPrice": 187.98
+    },
+    "used": {
+      "minPrice": 3.89,
+      "avgPrice": 7.31,
+      "maxPrice": 11.85
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2024-09",
+        "monthLabel": "September 2024",
+        "avgPrice": 76.23,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 5.33,
+        "totalQty": 2,
+        "timesSold": 2
+      },
+      {
+        "month": "2024-04",
+        "monthLabel": "April 2024",
+        "avgPrice": 5.84,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2024-09",
+        "monthLabel": "September 2024",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 76.23,
+        "currencyCode": "GBP"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 4.37,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 6.3,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2024-04",
+        "monthLabel": "April 2024",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 5.84,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2024-09",
+      "price": 76.23
+    },
+    "used": {
+      "month": "2026-02",
+      "price": 5.33
+    }
+  }
+}

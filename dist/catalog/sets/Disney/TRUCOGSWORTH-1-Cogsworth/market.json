@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "TRUCOGSWORTH-1",
+  "updatedAtUTC": "2026-03-20T12:17:48.878Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=TRUCOGSWORTH-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=TRUCOGSWORTH-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 3.48,
+      "avgPrice": 3.48,
+      "maxPrice": 3.48
+    },
+    "used": {
+      "minPrice": 3.48,
+      "avgPrice": 7.04,
+      "maxPrice": 13.05
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 4.3,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 4.3,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2025-11",
+      "price": 4.3
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "itemType": "minifig",
+  "number": "sw1005",
+  "updatedAtUTC": "2026-03-19T20:22:39.391Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?M=sw1005",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?M=sw1005",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 1350.0,
+      "avgPrice": 1676.99,
+      "maxPrice": 2200.0
+    },
+    "used": {
+      "minPrice": 1899.0,
+      "avgPrice": 2028.45,
+      "maxPrice": 2157.9
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 1200.0,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 1500.0,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 1585.57,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 1201.99,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2023-05",
+        "monthLabel": "May 2023",
+        "avgPrice": 593.5,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2019-08",
+        "monthLabel": "August 2019",
+        "avgPrice": 38.91,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 1600.0,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 1540.11,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 1552.78,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2023-11",
+        "monthLabel": "November 2023",
+        "avgPrice": 656.82,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2023-10",
+        "monthLabel": "October 2023",
+        "avgPrice": 633.23,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1200.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1500.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1585.57,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1201.99,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-05",
+        "monthLabel": "May 2023",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 593.5,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2019-08",
+        "monthLabel": "August 2019",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 38.91,
+        "currencyCode": "US $"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1600.0,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1540.11,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 1552.78,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-11",
+        "monthLabel": "November 2023",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 656.82,
+        "currencyCode": "US $"
+      },
+      {
+        "month": "2023-10",
+        "monthLabel": "October 2023",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 633.23,
+        "currencyCode": "US $"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-03",
+      "price": 1200.0
+    },
+    "used": {
+      "month": "2026-02",
+      "price": 1600.0
+    }
+  }
+}

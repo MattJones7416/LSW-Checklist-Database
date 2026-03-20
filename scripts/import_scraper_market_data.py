@@ -26,6 +26,21 @@ def normalize_piece_key(part_num: Any) -> str:
     return collapse_ws(part_num).lower()
 
 
+def normalize_scraper_item_type(value: Any) -> str:
+    raw = collapse_ws(value).lower()
+    mapping = {
+        "s": "set",
+        "set": "set",
+        "m": "minifig",
+        "minifig": "minifig",
+        "minifigure": "minifig",
+        "p": "part",
+        "part": "part",
+        "piece": "part",
+    }
+    return mapping.get(raw, "")
+
+
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Import normalized market.json files from the standalone scraper output.")
     parser.add_argument("--scraper-dist-dir", required=True, help="Path to the scraper dist directory.")
@@ -377,7 +392,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         except Exception:
             skipped += 1
             continue
-        item_type = collapse_ws(data.get("itemType")).lower()
+        item_type = normalize_scraper_item_type(data.get("itemType") or data.get("itemTypeLabel"))
         if item_type == "set":
             key = normalize_set_code(data.get("itemNo"))
             payload = normalize_set_or_minifig_payload(data, "set")

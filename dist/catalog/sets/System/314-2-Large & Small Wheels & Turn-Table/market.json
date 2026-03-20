@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "314-1",
+  "updatedAtUTC": "2026-03-20T11:20:59.270Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=314-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=314-1",
+  "currencyCode": null,
+  "current": {
+    "used": {
+      "minPrice": 6.71,
+      "avgPrice": 15.18,
+      "maxPrice": 37.6
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 11.24,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 10.97,
+        "totalQty": 2,
+        "timesSold": 2
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 11.24,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 8.8,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 13.13,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2026-02",
+      "price": 11.24
+    }
+  }
+}

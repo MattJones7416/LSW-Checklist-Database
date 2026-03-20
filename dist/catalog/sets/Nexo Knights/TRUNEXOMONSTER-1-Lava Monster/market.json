@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "TRUNEXOMONSTER-1",
+  "updatedAtUTC": "2026-03-20T12:17:50.792Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=TRUNEXOMONSTER-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=TRUNEXOMONSTER-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 6.08,
+      "avgPrice": 7.19,
+      "maxPrice": 8.7
+    },
+    "used": {
+      "minPrice": 1.7,
+      "avgPrice": 6.34,
+      "maxPrice": 11.31
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 5.75,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 5.75,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2025-10",
+      "price": 5.75
+    }
+  }
+}

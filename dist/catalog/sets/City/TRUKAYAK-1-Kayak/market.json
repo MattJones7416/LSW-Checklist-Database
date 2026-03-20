@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "TRUKAYAK-1",
+  "updatedAtUTC": "2026-03-20T12:17:49.663Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=TRUKAYAK-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=TRUKAYAK-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 5.21,
+      "avgPrice": 6.72,
+      "maxPrice": 8.23
+    },
+    "used": {
+      "minPrice": 2.32,
+      "avgPrice": 4.91,
+      "maxPrice": 7.34
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 0.9,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 2.69,
+        "totalQty": 2,
+        "timesSold": 2
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 0.9,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 0.92,
+        "currencyCode": "EUR"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 4.45,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2026-01",
+      "price": 0.9
+    }
+  }
+}

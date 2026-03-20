@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "K8605-1",
+  "updatedAtUTC": "2026-03-20T11:14:35.794Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=K8605-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=K8605-1",
+  "currencyCode": null,
+  "current": {
+    "used": {
+      "minPrice": 38.94,
+      "avgPrice": 59.38,
+      "maxPrice": 93.98
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 39.35,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 39.35,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2026-02",
+      "price": 39.35
+    }
+  }
+}

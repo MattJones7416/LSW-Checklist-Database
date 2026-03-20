@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "40749-1",
+  "updatedAtUTC": "2026-03-20T11:52:26.217Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=40749-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=40749-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 16.29,
+      "avgPrice": 22.89,
+      "maxPrice": 45.0
+    },
+    "used": {
+      "minPrice": 7.16,
+      "avgPrice": 10.26,
+      "maxPrice": 13.17
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 14.68,
+        "totalQty": 3,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "avgPrice": 19.05,
+        "totalQty": 2,
+        "timesSold": 2
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 7.81,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 8.83,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 3,
+        "price": 14.68,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 17.19,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-09",
+        "monthLabel": "September 2025",
+        "sequence": 2,
+        "quantity": 1,
+        "price": 20.91,
+        "currencyCode": "GBP"
+      }
+    ],
+    "used": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 7.81,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 8.83,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-02",
+      "price": 14.68
+    },
+    "used": {
+      "month": "2026-01",
+      "price": 7.81
+    }
+  }
+}

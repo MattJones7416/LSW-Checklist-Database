@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "TRULEIA-1",
+  "updatedAtUTC": "2026-03-20T12:17:49.762Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=TRULEIA-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=TRULEIA-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 8.66,
+      "avgPrice": 8.66,
+      "maxPrice": 8.66
+    },
+    "used": {
+      "minPrice": 2.61,
+      "avgPrice": 2.73,
+      "maxPrice": 2.85
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 2.86,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 2.86,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-02",
+      "price": 2.86
+    }
+  }
+}

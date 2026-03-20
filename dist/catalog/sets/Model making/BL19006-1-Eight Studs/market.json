@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "BL19006-1",
+  "updatedAtUTC": "2026-03-20T12:13:20.015Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=BL19006-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=BL19006-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 760.94,
+      "avgPrice": 922.95,
+      "maxPrice": 1171.12
+    }
+  },
+  "history": {
+    "new": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "avgPrice": 642.17,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "new": [
+      {
+        "month": "2026-01",
+        "monthLabel": "January 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 642.17,
+        "currencyCode": "EUR"
+      }
+    ]
+  },
+  "latestSales": {
+    "new": {
+      "month": "2026-01",
+      "price": 642.17
+    }
+  }
+}

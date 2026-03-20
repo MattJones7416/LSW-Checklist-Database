@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "8790-1",
+  "updatedAtUTC": "2026-03-20T14:45:44.087Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=8790-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=8790-1",
+  "currencyCode": null,
+  "current": {
+    "new": {
+      "minPrice": 12.96,
+      "avgPrice": 26.37,
+      "maxPrice": 46.64
+    },
+    "used": {
+      "minPrice": 2.39,
+      "avgPrice": 7.96,
+      "maxPrice": 15.23
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "avgPrice": 6.99,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "avgPrice": 7.86,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "avgPrice": 10.29,
+        "totalQty": 1,
+        "timesSold": 1
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "avgPrice": 7.07,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2026-03",
+        "monthLabel": "March 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 6.99,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2026-02",
+        "monthLabel": "February 2026",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 7.86,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-11",
+        "monthLabel": "November 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 10.29,
+        "currencyCode": "GBP"
+      },
+      {
+        "month": "2025-10",
+        "monthLabel": "October 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 7.07,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2026-03",
+      "price": 6.99
+    }
+  }
+}

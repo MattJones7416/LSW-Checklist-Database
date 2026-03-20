@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "itemType": "set",
+  "number": "K8900-1",
+  "updatedAtUTC": "2026-03-20T11:18:03.498Z",
+  "sourceURL": "https://www.bricklink.com/v2/catalog/catalogitem.page?S=K8900-1",
+  "priceGuideURL": "https://www.bricklink.com/catalogPG.asp?S=K8900-1",
+  "currencyCode": null,
+  "current": {
+    "used": {
+      "minPrice": 90.06,
+      "avgPrice": 90.06,
+      "maxPrice": 90.06
+    }
+  },
+  "history": {
+    "used": [
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "avgPrice": 93.67,
+        "totalQty": 1,
+        "timesSold": 1
+      }
+    ]
+  },
+  "transactions": {
+    "used": [
+      {
+        "month": "2025-12",
+        "monthLabel": "December 2025",
+        "sequence": 1,
+        "quantity": 1,
+        "price": 93.67,
+        "currencyCode": "GBP"
+      }
+    ]
+  },
+  "latestSales": {
+    "used": {
+      "month": "2025-12",
+      "price": 93.67
+    }
+  }
+}
