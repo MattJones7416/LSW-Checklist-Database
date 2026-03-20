@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-18T03:32:44.885192+00:00",
+  "generatedAt": "2026-03-20T03:19:22.621803+00:00",
   "sets": [
     {
       "label": "12V",
@@ -396,7 +396,7 @@
     },
     {
       "label": "BrickHeadz",
-      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz.json",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz-2.json",
       "count": 3,
       "part": 1,
       "parts": 1,
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 433,
+      "count": 434,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2013,7 +2013,7 @@
     {
       "label": "Nike",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/nike.json",
-      "count": 4,
+      "count": 5,
       "part": 1,
       "parts": 1,
       "theme": "Nike"
@@ -2716,7 +2716,7 @@
     },
     {
       "label": "Sonic the Hedgehog",
-      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sonic-the-hedgehog.json",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sonic-the-hedgehog-2.json",
       "count": 1,
       "part": 1,
       "parts": 1,
@@ -3372,7 +3372,7 @@
     },
     {
       "label": "Vidiyo",
-      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vidiyo.json",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/vidiyo-2.json",
       "count": 2,
       "part": 1,
       "parts": 1,
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,11 +6538,10 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28977,
+    "setCount": 28979,
     "minifigureCount": 18197,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
-    "marketDetailCount": 8040,
     "maxItemsPerChunk": 800
   }
 }
