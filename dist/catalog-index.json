@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-21T03:11:20.887962+00:00",
+  "generatedAt": "2026-03-22T03:32:56.037278+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 435,
+      "count": 436,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4959,7 +4959,7 @@
     {
       "label": "Ninjago (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ninjago-p2.json",
-      "count": 108,
+      "count": 109,
       "part": 2,
       "parts": 2,
       "category": "Ninjago"
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,8 +6538,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28980,
-    "minifigureCount": 18197,
+    "setCount": 28981,
+    "minifigureCount": 18198,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
     "maxItemsPerChunk": 800
