@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-25T03:29:52.815782+00:00",
+  "generatedAt": "2026-03-26T03:40:41.020442+00:00",
   "sets": [
     {
       "label": "12V",
@@ -221,7 +221,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
-      "count": 97,
+      "count": 98,
       "part": 1,
       "parts": 1,
       "theme": "Avengers"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 439,
+      "count": 440,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -909,7 +909,7 @@
     {
       "label": "Dreamzzz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dreamzzz.json",
-      "count": 69,
+      "count": 70,
       "part": 1,
       "parts": 1,
       "theme": "Dreamzzz"
@@ -1877,7 +1877,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 203,
+      "count": 204,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2285,7 +2285,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 442,
+      "count": 444,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -4159,7 +4159,7 @@
     {
       "label": "Dreamzzz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/dreamzzz.json",
-      "count": 107,
+      "count": 108,
       "part": 1,
       "parts": 1,
       "category": "Dreamzzz"
@@ -5983,7 +5983,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 443,
+      "count": 444,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6150,8 +6150,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,8 +6538,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28988,
-    "minifigureCount": 18198,
+    "setCount": 28994,
+    "minifigureCount": 18200,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
     "maxItemsPerChunk": 800
