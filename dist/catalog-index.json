@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-28T03:25:06.522922+00:00",
+  "generatedAt": "2026-03-29T03:47:41.001326+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 442,
+      "count": 443,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2989,7 +2989,7 @@
     {
       "label": "tbd",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tbd.json",
-      "count": 18,
+      "count": 17,
       "part": 1,
       "parts": 1,
       "theme": "tbd"
@@ -3045,7 +3045,7 @@
     {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-infinity-saga.json",
-      "count": 57,
+      "count": 58,
       "part": 1,
       "parts": 1,
       "theme": "The Infinity Saga"
@@ -3543,7 +3543,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 185,
+      "count": 186,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -4703,7 +4703,7 @@
     {
       "label": "Legends of Chima",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/legends-of-chima.json",
-      "count": 138,
+      "count": 139,
       "part": 1,
       "parts": 1,
       "category": "Legends of Chima"
@@ -5983,7 +5983,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 444,
+      "count": 442,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,7 +6538,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28998,
+    "setCount": 28999,
     "minifigureCount": 18200,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
