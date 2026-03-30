@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-29T03:47:41.001326+00:00",
+  "generatedAt": "2026-03-30T03:51:33.400357+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 443,
+      "count": 444,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1157,7 +1157,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 697,
+      "count": 698,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 666,
+      "count": 665,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1397,7 +1397,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 554,
+      "count": 555,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1573,7 +1573,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 12,
+      "count": 13,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2285,7 +2285,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 445,
+      "count": 444,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2429,7 +2429,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 125,
+      "count": 126,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -2893,7 +2893,7 @@
     {
       "label": "Storage",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/storage.json",
-      "count": 180,
+      "count": 181,
       "part": 1,
       "parts": 1,
       "theme": "Storage"
@@ -2901,7 +2901,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 403,
+      "count": 404,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -4343,7 +4343,7 @@
     {
       "label": "Friends (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/friends-p2.json",
-      "count": 91,
+      "count": 92,
       "part": 2,
       "parts": 2,
       "category": "Friends"
@@ -5623,7 +5623,7 @@
     {
       "label": "Storage",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/storage.json",
-      "count": 2,
+      "count": 3,
       "part": 1,
       "parts": 1,
       "category": "Storage"
@@ -6150,8 +6150,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6518,8 +6518,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6538,8 +6538,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 28999,
-    "minifigureCount": 18200,
+    "setCount": 29004,
+    "minifigureCount": 18202,
     "setChunkCount": 438,
     "minifigureChunkCount": 324,
     "maxItemsPerChunk": 800
