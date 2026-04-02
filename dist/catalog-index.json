@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-01T03:54:41.164469+00:00",
+  "generatedAt": "2026-04-02T03:36:10.634226+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 446,
+      "count": 447,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1573,7 +1573,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 17,
+      "count": 18,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2611,6 +2611,14 @@
       "theme": "Series 28 Minifigures"
     },
     {
+      "label": "Series 29 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-29-minifigures.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Series 29 Minifigures"
+    },
+    {
       "label": "Series 3 Minifigures",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-3-minifigures.json",
       "count": 18,
@@ -2677,7 +2685,7 @@
     {
       "label": "Service Packs",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/service-packs.json",
-      "count": 373,
+      "count": 374,
       "part": 1,
       "parts": 1,
       "theme": "Service Packs"
@@ -5999,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 442,
+      "count": 443,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6442,6 +6450,7 @@
     "Series 26 Minifigures",
     "Series 27 Minifigures",
     "Series 28 Minifigures",
+    "Series 29 Minifigures",
     "Series 3 Minifigures",
     "Series 4 Minifigures",
     "Series 5 Minifigures",
@@ -6455,8 +6464,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6535,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6555,9 +6564,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29068,
-    "minifigureCount": 18202,
-    "setChunkCount": 439,
+    "setCount": 29073,
+    "minifigureCount": 18203,
+    "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
   }
