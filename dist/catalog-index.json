@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-02T03:36:10.634226+00:00",
+  "generatedAt": "2026-04-03T03:37:52.765656+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 447,
+      "count": 448,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -821,7 +821,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney.json",
-      "count": 87,
+      "count": 89,
       "part": 1,
       "parts": 1,
       "theme": "Disney"
@@ -957,7 +957,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/editions.json",
-      "count": 5,
+      "count": 14,
       "part": 1,
       "parts": 1,
       "theme": "Editions"
@@ -1397,7 +1397,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 556,
+      "count": 557,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -2613,7 +2613,7 @@
     {
       "label": "Series 29 Minifigures",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-29-minifigures.json",
-      "count": 2,
+      "count": 15,
       "part": 1,
       "parts": 1,
       "theme": "Series 29 Minifigures"
@@ -3005,7 +3005,7 @@
     {
       "label": "tbd",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tbd.json",
-      "count": 17,
+      "count": 11,
       "part": 1,
       "parts": 1,
       "theme": "tbd"
@@ -4575,7 +4575,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 206,
+      "count": 210,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -4743,7 +4743,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-ideas-and-cuusoo.json",
-      "count": 251,
+      "count": 256,
       "part": 1,
       "parts": 1,
       "category": "LEGO Ideas and CUUSOO"
@@ -4959,7 +4959,7 @@
     {
       "label": "Nike",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/nike.json",
-      "count": 2,
+      "count": 3,
       "part": 1,
       "parts": 1,
       "category": "Nike"
@@ -5623,7 +5623,7 @@
     {
       "label": "Star Wars (4/4)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p4.json",
-      "count": 485,
+      "count": 488,
       "part": 4,
       "parts": 4,
       "category": "Star Wars"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 443,
+      "count": 442,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6174,8 +6174,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6544,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6564,8 +6564,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29073,
-    "minifigureCount": 18203,
+    "setCount": 29093,
+    "minifigureCount": 18215,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
