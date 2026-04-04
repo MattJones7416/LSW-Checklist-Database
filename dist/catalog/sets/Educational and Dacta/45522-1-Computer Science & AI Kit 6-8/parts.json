@@ -549,6 +549,15 @@
     "bricklink_part_num": "112175pat0001"
   },
   {
+    "part_num": "119190",
+    "name": "Activity Card ? for Science Kits",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "119190"
+  },
+  {
     "part_num": "14720",
     "name": "Technic Beam 3 x 5 Thick [90° Offset Centre Beam Holes]",
     "color_name": "Black",
@@ -855,15 +864,6 @@
     "bricklink_part_num": "6222"
   },
   {
-    "part_num": "6633001",
-    "name": "Activity Card ? for Science Kits",
-    "color_name": "[No Color/Any Color]",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": null,
-    "bricklink_part_num": "6633001"
-  },
-  {
     "part_num": "66789",
     "name": "Plate Round Corners 6 x 6 x 2/3 Circle with Reduced Knobs",
     "color_name": "Light Bluish Gray",
@@ -961,6 +961,51 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4654580.jpg",
     "bricklink_part_num": "99207"
+  },
+  {
+    "part_num": "114253",
+    "name": "USB Cable",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6554054.jpg",
+    "bricklink_part_num": "114253"
+  },
+  {
+    "part_num": "115901",
+    "name": "Control Unit / Remote Control, Science",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/115901p01.png",
+    "bricklink_part_num": "115901"
+  },
+  {
+    "part_num": "118084",
+    "name": "Motor 6 x 6 x 3, Science",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/118084p01.png",
+    "bricklink_part_num": "118084"
+  },
+  {
+    "part_num": "118091",
+    "name": "Motor 10 x 6 x 3, Science",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/118091p01.png",
+    "bricklink_part_num": "118091"
+  },
+  {
+    "part_num": "118092",
+    "name": "Sensor, Colour, Science",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/118092p01.png",
+    "bricklink_part_num": "118092"
   },
   {
     "part_num": "28621",
