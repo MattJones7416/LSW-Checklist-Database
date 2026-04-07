@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-06T03:50:27.202564+00:00",
+  "generatedAt": "2026-04-07T03:41:30.206861+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 447,
+      "count": 448,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 451,
+      "count": 452,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2085,7 +2085,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 172,
+      "count": 173,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -3559,7 +3559,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 186,
+      "count": 188,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -4991,7 +4991,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/non-fiction-books.json",
-      "count": 41,
+      "count": 42,
       "part": 1,
       "parts": 1,
       "category": "Non-fiction Books"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 442,
+      "count": 443,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6174,8 +6174,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6544,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6564,8 +6564,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29100,
-    "minifigureCount": 18215,
+    "setCount": 29103,
+    "minifigureCount": 18219,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800

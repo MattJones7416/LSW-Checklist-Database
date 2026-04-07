@@ -100,7 +100,7 @@
   },
   {
     "part_num": "2477",
-    "name": "Technic Beam 3 x 5 L-Shape with Alternating Holes",
+    "name": "Technic Beam 3 x 5 L-Shape Thick with Alternating Holes",
     "color_name": "Black",
     "quantity": 10,
     "is_spare": false,
@@ -891,6 +891,15 @@
     "bricklink_part_num": "60479"
   },
   {
+    "part_num": "61332",
+    "name": "Technic Pin with Friction Ridges Lengthwise with No Center Slots",
+    "color_name": "Black",
+    "quantity": 2,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6279875.jpg",
+    "bricklink_part_num": "61332"
+  },
+  {
     "part_num": "65304",
     "name": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [2 Lateral Holes, Small Pin Hole]",
     "color_name": "Black",
@@ -990,6 +999,15 @@
     "bricklink_part_num": "78329"
   },
   {
+    "part_num": "89678",
+    "name": "Technic Pin 1/2 with Friction",
+    "color_name": "Red",
+    "quantity": 2,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6378120.jpg",
+    "bricklink_part_num": "89678"
+  },
+  {
     "part_num": "89953c01",
     "name": "Technic Shock Absorber 6.5L with Soft Spring, Tight Coil, Black Piston Rod [Complete Assembly]",
     "color_name": "Light Bluish Gray",
@@ -1015,6 +1033,24 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6084724.jpg",
     "bricklink_part_num": "18575"
+  },
+  {
+    "part_num": "18654",
+    "name": "Technic Pin Connector Round 1L [Beam]",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6121485.jpg",
+    "bricklink_part_num": "18654"
+  },
+  {
+    "part_num": "18654",
+    "name": "Technic Pin Connector Round 1L [Beam]",
+    "color_name": "Orange",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6390380.jpg",
+    "bricklink_part_num": "18654"
   },
   {
     "part_num": "18946",
@@ -1062,6 +1098,24 @@
     "bricklink_part_num": "3005"
   },
   {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302426.jpg",
+    "bricklink_part_num": "3024"
+  },
+  {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302424.jpg",
+    "bricklink_part_num": "3024"
+  },
+  {
     "part_num": "30374",
     "name": "Bar 4L (Lightsaber Blade / Wand)",
     "color_name": "Black",
@@ -1069,6 +1123,24 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6116604.jpg",
     "bricklink_part_num": "30374"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/307001.jpg",
+    "bricklink_part_num": "3070b"
+  },
+  {
+    "part_num": "32002",
+    "name": "Technic Pin 3/4",
+    "color_name": "Tan",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6013938.jpg",
+    "bricklink_part_num": "32002"
   },
   {
     "part_num": "32013",
@@ -1098,6 +1170,24 @@
     "bricklink_part_num": "32034"
   },
   {
+    "part_num": "32123b",
+    "name": "Technic Bush 1/2 Smooth with Axle Hole Semi-Reduced",
+    "color_name": "Light Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6271165.jpg",
+    "bricklink_part_num": "32123b"
+  },
+  {
+    "part_num": "32123b",
+    "name": "Technic Bush 1/2 Smooth with Axle Hole Semi-Reduced",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6271167.jpg",
+    "bricklink_part_num": "32123b"
+  },
+  {
     "part_num": "32524",
     "name": "Technic Beam 1 x 7 Thick",
     "color_name": "Red",
@@ -1118,9 +1208,36 @@
   {
     "part_num": "3713",
     "name": "Technic Bush",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6332148.jpg",
+    "bricklink_part_num": "3713"
+  },
+  {
+    "part_num": "3713",
+    "name": "Technic Bush",
+    "color_name": "Light Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4211622.jpg",
+    "bricklink_part_num": "3713"
+  },
+  {
+    "part_num": "3713",
+    "name": "Technic Bush",
     "color_name": "Red",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4227155.jpg",
+    "bricklink_part_num": "3713"
+  },
+  {
+    "part_num": "3713",
+    "name": "Technic Bush",
+    "color_name": "Red",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4227155.jpg",
     "bricklink_part_num": "3713"
   },
@@ -1294,6 +1411,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6396456.jpg",
     "bricklink_part_num": "89679"
+  },
+  {
+    "part_num": "98138",
+    "name": "Tile Round 1 x 1",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6070714.jpg",
+    "bricklink_part_num": "98138"
   },
   {
     "part_num": "99773",
