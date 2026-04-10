@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-09T03:38:47.254686+00:00",
+  "generatedAt": "2026-04-10T03:52:57.627384+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 454,
+      "count": 455,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 443,
+      "count": 444,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6464,8 +6464,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6544,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6564,8 +6564,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29111,
-    "minifigureCount": 18219,
+    "setCount": 29112,
+    "minifigureCount": 18220,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
