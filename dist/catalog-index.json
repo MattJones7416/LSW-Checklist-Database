@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-10T03:52:57.627384+00:00",
+  "generatedAt": "2026-04-11T03:29:49.795801+00:00",
   "sets": [
     {
       "label": "12V",
@@ -221,7 +221,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
-      "count": 99,
+      "count": 100,
       "part": 1,
       "parts": 1,
       "theme": "Avengers"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 455,
+      "count": 456,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1541,7 +1541,7 @@
     {
       "label": "Jurassic World",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-world.json",
-      "count": 130,
+      "count": 135,
       "part": 1,
       "parts": 1,
       "theme": "Jurassic World"
@@ -1885,7 +1885,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 204,
+      "count": 205,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2069,7 +2069,7 @@
     {
       "label": "One Piece",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/one-piece.json",
-      "count": 8,
+      "count": 14,
       "part": 1,
       "parts": 1,
       "theme": "One Piece"
@@ -2813,7 +2813,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 125,
+      "count": 126,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -4895,7 +4895,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 252,
+      "count": 253,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 444,
+      "count": 443,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6544,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6564,7 +6564,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29112,
+    "setCount": 29127,
     "minifigureCount": 18220,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
