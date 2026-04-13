@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-12T03:55:49.454466+00:00",
+  "generatedAt": "2026-04-13T04:03:21.558034+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 457,
+      "count": 458,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Exclusive",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-exclusive.json",
-      "count": 77,
+      "count": 78,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Exclusive"
@@ -2253,7 +2253,7 @@
     {
       "label": "Powered Up",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/powered-up.json",
-      "count": 15,
+      "count": 19,
       "part": 1,
       "parts": 1,
       "theme": "Powered Up"
@@ -4735,7 +4735,7 @@
     {
       "label": "LEGO Exclusive",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-exclusive.json",
-      "count": 96,
+      "count": 97,
       "part": 1,
       "parts": 1,
       "category": "LEGO Exclusive"
@@ -4991,7 +4991,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/non-fiction-books.json",
-      "count": 42,
+      "count": 43,
       "part": 1,
       "parts": 1,
       "category": "Non-fiction Books"
@@ -5023,7 +5023,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/other.json",
-      "count": 86,
+      "count": 87,
       "part": 1,
       "parts": 1,
       "category": "Other"
@@ -5991,7 +5991,7 @@
     {
       "label": "Universal Building Set",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/universal-building-set.json",
-      "count": 7,
+      "count": 5,
       "part": 1,
       "parts": 1,
       "category": "Universal Building Set"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 443,
+      "count": 445,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6174,8 +6174,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6464,8 +6464,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6544,8 +6544,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6564,8 +6564,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29128,
-    "minifigureCount": 18220,
+    "setCount": 29134,
+    "minifigureCount": 18223,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
