@@ -101,37 +101,10 @@
   {
     "part_num": "3002",
     "name": "Brick 2 x 3",
-    "color_name": "Blue",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300223.jpg",
-    "bricklink_part_num": "3002"
-  },
-  {
-    "part_num": "3002",
-    "name": "Brick 2 x 3",
-    "color_name": "Red",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300221.jpg",
-    "bricklink_part_num": "3002"
-  },
-  {
-    "part_num": "3002",
-    "name": "Brick 2 x 3",
     "color_name": "White",
     "quantity": 2,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/300201.jpg",
-    "bricklink_part_num": "3002"
-  },
-  {
-    "part_num": "3002",
-    "name": "Brick 2 x 3",
-    "color_name": "Yellow",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300224.jpg",
     "bricklink_part_num": "3002"
   },
   {
@@ -141,6 +114,33 @@
     "quantity": 2,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/0/3002.png",
+    "bricklink_part_num": "3002a"
+  },
+  {
+    "part_num": "3002a",
+    "name": "Brick 2 x 3 without Cross Supports",
+    "color_name": "Blue",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/1/3002.png",
+    "bricklink_part_num": "3002a"
+  },
+  {
+    "part_num": "3002a",
+    "name": "Brick 2 x 3 without Cross Supports",
+    "color_name": "Red",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/4/3002.png",
+    "bricklink_part_num": "3002a"
+  },
+  {
+    "part_num": "3002a",
+    "name": "Brick 2 x 3 without Cross Supports",
+    "color_name": "Yellow",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/14/3002.png",
     "bricklink_part_num": "3002a"
   },
   {
