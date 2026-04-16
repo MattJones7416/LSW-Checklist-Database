@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-15T03:53:05.901547+00:00",
+  "generatedAt": "2026-04-16T03:59:41.748806+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 460,
+      "count": 461,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2029,7 +2029,7 @@
     {
       "label": "Ninja",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninja.json",
-      "count": 32,
+      "count": 37,
       "part": 1,
       "parts": 1,
       "theme": "Ninja"
@@ -2293,7 +2293,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 445,
+      "count": 447,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2909,7 +2909,7 @@
     {
       "label": "Storage",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/storage.json",
-      "count": 181,
+      "count": 185,
       "part": 1,
       "parts": 1,
       "theme": "Storage"
@@ -5647,7 +5647,7 @@
     {
       "label": "Storage",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/storage.json",
-      "count": 3,
+      "count": 4,
       "part": 1,
       "parts": 1,
       "category": "Storage"
@@ -6564,8 +6564,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29136,
-    "minifigureCount": 18223,
+    "setCount": 29148,
+    "minifigureCount": 18224,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
