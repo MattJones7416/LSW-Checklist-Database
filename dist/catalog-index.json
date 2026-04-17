@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-16T03:59:41.748806+00:00",
+  "generatedAt": "2026-04-17T03:56:38.132464+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 461,
+      "count": 462,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 669,
+      "count": 671,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1397,7 +1397,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 557,
+      "count": 558,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1885,7 +1885,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 205,
+      "count": 206,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2037,7 +2037,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 653,
+      "count": 654,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2253,7 +2253,7 @@
     {
       "label": "Powered Up",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/powered-up.json",
-      "count": 19,
+      "count": 24,
       "part": 1,
       "parts": 1,
       "theme": "Powered Up"
@@ -2813,7 +2813,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 126,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -3005,7 +3005,7 @@
     {
       "label": "tbd",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tbd.json",
-      "count": 11,
+      "count": 8,
       "part": 1,
       "parts": 1,
       "theme": "tbd"
@@ -3029,7 +3029,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 136,
+      "count": 131,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -3293,7 +3293,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ultimate-collector-series.json",
-      "count": 49,
+      "count": 50,
       "part": 1,
       "parts": 1,
       "theme": "Ultimate Collector Series"
@@ -6174,8 +6174,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6564,7 +6564,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29148,
+    "setCount": 29155,
     "minifigureCount": 18224,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
