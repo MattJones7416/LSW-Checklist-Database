@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-18T03:40:31.466670+00:00",
+  "generatedAt": "2026-04-19T04:00:08.152070+00:00",
   "sets": [
     {
       "label": "12V",
@@ -533,7 +533,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city.json",
-      "count": 309,
+      "count": 310,
       "part": 1,
       "parts": 1,
       "theme": "City"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 463,
+      "count": 464,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -6564,7 +6564,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29156,
+    "setCount": 29158,
     "minifigureCount": 18225,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
