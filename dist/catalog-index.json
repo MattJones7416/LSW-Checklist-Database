@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-21T03:56:57.061493+00:00",
+  "generatedAt": "2026-04-22T03:52:53.395077+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 466,
+      "count": 467,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -701,7 +701,7 @@
     {
       "label": "Database Sets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/database-sets.json",
-      "count": 127,
+      "count": 128,
       "part": 1,
       "parts": 1,
       "theme": "Database Sets"
@@ -1349,7 +1349,7 @@
     {
       "label": "HO 1:87 Vehicles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ho-1-87-vehicles.json",
-      "count": 61,
+      "count": 62,
       "part": 1,
       "parts": 1,
       "theme": "HO 1:87 Vehicles"
@@ -4895,7 +4895,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 254,
+      "count": 255,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6007,7 +6007,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 446,
+      "count": 445,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6464,8 +6464,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6564,7 +6564,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29161,
+    "setCount": 29164,
     "minifigureCount": 18226,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
