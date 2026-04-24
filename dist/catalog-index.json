@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-23T03:58:33.622390+00:00",
+  "generatedAt": "2026-04-24T04:02:28.147771+00:00",
   "sets": [
     {
       "label": "12V",
@@ -165,7 +165,7 @@
     {
       "label": "Architecture",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/architecture.json",
-      "count": 54,
+      "count": 53,
       "part": 1,
       "parts": 1,
       "theme": "Architecture"
@@ -237,7 +237,7 @@
     {
       "label": "Bag and Luggage Tags",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
-      "count": 124,
+      "count": 126,
       "part": 1,
       "parts": 1,
       "theme": "Bag and Luggage Tags"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 468,
+      "count": 469,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1301,7 +1301,7 @@
     {
       "label": "Harry Potter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harry-potter.json",
-      "count": 216,
+      "count": 217,
       "part": 1,
       "parts": 1,
       "theme": "Harry Potter"
@@ -1573,7 +1573,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 18,
+      "count": 21,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2229,7 +2229,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 95,
+      "count": 96,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -2293,7 +2293,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 447,
+      "count": 448,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2885,7 +2885,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 295,
+      "count": 296,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -2893,7 +2893,7 @@
     {
       "label": "Stationery and Office Supplies",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 738,
+      "count": 739,
       "part": 1,
       "parts": 1,
       "theme": "Stationery and Office Supplies"
@@ -2917,7 +2917,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 409,
+      "count": 411,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -6564,7 +6564,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29167,
+    "setCount": 29179,
     "minifigureCount": 18226,
     "setChunkCount": 440,
     "minifigureChunkCount": 325,
