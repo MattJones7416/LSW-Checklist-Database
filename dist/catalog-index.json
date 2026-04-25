@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-24T04:02:28.147771+00:00",
+  "generatedAt": "2026-04-25T03:44:48.480340+00:00",
   "sets": [
     {
       "label": "12V",
@@ -389,7 +389,7 @@
     {
       "label": "Brickheadz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz.json",
-      "count": 193,
+      "count": 194,
       "part": 1,
       "parts": 1,
       "theme": "Brickheadz"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 469,
+      "count": 470,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2691,6 +2691,14 @@
       "theme": "Service Packs"
     },
     {
+      "label": "Shrek",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/shrek.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "Shrek"
+    },
+    {
       "label": "Skylines",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/skylines.json",
       "count": 14,
@@ -3005,7 +3013,7 @@
     {
       "label": "tbd",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tbd.json",
-      "count": 8,
+      "count": 7,
       "part": 1,
       "parts": 1,
       "theme": "tbd"
@@ -6174,8 +6182,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6460,6 +6468,7 @@
     "Series 9 Minifigures",
     "Serious Play",
     "Service Packs",
+    "Shrek",
     "Skylines",
     "Soccer",
     "Sofia the First",
@@ -6564,9 +6573,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29179,
+    "setCount": 29181,
     "minifigureCount": 18226,
-    "setChunkCount": 440,
+    "setChunkCount": 441,
     "minifigureChunkCount": 325,
     "maxItemsPerChunk": 800
   }
