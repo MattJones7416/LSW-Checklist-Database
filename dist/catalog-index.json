@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-27T04:22:54.784541+00:00",
+  "generatedAt": "2026-04-28T04:26:26.706805+00:00",
   "sets": [
     {
       "label": "12V",
@@ -237,7 +237,7 @@
     {
       "label": "Bag and Luggage Tags",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
-      "count": 126,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "theme": "Bag and Luggage Tags"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 472,
+      "count": 473,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -821,7 +821,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney.json",
-      "count": 89,
+      "count": 88,
       "part": 1,
       "parts": 1,
       "theme": "Disney"
@@ -1573,7 +1573,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 21,
+      "count": 24,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -3245,7 +3245,7 @@
     {
       "label": "Toy Story",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/toy-story.json",
-      "count": 28,
+      "count": 29,
       "part": 1,
       "parts": 1,
       "theme": "Toy Story"
@@ -3903,7 +3903,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/city.json",
-      "count": 635,
+      "count": 636,
       "part": 1,
       "parts": 1,
       "category": "City"
@@ -5397,6 +5397,14 @@
       "category": "Series 28 Minifigures"
     },
     {
+      "label": "Series 29 Minifigures",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/series-29-minifigures.json",
+      "count": 12,
+      "part": 1,
+      "parts": 1,
+      "category": "Series 29 Minifigures"
+    },
+    {
       "label": "Series 3 Minifigures",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/series-3-minifigures.json",
       "count": 11,
@@ -5631,7 +5639,7 @@
     {
       "label": "Star Wars (4/4)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p4.json",
-      "count": 490,
+      "count": 495,
       "part": 4,
       "parts": 4,
       "category": "Star Wars"
@@ -6473,8 +6481,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6553,8 +6561,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6573,10 +6581,10 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29203,
-    "minifigureCount": 18228,
+    "setCount": 29210,
+    "minifigureCount": 18246,
     "setChunkCount": 441,
-    "minifigureChunkCount": 325,
+    "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
   }
 }
