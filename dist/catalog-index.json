@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-28T04:26:26.706805+00:00",
+  "generatedAt": "2026-04-29T04:22:23.373745+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 450,
+      "count": 451,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 473,
+      "count": 474,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1437,7 +1437,7 @@
     {
       "label": "Ideas Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ideas-books.json",
-      "count": 126,
+      "count": 127,
       "part": 1,
       "parts": 1,
       "theme": "Ideas Books"
@@ -2901,7 +2901,7 @@
     {
       "label": "Stationery and Office Supplies",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 756,
+      "count": 765,
       "part": 1,
       "parts": 1,
       "theme": "Stationery and Office Supplies"
@@ -6190,8 +6190,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6561,8 +6561,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6581,7 +6581,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29210,
+    "setCount": 29222,
     "minifigureCount": 18246,
     "setChunkCount": 441,
     "minifigureChunkCount": 326,
