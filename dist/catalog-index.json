@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-01T04:40:21.115295+00:00",
+  "generatedAt": "2026-05-02T04:03:40.560598+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 476,
+      "count": 477,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4127,7 +4127,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/disney.json",
-      "count": 127,
+      "count": 128,
       "part": 1,
       "parts": 1,
       "category": "Disney"
@@ -4207,7 +4207,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/editions.json",
-      "count": 1,
+      "count": 9,
       "part": 1,
       "parts": 1,
       "category": "Editions"
@@ -5927,7 +5927,7 @@
     {
       "label": "Toy Story",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/toy-story.json",
-      "count": 34,
+      "count": 35,
       "part": 1,
       "parts": 1,
       "category": "Toy Story"
@@ -5975,7 +5975,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ultimate-collector-series.json",
-      "count": 123,
+      "count": 124,
       "part": 1,
       "parts": 1,
       "category": "Ultimate Collector Series"
@@ -6481,8 +6481,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6561,8 +6561,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6581,8 +6581,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29229,
-    "minifigureCount": 18246,
+    "setCount": 29230,
+    "minifigureCount": 18257,
     "setChunkCount": 441,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
