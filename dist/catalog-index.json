@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-02T04:03:40.560598+00:00",
+  "generatedAt": "2026-05-03T04:33:01.437780+00:00",
   "sets": [
     {
       "label": "12V",
@@ -117,7 +117,7 @@
     {
       "label": "Animal Crossing",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/animal-crossing.json",
-      "count": 18,
+      "count": 19,
       "part": 1,
       "parts": 1,
       "theme": "Animal Crossing"
@@ -509,7 +509,7 @@
     {
       "label": "Chinese Traditional Festivals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/chinese-traditional-festivals.json",
-      "count": 35,
+      "count": 37,
       "part": 1,
       "parts": 1,
       "theme": "Chinese Traditional Festivals"
@@ -533,7 +533,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city.json",
-      "count": 310,
+      "count": 311,
       "part": 1,
       "parts": 1,
       "theme": "City"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 477,
+      "count": 478,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -821,7 +821,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/disney.json",
-      "count": 88,
+      "count": 89,
       "part": 1,
       "parts": 1,
       "theme": "Disney"
@@ -1197,7 +1197,7 @@
     {
       "label": "Gabby's Dollhouse",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gabby-s-dollhouse.json",
-      "count": 10,
+      "count": 12,
       "part": 1,
       "parts": 1,
       "theme": "Gabby's Dollhouse"
@@ -1805,7 +1805,7 @@
     {
       "label": "Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel.json",
-      "count": 14,
+      "count": 15,
       "part": 1,
       "parts": 1,
       "theme": "Marvel"
@@ -2229,7 +2229,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 96,
+      "count": 97,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -2437,7 +2437,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 126,
+      "count": 124,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -2613,7 +2613,7 @@
     {
       "label": "Series 29 Minifigures",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/series-29-minifigures.json",
-      "count": 15,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "theme": "Series 29 Minifigures"
@@ -2733,7 +2733,7 @@
     {
       "label": "Sonic The Hedgehog",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/sonic-the-hedgehog.json",
-      "count": 23,
+      "count": 25,
       "part": 1,
       "parts": 1,
       "theme": "Sonic The Hedgehog"
@@ -2789,7 +2789,7 @@
     {
       "label": "Speed Champions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/speed-champions.json",
-      "count": 102,
+      "count": 103,
       "part": 1,
       "parts": 1,
       "theme": "Speed Champions"
@@ -2893,7 +2893,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 297,
+      "count": 300,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -2989,7 +2989,7 @@
     {
       "label": "Supplemental",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/supplemental.json",
-      "count": 362,
+      "count": 363,
       "part": 1,
       "parts": 1,
       "theme": "Supplemental"
@@ -3037,7 +3037,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 132,
+      "count": 136,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -6190,8 +6190,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6561,8 +6561,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6581,7 +6581,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29230,
+    "setCount": 29250,
     "minifigureCount": 18257,
     "setChunkCount": 441,
     "minifigureChunkCount": 326,
