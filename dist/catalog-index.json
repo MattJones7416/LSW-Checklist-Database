@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-04T04:31:53.533043+00:00",
+  "generatedAt": "2026-05-05T04:00:38.517589+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 479,
+      "count": 480,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -661,7 +661,7 @@
     {
       "label": "Creator",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/creator.json",
-      "count": 246,
+      "count": 247,
       "part": 1,
       "parts": 1,
       "theme": "Creator"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 671,
+      "count": 672,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1285,7 +1285,7 @@
     {
       "label": "Halloween",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/halloween.json",
-      "count": 43,
+      "count": 44,
       "part": 1,
       "parts": 1,
       "theme": "Halloween"
@@ -1481,6 +1481,14 @@
       "part": 1,
       "parts": 1,
       "theme": "Iron Man"
+    },
+    {
+      "label": "Iron Man and His Awesome Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/iron-man-and-his-awesome-friends.json",
+      "count": 2,
+      "part": 1,
+      "parts": 1,
+      "theme": "Iron Man and His Awesome Friends"
     },
     {
       "label": "Island Xtreme Stunts",
@@ -2085,7 +2093,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 174,
+      "count": 175,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -2837,7 +2845,7 @@
     {
       "label": "Spidey and His Amazing Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spidey-and-his-amazing-friends.json",
-      "count": 18,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "theme": "Spidey and His Amazing Friends"
@@ -2893,7 +2901,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 302,
+      "count": 305,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -6326,6 +6334,7 @@
     "Insectoids",
     "Inventor",
     "Iron Man",
+    "Iron Man and His Awesome Friends",
     "Island Xtreme Stunts",
     "Jack Stone",
     "Jake and the Never Land Pirates",
@@ -6481,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6561,8 +6570,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6581,9 +6590,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29301,
+    "setCount": 29309,
     "minifigureCount": 18257,
-    "setChunkCount": 441,
+    "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
   }
