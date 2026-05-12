@@ -474,7 +474,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6464427.jpg",
-    "bricklink_part_num": "28621pr0021"
+    "bricklink_part_num": "28621pr0021",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016580"
   },
   {
     "part_num": "29119",
@@ -537,7 +539,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6223917.jpg",
-    "bricklink_part_num": "35701"
+    "bricklink_part_num": "35701",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016580"
   },
   {
     "part_num": "3626cpr1966",
@@ -546,7 +550,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6153335.jpg",
-    "bricklink_part_num": "3626cpr1966"
+    "bricklink_part_num": "3626cpr1966",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016937"
   },
   {
     "part_num": "3626cpr2948",
@@ -555,7 +561,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6270320.jpg",
-    "bricklink_part_num": "3626cpr2948"
+    "bricklink_part_num": "3626cpr2948",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016582"
   },
   {
     "part_num": "3666",
@@ -573,7 +581,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4293294.jpg",
-    "bricklink_part_num": "41879a"
+    "bricklink_part_num": "41879a",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016580"
   },
   {
     "part_num": "48336",
@@ -609,7 +619,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4569101.jpg",
-    "bricklink_part_num": "62696"
+    "bricklink_part_num": "62696",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016582"
   },
   {
     "part_num": "80682",
@@ -618,7 +630,18 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6385999.jpg",
-    "bricklink_part_num": "80682"
+    "bricklink_part_num": "80682",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016937"
+  },
+  {
+    "part_num": "87079pr9799",
+    "name": "Tile 2 x 4 with 'heart LEGO STORE' and Confetti print",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4560181.jpg",
+    "bricklink_part_num": "87079pr9799"
   },
   {
     "part_num": "970c03",
@@ -627,7 +650,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4569093.jpg",
-    "bricklink_part_num": "970c03"
+    "bricklink_part_num": "970c03",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016937"
   },
   {
     "part_num": "970e11",
@@ -636,7 +661,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6374213.jpg",
-    "bricklink_part_num": "970e11"
+    "bricklink_part_num": "970e11",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016582"
   },
   {
     "part_num": "973c27h01pr4203",
@@ -645,7 +672,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6219624.jpg",
-    "bricklink_part_num": "973c27h01pr4203"
+    "bricklink_part_num": "973c27h01pr4203",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016937"
   },
   {
     "part_num": "973c29h01pr6759",
@@ -654,7 +683,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6452834.jpg",
-    "bricklink_part_num": "973c29h01pr6759"
+    "bricklink_part_num": "973c29h01pr6759",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016580"
   },
   {
     "part_num": "973c33h01pr3424",
@@ -663,6 +694,8 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6152450.jpg",
-    "bricklink_part_num": "973c33h01pr3424"
+    "bricklink_part_num": "973c33h01pr3424",
+    "from_minifigure": true,
+    "minifigure_number": "fig-016582"
   }
 ]
