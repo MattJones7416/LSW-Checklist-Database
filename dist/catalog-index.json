@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-12T04:27:45.493573+00:00",
+  "generatedAt": "2026-05-13T04:34:43.235973+00:00",
   "sets": [
     {
       "label": "12V",
@@ -277,7 +277,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/batman.json",
-      "count": 144,
+      "count": 145,
       "part": 1,
       "parts": 1,
       "theme": "Batman"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 487,
+      "count": 488,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 708,
+      "count": 711,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 279,
+      "count": 280,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -1669,7 +1669,7 @@
     {
       "label": "LEGO Exclusive",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-exclusive.json",
-      "count": 79,
+      "count": 80,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Exclusive"
@@ -2933,7 +2933,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 411,
+      "count": 412,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -6198,8 +6198,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6590,7 +6590,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29425,
+    "setCount": 29433,
     "minifigureCount": 18258,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
