@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-13T04:34:43.235973+00:00",
+  "generatedAt": "2026-05-14T04:34:00.401787+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 488,
+      "count": 489,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4671,7 +4671,7 @@
     {
       "label": "Jurassic World",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/jurassic-world.json",
-      "count": 127,
+      "count": 128,
       "part": 1,
       "parts": 1,
       "category": "Jurassic World"
@@ -6570,8 +6570,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6590,8 +6590,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29433,
-    "minifigureCount": 18258,
+    "setCount": 29434,
+    "minifigureCount": 18259,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
