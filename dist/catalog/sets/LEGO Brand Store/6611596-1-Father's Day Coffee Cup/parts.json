@@ -20,6 +20,15 @@
   {
     "part_num": "24246",
     "name": "Tile Round 1 x 1 Half Circle",
+    "color_name": "Orange",
+    "quantity": 8,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6177760.jpg",
+    "bricklink_part_num": "24246"
+  },
+  {
+    "part_num": "24246",
+    "name": "Tile Round 1 x 1 Half Circle",
     "color_name": "Red",
     "quantity": 8,
     "is_spare": false,
@@ -42,6 +51,15 @@
     "quantity": 8,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6150607.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Orange",
+    "quantity": 8,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6173925.jpg",
     "bricklink_part_num": "25269"
   },
   {
@@ -78,6 +96,15 @@
     "quantity": 8,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4157128.jpg",
+    "bricklink_part_num": "3070b"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "Orange",
+    "quantity": 8,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4119670.jpg",
     "bricklink_part_num": "3070b"
   },
   {
@@ -189,6 +216,42 @@
     "bricklink_part_num": "6091"
   },
   {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6150607.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Orange",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6173925.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Red",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6170390.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6195183.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
     "part_num": "3022",
     "name": "Plate 2 x 2",
     "color_name": "Blue",
@@ -196,5 +259,14 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/302223.jpg",
     "bricklink_part_num": "3022"
+  },
+  {
+    "part_num": "39739",
+    "name": "Tile 1 x 1 Heart",
+    "color_name": "Red",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/4/39739.png",
+    "bricklink_part_num": "39739"
   }
 ]

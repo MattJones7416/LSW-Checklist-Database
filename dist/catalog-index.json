@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-14T04:34:00.401787+00:00",
+  "generatedAt": "2026-05-15T04:40:07.471404+00:00",
   "sets": [
     {
       "label": "12V",
@@ -413,7 +413,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bricklink-designer-program.json",
-      "count": 63,
+      "count": 68,
       "part": 1,
       "parts": 1,
       "theme": "BrickLink Designer Program"
@@ -517,7 +517,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
-      "count": 199,
+      "count": 200,
       "part": 1,
       "parts": 1,
       "theme": "Christmas"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 489,
+      "count": 490,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1421,7 +1421,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 79,
+      "count": 80,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 280,
+      "count": 282,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 456,
+      "count": 457,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -4743,7 +4743,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-brand-store.json",
-      "count": 158,
+      "count": 159,
       "part": 1,
       "parts": 1,
       "category": "LEGO Brand Store"
@@ -5943,7 +5943,7 @@
     {
       "label": "Traffic",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/traffic.json",
-      "count": 175,
+      "count": 174,
       "part": 1,
       "parts": 1,
       "category": "Traffic"
@@ -6590,7 +6590,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29434,
+    "setCount": 29445,
     "minifigureCount": 18259,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
