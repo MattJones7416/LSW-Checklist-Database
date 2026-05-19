@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-18T04:55:18.909070+00:00",
+  "generatedAt": "2026-05-19T04:47:02.298148+00:00",
   "sets": [
     {
       "label": "12V",
@@ -197,7 +197,7 @@
     {
       "label": "Audio and Visual Media",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/audio-and-visual-media.json",
-      "count": 89,
+      "count": 91,
       "part": 1,
       "parts": 1,
       "theme": "Audio and Visual Media"
@@ -517,7 +517,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
-      "count": 200,
+      "count": 201,
       "part": 1,
       "parts": 1,
       "theme": "Christmas"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 493,
+      "count": 494,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1109,7 +1109,7 @@
     {
       "label": "FIRST LEGO League",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/first-lego-league.json",
-      "count": 110,
+      "count": 111,
       "part": 1,
       "parts": 1,
       "theme": "FIRST LEGO League"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 711,
+      "count": 712,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 285,
+      "count": 293,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -1773,7 +1773,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 141,
+      "count": 142,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 457,
+      "count": 461,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2445,7 +2445,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 124,
+      "count": 123,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -2933,7 +2933,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 412,
+      "count": 413,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -6490,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6590,7 +6590,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29453,
+    "setCount": 29472,
     "minifigureCount": 18261,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
