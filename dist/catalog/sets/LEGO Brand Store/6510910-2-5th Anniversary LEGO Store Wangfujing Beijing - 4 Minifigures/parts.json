@@ -6,7 +6,9 @@
     "quantity": 2,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4275461.jpg",
-    "bricklink_part_num": "973c27h01pr9982"
+    "bricklink_part_num": "973c27h01pr9982",
+    "from_minifigure": true,
+    "minifigure_number": "Multiple"
   },
   {
     "part_num": "17346",
@@ -15,7 +17,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6079107.jpg",
-    "bricklink_part_num": "17346"
+    "bricklink_part_num": "17346",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017590"
   },
   {
     "part_num": "35699",
@@ -24,7 +28,20 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/0/35699.png",
-    "bricklink_part_num": "35699"
+    "bricklink_part_num": "35699",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017591"
+  },
+  {
+    "part_num": "3626cpr1614",
+    "name": "Minifig Head Juno, Eyebrows, Pink Lips, Eyelashes / Sunglasses with Purple Frames Print",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6103171.jpg",
+    "bricklink_part_num": "3626cpr1614",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017588"
   },
   {
     "part_num": "3626cpr2538",
@@ -33,7 +50,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6223153.jpg",
-    "bricklink_part_num": "3626cpr2538"
+    "bricklink_part_num": "3626cpr2538",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017591"
   },
   {
     "part_num": "3626cpr2544",
@@ -42,7 +61,20 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6223332.jpg",
-    "bricklink_part_num": "3626cpr2544"
+    "bricklink_part_num": "3626cpr2544",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017590"
+  },
+  {
+    "part_num": "3626cpr9950",
+    "name": "Minifig Head, Brown Eyebrows, Open Mouth Smile with White Teeth and Red Tongue Print",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6218234.jpg",
+    "bricklink_part_num": "3626cpr9950",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017589"
   },
   {
     "part_num": "41879a",
@@ -51,7 +83,31 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4617549.jpg",
-    "bricklink_part_num": "41879a"
+    "bricklink_part_num": "41879a",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017590"
+  },
+  {
+    "part_num": "62711",
+    "name": "Hair Short Bob Cut",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4526756.jpg",
+    "bricklink_part_num": "62711",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017588"
+  },
+  {
+    "part_num": "970c22",
+    "name": "Hips and Red Legs",
+    "color_name": "Red",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4582576.jpg",
+    "bricklink_part_num": "970c22",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017588"
   },
   {
     "part_num": "970c42pat27",
@@ -60,6 +116,52 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6261460.jpg",
-    "bricklink_part_num": "970c42pat27"
+    "bricklink_part_num": "970c42pat27",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017591"
+  },
+  {
+    "part_num": "970c46",
+    "name": "Hips and Dark Turquoise Legs",
+    "color_name": "Dark Turquoise",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6237133.jpg",
+    "bricklink_part_num": "970c46",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017589"
+  },
+  {
+    "part_num": "973c27h01pr9977",
+    "name": "Torso Dark Turquoise '5 years in Wangfujing' / LEGO Logo Back Print, White Arms, Yellow Hands",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4275461.jpg",
+    "bricklink_part_num": "973c27h01pr9977",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017589"
+  },
+  {
+    "part_num": "973c27h01pr9978",
+    "name": "Torso Red '5 years in Wangfujing' / LEGO Logo Back Print, White Arms, Yellow Hands",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4275461.jpg",
+    "bricklink_part_num": "973c27h01pr9978",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017588"
+  },
+  {
+    "part_num": "99930",
+    "name": "Hair Smooth Combed Sideways",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4653226.jpg",
+    "bricklink_part_num": "99930",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017589"
   }
 ]
