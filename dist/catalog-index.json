@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-21T04:59:25.794187+00:00",
+  "generatedAt": "2026-05-22T04:49:02.413024+00:00",
   "sets": [
     {
       "label": "12V",
@@ -533,7 +533,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city.json",
-      "count": 282,
+      "count": 283,
       "part": 1,
       "parts": 1,
       "theme": "City"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 496,
+      "count": 497,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -645,7 +645,7 @@
     {
       "label": "Construction",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/construction.json",
-      "count": 128,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "theme": "Construction"
@@ -1157,7 +1157,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 711,
+      "count": 712,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -1549,7 +1549,7 @@
     {
       "label": "Jurassic World",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-world.json",
-      "count": 136,
+      "count": 137,
       "part": 1,
       "parts": 1,
       "theme": "Jurassic World"
@@ -1893,7 +1893,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 207,
+      "count": 208,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2901,7 +2901,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 306,
+      "count": 307,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -3911,7 +3911,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/city.json",
-      "count": 596,
+      "count": 597,
       "part": 1,
       "parts": 1,
       "category": "City"
@@ -4335,7 +4335,7 @@
     {
       "label": "FIRST LEGO League",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/first-lego-league.json",
-      "count": 66,
+      "count": 67,
       "part": 1,
       "parts": 1,
       "category": "FIRST LEGO League"
@@ -4911,7 +4911,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 255,
+      "count": 256,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6198,8 +6198,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6490,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6590,8 +6590,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29474,
-    "minifigureCount": 18289,
+    "setCount": 29481,
+    "minifigureCount": 18292,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
