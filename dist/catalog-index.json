@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-22T04:49:02.413024+00:00",
+  "generatedAt": "2026-05-23T04:29:36.016716+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 497,
+      "count": 498,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -965,7 +965,7 @@
     {
       "label": "Education",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/education.json",
-      "count": 8,
+      "count": 7,
       "part": 1,
       "parts": 1,
       "theme": "Education"
@@ -1109,7 +1109,7 @@
     {
       "label": "FIRST LEGO League",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/first-lego-league.json",
-      "count": 111,
+      "count": 130,
       "part": 1,
       "parts": 1,
       "theme": "FIRST LEGO League"
@@ -1669,7 +1669,7 @@
     {
       "label": "LEGO Exclusive",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-exclusive.json",
-      "count": 80,
+      "count": 81,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Exclusive"
@@ -6490,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6570,8 +6570,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6590,7 +6590,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29481,
+    "setCount": 29501,
     "minifigureCount": 18292,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
