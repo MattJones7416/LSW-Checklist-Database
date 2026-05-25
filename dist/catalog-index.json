@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-24T04:52:05.057935+00:00",
+  "generatedAt": "2026-05-25T05:11:04.500526+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 499,
+      "count": 500,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -6031,7 +6031,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 445,
+      "count": 446,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6198,8 +6198,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6490,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6590,8 +6590,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29505,
-    "minifigureCount": 18292,
+    "setCount": 29506,
+    "minifigureCount": 18293,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
