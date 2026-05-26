@@ -424,13 +424,13 @@
     "bricklink_part_num": "3003"
   },
   {
-    "part_num": "3003",
-    "name": "Brick 2 x 2",
+    "part_num": "3003a",
+    "name": "Brick 2 x 2 without Inside Ridges",
     "color_name": "White",
     "quantity": 2,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300301.jpg",
-    "bricklink_part_num": "3003"
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/3003.png",
+    "bricklink_part_num": "3003a"
   },
   {
     "part_num": "3005",
@@ -856,6 +856,15 @@
     "bricklink_part_num": "2420"
   },
   {
+    "part_num": "298c02",
+    "name": "Lever Small Base with Black Lever",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/73587.jpg",
+    "bricklink_part_num": "298c02"
+  },
+  {
     "part_num": "3031",
     "name": "Plate 4 x 4",
     "color_name": "Black",
@@ -924,6 +933,15 @@
     "color_name": "Light Gray",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/7/4265a.png",
+    "bricklink_part_num": "4265a"
+  },
+  {
+    "part_num": "4265a",
+    "name": "Technic Bush 1/2 Toothed Type I [+ Opening]",
+    "color_name": "Light Gray",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/7/4265a.png",
     "bricklink_part_num": "4265a"
   },
