@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-30T04:40:02.687846+00:00",
+  "generatedAt": "2026-05-31T05:10:09.198787+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 505,
+      "count": 506,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2901,7 +2901,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 308,
+      "count": 310,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -6031,7 +6031,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 447,
+      "count": 459,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6570,8 +6570,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6590,8 +6590,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29538,
-    "minifigureCount": 18294,
+    "setCount": 29541,
+    "minifigureCount": 18306,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
