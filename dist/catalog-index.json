@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-01T05:30:45.054871+00:00",
+  "generatedAt": "2026-06-02T05:16:39.616095+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 507,
+      "count": 508,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -925,7 +925,7 @@
     {
       "label": "Duplo",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo.json",
-      "count": 204,
+      "count": 205,
       "part": 1,
       "parts": 1,
       "theme": "Duplo"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 334,
+      "count": 336,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 458,
+      "count": 459,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2901,7 +2901,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 311,
+      "count": 312,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -2909,7 +2909,7 @@
     {
       "label": "Stationery and Office Supplies",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 770,
+      "count": 771,
       "part": 1,
       "parts": 1,
       "theme": "Stationery and Office Supplies"
@@ -2973,7 +2973,7 @@
     {
       "label": "Super Heroes Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-heroes-marvel.json",
-      "count": 56,
+      "count": 57,
       "part": 1,
       "parts": 1,
       "theme": "Super Heroes Marvel"
@@ -3799,7 +3799,7 @@
     {
       "label": "Bluey",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bluey.json",
-      "count": 7,
+      "count": 8,
       "part": 1,
       "parts": 1,
       "category": "Bluey"
@@ -6490,8 +6490,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6590,8 +6590,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29592,
-    "minifigureCount": 18326,
+    "setCount": 29600,
+    "minifigureCount": 18327,
     "setChunkCount": 442,
     "minifigureChunkCount": 326,
     "maxItemsPerChunk": 800
