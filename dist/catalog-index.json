@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T05:16:39.616095+00:00",
+  "generatedAt": "2026-06-03T05:32:55.307038+00:00",
   "sets": [
     {
       "label": "12V",
@@ -373,7 +373,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 51,
+      "count": 54,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 508,
+      "count": 509,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -3045,7 +3045,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 146,
+      "count": 147,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -3799,7 +3799,7 @@
     {
       "label": "Bluey",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bluey.json",
-      "count": 8,
+      "count": 11,
       "part": 1,
       "parts": 1,
       "category": "Bluey"
@@ -4135,7 +4135,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/disney.json",
-      "count": 127,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "category": "Disney"
@@ -4495,7 +4495,7 @@
     {
       "label": "Harry Potter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/harry-potter.json",
-      "count": 573,
+      "count": 594,
       "part": 1,
       "parts": 1,
       "category": "Harry Potter"
@@ -4591,7 +4591,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 209,
+      "count": 222,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -4637,6 +4637,14 @@
       "category": "Iron Man"
     },
     {
+      "label": "Iron Man and His Awesome Friends",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/iron-man-and-his-awesome-friends.json",
+      "count": 5,
+      "part": 1,
+      "parts": 1,
+      "category": "Iron Man and His Awesome Friends"
+    },
+    {
       "label": "Island Xtreme Stunts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/island-xtreme-stunts.json",
       "count": 10,
@@ -4671,7 +4679,7 @@
     {
       "label": "Jurassic World",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/jurassic-world.json",
-      "count": 128,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "category": "Jurassic World"
@@ -4911,7 +4919,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 256,
+      "count": 268,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -5485,6 +5493,14 @@
       "category": "Service Packs"
     },
     {
+      "label": "Shrek",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/shrek.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "category": "Shrek"
+    },
+    {
       "label": "Soccer",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/soccer.json",
       "count": 164,
@@ -5567,7 +5583,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/spider-man.json",
-      "count": 205,
+      "count": 213,
       "part": 1,
       "parts": 1,
       "category": "Spider-Man"
@@ -5791,7 +5807,7 @@
     {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/the-infinity-saga.json",
-      "count": 100,
+      "count": 106,
       "part": 1,
       "parts": 1,
       "category": "The Infinity Saga"
@@ -6490,8 +6506,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6570,8 +6586,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6590,10 +6606,10 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29600,
-    "minifigureCount": 18327,
+    "setCount": 29605,
+    "minifigureCount": 18399,
     "setChunkCount": 442,
-    "minifigureChunkCount": 326,
+    "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
   }
 }
