@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-03T05:32:55.307038+00:00",
+  "generatedAt": "2026-06-04T05:28:03.331451+00:00",
   "sets": [
     {
       "label": "12V",
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 509,
+      "count": 510,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -957,7 +957,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/editions.json",
-      "count": 15,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "theme": "Editions"
@@ -973,7 +973,7 @@
     {
       "label": "Educational and Dacta",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/educational-and-dacta.json",
-      "count": 132,
+      "count": 136,
       "part": 1,
       "parts": 1,
       "theme": "Educational and Dacta"
@@ -1893,7 +1893,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 208,
+      "count": 209,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 459,
+      "count": 460,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -3075,6 +3075,14 @@
       "theme": "The Hobbit"
     },
     {
+      "label": "The Hobbit and Lord of the Rings",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-hobbit-and-lord-of-the-rings.json",
+      "count": 1,
+      "part": 1,
+      "parts": 1,
+      "theme": "The Hobbit and Lord of the Rings"
+    },
+    {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/the-infinity-saga.json",
       "count": 58,
@@ -3607,7 +3615,7 @@
     {
       "label": "Airport",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/airport.json",
-      "count": 109,
+      "count": 113,
       "part": 1,
       "parts": 1,
       "category": "Airport"
@@ -3911,7 +3919,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/city.json",
-      "count": 597,
+      "count": 619,
       "part": 1,
       "parts": 1,
       "category": "City"
@@ -3999,7 +4007,7 @@
     {
       "label": "Construction",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/construction.json",
-      "count": 103,
+      "count": 105,
       "part": 1,
       "parts": 1,
       "category": "Construction"
@@ -4151,7 +4159,7 @@
     {
       "label": "Disney Princess",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/disney-princess.json",
-      "count": 161,
+      "count": 176,
       "part": 1,
       "parts": 1,
       "category": "Disney Princess"
@@ -4215,7 +4223,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/editions.json",
-      "count": 9,
+      "count": 11,
       "part": 1,
       "parts": 1,
       "category": "Editions"
@@ -4351,7 +4359,7 @@
     {
       "label": "Fortnite",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/fortnite.json",
-      "count": 17,
+      "count": 27,
       "part": 1,
       "parts": 1,
       "category": "Fortnite"
@@ -4375,7 +4383,7 @@
     {
       "label": "Friends (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/friends-p2.json",
-      "count": 92,
+      "count": 117,
       "part": 2,
       "parts": 2,
       "category": "Friends"
@@ -5007,7 +5015,7 @@
     {
       "label": "Ninjago (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ninjago-p2.json",
-      "count": 123,
+      "count": 133,
       "part": 2,
       "parts": 2,
       "category": "Ninjago"
@@ -5023,7 +5031,7 @@
     {
       "label": "Off-Road",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/off-road.json",
-      "count": 18,
+      "count": 20,
       "part": 1,
       "parts": 1,
       "category": "Off-Road"
@@ -5559,7 +5567,7 @@
     {
       "label": "Speed Champions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/speed-champions.json",
-      "count": 144,
+      "count": 147,
       "part": 1,
       "parts": 1,
       "category": "Speed Champions"
@@ -5967,7 +5975,7 @@
     {
       "label": "Trains",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/trains.json",
-      "count": 78,
+      "count": 87,
       "part": 1,
       "parts": 1,
       "category": "Trains"
@@ -6546,6 +6554,7 @@
     "Teenage Mutant Ninja Turtles",
     "Thanksgiving",
     "The Hobbit",
+    "The Hobbit and Lord of the Rings",
     "The Infinity Saga",
     "The Legend of Zelda",
     "The LEGO Batman Movie",
@@ -6606,9 +6615,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29605,
-    "minifigureCount": 18399,
-    "setChunkCount": 442,
+    "setCount": 29614,
+    "minifigureCount": 18503,
+    "setChunkCount": 443,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
   }

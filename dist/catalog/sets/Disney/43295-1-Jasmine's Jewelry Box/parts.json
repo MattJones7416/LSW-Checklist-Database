@@ -999,13 +999,24 @@
     "bricklink_part_num": "93095"
   },
   {
+    "part_num": "10117873",
+    "name": "10117873",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "10117873"
+  },
+  {
     "part_num": "11408c02pr0022",
     "name": "Minidoll Torso Boy with Medium Nougat Arms and Hands with print",
     "color_name": "Medium Nougat",
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6622353.jpg",
-    "bricklink_part_num": "11408c02pr0022"
+    "bricklink_part_num": "11408c02pr0022",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017840"
   },
   {
     "part_num": "14769pr0040",
@@ -1050,7 +1061,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6252504.jpg",
-    "bricklink_part_num": "19193c01pr0112"
+    "bricklink_part_num": "19193c01pr0112",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017838"
   },
   {
     "part_num": "19193c01pr0112",
@@ -1059,7 +1072,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6622356.jpg",
-    "bricklink_part_num": "19193c01pr0112"
+    "bricklink_part_num": "19193c01pr0112",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017840"
   },
   {
     "part_num": "22885",
@@ -1113,7 +1128,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6144372.jpg",
-    "bricklink_part_num": "24775pr0001"
+    "bricklink_part_num": "24775pr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017840"
   },
   {
     "part_num": "2654",
@@ -1422,13 +1439,15 @@
     "bricklink_part_num": "7784"
   },
   {
-    "part_num": "8084",
-    "name": "8084",
+    "part_num": "8084pat0001",
+    "name": "Hair Long with Hole on Top - Ponytail Braided with 2 Bands with Medium Azure Tiara pattern",
     "color_name": "Medium Azure",
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6595120.jpg",
-    "bricklink_part_num": "8084"
+    "bricklink_part_num": "8084pat0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017838"
   },
   {
     "part_num": "85861",
@@ -1455,7 +1474,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6610366.jpg",
-    "bricklink_part_num": "92198pr0137"
+    "bricklink_part_num": "92198pr0137",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017838"
   },
   {
     "part_num": "92198pr0139",
@@ -1464,7 +1485,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6610364.jpg",
-    "bricklink_part_num": "92198pr0139"
+    "bricklink_part_num": "92198pr0139",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017840"
   },
   {
     "part_num": "92456c02pr0500",
@@ -1473,7 +1496,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6434550.jpg",
-    "bricklink_part_num": "92456c02pr0500"
+    "bricklink_part_num": "92456c02pr0500",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017838"
   },
   {
     "part_num": "98100",

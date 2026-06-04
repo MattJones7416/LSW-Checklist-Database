@@ -2376,6 +2376,15 @@
     "bricklink_part_num": "99207"
   },
   {
+    "part_num": "10117297",
+    "name": "10117297",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "10117297"
+  },
+  {
     "part_num": "11211",
     "name": "Brick Special 1 x 2 with 2 Studs on 1 Side",
     "color_name": "White",
@@ -2409,7 +2418,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6603629.jpg",
-    "bricklink_part_num": "115941pr0001"
+    "bricklink_part_num": "115941pr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017753"
   },
   {
     "part_num": "14704",
@@ -3048,7 +3059,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/3005744.jpg",
-    "bricklink_part_num": "6141"
+    "bricklink_part_num": "6141",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017753"
   },
   {
     "part_num": "6180pr0047",
@@ -3201,7 +3214,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6603628.jpg",
-    "bricklink_part_num": "970c24pr0010"
+    "bricklink_part_num": "970c24pr0010",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017753"
   },
   {
     "part_num": "973f047pr0001",
@@ -3210,7 +3225,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6609899.jpg",
-    "bricklink_part_num": "973f047pr0001"
+    "bricklink_part_num": "973f047pr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017753"
   },
   {
     "part_num": "99780",

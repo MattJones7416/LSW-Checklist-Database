@@ -792,6 +792,15 @@
     "bricklink_part_num": "99563"
   },
   {
+    "part_num": "10118462",
+    "name": "10118462",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "10118462"
+  },
+  {
     "part_num": "1126",
     "name": "Tile Round 1 x 2",
     "color_name": "Light Bluish Gray",
@@ -852,7 +861,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6550889.jpg",
-    "bricklink_part_num": "2446pr0058"
+    "bricklink_part_num": "2446pr0058",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017742"
   },
   {
     "part_num": "2447",
@@ -861,7 +872,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4626724.jpg",
-    "bricklink_part_num": "2447"
+    "bricklink_part_num": "2447",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017742"
   },
   {
     "part_num": "2540",
@@ -996,7 +1009,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6256543.jpg",
-    "bricklink_part_num": "3626cpr2836"
+    "bricklink_part_num": "3626cpr2836",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017742"
   },
   {
     "part_num": "3795",
@@ -1275,7 +1290,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4582576.jpg",
-    "bricklink_part_num": "970c22"
+    "bricklink_part_num": "970c22",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017742"
   },
   {
     "part_num": "973c22h22pr0008",
@@ -1284,6 +1301,8 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6616755.jpg",
-    "bricklink_part_num": "973c22h22pr0008"
+    "bricklink_part_num": "973c22h22pr0008",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017742"
   }
 ]
