@@ -459,15 +459,6 @@
     "bricklink_part_num": "99563"
   },
   {
-    "part_num": "10201",
-    "name": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
-    "color_name": "Medium Azure",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6603860.jpg",
-    "bricklink_part_num": "10201"
-  },
-  {
     "part_num": "11153",
     "name": "Slope Curved 4 x 1 No Studs [Stud Holder with Symmetric Ridges]",
     "color_name": "White",
@@ -709,6 +700,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6172674.jpg",
     "bricklink_part_num": "27925"
+  },
+  {
+    "part_num": "28802",
+    "name": "Bracket 1 x 2 - 1 x 4 [Rounded Corners at Bottom, Square Corners at Top]",
+    "color_name": "Medium Azure",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6603860.jpg",
+    "bricklink_part_num": "28802"
   },
   {
     "part_num": "28870",
@@ -1135,7 +1135,7 @@
   },
   {
     "part_num": "8105",
-    "name": "Panel Round 2 x 4x 5 Half",
+    "name": "Cylinder Half 2 x 4 x 5 with 1 x 2 Cutout and Arched Window",
     "color_name": "Lavender",
     "quantity": 2,
     "is_spare": false,
@@ -1956,7 +1956,7 @@
     "color_name": "White",
     "quantity": 1,
     "is_spare": false,
-    "image_url": null,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6659586.jpg",
     "bricklink_part_num": "93088pr0014"
   },
   {

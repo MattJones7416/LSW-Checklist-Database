@@ -3,7 +3,7 @@
     "part_num": "3710",
     "name": "Plate 1 x 4",
     "color_name": "Black",
-    "quantity": 14,
+    "quantity": 6,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/371026.jpg",
     "bricklink_part_num": "3710",
@@ -11,23 +11,12 @@
     "minifigure_number": "fig-017109"
   },
   {
-    "part_num": "3022",
-    "name": "Plate 2 x 2",
-    "color_name": "Black",
-    "quantity": 8,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302226.jpg",
-    "bricklink_part_num": "3022",
-    "from_minifigure": true,
-    "minifigure_number": "fig-017109"
-  },
-  {
     "part_num": "3005",
     "name": "Brick 1 x 1",
-    "color_name": "Dark Red",
-    "quantity": 6,
+    "color_name": "Black",
+    "quantity": 4,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4209383.jpg",
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300526.jpg",
     "bricklink_part_num": "3005",
     "from_minifigure": true,
     "minifigure_number": "fig-017109"
@@ -88,6 +77,28 @@
     "minifigure_number": "fig-017109"
   },
   {
+    "part_num": "3004",
+    "name": "Brick 1 x 2",
+    "color_name": "Black",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300426.jpg",
+    "bricklink_part_num": "3004",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017109"
+  },
+  {
+    "part_num": "3005",
+    "name": "Brick 1 x 1",
+    "color_name": "Dark Red",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4209383.jpg",
+    "bricklink_part_num": "3005",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017109"
+  },
+  {
     "part_num": "3020",
     "name": "Plate 2 x 4",
     "color_name": "Dark Red",
@@ -117,6 +128,17 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6176367.jpg",
     "bricklink_part_num": "2431pr0083",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017109"
+  },
+  {
+    "part_num": "3022",
+    "name": "Plate 2 x 2",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302226.jpg",
+    "bricklink_part_num": "3022",
     "from_minifigure": true,
     "minifigure_number": "fig-017109"
   },

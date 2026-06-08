@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-07T05:13:10.243933+00:00",
+  "generatedAt": "2026-06-08T05:19:38.089846+00:00",
   "sets": [
     {
       "label": "12V",
@@ -45,7 +45,7 @@
     {
       "label": "Activity Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books.json",
-      "count": 246,
+      "count": 248,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books"
@@ -501,7 +501,7 @@
     {
       "label": "Chinese (Lunar) New Year",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/chinese-lunar-new-year.json",
-      "count": 30,
+      "count": 32,
       "part": 1,
       "parts": 1,
       "theme": "Chinese (Lunar) New Year"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 513,
+      "count": 514,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -933,7 +933,7 @@
     {
       "label": "Duplo and Explore",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo-and-explore.json",
-      "count": 289,
+      "count": 290,
       "part": 1,
       "parts": 1,
       "theme": "Duplo and Explore"
@@ -965,7 +965,7 @@
     {
       "label": "Education",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/education.json",
-      "count": 7,
+      "count": 6,
       "part": 1,
       "parts": 1,
       "theme": "Education"
@@ -1109,7 +1109,7 @@
     {
       "label": "FIRST LEGO League",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/first-lego-league.json",
-      "count": 130,
+      "count": 131,
       "part": 1,
       "parts": 1,
       "theme": "FIRST LEGO League"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 718,
+      "count": 722,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1581,7 +1581,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 35,
+      "count": 38,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 339,
+      "count": 347,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -1925,7 +1925,7 @@
     {
       "label": "Miscellaneous",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/miscellaneous.json",
-      "count": 68,
+      "count": 67,
       "part": 1,
       "parts": 1,
       "theme": "Miscellaneous"
@@ -2053,7 +2053,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/non-fiction-books.json",
-      "count": 185,
+      "count": 186,
       "part": 1,
       "parts": 1,
       "theme": "Non-fiction Books"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 460,
+      "count": 462,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -4927,7 +4927,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 270,
+      "count": 271,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6514,8 +6514,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6615,8 +6615,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29626,
-    "minifigureCount": 18509,
+    "setCount": 29649,
+    "minifigureCount": 18510,
     "setChunkCount": 443,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800

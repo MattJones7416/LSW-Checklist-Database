@@ -3,21 +3,10 @@
     "part_num": "3024",
     "name": "Plate 1 x 1",
     "color_name": "Dark Red",
-    "quantity": 10,
+    "quantity": 6,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4183901.jpg",
     "bricklink_part_num": "3024",
-    "from_minifigure": true,
-    "minifigure_number": "fig-012652"
-  },
-  {
-    "part_num": "3005",
-    "name": "Brick 1 x 1",
-    "color_name": "Black",
-    "quantity": 8,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300526.jpg",
-    "bricklink_part_num": "3005",
     "from_minifigure": true,
     "minifigure_number": "fig-012652"
   },
@@ -62,6 +51,17 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6072998.jpg",
     "bricklink_part_num": "15712",
+    "from_minifigure": true,
+    "minifigure_number": "fig-012652"
+  },
+  {
+    "part_num": "3005",
+    "name": "Brick 1 x 1",
+    "color_name": "Black",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300526.jpg",
+    "bricklink_part_num": "3005",
     "from_minifigure": true,
     "minifigure_number": "fig-012652"
   },
