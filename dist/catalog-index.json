@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-08T05:19:38.089846+00:00",
+  "generatedAt": "2026-06-09T04:51:41.716777+00:00",
   "sets": [
     {
       "label": "12V",
@@ -517,7 +517,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
-      "count": 201,
+      "count": 206,
       "part": 1,
       "parts": 1,
       "theme": "Christmas"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 514,
+      "count": 515,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1157,7 +1157,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 712,
+      "count": 713,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 722,
+      "count": 746,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 347,
+      "count": 354,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2301,7 +2301,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 462,
+      "count": 464,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -5167,7 +5167,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/promotional.json",
-      "count": 66,
+      "count": 67,
       "part": 1,
       "parts": 1,
       "category": "Promotional"
@@ -6222,8 +6222,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6514,8 +6514,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6595,8 +6595,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6615,8 +6615,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29649,
-    "minifigureCount": 18510,
+    "setCount": 29689,
+    "minifigureCount": 18511,
     "setChunkCount": 443,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
