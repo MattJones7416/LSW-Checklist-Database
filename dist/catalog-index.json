@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T05:21:14.807307+00:00",
+  "generatedAt": "2026-06-15T06:07:33.630482+00:00",
   "sets": [
     {
       "label": "12V",
@@ -197,7 +197,7 @@
     {
       "label": "Audio and Visual Media",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/audio-and-visual-media.json",
-      "count": 91,
+      "count": 92,
       "part": 1,
       "parts": 1,
       "theme": "Audio and Visual Media"
@@ -277,7 +277,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/batman.json",
-      "count": 145,
+      "count": 146,
       "part": 1,
       "parts": 1,
       "theme": "Batman"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 520,
+      "count": 521,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1661,7 +1661,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 354,
+      "count": 355,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2053,7 +2053,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/non-fiction-books.json",
-      "count": 186,
+      "count": 187,
       "part": 1,
       "parts": 1,
       "theme": "Non-fiction Books"
@@ -2093,7 +2093,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 179,
+      "count": 180,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -3397,7 +3397,7 @@
     {
       "label": "Video Games and Accessories",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/video-games-and-accessories.json",
-      "count": 292,
+      "count": 293,
       "part": 1,
       "parts": 1,
       "theme": "Video Games and Accessories"
@@ -3735,7 +3735,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/avengers.json",
-      "count": 184,
+      "count": 185,
       "part": 1,
       "parts": 1,
       "category": "Avengers"
@@ -6222,8 +6222,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6615,8 +6615,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29700,
-    "minifigureCount": 18512,
+    "setCount": 29707,
+    "minifigureCount": 18513,
     "setChunkCount": 443,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
