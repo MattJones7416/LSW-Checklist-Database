@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-17T05:31:12.754981+00:00",
+  "generatedAt": "2026-06-18T05:24:04.316123+00:00",
   "sets": [
     {
       "label": "12V",
@@ -221,7 +221,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
-      "count": 100,
+      "count": 101,
       "part": 1,
       "parts": 1,
       "theme": "Avengers"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 523,
+      "count": 524,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -717,7 +717,7 @@
     {
       "label": "DC Comics Super Heroes",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/dc-comics-super-heroes.json",
-      "count": 10,
+      "count": 9,
       "part": 1,
       "parts": 1,
       "theme": "DC Comics Super Heroes"
@@ -1837,7 +1837,7 @@
     {
       "label": "Marvel Super Heroes",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/marvel-super-heroes.json",
-      "count": 9,
+      "count": 8,
       "part": 1,
       "parts": 1,
       "theme": "Marvel Super Heroes"
@@ -2989,7 +2989,7 @@
     {
       "label": "Superman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/superman.json",
-      "count": 15,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "theme": "Superman"
@@ -3583,7 +3583,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 187,
+      "count": 186,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -5751,7 +5751,7 @@
     {
       "label": "Superman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/superman.json",
-      "count": 15,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "category": "Superman"
@@ -6514,8 +6514,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6615,7 +6615,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29711,
+    "setCount": 29712,
     "minifigureCount": 18530,
     "setChunkCount": 443,
     "minifigureChunkCount": 328,
