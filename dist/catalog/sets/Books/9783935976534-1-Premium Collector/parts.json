@@ -24,7 +24,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/14/3626bp01.png",
-    "bricklink_part_num": "3626bpr0001"
+    "bricklink_part_num": "3626bpr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017884"
   },
   {
     "part_num": "4485",
@@ -33,7 +35,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/448521.jpg",
-    "bricklink_part_num": "4485"
+    "bricklink_part_num": "4485",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017884"
   },
   {
     "part_num": "970c22",
@@ -42,7 +46,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4582576.jpg",
-    "bricklink_part_num": "970c22"
+    "bricklink_part_num": "970c22",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017884"
   },
   {
     "part_num": "973c27h01pr9963",
@@ -51,6 +57,8 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4275461.jpg",
-    "bricklink_part_num": "973c27h01pr9963"
+    "bricklink_part_num": "973c27h01pr9963",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017884"
   }
 ]

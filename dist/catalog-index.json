@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-18T05:24:04.316123+00:00",
+  "generatedAt": "2026-06-19T05:39:40.268616+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 453,
+      "count": 454,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -221,7 +221,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
-      "count": 101,
+      "count": 102,
       "part": 1,
       "parts": 1,
       "theme": "Avengers"
@@ -245,7 +245,7 @@
     {
       "label": "Bags, Totes, & Luggage",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage.json",
-      "count": 774,
+      "count": 776,
       "part": 1,
       "parts": 1,
       "theme": "Bags, Totes, & Luggage"
@@ -581,7 +581,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 524,
+      "count": 525,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1245,7 +1245,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 745,
+      "count": 747,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1397,7 +1397,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 563,
+      "count": 579,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1421,7 +1421,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 80,
+      "count": 81,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -2909,7 +2909,7 @@
     {
       "label": "Stationery and Office Supplies",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 772,
+      "count": 774,
       "part": 1,
       "parts": 1,
       "theme": "Stationery and Office Supplies"
@@ -2933,7 +2933,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 413,
+      "count": 414,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -3735,7 +3735,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/avengers.json",
-      "count": 185,
+      "count": 186,
       "part": 1,
       "parts": 1,
       "category": "Avengers"
@@ -3759,7 +3759,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/batman.json",
-      "count": 214,
+      "count": 215,
       "part": 1,
       "parts": 1,
       "category": "Batman"
@@ -5023,7 +5023,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/non-fiction-books.json",
-      "count": 43,
+      "count": 44,
       "part": 1,
       "parts": 1,
       "category": "Non-fiction Books"
@@ -6222,8 +6222,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6615,8 +6615,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29712,
-    "minifigureCount": 18530,
+    "setCount": 29739,
+    "minifigureCount": 18533,
     "setChunkCount": 443,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
