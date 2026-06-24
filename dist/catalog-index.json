@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-23T04:46:53.185362+00:00",
+  "generatedAt": "2026-06-24T04:51:43.841501+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 529,
+      "count": 530,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -5679,7 +5679,7 @@
     {
       "label": "Star Wars (4/4)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p4.json",
-      "count": 492,
+      "count": 495,
       "part": 4,
       "parts": 4,
       "category": "Star Wars"
@@ -6015,7 +6015,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ultimate-collector-series.json",
-      "count": 125,
+      "count": 124,
       "part": 1,
       "parts": 1,
       "category": "Ultimate Collector Series"
@@ -6063,7 +6063,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 450,
+      "count": 448,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6623,7 +6623,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29831,
+    "setCount": 29832,
     "minifigureCount": 18537,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
