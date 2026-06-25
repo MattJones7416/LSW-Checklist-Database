@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-24T04:51:43.841501+00:00",
+  "generatedAt": "2026-06-25T04:51:43.139210+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 530,
+      "count": 531,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -933,7 +933,7 @@
     {
       "label": "Duplo",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo.json",
-      "count": 205,
+      "count": 206,
       "part": 1,
       "parts": 1,
       "theme": "Duplo"
@@ -1405,7 +1405,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 596,
+      "count": 597,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Exclusive",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-exclusive.json",
-      "count": 82,
+      "count": 83,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Exclusive"
@@ -6623,7 +6623,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29832,
+    "setCount": 29836,
     "minifigureCount": 18537,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
