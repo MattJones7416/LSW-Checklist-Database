@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-25T04:51:43.139210+00:00",
+  "generatedAt": "2026-06-26T04:56:29.747014+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 531,
+      "count": 532,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2917,7 +2917,7 @@
     {
       "label": "Stationery and Office Supplies",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 788,
+      "count": 789,
       "part": 1,
       "parts": 1,
       "theme": "Stationery and Office Supplies"
@@ -4039,7 +4039,7 @@
     {
       "label": "Creator 3-in-1",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/creator-3-in-1.json",
-      "count": 142,
+      "count": 146,
       "part": 1,
       "parts": 1,
       "category": "Creator 3-in-1"
@@ -6230,8 +6230,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6522,8 +6522,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6623,8 +6623,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29836,
-    "minifigureCount": 18537,
+    "setCount": 29838,
+    "minifigureCount": 18541,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
