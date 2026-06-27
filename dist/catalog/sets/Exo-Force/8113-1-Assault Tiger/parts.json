@@ -760,15 +760,6 @@
     "bricklink_part_num": "6553"
   },
   {
-    "part_num": "8113cdb01",
-    "name": "Backdrop, Jungle for Set 8113",
-    "color_name": "[No Color/Any Color]",
-    "quantity": 1,
-    "is_spare": false,
-    "image_url": null,
-    "bricklink_part_num": "8113cdb01"
-  },
-  {
     "part_num": "970c10",
     "name": "Hips and Dark Red Legs",
     "color_name": "Dark Red",
@@ -789,5 +780,14 @@
     "bricklink_part_num": "973c10h03pr1360",
     "from_minifigure": true,
     "minifigure_number": "fig-004848"
+  },
+  {
+    "part_num": "upn0214",
+    "name": "Backdrop, Jungle for Set 8113-1",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "upn0214"
   }
 ]
