@@ -117,6 +117,15 @@
     "bricklink_part_num": "98138pr0364"
   },
   {
+    "part_num": "10187",
+    "name": "Weapon Bladed Claw Spread",
+    "color_name": "Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6329651.jpg",
+    "bricklink_part_num": "10187"
+  },
+  {
     "part_num": "11156",
     "name": "Weapon Sword (Elven Warrior)",
     "color_name": "Pearl Gold",
@@ -140,6 +149,17 @@
     "color_name": "Dark Azure",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6329100.jpg",
+    "bricklink_part_num": "15619",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017136"
+  },
+  {
+    "part_num": "15619",
+    "name": "Minifig Neckwear Bandana (Ninjago)",
+    "color_name": "Dark Azure",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6329100.jpg",
     "bricklink_part_num": "15619",
     "from_minifigure": true,
@@ -202,6 +222,15 @@
     "bricklink_part_num": "5987",
     "from_minifigure": true,
     "minifigure_number": "fig-017137"
+  },
+  {
+    "part_num": "6141",
+    "name": "Plate Round 1 x 1 with Solid Stud",
+    "color_name": "Yellowish Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6057898.jpg",
+    "bricklink_part_num": "6141"
   },
   {
     "part_num": "7549",
@@ -288,5 +317,14 @@
     "bricklink_part_num": "973e147pr0001",
     "from_minifigure": true,
     "minifigure_number": "fig-017137"
+  },
+  {
+    "part_num": "98138pr0364",
+    "name": "Tile Round 1 x 1 with Black Animal Eye print",
+    "color_name": "Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6434207.jpg",
+    "bricklink_part_num": "98138pr0364"
   }
 ]
