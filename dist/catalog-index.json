@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-30T04:51:10.296168+00:00",
+  "generatedAt": "2026-07-01T05:12:23.836900+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 536,
+      "count": 537,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1405,7 +1405,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 597,
+      "count": 598,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -6230,8 +6230,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6603,8 +6603,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6623,7 +6623,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29879,
+    "setCount": 29881,
     "minifigureCount": 18546,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
