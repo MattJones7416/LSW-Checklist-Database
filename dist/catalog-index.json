@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-01T05:12:23.836900+00:00",
+  "generatedAt": "2026-07-02T04:47:14.407056+00:00",
   "sets": [
     {
       "label": "12V",
@@ -381,7 +381,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 54,
+      "count": 55,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 537,
+      "count": 538,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -965,7 +965,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/editions.json",
-      "count": 17,
+      "count": 21,
       "part": 1,
       "parts": 1,
       "theme": "Editions"
@@ -2245,7 +2245,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 101,
+      "count": 102,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -3021,7 +3021,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
-      "count": 97,
+      "count": 98,
       "part": 1,
       "parts": 1,
       "theme": "Tabletop Games and Puzzles"
@@ -4607,7 +4607,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 222,
+      "count": 224,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -5679,7 +5679,7 @@
     {
       "label": "Star Wars (4/4)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p4.json",
-      "count": 495,
+      "count": 499,
       "part": 4,
       "parts": 4,
       "category": "Star Wars"
@@ -5751,7 +5751,7 @@
     {
       "label": "Super Heroes Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/super-heroes-marvel.json",
-      "count": 103,
+      "count": 104,
       "part": 1,
       "parts": 1,
       "category": "Super Heroes Marvel"
@@ -5775,7 +5775,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/tabletop-games-and-puzzles.json",
-      "count": 5,
+      "count": 9,
       "part": 1,
       "parts": 1,
       "category": "Tabletop Games and Puzzles"
@@ -6015,7 +6015,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ultimate-collector-series.json",
-      "count": 124,
+      "count": 123,
       "part": 1,
       "parts": 1,
       "category": "Ultimate Collector Series"
@@ -6230,8 +6230,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6522,8 +6522,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6623,8 +6623,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29881,
-    "minifigureCount": 18546,
+    "setCount": 29889,
+    "minifigureCount": 18556,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
