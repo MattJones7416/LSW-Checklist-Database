@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-02T04:47:14.407056+00:00",
+  "generatedAt": "2026-07-03T04:31:56.752817+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 43,
+      "count": 48,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 538,
+      "count": 539,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2909,7 +2909,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 315,
+      "count": 316,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -3831,7 +3831,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricklink-designer-program.json",
-      "count": 319,
+      "count": 342,
       "part": 1,
       "parts": 1,
       "category": "BrickLink Designer Program"
@@ -4039,7 +4039,7 @@
     {
       "label": "Creator 3-in-1",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/creator-3-in-1.json",
-      "count": 146,
+      "count": 145,
       "part": 1,
       "parts": 1,
       "category": "Creator 3-in-1"
@@ -6522,8 +6522,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6623,8 +6623,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29889,
-    "minifigureCount": 18556,
+    "setCount": 29896,
+    "minifigureCount": 18578,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
