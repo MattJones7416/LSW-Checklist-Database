@@ -123,7 +123,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/photos/0/33201-0-10224041-0a80-4c55-a004-ae33f35ec06c.jpg",
-    "bricklink_part_num": "33201"
+    "bricklink_part_num": "33201",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017934"
   },
   {
     "part_num": "33203",
@@ -182,11 +184,13 @@
   {
     "part_num": "42330",
     "name": "Belville, Skirt, Long with Check Print & Apron with Spider Print",
-    "color_name": "[No Color/Any Color]",
+    "color_name": "White",
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/photos/89/belvskirt03-89-2c020991-8023-4d49-884f-0ab02e67b6ab.jpg",
-    "bricklink_part_num": "42330"
+    "bricklink_part_num": "42330",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017934"
   },
   {
     "part_num": "4337",
@@ -276,6 +280,8 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/photos/20/belfig0003c03pr0017-20-a31bbf16-8ba8-4bf5-90d1-e19e674a2e53.jpg",
-    "bricklink_part_num": "belfig0003c03pr0017"
+    "bricklink_part_num": "belfig0003c03pr0017",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017934"
   }
 ]
