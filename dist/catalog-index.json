@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-04T04:27:07.642600+00:00",
+  "generatedAt": "2026-07-05T04:46:41.696829+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 540,
+      "count": 541,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1437,7 +1437,7 @@
     {
       "label": "Ideas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ideas.json",
-      "count": 3,
+      "count": 2,
       "part": 1,
       "parts": 1,
       "theme": "Ideas"
@@ -1693,7 +1693,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
-      "count": 99,
+      "count": 100,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Ideas and CUUSOO"
@@ -2053,7 +2053,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 661,
+      "count": 662,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2245,7 +2245,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 102,
+      "count": 103,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -3831,7 +3831,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricklink-designer-program.json",
-      "count": 342,
+      "count": 345,
       "part": 1,
       "parts": 1,
       "category": "BrickLink Designer Program"
@@ -6063,7 +6063,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 448,
+      "count": 449,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6230,8 +6230,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6603,8 +6603,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6623,8 +6623,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29911,
-    "minifigureCount": 18579,
+    "setCount": 29914,
+    "minifigureCount": 18583,
     "setChunkCount": 444,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
