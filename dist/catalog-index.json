@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-05T04:46:41.696829+00:00",
+  "generatedAt": "2026-07-06T04:58:48.383350+00:00",
   "sets": [
     {
       "label": "12V",
@@ -237,7 +237,7 @@
     {
       "label": "Bag and Luggage Tags",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
-      "count": 129,
+      "count": 132,
       "part": 1,
       "parts": 1,
       "theme": "Bag and Luggage Tags"
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 50,
+      "count": 82,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 541,
+      "count": 542,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -605,7 +605,7 @@
     {
       "label": "Clocks and Watches",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clocks-and-watches.json",
-      "count": 226,
+      "count": 229,
       "part": 1,
       "parts": 1,
       "theme": "Clocks and Watches"
@@ -1253,7 +1253,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 752,
+      "count": 760,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1405,7 +1405,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 600,
+      "count": 605,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1589,7 +1589,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 38,
+      "count": 39,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -1781,7 +1781,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 142,
+      "count": 148,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2915,11 +2915,19 @@
       "theme": "Star Wars"
     },
     {
-      "label": "Stationery and Office Supplies",
-      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies.json",
-      "count": 799,
+      "label": "Stationery and Office Supplies (1/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p1.json",
+      "count": 800,
       "part": 1,
-      "parts": 1,
+      "parts": 2,
+      "theme": "Stationery and Office Supplies"
+    },
+    {
+      "label": "Stationery and Office Supplies (2/2)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
+      "count": 1,
+      "part": 2,
+      "parts": 2,
       "theme": "Stationery and Office Supplies"
     },
     {
@@ -3831,7 +3839,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricklink-designer-program.json",
-      "count": 345,
+      "count": 362,
       "part": 1,
       "parts": 1,
       "category": "BrickLink Designer Program"
@@ -6522,8 +6530,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6623,9 +6631,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29914,
-    "minifigureCount": 18583,
-    "setChunkCount": 444,
+    "setCount": 29975,
+    "minifigureCount": 18600,
+    "setChunkCount": 445,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
   }

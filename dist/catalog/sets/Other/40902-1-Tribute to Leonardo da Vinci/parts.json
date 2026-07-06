@@ -217,7 +217,7 @@
   },
   {
     "part_num": "29119",
-    "name": "Brick Wedge Curved 2 x 1 with Stud Notch Right",
+    "name": "Brick Wedged, Curved 2 x 1 with Stud Notch Right",
     "color_name": "Tan",
     "quantity": 3,
     "is_spare": false,
@@ -226,7 +226,7 @@
   },
   {
     "part_num": "29120",
-    "name": "Brick Wedge Curved 2 x 1 with Stud Notch Left",
+    "name": "Brick Wedged, Curved 2 x 1 with Stud Notch Left",
     "color_name": "Tan",
     "quantity": 3,
     "is_spare": false,
@@ -694,7 +694,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6170809.jpg",
-    "bricklink_part_num": "28974"
+    "bricklink_part_num": "28974",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017885"
   },
   {
     "part_num": "3021",

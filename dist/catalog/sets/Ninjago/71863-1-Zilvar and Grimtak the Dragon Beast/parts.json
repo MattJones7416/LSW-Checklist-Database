@@ -207,17 +207,6 @@
     "bricklink_part_num": "15573"
   },
   {
-    "part_num": "15619",
-    "name": "Minifig Neckwear Bandana (Ninjago)",
-    "color_name": "Dark Azure",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6329100.jpg",
-    "bricklink_part_num": "15619",
-    "from_minifigure": true,
-    "minifigure_number": "fig-017136"
-  },
-  {
     "part_num": "15712",
     "name": "Tile Special 1 x 1 with Clip with Rounded Edges",
     "color_name": "Pearl Gold",
@@ -669,6 +658,15 @@
     "minifigure_number": "fig-017136"
   },
   {
+    "part_num": "15619",
+    "name": "Minifig Neckwear Bandana (Ninjago)",
+    "color_name": "Dark Azure",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6329100.jpg",
+    "bricklink_part_num": "15619"
+  },
+  {
     "part_num": "18041",
     "name": "Weapon Harpoon [Smooth Shaft]",
     "color_name": "Black",
@@ -798,7 +796,7 @@
   },
   {
     "part_num": "29119",
-    "name": "Brick Wedge Curved 2 x 1 with Stud Notch Right",
+    "name": "Brick Wedged, Curved 2 x 1 with Stud Notch Right",
     "color_name": "Dark Pink",
     "quantity": 1,
     "is_spare": false,
@@ -807,7 +805,7 @@
   },
   {
     "part_num": "29120",
-    "name": "Brick Wedge Curved 2 x 1 with Stud Notch Left",
+    "name": "Brick Wedged, Curved 2 x 1 with Stud Notch Left",
     "color_name": "Dark Pink",
     "quantity": 1,
     "is_spare": false,
