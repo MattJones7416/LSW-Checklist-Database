@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-06T04:58:48.383350+00:00",
+  "generatedAt": "2026-07-07T04:39:23.557263+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 542,
+      "count": 543,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1253,7 +1253,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 760,
+      "count": 761,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1901,7 +1901,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 210,
+      "count": 211,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -3903,7 +3903,7 @@
     {
       "label": "Castle",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/castle.json",
-      "count": 47,
+      "count": 48,
       "part": 1,
       "parts": 1,
       "category": "Castle"
@@ -6631,8 +6631,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29975,
-    "minifigureCount": 18600,
+    "setCount": 29978,
+    "minifigureCount": 18601,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
