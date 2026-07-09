@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-08T04:00:40.738917+00:00",
+  "generatedAt": "2026-07-09T04:38:10.766873+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 544,
+      "count": 545,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1589,7 +1589,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 39,
+      "count": 40,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2101,7 +2101,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 180,
+      "count": 179,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -2229,7 +2229,7 @@
     {
       "label": "Pokémon",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
-      "count": 23,
+      "count": 25,
       "part": 1,
       "parts": 1,
       "theme": "Pokémon"
@@ -2309,7 +2309,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 464,
+      "count": 465,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2453,7 +2453,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 123,
+      "count": 124,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -3061,7 +3061,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 151,
+      "count": 155,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -3783,7 +3783,7 @@
     {
       "label": "Belville",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/belville.json",
-      "count": 82,
+      "count": 83,
       "part": 1,
       "parts": 1,
       "category": "Belville"
@@ -4791,7 +4791,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-ideas-and-cuusoo.json",
-      "count": 256,
+      "count": 258,
       "part": 1,
       "parts": 1,
       "category": "LEGO Ideas and CUUSOO"
@@ -5183,7 +5183,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/promotional.json",
-      "count": 67,
+      "count": 69,
       "part": 1,
       "parts": 1,
       "category": "Promotional"
@@ -6071,7 +6071,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 449,
+      "count": 450,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6530,8 +6530,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6611,8 +6611,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6631,8 +6631,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29979,
-    "minifigureCount": 18601,
+    "setCount": 29988,
+    "minifigureCount": 18607,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800

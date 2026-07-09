@@ -1,8 +1,8 @@
 {
   "version": 1,
   "mode": "delta",
-  "generatedAt": "2026-07-08T04:00:41Z",
-  "sourceManifestGeneratedAt": "2026-07-08T04:00:40.738917+00:00",
+  "generatedAt": "2026-07-09T04:38:11Z",
+  "sourceManifestGeneratedAt": "2026-07-09T04:38:10.766873+00:00",
   "sets": [
     {
       "label": "LEGO Brand Store",
@@ -15,7 +15,7 @@
     {
       "label": "Pokémon",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
-      "count": 23,
+      "count": 25,
       "part": 1,
       "parts": 1,
       "theme": "Pokémon"
@@ -23,7 +23,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 464,
+      "count": 465,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
