@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-09T04:38:10.766873+00:00",
+  "generatedAt": "2026-07-10T04:40:29.179154+00:00",
   "sets": [
     {
       "label": "12V",
@@ -85,7 +85,7 @@
     {
       "label": "Airport",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/airport.json",
-      "count": 61,
+      "count": 60,
       "part": 1,
       "parts": 1,
       "theme": "Airport"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 545,
+      "count": 546,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1429,7 +1429,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 81,
+      "count": 82,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -3013,7 +3013,7 @@
     {
       "label": "Supplemental",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/supplemental.json",
-      "count": 363,
+      "count": 362,
       "part": 1,
       "parts": 1,
       "theme": "Supplemental"
@@ -3253,7 +3253,7 @@
     {
       "label": "Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/town.json",
-      "count": 426,
+      "count": 427,
       "part": 1,
       "parts": 1,
       "theme": "Town"
@@ -3301,7 +3301,7 @@
     {
       "label": "Trains",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/trains.json",
-      "count": 109,
+      "count": 110,
       "part": 1,
       "parts": 1,
       "theme": "Trains"
@@ -3631,7 +3631,7 @@
     {
       "label": "Airport",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/airport.json",
-      "count": 113,
+      "count": 104,
       "part": 1,
       "parts": 1,
       "category": "Airport"
@@ -3983,7 +3983,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/classic-town.json",
-      "count": 420,
+      "count": 421,
       "part": 1,
       "parts": 1,
       "category": "Classic Town"
@@ -4775,7 +4775,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-brand-store.json",
-      "count": 194,
+      "count": 196,
       "part": 1,
       "parts": 1,
       "category": "LEGO Brand Store"
@@ -5183,7 +5183,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/promotional.json",
-      "count": 69,
+      "count": 67,
       "part": 1,
       "parts": 1,
       "category": "Promotional"
@@ -5951,7 +5951,7 @@
     {
       "label": "Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/town.json",
-      "count": 196,
+      "count": 204,
       "part": 1,
       "parts": 1,
       "category": "Town"
@@ -6238,8 +6238,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6631,7 +6631,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29988,
+    "setCount": 29990,
     "minifigureCount": 18607,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
