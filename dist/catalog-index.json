@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-10T04:40:29.179154+00:00",
+  "generatedAt": "2026-07-11T03:58:33.386334+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 546,
+      "count": 547,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4399,7 +4399,7 @@
     {
       "label": "Friends (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/friends-p2.json",
-      "count": 117,
+      "count": 120,
       "part": 2,
       "parts": 2,
       "category": "Friends"
@@ -6238,8 +6238,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6631,8 +6631,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 29990,
-    "minifigureCount": 18607,
+    "setCount": 29991,
+    "minifigureCount": 18610,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800

@@ -127,7 +127,7 @@
   },
   {
     "part_num": "4286",
-    "name": "Slope 33° 3 x 1",
+    "name": "Brick Sloped 33° 3 x 1",
     "color_name": "Tan",
     "quantity": 11,
     "is_spare": false,
@@ -217,7 +217,7 @@
   },
   {
     "part_num": "54200",
-    "name": "Slope 30° 1 x 1 x 2/3 (Cheese Slope)",
+    "name": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
     "color_name": "Dark Orange",
     "quantity": 9,
     "is_spare": false,
@@ -1315,7 +1315,7 @@
   },
   {
     "part_num": "28192",
-    "name": "Slope 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
+    "name": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
     "color_name": "Sand Blue",
     "quantity": 2,
     "is_spare": false,
@@ -1567,7 +1567,7 @@
   },
   {
     "part_num": "35464",
-    "name": "Slope Double 45° 1 x 1",
+    "name": "Brick Sloped Double 45° 1 x 1",
     "color_name": "Medium Nougat",
     "quantity": 2,
     "is_spare": false,
@@ -1783,7 +1783,7 @@
   },
   {
     "part_num": "54200",
-    "name": "Slope 30° 1 x 1 x 2/3 (Cheese Slope)",
+    "name": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
     "color_name": "Light Bluish Gray",
     "quantity": 2,
     "is_spare": false,
@@ -1837,7 +1837,7 @@
   },
   {
     "part_num": "60481",
-    "name": "Slope 65° 2 x 1 x 2",
+    "name": "Brick Sloped 65° 2 x 1 x 2",
     "color_name": "Lime",
     "quantity": 2,
     "is_spare": false,
@@ -2085,7 +2085,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6605213.jpg",
-    "bricklink_part_num": "100811c01pr0012"
+    "bricklink_part_num": "100811c01pr0012",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017963"
   },
   {
     "part_num": "101117c01pr0011",
@@ -2094,7 +2096,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6581567.jpg",
-    "bricklink_part_num": "101117c01pr0011"
+    "bricklink_part_num": "101117c01pr0011",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017963"
   },
   {
     "part_num": "10116512",
@@ -2130,7 +2134,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6589789.jpg",
-    "bricklink_part_num": "11408c02pr0019"
+    "bricklink_part_num": "11408c02pr0019",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017348"
   },
   {
     "part_num": "11408c06pr0014",
@@ -2139,7 +2145,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6605058.jpg",
-    "bricklink_part_num": "11408c06pr0014"
+    "bricklink_part_num": "11408c06pr0014",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017966"
   },
   {
     "part_num": "11477",
@@ -2310,7 +2318,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6605118.jpg",
-    "bricklink_part_num": "2241c01pr0036"
+    "bricklink_part_num": "2241c01pr0036",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017964"
   },
   {
     "part_num": "2268c01pr0003",
@@ -2319,7 +2329,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6594314.jpg",
-    "bricklink_part_num": "2268c01pr0003"
+    "bricklink_part_num": "2268c01pr0003",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017348"
   },
   {
     "part_num": "2268c01pr0012",
@@ -2328,7 +2340,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6429941.jpg",
-    "bricklink_part_num": "2268c01pr0012"
+    "bricklink_part_num": "2268c01pr0012",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017966"
   },
   {
     "part_num": "23443",
@@ -2454,7 +2468,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6409765.jpg",
-    "bricklink_part_num": "2640"
+    "bricklink_part_num": "2640",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017963"
   },
   {
     "part_num": "2644",
@@ -2463,7 +2479,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6409768.jpg",
-    "bricklink_part_num": "2644"
+    "bricklink_part_num": "2644",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017964"
   },
   {
     "part_num": "2646",
@@ -2472,7 +2490,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6409770.jpg",
-    "bricklink_part_num": "2646"
+    "bricklink_part_num": "2646",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017966"
   },
   {
     "part_num": "26603",
@@ -2503,7 +2523,7 @@
   },
   {
     "part_num": "2752",
-    "name": "Slope Inverted 33° 3 x 2, Connections between Studs, Round Bottom Pin",
+    "name": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Round Bottom Pin",
     "color_name": "Tan",
     "quantity": 1,
     "is_spare": false,
@@ -2773,7 +2793,7 @@
   },
   {
     "part_num": "3039",
-    "name": "Slope 45° 2 x 2",
+    "name": "Brick Sloped 45° 2 x 2",
     "color_name": "Light Bluish Gray",
     "quantity": 1,
     "is_spare": false,
@@ -2944,7 +2964,7 @@
   },
   {
     "part_num": "3299",
-    "name": "Slope 33° 2 x 4 Double",
+    "name": "Brick Sloped 33° 2 x 4 Double",
     "color_name": "Black",
     "quantity": 1,
     "is_spare": false,
@@ -2971,7 +2991,7 @@
   },
   {
     "part_num": "35464",
-    "name": "Slope Double 45° 1 x 1",
+    "name": "Brick Sloped Double 45° 1 x 1",
     "color_name": "Dark Orange",
     "quantity": 1,
     "is_spare": false,
@@ -3052,7 +3072,7 @@
   },
   {
     "part_num": "3665",
-    "name": "Slope Inverted 45° 2 x 1",
+    "name": "Brick Sloped Inverted 45° 2 x 1",
     "color_name": "Reddish Brown",
     "quantity": 1,
     "is_spare": false,
@@ -3061,7 +3081,7 @@
   },
   {
     "part_num": "3665",
-    "name": "Slope Inverted 45° 2 x 1",
+    "name": "Brick Sloped Inverted 45° 2 x 1",
     "color_name": "Tan",
     "quantity": 1,
     "is_spare": false,
@@ -3291,7 +3311,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6284153.jpg",
-    "bricklink_part_num": "40938"
+    "bricklink_part_num": "40938",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017348"
   },
   {
     "part_num": "42195",
@@ -3880,7 +3902,7 @@
   },
   {
     "part_num": "76959",
-    "name": "Slope Inverted 45° 2 x 2 [Round Hollow Bottom Pin, Bar-sized Stud Holes]",
+    "name": "Brick Sloped Inverted 45° 2 x 2 [Round Hollow Bottom Pin, Bar-sized Stud Holes]",
     "color_name": "Sand Green",
     "quantity": 1,
     "is_spare": false,
@@ -3903,7 +3925,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6574797.jpg",
-    "bricklink_part_num": "7842"
+    "bricklink_part_num": "7842",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017963"
   },
   {
     "part_num": "79491",
@@ -3934,7 +3958,7 @@
   },
   {
     "part_num": "85984",
-    "name": "Slope 30° 1 x 2 x 2/3",
+    "name": "Brick Sloped 30° 1 x 2 x 2/3",
     "color_name": "Dark Bluish Gray",
     "quantity": 1,
     "is_spare": false,
@@ -4047,7 +4071,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6416551.jpg",
-    "bricklink_part_num": "92198pr0335"
+    "bricklink_part_num": "92198pr0335",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017348"
   },
   {
     "part_num": "92198pr0336",
@@ -4056,7 +4082,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6416668.jpg",
-    "bricklink_part_num": "92198pr0336"
+    "bricklink_part_num": "92198pr0336",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017963"
   },
   {
     "part_num": "92198pr0338",
@@ -4065,7 +4093,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6416663.jpg",
-    "bricklink_part_num": "92198pr0338"
+    "bricklink_part_num": "92198pr0338",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017964"
   },
   {
     "part_num": "92198pr0349",
@@ -4074,7 +4104,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6416487.jpg",
-    "bricklink_part_num": "92198pr0349"
+    "bricklink_part_num": "92198pr0349",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017966"
   },
   {
     "part_num": "92456c16pr0014",
@@ -4083,7 +4115,9 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6584072.jpg",
-    "bricklink_part_num": "92456c16pr0014"
+    "bricklink_part_num": "92456c16pr0014",
+    "from_minifigure": true,
+    "minifigure_number": "fig-017964"
   },
   {
     "part_num": "92950",
