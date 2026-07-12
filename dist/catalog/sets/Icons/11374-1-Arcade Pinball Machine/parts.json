@@ -1631,15 +1631,6 @@
   {
     "part_num": "3024",
     "name": "Plate 1 x 1",
-    "color_name": "White",
-    "quantity": 3,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302401.jpg",
-    "bricklink_part_num": "3024"
-  },
-  {
-    "part_num": "3024",
-    "name": "Plate 1 x 1",
     "color_name": "Yellow",
     "quantity": 3,
     "is_spare": false,
@@ -2238,6 +2229,15 @@
     "quantity": 2,
     "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4524929.jpg",
+    "bricklink_part_num": "3024"
+  },
+  {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "White",
+    "quantity": 2,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/302401.jpg",
     "bricklink_part_num": "3024"
   },
   {
@@ -3609,6 +3609,15 @@
     "color_name": "White",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6202501.jpg",
+    "bricklink_part_num": "3024pr0013"
+  },
+  {
+    "part_num": "3024pr0013",
+    "name": "Plate 1 x 1 with Black Square Print",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6202501.jpg",
     "bricklink_part_num": "3024pr0013"
   },
