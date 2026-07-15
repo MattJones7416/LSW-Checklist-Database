@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-14T03:49:07.507746+00:00",
+  "generatedAt": "2026-07-15T03:50:02.264721+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 88,
+      "count": 92,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 550,
+      "count": 551,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1253,7 +1253,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 762,
+      "count": 763,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1437,7 +1437,7 @@
     {
       "label": "Ideas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ideas.json",
-      "count": 2,
+      "count": 1,
       "part": 1,
       "parts": 1,
       "theme": "Ideas"
@@ -1693,7 +1693,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
-      "count": 100,
+      "count": 101,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Ideas and CUUSOO"
@@ -6611,8 +6611,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6631,7 +6631,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30013,
+    "setCount": 30019,
     "minifigureCount": 18613,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
