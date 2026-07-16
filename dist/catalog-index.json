@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-15T03:50:02.264721+00:00",
+  "generatedAt": "2026-07-16T03:53:51.144605+00:00",
   "sets": [
     {
       "label": "12V",
@@ -397,7 +397,7 @@
     {
       "label": "Brickheadz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz.json",
-      "count": 197,
+      "count": 198,
       "part": 1,
       "parts": 1,
       "theme": "Brickheadz"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 551,
+      "count": 552,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1429,7 +1429,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 84,
+      "count": 85,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -2309,7 +2309,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 465,
+      "count": 466,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -6238,8 +6238,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6611,8 +6611,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6631,7 +6631,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30019,
+    "setCount": 30023,
     "minifigureCount": 18613,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,

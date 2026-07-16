@@ -3,7 +3,7 @@
     "part_num": "2780",
     "name": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
     "color_name": "Black",
-    "quantity": 65,
+    "quantity": 64,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/278026.jpg",
     "bricklink_part_num": "2780"
@@ -102,7 +102,7 @@
     "part_num": "6141",
     "name": "Plate Round 1 x 1 with Solid Stud",
     "color_name": "Flat Silver",
-    "quantity": 21,
+    "quantity": 20,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4633691.jpg",
     "bricklink_part_num": "6141"
@@ -405,15 +405,6 @@
     "bricklink_part_num": "99207"
   },
   {
-    "part_num": "25269",
-    "name": "Tile Round 1 x 1 Quarter",
-    "color_name": "Light Bluish Gray",
-    "quantity": 8,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6176433.jpg",
-    "bricklink_part_num": "25269"
-  },
-  {
     "part_num": "27925",
     "name": "Tile 2 x 2 Curved, Macaroni",
     "color_name": "Dark Red",
@@ -547,6 +538,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4654580.jpg",
     "bricklink_part_num": "99207"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Light Bluish Gray",
+    "quantity": 7,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6176433.jpg",
+    "bricklink_part_num": "25269"
   },
   {
     "part_num": "30166",
@@ -1150,6 +1150,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6238334.jpg",
     "bricklink_part_num": "27448"
+  },
+  {
+    "part_num": "2780",
+    "name": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
+    "color_name": "Black",
+    "quantity": 4,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/278026.jpg",
+    "bricklink_part_num": "2780"
   },
   {
     "part_num": "28192",
@@ -1793,15 +1802,6 @@
     "bricklink_part_num": "2458"
   },
   {
-    "part_num": "25269",
-    "name": "Tile Round 1 x 1 Quarter",
-    "color_name": "Bright Light Yellow",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6228969.jpg",
-    "bricklink_part_num": "25269"
-  },
-  {
     "part_num": "2540",
     "name": "Plate Special 1 x 2 Side Handle [Free Ends]",
     "color_name": "White",
@@ -1818,15 +1818,6 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4140561.jpg",
     "bricklink_part_num": "2654"
-  },
-  {
-    "part_num": "2780",
-    "name": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
-    "color_name": "Black",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/278026.jpg",
-    "bricklink_part_num": "2780"
   },
   {
     "part_num": "3002",
@@ -2866,6 +2857,33 @@
     "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/244726.jpg",
     "bricklink_part_num": "2447"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Bright Light Yellow",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6228969.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Bright Light Yellow",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6228969.jpg",
+    "bricklink_part_num": "25269"
+  },
+  {
+    "part_num": "25269",
+    "name": "Tile Round 1 x 1 Quarter",
+    "color_name": "Light Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6176433.jpg",
+    "bricklink_part_num": "25269"
   },
   {
     "part_num": "26047",
