@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-18T03:46:51.941670+00:00",
+  "generatedAt": "2026-07-19T04:08:52.972491+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 92,
+      "count": 94,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 554,
+      "count": 555,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2053,7 +2053,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 662,
+      "count": 663,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2909,7 +2909,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 316,
+      "count": 317,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -6631,7 +6631,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30029,
+    "setCount": 30034,
     "minifigureCount": 18618,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,

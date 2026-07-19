@@ -945,15 +945,6 @@
     "bricklink_part_num": "32002"
   },
   {
-    "part_num": "32002",
-    "name": "Technic Pin 3/4",
-    "color_name": "Tan",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6013938.jpg",
-    "bricklink_part_num": "32002"
-  },
-  {
     "part_num": "32013",
     "name": "Technic Axle and Pin Connector Angled #1",
     "color_name": "Black",
@@ -1139,15 +1130,6 @@
     "color_name": "Trans-Clear",
     "quantity": 2,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6569366.jpg",
-    "bricklink_part_num": "40002c09"
-  },
-  {
-    "part_num": "40002c09",
-    "name": "Cable, Fiber Optics, Wide 9L / 7.2cm",
-    "color_name": "Trans-Clear",
-    "quantity": 2,
-    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6569366.jpg",
     "bricklink_part_num": "40002c09"
   },
@@ -1512,6 +1494,15 @@
     "bricklink_part_num": "2819"
   },
   {
+    "part_num": "32002",
+    "name": "Technic Pin 3/4",
+    "color_name": "Tan",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6013938.jpg",
+    "bricklink_part_num": "32002"
+  },
+  {
     "part_num": "32073",
     "name": "Technic Axle 5",
     "color_name": "Light Bluish Gray",
@@ -1600,6 +1591,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6247435.jpg",
     "bricklink_part_num": "39794"
+  },
+  {
+    "part_num": "40002c09",
+    "name": "Cable, Fiber Optics, Wide 9L / 7.2cm",
+    "color_name": "Trans-Clear",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6569366.jpg",
+    "bricklink_part_num": "40002c09"
   },
   {
     "part_num": "41239",
