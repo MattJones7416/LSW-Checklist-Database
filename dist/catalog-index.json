@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-21T04:01:47.903993+00:00",
+  "generatedAt": "2026-07-22T04:03:05.445182+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 557,
+      "count": 558,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1253,7 +1253,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 783,
+      "count": 785,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1405,7 +1405,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 609,
+      "count": 613,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -2453,7 +2453,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 125,
+      "count": 126,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -6071,7 +6071,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 450,
+      "count": 451,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6530,8 +6530,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6611,8 +6611,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6631,8 +6631,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30133,
-    "minifigureCount": 18618,
+    "setCount": 30141,
+    "minifigureCount": 18619,
     "setChunkCount": 445,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
