@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-22T04:03:05.445182+00:00",
+  "generatedAt": "2026-07-23T04:00:38.499432+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 558,
+      "count": 559,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1243,19 +1243,27 @@
       "theme": "Gas Station"
     },
     {
-      "label": "Gear (1/2)",
+      "label": "Gear (1/3)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p1.json",
       "count": 800,
       "part": 1,
-      "parts": 2,
+      "parts": 3,
       "theme": "Gear"
     },
     {
-      "label": "Gear (2/2)",
+      "label": "Gear (2/3)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 785,
+      "count": 800,
       "part": 2,
-      "parts": 2,
+      "parts": 3,
+      "theme": "Gear"
+    },
+    {
+      "label": "Gear (3/3)",
+      "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p3.json",
+      "count": 50,
+      "part": 3,
+      "parts": 3,
       "theme": "Gear"
     },
     {
@@ -1693,7 +1701,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
-      "count": 101,
+      "count": 103,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Ideas and CUUSOO"
@@ -2925,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 5,
+      "count": 6,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -5263,7 +5271,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/seasonal.json",
-      "count": 20,
+      "count": 21,
       "part": 1,
       "parts": 1,
       "category": "Seasonal"
@@ -6023,7 +6031,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ultimate-collector-series.json",
-      "count": 123,
+      "count": 124,
       "part": 1,
       "parts": 1,
       "category": "Ultimate Collector Series"
@@ -6071,7 +6079,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 451,
+      "count": 450,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6238,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6530,8 +6538,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6611,8 +6619,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6631,9 +6639,9 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30141,
-    "minifigureCount": 18619,
-    "setChunkCount": 445,
+    "setCount": 30210,
+    "minifigureCount": 18620,
+    "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
   }
