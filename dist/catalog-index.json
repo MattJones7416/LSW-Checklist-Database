@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-23T04:00:38.499432+00:00",
+  "generatedAt": "2026-07-24T03:59:47.099405+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 559,
+      "count": 560,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (3/3)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p3.json",
-      "count": 50,
+      "count": 52,
       "part": 3,
       "parts": 3,
       "theme": "Gear"
@@ -1437,7 +1437,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 85,
+      "count": 86,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -2717,7 +2717,7 @@
     {
       "label": "Shrek",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/shrek.json",
-      "count": 1,
+      "count": 4,
       "part": 1,
       "parts": 1,
       "theme": "Shrek"
@@ -3005,7 +3005,7 @@
     {
       "label": "Super Mario",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-mario.json",
-      "count": 182,
+      "count": 183,
       "part": 1,
       "parts": 1,
       "theme": "Super Mario"
@@ -6538,8 +6538,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6619,8 +6619,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6639,7 +6639,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30210,
+    "setCount": 30218,
     "minifigureCount": 18620,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
