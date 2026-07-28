@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-27T04:28:06.291183+00:00",
+  "generatedAt": "2026-07-28T03:53:03.024619+00:00",
   "sets": [
     {
       "label": "12V",
@@ -221,7 +221,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/avengers.json",
-      "count": 102,
+      "count": 106,
       "part": 1,
       "parts": 1,
       "theme": "Avengers"
@@ -397,7 +397,7 @@
     {
       "label": "Brickheadz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/brickheadz.json",
-      "count": 198,
+      "count": 199,
       "part": 1,
       "parts": 1,
       "theme": "Brickheadz"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 563,
+      "count": 564,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 402,
+      "count": 420,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 557,
+      "count": 560,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -2253,7 +2253,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 105,
+      "count": 106,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -3045,7 +3045,7 @@
     {
       "label": "tbd",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tbd.json",
-      "count": 6,
+      "count": 3,
       "part": 1,
       "parts": 1,
       "theme": "tbd"
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30332,
+    "setCount": 30357,
     "minifigureCount": 18620,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
