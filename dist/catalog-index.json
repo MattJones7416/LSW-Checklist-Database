@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-28T03:53:03.024619+00:00",
+  "generatedAt": "2026-07-29T03:56:58.669029+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 158,
+      "count": 173,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 564,
+      "count": 565,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 420,
+      "count": 550,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 560,
+      "count": 562,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1413,7 +1413,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 613,
+      "count": 614,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -2093,7 +2093,7 @@
     {
       "label": "One Piece",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/one-piece.json",
-      "count": 14,
+      "count": 15,
       "part": 1,
       "parts": 1,
       "theme": "One Piece"
@@ -2845,7 +2845,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 131,
+      "count": 133,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 8,
+      "count": 9,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -3069,7 +3069,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 155,
+      "count": 156,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30357,
+    "setCount": 30511,
     "minifigureCount": 18620,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
