@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-31T04:07:48.120905+00:00",
+  "generatedAt": "2026-08-01T04:06:48.905536+00:00",
   "sets": [
     {
       "label": "12V",
@@ -381,7 +381,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 57,
+      "count": 56,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 567,
+      "count": 568,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -973,7 +973,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/editions.json",
-      "count": 22,
+      "count": 23,
       "part": 1,
       "parts": 1,
       "theme": "Editions"
@@ -2845,7 +2845,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 133,
+      "count": 134,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -5615,7 +5615,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/spider-man.json",
-      "count": 215,
+      "count": 214,
       "part": 1,
       "parts": 1,
       "category": "Spider-Man"
@@ -5839,7 +5839,7 @@
     {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/the-infinity-saga.json",
-      "count": 105,
+      "count": 106,
       "part": 1,
       "parts": 1,
       "category": "The Infinity Saga"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30548,
+    "setCount": 30550,
     "minifigureCount": 18620,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
