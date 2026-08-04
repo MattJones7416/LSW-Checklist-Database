@@ -936,15 +936,6 @@
     "bricklink_part_num": "25269"
   },
   {
-    "part_num": "26287",
-    "name": "Technic Driving Ring Connector Smooth [4 rounded side walls]",
-    "color_name": "Medium Azure",
-    "quantity": 8,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6628210.jpg",
-    "bricklink_part_num": "26287"
-  },
-  {
     "part_num": "27507",
     "name": "Tile 4 x 4 Curved, Macaroni",
     "color_name": "Tan",
@@ -1222,6 +1213,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6257600.jpg",
     "bricklink_part_num": "41740"
+  },
+  {
+    "part_num": "42195",
+    "name": "Technic Driving Ring Connector Smooth [2 rounded and 2 flat side walls]",
+    "color_name": "Medium Azure",
+    "quantity": 8,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6628210.jpg",
+    "bricklink_part_num": "42195"
   },
   {
     "part_num": "4304",
@@ -2575,7 +2575,7 @@
   },
   {
     "part_num": "4162pr0080",
-    "name": "Tile 1 x 8 with 'Tower Brigde' Print",
+    "name": "Tile 1 x 8 with 'Tower Bridge' Print",
     "color_name": "Black",
     "quantity": 1,
     "is_spare": false,
