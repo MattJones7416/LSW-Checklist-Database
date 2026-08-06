@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-05T03:50:34.234025+00:00",
+  "generatedAt": "2026-08-06T03:55:53.380392+00:00",
   "sets": [
     {
       "label": "12V",
@@ -285,7 +285,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/batman.json",
-      "count": 147,
+      "count": 149,
       "part": 1,
       "parts": 1,
       "theme": "Batman"
@@ -541,7 +541,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/city.json",
-      "count": 283,
+      "count": 284,
       "part": 1,
       "parts": 1,
       "theme": "City"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 572,
+      "count": 573,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -661,7 +661,7 @@
     {
       "label": "Construction",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/construction.json",
-      "count": 130,
+      "count": 131,
       "part": 1,
       "parts": 1,
       "theme": "Construction"
@@ -1117,7 +1117,7 @@
     {
       "label": "Fire",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fire.json",
-      "count": 128,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "theme": "Fire"
@@ -1173,7 +1173,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 714,
+      "count": 715,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -1317,7 +1317,7 @@
     {
       "label": "Harry Potter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/harry-potter.json",
-      "count": 222,
+      "count": 223,
       "part": 1,
       "parts": 1,
       "theme": "Harry Potter"
@@ -1909,7 +1909,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 212,
+      "count": 215,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 664,
+      "count": 672,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2845,7 +2845,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 134,
+      "count": 135,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -2917,7 +2917,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 318,
+      "count": 321,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -3069,7 +3069,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 156,
+      "count": 157,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -6648,7 +6648,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30649,
+    "setCount": 30673,
     "minifigureCount": 18693,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
