@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-06T03:55:53.380392+00:00",
+  "generatedAt": "2026-08-07T03:38:10.834638+00:00",
   "sets": [
     {
       "label": "12V",
@@ -373,7 +373,7 @@
     {
       "label": "Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/books.json",
-      "count": 730,
+      "count": 731,
       "part": 1,
       "parts": 1,
       "theme": "Books"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 573,
+      "count": 574,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2717,7 +2717,7 @@
     {
       "label": "Shrek",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/shrek.json",
-      "count": 5,
+      "count": 16,
       "part": 1,
       "parts": 1,
       "theme": "Shrek"
@@ -5063,7 +5063,7 @@
     {
       "label": "One Piece",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/one-piece.json",
-      "count": 50,
+      "count": 51,
       "part": 1,
       "parts": 1,
       "category": "One Piece"
@@ -6254,8 +6254,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30673,
-    "minifigureCount": 18693,
+    "setCount": 30686,
+    "minifigureCount": 18694,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
