@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-08T02:36:16.807558+00:00",
+  "generatedAt": "2026-08-09T02:41:51.424944+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 457,
+      "count": 458,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -285,7 +285,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/batman.json",
-      "count": 149,
+      "count": 150,
       "part": 1,
       "parts": 1,
       "theme": "Batman"
@@ -373,7 +373,7 @@
     {
       "label": "Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/books.json",
-      "count": 731,
+      "count": 730,
       "part": 1,
       "parts": 1,
       "theme": "Books"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 575,
+      "count": 576,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1125,7 +1125,7 @@
     {
       "label": "FIRST LEGO League",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/first-lego-league.json",
-      "count": 133,
+      "count": 135,
       "part": 1,
       "parts": 1,
       "theme": "FIRST LEGO League"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 672,
+      "count": 673,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2109,7 +2109,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 181,
+      "count": 182,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -2237,7 +2237,7 @@
     {
       "label": "Pokémon",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
-      "count": 29,
+      "count": 30,
       "part": 1,
       "parts": 1,
       "theme": "Pokémon"
@@ -2253,7 +2253,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 106,
+      "count": 107,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -2429,7 +2429,7 @@
     {
       "label": "Samsonite",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/samsonite.json",
-      "count": 273,
+      "count": 275,
       "part": 1,
       "parts": 1,
       "theme": "Samsonite"
@@ -2709,7 +2709,7 @@
     {
       "label": "Service Packs",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/service-packs.json",
-      "count": 374,
+      "count": 373,
       "part": 1,
       "parts": 1,
       "theme": "Service Packs"
@@ -3069,7 +3069,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 157,
+      "count": 156,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -3783,7 +3783,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/batman.json",
-      "count": 216,
+      "count": 217,
       "part": 1,
       "parts": 1,
       "category": "Batman"
@@ -6254,8 +6254,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30687,
-    "minifigureCount": 18694,
+    "setCount": 30695,
+    "minifigureCount": 18695,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
