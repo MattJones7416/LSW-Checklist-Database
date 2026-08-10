@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T02:41:51.424944+00:00",
+  "generatedAt": "2026-08-10T02:59:06.037718+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 576,
+      "count": 577,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4439,7 +4439,7 @@
     {
       "label": "Futuron",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/futuron.json",
-      "count": 9,
+      "count": 10,
       "part": 1,
       "parts": 1,
       "category": "Futuron"
@@ -5039,7 +5039,7 @@
     {
       "label": "Ninjago (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/ninjago-p2.json",
-      "count": 133,
+      "count": 134,
       "part": 2,
       "parts": 2,
       "category": "Ninjago"
@@ -6254,8 +6254,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30695,
-    "minifigureCount": 18695,
+    "setCount": 30696,
+    "minifigureCount": 18697,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
