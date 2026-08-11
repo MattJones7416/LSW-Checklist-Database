@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-10T02:59:06.037718+00:00",
+  "generatedAt": "2026-08-11T02:41:29.264510+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 577,
+      "count": 578,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 633,
+      "count": 635,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1789,7 +1789,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 148,
+      "count": 149,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 673,
+      "count": 674,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2253,7 +2253,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 107,
+      "count": 106,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6648,7 +6648,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30696,
+    "setCount": 30700,
     "minifigureCount": 18697,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
