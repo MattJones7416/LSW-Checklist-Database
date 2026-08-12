@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-11T02:41:29.264510+00:00",
+  "generatedAt": "2026-08-12T03:11:17.820603+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 458,
+      "count": 459,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 578,
+      "count": 579,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 635,
+      "count": 637,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 563,
+      "count": 569,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 674,
+      "count": 672,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2229,7 +2229,7 @@
     {
       "label": "Plush Toys",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/plush-toys.json",
-      "count": 150,
+      "count": 159,
       "part": 1,
       "parts": 1,
       "theme": "Plush Toys"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 466,
+      "count": 467,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -6087,7 +6087,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 450,
+      "count": 451,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6254,8 +6254,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30700,
-    "minifigureCount": 18697,
+    "setCount": 30718,
+    "minifigureCount": 18698,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
