@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-13T03:15:13.251887+00:00",
+  "generatedAt": "2026-08-14T03:13:55.612086+00:00",
   "sets": [
     {
       "label": "12V",
@@ -237,7 +237,7 @@
     {
       "label": "Bag and Luggage Tags",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
-      "count": 132,
+      "count": 133,
       "part": 1,
       "parts": 1,
       "theme": "Bag and Luggage Tags"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 580,
+      "count": 581,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -4951,7 +4951,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 275,
+      "count": 276,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30719,
-    "minifigureCount": 18699,
+    "setCount": 30721,
+    "minifigureCount": 18700,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
