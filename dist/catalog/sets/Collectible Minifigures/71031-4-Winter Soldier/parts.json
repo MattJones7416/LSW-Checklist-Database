@@ -1,14 +1,5 @@
 [
   {
-    "part_num": "37",
-    "name": "Weapon Dagger / Knife",
-    "color_name": "Dark Bluish Gray",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/72/44658.png",
-    "bricklink_part_num": "37"
-  },
-  {
     "part_num": "15573",
     "name": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
     "color_name": "Black",
@@ -38,6 +29,24 @@
     "bricklink_part_num": "3626cpr9746",
     "from_minifigure": true,
     "minifigure_number": "fig-011743"
+  },
+  {
+    "part_num": "37",
+    "name": "Weapon Dagger / Knife",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/72/44658.png",
+    "bricklink_part_num": "37"
+  },
+  {
+    "part_num": "37",
+    "name": "Weapon Dagger / Knife",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/72/44658.png",
+    "bricklink_part_num": "37"
   },
   {
     "part_num": "65578",

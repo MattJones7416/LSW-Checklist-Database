@@ -1098,15 +1098,6 @@
     "bricklink_part_num": "3666"
   },
   {
-    "part_num": "36752a",
-    "name": "Equipment Wand [Individual]",
-    "color_name": "Light Bluish Gray",
-    "quantity": 6,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/photos/71/36752a-71-5dd49d34-56e4-4e97-ac37-b8f589ee9954.jpg",
-    "bricklink_part_num": "36752a"
-  },
-  {
     "part_num": "4162",
     "name": "Tile 1 x 8 with Groove",
     "color_name": "Light Bluish Gray",
@@ -1963,7 +1954,7 @@
   },
   {
     "part_num": "20482",
-    "name": "Tile Round 1 x 1 with Hollow Bar",
+    "name": "Tile Special Round 1 x 1 with Hollow Bar",
     "color_name": "Black",
     "quantity": 3,
     "is_spare": false,
@@ -1972,7 +1963,7 @@
   },
   {
     "part_num": "20482",
-    "name": "Tile Round 1 x 1 with Hollow Bar",
+    "name": "Tile Special Round 1 x 1 with Hollow Bar",
     "color_name": "Reddish Brown",
     "quantity": 3,
     "is_spare": false,
@@ -2350,7 +2341,7 @@
   },
   {
     "part_num": "20482",
-    "name": "Tile Round 1 x 1 with Hollow Bar",
+    "name": "Tile Special Round 1 x 1 with Hollow Bar",
     "color_name": "Light Bluish Gray",
     "quantity": 2,
     "is_spare": false,
@@ -2692,7 +2683,7 @@
   },
   {
     "part_num": "32828",
-    "name": "Plate Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
+    "name": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
     "color_name": "Dark Bluish Gray",
     "quantity": 2,
     "is_spare": false,
@@ -2701,7 +2692,7 @@
   },
   {
     "part_num": "32828",
-    "name": "Plate Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
+    "name": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
     "color_name": "Dark Green",
     "quantity": 2,
     "is_spare": false,
@@ -2770,6 +2761,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4211437.jpg",
     "bricklink_part_num": "3665"
+  },
+  {
+    "part_num": "36752a",
+    "name": "Equipment Wand [Individual]",
+    "color_name": "Light Bluish Gray",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/71/36752a-71-5dd49d34-56e4-4e97-ac37-b8f589ee9954.jpg",
+    "bricklink_part_num": "36752a"
   },
   {
     "part_num": "36840",
@@ -3395,6 +3395,15 @@
     "bricklink_part_num": "10052"
   },
   {
+    "part_num": "10117134",
+    "name": "Sticker Sheet 2 for Set 910054-1",
+    "color_name": "[No Color/Any Color]",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": null,
+    "bricklink_part_num": "10117134"
+  },
+  {
     "part_num": "10117256",
     "name": "Sticker Sheet 1 for Set 910054-1",
     "color_name": "[No Color/Any Color]",
@@ -3504,7 +3513,7 @@
   },
   {
     "part_num": "15535",
-    "name": "Tile Round 2 x 2 with Hole",
+    "name": "Tile Special Round 2 x 2 with Hole",
     "color_name": "Dark Bluish Gray",
     "quantity": 1,
     "is_spare": false,
@@ -3549,7 +3558,7 @@
   },
   {
     "part_num": "1745",
-    "name": "Plate Round 1 x 2 Half Circle with Stud (Jumper)",
+    "name": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
     "color_name": "Reddish Brown",
     "quantity": 1,
     "is_spare": false,
@@ -3630,7 +3639,7 @@
   },
   {
     "part_num": "20482",
-    "name": "Tile Round 1 x 1 with Hollow Bar",
+    "name": "Tile Special Round 1 x 1 with Hollow Bar",
     "color_name": "Dark Green",
     "quantity": 1,
     "is_spare": false,
