@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-20T02:08:16.475160+00:00",
+  "generatedAt": "2026-08-21T02:14:07.205173+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 587,
+      "count": 588,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 710,
+      "count": 713,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -6087,7 +6087,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 450,
+      "count": 451,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30864,
-    "minifigureCount": 18701,
+    "setCount": 30868,
+    "minifigureCount": 18702,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
