@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-22T02:06:39.528332+00:00",
+  "generatedAt": "2026-08-23T02:15:25.131479+00:00",
   "sets": [
     {
       "label": "12V",
@@ -45,7 +45,7 @@
     {
       "label": "Activity Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books.json",
-      "count": 249,
+      "count": 256,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 589,
+      "count": 590,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1117,7 +1117,7 @@
     {
       "label": "Fire",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fire.json",
-      "count": 128,
+      "count": 129,
       "part": 1,
       "parts": 1,
       "theme": "Fire"
@@ -1565,7 +1565,7 @@
     {
       "label": "Jurassic World",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/jurassic-world.json",
-      "count": 138,
+      "count": 139,
       "part": 1,
       "parts": 1,
       "theme": "Jurassic World"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 474,
+      "count": 473,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -4223,7 +4223,7 @@
     {
       "label": "Dreamzzz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/dreamzzz.json",
-      "count": 108,
+      "count": 111,
       "part": 1,
       "parts": 1,
       "category": "Dreamzzz"
@@ -4783,7 +4783,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-brand-store.json",
-      "count": 199,
+      "count": 200,
       "part": 1,
       "parts": 1,
       "category": "LEGO Brand Store"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30875,
-    "minifigureCount": 18702,
+    "setCount": 30884,
+    "minifigureCount": 18706,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
