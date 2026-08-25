@@ -1685,15 +1685,6 @@
   {
     "part_num": "3070b",
     "name": "Tile 1 x 1 with Groove",
-    "color_name": "Bright Pink",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4580007.jpg",
-    "bricklink_part_num": "3070b"
-  },
-  {
-    "part_num": "3070b",
-    "name": "Tile 1 x 1 with Groove",
     "color_name": "Medium Nougat",
     "quantity": 2,
     "is_spare": false,
@@ -2242,7 +2233,7 @@
   },
   {
     "part_num": "65734",
-    "name": "Brick Curved 1 x 4 x 3",
+    "name": "Brick Curved 1 x 4 x 2 2/3",
     "color_name": "Medium Nougat",
     "quantity": 2,
     "is_spare": false,
@@ -2651,6 +2642,15 @@
     "color_name": "Bright Pink",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4580007.jpg",
+    "bricklink_part_num": "3070b"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "Bright Pink",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4580007.jpg",
     "bricklink_part_num": "3070b"
   },
