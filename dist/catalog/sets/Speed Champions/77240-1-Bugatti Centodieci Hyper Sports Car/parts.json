@@ -180,24 +180,6 @@
     "bricklink_part_num": "64727"
   },
   {
-    "part_num": "6824a",
-    "name": "Wheel Cover 7 Spoke Left",
-    "color_name": "Flat Silver",
-    "quantity": 4,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824a-179-0eef2320-2b07-4537-997f-1b2ed51333e8.jpg",
-    "bricklink_part_num": "6824a"
-  },
-  {
-    "part_num": "6824b",
-    "name": "Wheel Cover 7 Spoke Right",
-    "color_name": "Flat Silver",
-    "quantity": 4,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824b-179-0edd6435-b2d7-4ffc-bd09-22d607d6ec13.jpg",
-    "bricklink_part_num": "6824b"
-  },
-  {
     "part_num": "72206",
     "name": "Wheel Rim 24 x 12 with Black Tyre",
     "color_name": "Pearl Titanium",
@@ -583,6 +565,42 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6287901.jpg",
     "bricklink_part_num": "65676"
+  },
+  {
+    "part_num": "6824a",
+    "name": "Wheel Cover 7 Spoke Left",
+    "color_name": "Flat Silver",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824a-179-0eef2320-2b07-4537-997f-1b2ed51333e8.jpg",
+    "bricklink_part_num": "6824a"
+  },
+  {
+    "part_num": "6824a",
+    "name": "Wheel Cover 7 Spoke Left",
+    "color_name": "Flat Silver",
+    "quantity": 2,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824a-179-0eef2320-2b07-4537-997f-1b2ed51333e8.jpg",
+    "bricklink_part_num": "6824a"
+  },
+  {
+    "part_num": "6824b",
+    "name": "Wheel Cover 7 Spoke Right",
+    "color_name": "Flat Silver",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824b-179-0edd6435-b2d7-4ffc-bd09-22d607d6ec13.jpg",
+    "bricklink_part_num": "6824b"
+  },
+  {
+    "part_num": "6824b",
+    "name": "Wheel Cover 7 Spoke Right",
+    "color_name": "Flat Silver",
+    "quantity": 2,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/179/6824b-179-0edd6435-b2d7-4ffc-bd09-22d607d6ec13.jpg",
+    "bricklink_part_num": "6824b"
   },
   {
     "part_num": "79491",

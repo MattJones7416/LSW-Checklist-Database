@@ -1,12 +1,14 @@
 [
   {
-    "part_num": "88646",
-    "name": "Plate Special 3 x 4 with 1 x 4 Center Studs [Plain]",
+    "part_num": "28621",
+    "name": "Minifig Head [Plain] [Vented Stud - 2 Holes]",
     "color_name": "Black",
-    "quantity": 2,
+    "quantity": 1,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4571146.jpg",
-    "bricklink_part_num": "88646"
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6454719.jpg",
+    "bricklink_part_num": "28621",
+    "from_minifigure": true,
+    "minifigure_number": "fig-018066"
   },
   {
     "part_num": "63864pr0040",
@@ -16,6 +18,26 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/photos/15/63864pr0040-15-3415ec4f-cebc-487c-bf2e-97312cb6f46d.jpg",
     "bricklink_part_num": "63864pr0040"
+  },
+  {
+    "part_num": "8221pr0001",
+    "name": "Hood, Full with Bright Light Orange Eyes print",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/0/8221pr0001-0-aefbd427-49bc-4fce-9d7d-4db2135e929e.jpg",
+    "bricklink_part_num": "8221pr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-018066"
+  },
+  {
+    "part_num": "88646",
+    "name": "Plate Special 3 x 4 with 1 x 4 Center Studs [Plain]",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4571146.jpg",
+    "bricklink_part_num": "88646"
   },
   {
     "part_num": "90370pr0005",
@@ -34,5 +56,27 @@
     "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6104328.jpg",
     "bricklink_part_num": "90370pr0005"
+  },
+  {
+    "part_num": "970c14pat03pr0004",
+    "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Black Belt, Gold Belt Buckle, Dark Bluish Grey Shirt End print",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/72/970c14pat03pr0004-72-eeb85ca5-47de-43cd-ac88-be696b833ed1.jpg",
+    "bricklink_part_num": "970c14pat03pr0004",
+    "from_minifigure": true,
+    "minifigure_number": "fig-018066"
+  },
+  {
+    "part_num": "973g14c03h03pr0001",
+    "name": "Torso, Dual Molded Arms with Light Bluish Gray Sleeves Pattern, Black Arms and Hands with print",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/photos/72/973g14c03h03pr0001-72-eb93254e-b4e4-4bf4-bafe-630134c97f29.jpg",
+    "bricklink_part_num": "973g14c03h03pr0001",
+    "from_minifigure": true,
+    "minifigure_number": "fig-018066"
   }
 ]
