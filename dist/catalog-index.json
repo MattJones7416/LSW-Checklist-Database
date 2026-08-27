@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-26T02:15:07.046443+00:00",
+  "generatedAt": "2026-08-27T10:31:36.760787+00:00",
   "sets": [
     {
       "label": "12V",
@@ -373,7 +373,7 @@
     {
       "label": "Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/books.json",
-      "count": 730,
+      "count": 731,
       "part": 1,
       "parts": 1,
       "theme": "Books"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 593,
+      "count": 594,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -3005,7 +3005,7 @@
     {
       "label": "Super Mario",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-mario.json",
-      "count": 183,
+      "count": 191,
       "part": 1,
       "parts": 1,
       "theme": "Super Mario"
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,7 +6648,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30921,
+    "setCount": 30931,
     "minifigureCount": 18721,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
