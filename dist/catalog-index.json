@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-29T07:23:54.487414+00:00",
+  "generatedAt": "2026-08-30T05:48:51.033997+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 596,
+      "count": 597,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1413,7 +1413,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 626,
+      "count": 627,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1909,7 +1909,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 215,
+      "count": 216,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -4527,7 +4527,7 @@
     {
       "label": "Harry Potter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/harry-potter.json",
-      "count": 594,
+      "count": 597,
       "part": 1,
       "parts": 1,
       "category": "Harry Potter"
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30950,
-    "minifigureCount": 18721,
+    "setCount": 30953,
+    "minifigureCount": 18724,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
