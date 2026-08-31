@@ -1,8 +1,8 @@
 {
   "version": 1,
   "mode": "delta",
-  "generatedAt": "2026-08-30T05:48:51Z",
-  "sourceManifestGeneratedAt": "2026-08-30T05:48:51.033997+00:00",
+  "generatedAt": "2026-08-31T06:06:49Z",
+  "sourceManifestGeneratedAt": "2026-08-31T06:06:49.009023+00:00",
   "sets": [
     {
       "label": "LEGO Brand Store",
@@ -15,7 +15,7 @@
     {
       "label": "Pokémon",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
-      "count": 31,
+      "count": 32,
       "part": 1,
       "parts": 1,
       "theme": "Pokémon"

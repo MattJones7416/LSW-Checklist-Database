@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-30T05:48:51.033997+00:00",
+  "generatedAt": "2026-08-31T06:06:49.009023+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 597,
+      "count": 598,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2093,7 +2093,7 @@
     {
       "label": "One Piece",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/one-piece.json",
-      "count": 16,
+      "count": 18,
       "part": 1,
       "parts": 1,
       "theme": "One Piece"
@@ -2237,7 +2237,7 @@
     {
       "label": "Pokémon",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/pok-mon.json",
-      "count": 31,
+      "count": 32,
       "part": 1,
       "parts": 1,
       "theme": "Pokémon"
@@ -2461,7 +2461,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 126,
+      "count": 127,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -4527,7 +4527,7 @@
     {
       "label": "Harry Potter",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/harry-potter.json",
-      "count": 597,
+      "count": 612,
       "part": 1,
       "parts": 1,
       "category": "Harry Potter"
@@ -4951,7 +4951,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/minecraft.json",
-      "count": 276,
+      "count": 277,
       "part": 1,
       "parts": 1,
       "category": "Minecraft"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30953,
-    "minifigureCount": 18724,
+    "setCount": 30958,
+    "minifigureCount": 18740,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
