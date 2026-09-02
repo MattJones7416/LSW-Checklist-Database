@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T05:39:52.216784+00:00",
+  "generatedAt": "2026-09-02T05:05:25.624342+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 599,
+      "count": 600,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1701,7 +1701,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-ideas-and-cuusoo.json",
-      "count": 103,
+      "count": 104,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Ideas and CUUSOO"
@@ -3935,7 +3935,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/christmas.json",
-      "count": 123,
+      "count": 122,
       "part": 1,
       "parts": 1,
       "category": "Christmas"
@@ -3943,7 +3943,7 @@
     {
       "label": "City",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/city.json",
-      "count": 619,
+      "count": 625,
       "part": 1,
       "parts": 1,
       "category": "City"
@@ -4167,7 +4167,7 @@
     {
       "label": "Disney",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/disney.json",
-      "count": 145,
+      "count": 149,
       "part": 1,
       "parts": 1,
       "category": "Disney"
@@ -4407,7 +4407,7 @@
     {
       "label": "Friends (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/friends-p2.json",
-      "count": 120,
+      "count": 123,
       "part": 2,
       "parts": 2,
       "category": "Friends"
@@ -4887,7 +4887,7 @@
     {
       "label": "Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/marvel.json",
-      "count": 20,
+      "count": 25,
       "part": 1,
       "parts": 1,
       "category": "Marvel"
@@ -5703,7 +5703,7 @@
     {
       "label": "Star Wars (4/4)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/star-wars-p4.json",
-      "count": 512,
+      "count": 517,
       "part": 4,
       "parts": 4,
       "category": "Star Wars"
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30960,
-    "minifigureCount": 18741,
+    "setCount": 30962,
+    "minifigureCount": 18763,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
