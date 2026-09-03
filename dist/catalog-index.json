@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-02T05:05:25.624342+00:00",
+  "generatedAt": "2026-09-03T05:04:43.400446+00:00",
   "sets": [
     {
       "label": "12V",
@@ -525,7 +525,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
-      "count": 207,
+      "count": 212,
       "part": 1,
       "parts": 1,
       "theme": "Christmas"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 600,
+      "count": 601,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -3759,7 +3759,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/avengers.json",
-      "count": 187,
+      "count": 188,
       "part": 1,
       "parts": 1,
       "category": "Avengers"
@@ -3783,7 +3783,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/batman.json",
-      "count": 216,
+      "count": 217,
       "part": 1,
       "parts": 1,
       "category": "Batman"
@@ -4247,7 +4247,7 @@
     {
       "label": "Editions",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/editions.json",
-      "count": 16,
+      "count": 18,
       "part": 1,
       "parts": 1,
       "category": "Editions"
@@ -4623,7 +4623,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 225,
+      "count": 241,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30962,
-    "minifigureCount": 18763,
+    "setCount": 30968,
+    "minifigureCount": 18783,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800
