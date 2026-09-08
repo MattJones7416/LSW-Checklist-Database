@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-07T05:13:51.999428+00:00",
+  "generatedAt": "2026-09-08T05:13:41.806096+00:00",
   "sets": [
     {
       "label": "12V",
@@ -45,7 +45,7 @@
     {
       "label": "Activity Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books.json",
-      "count": 258,
+      "count": 259,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 605,
+      "count": 606,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -949,7 +949,7 @@
     {
       "label": "Duplo and Explore",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo-and-explore.json",
-      "count": 292,
+      "count": 294,
       "part": 1,
       "parts": 1,
       "theme": "Duplo and Explore"
@@ -989,7 +989,7 @@
     {
       "label": "Educational and Dacta",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/educational-and-dacta.json",
-      "count": 142,
+      "count": 146,
       "part": 1,
       "parts": 1,
       "theme": "Educational and Dacta"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 581,
+      "count": 608,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1413,7 +1413,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 627,
+      "count": 628,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1437,7 +1437,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 86,
+      "count": 87,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -1597,7 +1597,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 48,
+      "count": 51,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -1789,7 +1789,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 149,
+      "count": 180,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2109,7 +2109,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 183,
+      "count": 184,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 34,
+      "count": 38,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -3021,7 +3021,7 @@
     {
       "label": "Supplemental",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/supplemental.json",
-      "count": 365,
+      "count": 366,
       "part": 1,
       "parts": 1,
       "theme": "Supplemental"
@@ -3037,7 +3037,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
-      "count": 109,
+      "count": 111,
       "part": 1,
       "parts": 1,
       "theme": "Tabletop Games and Puzzles"
@@ -3783,7 +3783,7 @@
     {
       "label": "Batman",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/batman.json",
-      "count": 217,
+      "count": 218,
       "part": 1,
       "parts": 1,
       "category": "Batman"
@@ -6547,8 +6547,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6628,8 +6628,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6648,8 +6648,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 30981,
-    "minifigureCount": 18784,
+    "setCount": 31060,
+    "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 329,
     "maxItemsPerChunk": 800

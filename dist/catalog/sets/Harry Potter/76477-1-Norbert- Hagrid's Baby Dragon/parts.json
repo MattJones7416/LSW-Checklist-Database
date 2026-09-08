@@ -1116,6 +1116,15 @@
     "bricklink_part_num": "26047"
   },
   {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "Dark Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4271440.jpg",
+    "bricklink_part_num": "3024"
+  },
+  {
     "part_num": "3034",
     "name": "Plate 2 x 8",
     "color_name": "Medium Nougat",
@@ -1140,6 +1149,24 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/307023.jpg",
+    "bricklink_part_num": "3070b"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "Blue",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/307023.jpg",
+    "bricklink_part_num": "3070b"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "Sand Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4155202.jpg",
     "bricklink_part_num": "3070b"
   },
   {
@@ -1206,6 +1233,15 @@
     "bricklink_part_num": "40379"
   },
   {
+    "part_num": "4697b",
+    "name": "Pneumatic T-Piece (T Bar) [New Style]",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6104209.jpg",
+    "bricklink_part_num": "4697b"
+  },
+  {
     "part_num": "47905",
     "name": "Brick Special 1 x 1 with Studs on 2 Sides",
     "color_name": "Medium Lavender",
@@ -1231,6 +1267,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4569056.jpg",
     "bricklink_part_num": "52107"
+  },
+  {
+    "part_num": "54200",
+    "name": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
+    "color_name": "Tan",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4516055.jpg",
+    "bricklink_part_num": "54200"
   },
   {
     "part_num": "5717",
@@ -1265,6 +1310,15 @@
     "color_name": "Tan",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4161734.jpg",
+    "bricklink_part_num": "6141"
+  },
+  {
+    "part_num": "6141",
+    "name": "Plate Round 1 x 1 with Solid Stud",
+    "color_name": "Tan",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4161734.jpg",
     "bricklink_part_num": "6141"
   },
@@ -1316,9 +1370,27 @@
   {
     "part_num": "85861",
     "name": "Plate Round 1 x 1 with Open Stud",
+    "color_name": "Dark Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6230571.jpg",
+    "bricklink_part_num": "85861"
+  },
+  {
+    "part_num": "85861",
+    "name": "Plate Round 1 x 1 with Open Stud",
     "color_name": "Trans-Orange",
     "quantity": 1,
     "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6134722.jpg",
+    "bricklink_part_num": "85861"
+  },
+  {
+    "part_num": "85861",
+    "name": "Plate Round 1 x 1 with Open Stud",
+    "color_name": "Trans-Orange",
+    "quantity": 1,
+    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6134722.jpg",
     "bricklink_part_num": "85861"
   },
