@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-09T05:14:08.253607+00:00",
+  "generatedAt": "2026-09-10T05:15:12.328439+00:00",
   "sets": [
     {
       "label": "12V",
@@ -237,7 +237,7 @@
     {
       "label": "Bag and Luggage Tags",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bag-and-luggage-tags.json",
-      "count": 134,
+      "count": 137,
       "part": 1,
       "parts": 1,
       "theme": "Bag and Luggage Tags"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 607,
+      "count": 608,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1597,7 +1597,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 51,
+      "count": 53,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 38,
+      "count": 40,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31061,
+    "setCount": 31069,
     "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
