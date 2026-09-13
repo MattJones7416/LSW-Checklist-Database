@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-12T05:02:01.639795+00:00",
+  "generatedAt": "2026-09-13T05:23:09.036354+00:00",
   "sets": [
     {
       "label": "12V",
@@ -381,7 +381,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 56,
+      "count": 57,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 610,
+      "count": 611,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 673,
+      "count": 674,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2917,7 +2917,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 323,
+      "count": 324,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31074,
+    "setCount": 31078,
     "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
