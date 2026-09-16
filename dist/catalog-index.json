@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-15T05:20:43.709861+00:00",
+  "generatedAt": "2026-09-16T05:15:22.037655+00:00",
   "sets": [
     {
       "label": "12V",
@@ -421,7 +421,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bricklink-designer-program.json",
-      "count": 68,
+      "count": 73,
       "part": 1,
       "parts": 1,
       "theme": "BrickLink Designer Program"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 613,
+      "count": 614,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 717,
+      "count": 718,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 622,
+      "count": 623,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 359,
+      "count": 360,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -1789,7 +1789,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 192,
+      "count": 195,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 43,
+      "count": 44,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -3599,7 +3599,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 196,
+      "count": 197,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -5839,7 +5839,7 @@
     {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/the-infinity-saga.json",
-      "count": 105,
+      "count": 104,
       "part": 1,
       "parts": 1,
       "category": "The Infinity Saga"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31129,
+    "setCount": 31142,
     "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
