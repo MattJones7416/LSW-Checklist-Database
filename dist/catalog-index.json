@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-20T05:25:31.006581+00:00",
+  "generatedAt": "2026-09-21T05:27:17.831847+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 618,
+      "count": 619,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31168,
+    "setCount": 31169,
     "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
