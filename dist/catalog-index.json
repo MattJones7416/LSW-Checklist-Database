@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-22T05:23:55.353329+00:00",
+  "generatedAt": "2026-09-23T05:10:59.095635+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 477,
+      "count": 478,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 189,
+      "count": 190,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 620,
+      "count": 621,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -613,7 +613,7 @@
     {
       "label": "Clothing & Footwear",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clothing-footwear.json",
-      "count": 718,
+      "count": 720,
       "part": 1,
       "parts": 1,
       "theme": "Clothing & Footwear"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 626,
+      "count": 630,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1413,7 +1413,7 @@
     {
       "label": "Houseware",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/houseware.json",
-      "count": 633,
+      "count": 636,
       "part": 1,
       "parts": 1,
       "theme": "Houseware"
@@ -1597,7 +1597,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 62,
+      "count": 63,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 359,
+      "count": 361,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -1885,7 +1885,7 @@
     {
       "label": "Mickey Mouse",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/mickey-mouse.json",
-      "count": 14,
+      "count": 15,
       "part": 1,
       "parts": 1,
       "theme": "Mickey Mouse"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 44,
+      "count": 47,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -2957,7 +2957,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 421,
+      "count": 420,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31170,
+    "setCount": 31188,
     "minifigureCount": 18785,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
