@@ -1,13 +1,13 @@
 {
   "version": 1,
   "mode": "delta",
-  "generatedAt": "2026-09-24T05:23:23Z",
-  "sourceManifestGeneratedAt": "2026-09-24T05:23:22.557196+00:00",
+  "generatedAt": "2026-09-25T05:24:28Z",
+  "sourceManifestGeneratedAt": "2026-09-25T05:24:28.001725+00:00",
   "sets": [
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 361,
+      "count": 363,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -23,7 +23,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 481,
+      "count": 484,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"

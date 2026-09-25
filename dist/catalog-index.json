@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-24T05:23:22.557196+00:00",
+  "generatedAt": "2026-09-25T05:24:28.001725+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 622,
+      "count": 623,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1117,7 +1117,7 @@
     {
       "label": "Fire",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/fire.json",
-      "count": 129,
+      "count": 130,
       "part": 1,
       "parts": 1,
       "theme": "Fire"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 361,
+      "count": 363,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 674,
+      "count": 675,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 481,
+      "count": 484,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -3751,7 +3751,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/avengers.json",
-      "count": 188,
+      "count": 189,
       "part": 1,
       "parts": 1,
       "category": "Avengers"
@@ -3855,7 +3855,7 @@
     {
       "label": "Bricktober",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricktober.json",
-      "count": 10,
+      "count": 11,
       "part": 1,
       "parts": 1,
       "category": "Bricktober"
@@ -5839,7 +5839,7 @@
     {
       "label": "The Infinity Saga",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/the-infinity-saga.json",
-      "count": 104,
+      "count": 103,
       "part": 1,
       "parts": 1,
       "category": "The Infinity Saga"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31195,
-    "minifigureCount": 18785,
+    "setCount": 31203,
+    "minifigureCount": 18786,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
