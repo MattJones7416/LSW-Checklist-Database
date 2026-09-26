@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-25T05:24:28.001725+00:00",
+  "generatedAt": "2026-09-26T05:29:00.988214+00:00",
   "sets": [
     {
       "label": "12V",
@@ -269,7 +269,7 @@
     {
       "label": "Basic Set",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic-set.json",
-      "count": 415,
+      "count": 423,
       "part": 1,
       "parts": 1,
       "theme": "Basic Set"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 623,
+      "count": 624,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -941,7 +941,7 @@
     {
       "label": "Duplo",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo.json",
-      "count": 204,
+      "count": 197,
       "part": 1,
       "parts": 1,
       "theme": "Duplo"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31203,
+    "setCount": 31205,
     "minifigureCount": 18786,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
