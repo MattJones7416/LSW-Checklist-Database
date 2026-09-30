@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-29T06:12:14.879265+00:00",
+  "generatedAt": "2026-09-30T05:59:30.829847+00:00",
   "sets": [
     {
       "label": "12V",
@@ -261,7 +261,7 @@
     {
       "label": "Basic",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic.json",
-      "count": 223,
+      "count": 224,
       "part": 1,
       "parts": 1,
       "theme": "Basic"
@@ -269,7 +269,7 @@
     {
       "label": "Basic Set",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/basic-set.json",
-      "count": 423,
+      "count": 425,
       "part": 1,
       "parts": 1,
       "theme": "Basic Set"
@@ -381,7 +381,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 57,
+      "count": 58,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 627,
+      "count": 628,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -941,7 +941,7 @@
     {
       "label": "Duplo",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/duplo.json",
-      "count": 197,
+      "count": 195,
       "part": 1,
       "parts": 1,
       "theme": "Duplo"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 630,
+      "count": 631,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1437,7 +1437,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/icons.json",
-      "count": 87,
+      "count": 89,
       "part": 1,
       "parts": 1,
       "theme": "Icons"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 485,
+      "count": 486,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 48,
+      "count": 49,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -3037,7 +3037,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
-      "count": 111,
+      "count": 115,
       "part": 1,
       "parts": 1,
       "theme": "Tabletop Games and Puzzles"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31215,
+    "setCount": 31227,
     "minifigureCount": 18789,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,

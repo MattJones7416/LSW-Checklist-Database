@@ -1305,15 +1305,6 @@
     "bricklink_part_num": "26047"
   },
   {
-    "part_num": "3024",
-    "name": "Plate 1 x 1",
-    "color_name": "Dark Tan",
-    "quantity": 6,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4497084.jpg",
-    "bricklink_part_num": "3024"
-  },
-  {
     "part_num": "3070b",
     "name": "Tile 1 x 1 with Groove",
     "color_name": "Dark Blue",
@@ -1699,6 +1690,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/302301.jpg",
     "bricklink_part_num": "3023"
+  },
+  {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "Dark Tan",
+    "quantity": 5,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4497084.jpg",
+    "bricklink_part_num": "3024"
   },
   {
     "part_num": "30357",
@@ -3222,15 +3222,6 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/474026.jpg",
     "bricklink_part_num": "4740"
-  },
-  {
-    "part_num": "54200",
-    "name": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
-    "color_name": "Light Bluish Gray",
-    "quantity": 3,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4244372.jpg",
-    "bricklink_part_num": "54200"
   },
   {
     "part_num": "54657",
@@ -7912,6 +7903,15 @@
     "quantity": 1,
     "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6015451.jpg",
+    "bricklink_part_num": "54200"
+  },
+  {
+    "part_num": "54200",
+    "name": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
+    "color_name": "Light Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4244372.jpg",
     "bricklink_part_num": "54200"
   },
   {
