@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T06:33:07.027499+00:00",
+  "generatedAt": "2026-10-02T06:11:38.649102+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 629,
+      "count": 630,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 366,
+      "count": 367,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -3927,7 +3927,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/christmas.json",
-      "count": 122,
+      "count": 123,
       "part": 1,
       "parts": 1,
       "category": "Christmas"
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31229,
-    "minifigureCount": 18789,
+    "setCount": 31231,
+    "minifigureCount": 18790,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
