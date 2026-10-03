@@ -153,15 +153,6 @@
     "bricklink_part_num": "32028"
   },
   {
-    "part_num": "37",
-    "name": "Weapon Dagger / Knife",
-    "color_name": "Dark Bluish Gray",
-    "quantity": 6,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/72/44658.png",
-    "bricklink_part_num": "37"
-  },
-  {
     "part_num": "4304",
     "name": "Plate Special 2 x 2 x 2/3 with Two Studs On Side and Two Raised [Half Hollow Anti-stud] - Updated Version",
     "color_name": "Light Bluish Gray",
@@ -972,6 +963,15 @@
     "bricklink_part_num": "36840"
   },
   {
+    "part_num": "37",
+    "name": "Weapon Dagger / Knife",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 2,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/72/44658.png",
+    "bricklink_part_num": "37"
+  },
+  {
     "part_num": "3710",
     "name": "Plate 1 x 4",
     "color_name": "Black",
@@ -1623,6 +1623,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4177932.jpg",
     "bricklink_part_num": "3023"
+  },
+  {
+    "part_num": "3024",
+    "name": "Plate 1 x 1",
+    "color_name": "Dark Red",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4183901.jpg",
+    "bricklink_part_num": "3024"
   },
   {
     "part_num": "3024",
@@ -2298,7 +2307,7 @@
   },
   {
     "part_num": "970c05pat13pr0001",
-    "name": "Hips with Dark Blue Legs and Nougat Boots Pattern with Torn Shorts, Tan Robe for Belts, Dark Brown Sandals print",
+    "name": "Hips with Dark Blue Legs and Nougat Boots Pattern with Torn Shorts, Tan Rope for Belts, Reddish Brown Sandals print",
     "color_name": "Dark Blue",
     "quantity": 1,
     "is_spare": false,
@@ -2309,7 +2318,7 @@
   },
   {
     "part_num": "970c23pr0002",
-    "name": "Hips and Medium Nougat Legs with Coat End, Tan Fur, Reddish Brow Lapels, Chains print",
+    "name": "Hips and Medium Nougat Legs with Coat End, Tan Fur, Reddish Brown Lapels and Pants Print",
     "color_name": "Medium Nougat",
     "quantity": 1,
     "is_spare": false,
