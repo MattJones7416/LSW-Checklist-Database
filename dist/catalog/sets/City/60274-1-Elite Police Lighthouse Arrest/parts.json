@@ -447,9 +447,7 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6055612.jpg",
-    "bricklink_part_num": "15446",
-    "from_minifigure": true,
-    "minifigure_number": "fig-010290"
+    "bricklink_part_num": "15446"
   },
   {
     "part_num": "15712",
@@ -817,7 +815,7 @@
   },
   {
     "part_num": "6239pr0004",
-    "name": "Tail Shuttle with Dark Blue Police Badge, Star print",
+    "name": "Tail Shuttle with Dark Blue Police Badge, Star Print",
     "color_name": "White",
     "quantity": 1,
     "is_spare": false,
@@ -905,9 +903,7 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6252744.jpg",
-    "bricklink_part_num": "93560",
-    "from_minifigure": true,
-    "minifigure_number": "fig-010290"
+    "bricklink_part_num": "93560"
   },
   {
     "part_num": "95343",
@@ -996,6 +992,8 @@
     "quantity": 1,
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6290530.jpg",
-    "bricklink_part_num": "99240"
+    "bricklink_part_num": "99240",
+    "from_minifigure": true,
+    "minifigure_number": "fig-010290"
   }
 ]
