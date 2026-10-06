@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T06:14:45.848466+00:00",
+  "generatedAt": "2026-10-06T06:53:37.706563+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 194,
+      "count": 196,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 633,
+      "count": 634,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 494,
+      "count": 495,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -3751,7 +3751,7 @@
     {
       "label": "Avengers",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/avengers.json",
-      "count": 189,
+      "count": 203,
       "part": 1,
       "parts": 1,
       "category": "Avengers"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31256,
-    "minifigureCount": 18822,
+    "setCount": 31260,
+    "minifigureCount": 18836,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
