@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T06:28:35.918244+00:00",
+  "generatedAt": "2026-10-08T06:40:14.936300+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 635,
+      "count": 636,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1597,7 +1597,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 63,
+      "count": 65,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -1789,7 +1789,7 @@
     {
       "label": "Magnets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/magnets.json",
-      "count": 195,
+      "count": 196,
       "part": 1,
       "parts": 1,
       "theme": "Magnets"
@@ -2229,7 +2229,7 @@
     {
       "label": "Plush Toys",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/plush-toys.json",
-      "count": 172,
+      "count": 173,
       "part": 1,
       "parts": 1,
       "theme": "Plush Toys"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 495,
+      "count": 499,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 49,
+      "count": 51,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31266,
+    "setCount": 31277,
     "minifigureCount": 18836,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
