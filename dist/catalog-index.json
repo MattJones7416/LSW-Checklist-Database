@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-10T06:23:47.286144+00:00",
+  "generatedAt": "2026-10-11T06:27:56.260612+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 638,
+      "count": 639,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2229,7 +2229,7 @@
     {
       "label": "Plush Toys",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/plush-toys.json",
-      "count": 173,
+      "count": 174,
       "part": 1,
       "parts": 1,
       "theme": "Plush Toys"
@@ -3037,7 +3037,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
-      "count": 115,
+      "count": 128,
       "part": 1,
       "parts": 1,
       "theme": "Tabletop Games and Puzzles"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31285,
+    "setCount": 31300,
     "minifigureCount": 18850,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
