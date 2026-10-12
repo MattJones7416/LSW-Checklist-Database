@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-11T06:27:56.260612+00:00",
+  "generatedAt": "2026-10-12T06:32:21.723998+00:00",
   "sets": [
     {
       "label": "12V",
@@ -253,7 +253,7 @@
     {
       "label": "Bags, Totes, & Luggage (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/bags-totes-luggage-p2.json",
-      "count": 197,
+      "count": 198,
       "part": 2,
       "parts": 2,
       "theme": "Bags, Totes, & Luggage"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 639,
+      "count": 640,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 632,
+      "count": 633,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1597,7 +1597,7 @@
     {
       "label": "Key Chain (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/key-chain-p2.json",
-      "count": 65,
+      "count": 66,
       "part": 2,
       "parts": 2,
       "theme": "Key Chain"
@@ -2253,7 +2253,7 @@
     {
       "label": "Posters and Art Prints",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/posters-and-art-prints.json",
-      "count": 107,
+      "count": 108,
       "part": 1,
       "parts": 1,
       "theme": "Posters and Art Prints"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 501,
+      "count": 502,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -2917,7 +2917,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 323,
+      "count": 324,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -3341,7 +3341,7 @@
     {
       "label": "Ultimate Collector Series",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ultimate-collector-series.json",
-      "count": 51,
+      "count": 50,
       "part": 1,
       "parts": 1,
       "theme": "Ultimate Collector Series"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31300,
+    "setCount": 31306,
     "minifigureCount": 18850,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
