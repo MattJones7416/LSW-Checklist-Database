@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T05:10:06.648552+00:00",
+  "generatedAt": "2026-10-16T05:01:30.596295+00:00",
   "sets": [
     {
       "label": "12V",
@@ -381,7 +381,7 @@
     {
       "label": "Botanicals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/botanicals.json",
-      "count": 58,
+      "count": 59,
       "part": 1,
       "parts": 1,
       "theme": "Botanicals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 643,
+      "count": 644,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 678,
+      "count": 679,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2429,7 +2429,7 @@
     {
       "label": "Samsonite",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/samsonite.json",
-      "count": 273,
+      "count": 272,
       "part": 1,
       "parts": 1,
       "theme": "Samsonite"
@@ -3037,7 +3037,7 @@
     {
       "label": "Tabletop Games and Puzzles",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/tabletop-games-and-puzzles.json",
-      "count": 141,
+      "count": 142,
       "part": 1,
       "parts": 1,
       "theme": "Tabletop Games and Puzzles"
@@ -3397,7 +3397,7 @@
     {
       "label": "Value Packs",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/value-packs.json",
-      "count": 37,
+      "count": 38,
       "part": 1,
       "parts": 1,
       "theme": "Value Packs"
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31364,
+    "setCount": 31368,
     "minifigureCount": 18853,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
