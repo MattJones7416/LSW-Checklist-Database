@@ -596,15 +596,6 @@
   {
     "part_num": "3070b",
     "name": "Tile 1 x 1 with Groove",
-    "color_name": "Dark Bluish Gray",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4210848.jpg",
-    "bricklink_part_num": "3070b"
-  },
-  {
-    "part_num": "3070b",
-    "name": "Tile 1 x 1 with Groove",
     "color_name": "Dark Red",
     "quantity": 2,
     "is_spare": false,
@@ -844,15 +835,6 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/3005741.jpg",
     "bricklink_part_num": "6141"
-  },
-  {
-    "part_num": "85861",
-    "name": "Plate Round 1 x 1 with Open Stud",
-    "color_name": "Dark Red",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6073031.jpg",
-    "bricklink_part_num": "85861"
   },
   {
     "part_num": "98313",
@@ -1314,6 +1296,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4165783.jpg",
     "bricklink_part_num": "3069b"
+  },
+  {
+    "part_num": "3070b",
+    "name": "Tile 1 x 1 with Groove",
+    "color_name": "Dark Bluish Gray",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4210848.jpg",
+    "bricklink_part_num": "3070b"
   },
   {
     "part_num": "3070b",
@@ -1888,6 +1879,15 @@
   {
     "part_num": "85861",
     "name": "Plate Round 1 x 1 with Open Stud",
+    "color_name": "Dark Red",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6073031.jpg",
+    "bricklink_part_num": "85861"
+  },
+  {
+    "part_num": "85861",
+    "name": "Plate Round 1 x 1 with Open Stud",
     "color_name": "Light Bluish Gray",
     "quantity": 1,
     "is_spare": true,
@@ -2010,7 +2010,7 @@
   },
   {
     "part_num": "973c07h03pr0002",
-    "name": "Torso Armor with Reddish Brown Bandolier and Belt with Pouches Print, Dark Brown Arms with Armor Panels Print, Black Hands",
+    "name": "Torso, Armor with Reddish Brown Bandolier and Belt with Pouches Print, Dark Brown Arms with Armor Panels Print, Black Hands",
     "color_name": "Dark Brown",
     "quantity": 1,
     "is_spare": false,
