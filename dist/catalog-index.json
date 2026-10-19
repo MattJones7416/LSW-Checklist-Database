@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-18T05:09:03.085516+00:00",
+  "generatedAt": "2026-10-19T05:18:59.070343+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 646,
+      "count": 647,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -661,7 +661,7 @@
     {
       "label": "Construction",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/construction.json",
-      "count": 131,
+      "count": 132,
       "part": 1,
       "parts": 1,
       "theme": "Construction"
@@ -685,7 +685,7 @@
     {
       "label": "Creator 3-in-1",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/creator-3-in-1.json",
-      "count": 276,
+      "count": 278,
       "part": 1,
       "parts": 1,
       "theme": "Creator 3-in-1"
@@ -1173,7 +1173,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 716,
+      "count": 718,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 679,
+      "count": 681,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2245,7 +2245,7 @@
     {
       "label": "Police",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/police.json",
-      "count": 211,
+      "count": 212,
       "part": 1,
       "parts": 1,
       "theme": "Police"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31376,
+    "setCount": 31385,
     "minifigureCount": 18853,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
