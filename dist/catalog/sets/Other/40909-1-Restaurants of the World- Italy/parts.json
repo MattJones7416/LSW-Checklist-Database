@@ -353,36 +353,9 @@
   {
     "part_num": "24866",
     "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
-    "color_name": "Bright Green",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6206150.jpg",
-    "bricklink_part_num": "24866"
-  },
-  {
-    "part_num": "24866",
-    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
-    "color_name": "Magenta",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6209682.jpg",
-    "bricklink_part_num": "24866"
-  },
-  {
-    "part_num": "24866",
-    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
     "color_name": "Orange",
     "quantity": 2,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6214234.jpg",
-    "bricklink_part_num": "24866"
-  },
-  {
-    "part_num": "24866",
-    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
-    "color_name": "Orange",
-    "quantity": 2,
-    "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6214234.jpg",
     "bricklink_part_num": "24866"
   },
@@ -684,15 +657,6 @@
     "bricklink_part_num": "87580"
   },
   {
-    "part_num": "98138",
-    "name": "Tile Round 1 x 1",
-    "color_name": "White",
-    "quantity": 2,
-    "is_spare": true,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4646844.jpg",
-    "bricklink_part_num": "98138"
-  },
-  {
     "part_num": "99780",
     "name": "Bracket 1 x 2 - 1 x 2 Inverted",
     "color_name": "Tan",
@@ -880,6 +844,33 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/4211194.jpg",
     "bricklink_part_num": "2431"
+  },
+  {
+    "part_num": "24866",
+    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
+    "color_name": "Bright Green",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6206150.jpg",
+    "bricklink_part_num": "24866"
+  },
+  {
+    "part_num": "24866",
+    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
+    "color_name": "Magenta",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6209682.jpg",
+    "bricklink_part_num": "24866"
+  },
+  {
+    "part_num": "24866",
+    "name": "Plant, Flower, Plate Round 1 x 1 with 5 Petals",
+    "color_name": "Orange",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/6214234.jpg",
+    "bricklink_part_num": "24866"
   },
   {
     "part_num": "30153",
@@ -1445,6 +1436,15 @@
     "quantity": 1,
     "is_spare": true,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/6397157.jpg",
+    "bricklink_part_num": "98138"
+  },
+  {
+    "part_num": "98138",
+    "name": "Tile Round 1 x 1",
+    "color_name": "White",
+    "quantity": 1,
+    "is_spare": true,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/4646844.jpg",
     "bricklink_part_num": "98138"
   }
 ]
