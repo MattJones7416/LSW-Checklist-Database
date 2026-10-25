@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-24T05:06:44.914787+00:00",
+  "generatedAt": "2026-10-25T05:17:45.949228+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 652,
+      "count": 653,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -3839,7 +3839,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricklink-designer-program.json",
-      "count": 362,
+      "count": 384,
       "part": 1,
       "parts": 1,
       "category": "BrickLink Designer Program"
@@ -4791,7 +4791,7 @@
     {
       "label": "LEGO Ideas and CUUSOO",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/lego-ideas-and-cuusoo.json",
-      "count": 280,
+      "count": 279,
       "part": 1,
       "parts": 1,
       "category": "LEGO Ideas and CUUSOO"
@@ -5255,7 +5255,7 @@
     {
       "label": "Royal Knights",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/royal-knights.json",
-      "count": 11,
+      "count": 10,
       "part": 1,
       "parts": 1,
       "category": "Royal Knights"
@@ -6079,7 +6079,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 451,
+      "count": 452,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31399,
-    "minifigureCount": 18853,
+    "setCount": 31400,
+    "minifigureCount": 18874,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
