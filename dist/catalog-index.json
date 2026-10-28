@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-27T05:36:04.240708+00:00",
+  "generatedAt": "2026-10-28T06:19:03.634240+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 655,
+      "count": 656,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2933,7 +2933,7 @@
     {
       "label": "Stationery and Office Supplies (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/stationery-and-office-supplies-p2.json",
-      "count": 51,
+      "count": 53,
       "part": 2,
       "parts": 2,
       "theme": "Stationery and Office Supplies"
@@ -3839,7 +3839,7 @@
     {
       "label": "BrickLink Designer Program",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/bricklink-designer-program.json",
-      "count": 384,
+      "count": 411,
       "part": 1,
       "parts": 1,
       "category": "BrickLink Designer Program"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic the Hedgehog",
     "Sonic The Hedgehog",
+    "Sonic the Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31403,
-    "minifigureCount": 18874,
+    "setCount": 31406,
+    "minifigureCount": 18901,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
