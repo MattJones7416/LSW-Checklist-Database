@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-29T06:27:59.084049+00:00",
+  "generatedAt": "2026-10-30T06:27:11.004497+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 657,
+      "count": 658,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1173,7 +1173,7 @@
     {
       "label": "Friends",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/friends.json",
-      "count": 718,
+      "count": 721,
       "part": 1,
       "parts": 1,
       "theme": "Friends"
@@ -2997,7 +2997,7 @@
     {
       "label": "Super Heroes Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-heroes-marvel.json",
-      "count": 58,
+      "count": 59,
       "part": 1,
       "parts": 1,
       "theme": "Super Heroes Marvel"
@@ -3599,7 +3599,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 197,
+      "count": 198,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -5191,7 +5191,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/promotional.json",
-      "count": 67,
+      "count": 68,
       "part": 1,
       "parts": 1,
       "category": "Promotional"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31409,
-    "minifigureCount": 18901,
+    "setCount": 31414,
+    "minifigureCount": 18903,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
