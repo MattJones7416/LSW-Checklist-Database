@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-02T06:49:40.807618+00:00",
+  "generatedAt": "2026-11-03T07:17:01.083043+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 661,
+      "count": 662,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -717,7 +717,7 @@
     {
       "label": "Database Sets",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/database-sets.json",
-      "count": 131,
+      "count": 133,
       "part": 1,
       "parts": 1,
       "theme": "Database Sets"
@@ -1213,7 +1213,7 @@
     {
       "label": "Gabby's Dollhouse",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gabby-s-dollhouse.json",
-      "count": 12,
+      "count": 13,
       "part": 1,
       "parts": 1,
       "theme": "Gabby's Dollhouse"
@@ -3069,7 +3069,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 158,
+      "count": 159,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -4615,7 +4615,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 244,
+      "count": 263,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "Brickheadz",
     "BrickHeadz",
+    "Brickheadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31418,
-    "minifigureCount": 18904,
+    "setCount": 31423,
+    "minifigureCount": 18923,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
