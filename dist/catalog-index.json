@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T07:24:04.161755+00:00",
+  "generatedAt": "2026-11-07T06:37:08.465079+00:00",
   "sets": [
     {
       "label": "12V",
@@ -517,7 +517,7 @@
     {
       "label": "Chinese Traditional Festivals",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/chinese-traditional-festivals.json",
-      "count": 37,
+      "count": 40,
       "part": 1,
       "parts": 1,
       "theme": "Chinese Traditional Festivals"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 665,
+      "count": 666,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 681,
+      "count": 682,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2917,7 +2917,7 @@
     {
       "label": "Star Wars (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/star-wars-p2.json",
-      "count": 325,
+      "count": 326,
       "part": 2,
       "parts": 2,
       "theme": "Star Wars"
@@ -3069,7 +3069,7 @@
     {
       "label": "Technic (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/technic-p2.json",
-      "count": 159,
+      "count": 160,
       "part": 2,
       "parts": 2,
       "theme": "Technic"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "Vidiyo",
     "VIDIYO",
+    "Vidiyo",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31428,
+    "setCount": 31435,
     "minifigureCount": 18923,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
