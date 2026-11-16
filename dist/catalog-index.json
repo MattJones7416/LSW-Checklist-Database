@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-15T07:10:57.229871+00:00",
+  "generatedAt": "2026-11-16T07:17:00.072305+00:00",
   "sets": [
     {
       "label": "12V",
@@ -525,7 +525,7 @@
     {
       "label": "Christmas",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/christmas.json",
-      "count": 213,
+      "count": 214,
       "part": 1,
       "parts": 1,
       "theme": "Christmas"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 674,
+      "count": 675,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -605,7 +605,7 @@
     {
       "label": "Clocks and Watches",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clocks-and-watches.json",
-      "count": 230,
+      "count": 231,
       "part": 1,
       "parts": 1,
       "theme": "Clocks and Watches"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 639,
+      "count": 642,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -1749,7 +1749,7 @@
     {
       "label": "Lion Knights",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lion-knights.json",
-      "count": 26,
+      "count": 27,
       "part": 1,
       "parts": 1,
       "theme": "Lion Knights"
@@ -2317,7 +2317,7 @@
     {
       "label": "Promotional",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/promotional.json",
-      "count": 505,
+      "count": 506,
       "part": 1,
       "parts": 1,
       "theme": "Promotional"
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31478,
+    "setCount": 31486,
     "minifigureCount": 18926,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
