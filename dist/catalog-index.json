@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-17T08:30:00.174780+00:00",
+  "generatedAt": "2026-11-18T07:58:19.162007+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 676,
+      "count": 677,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -605,7 +605,7 @@
     {
       "label": "Clocks and Watches",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/clocks-and-watches.json",
-      "count": 231,
+      "count": 232,
       "part": 1,
       "parts": 1,
       "theme": "Clocks and Watches"
@@ -2109,7 +2109,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 186,
+      "count": 188,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -4615,7 +4615,7 @@
     {
       "label": "Icons",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/icons.json",
-      "count": 263,
+      "count": 264,
       "part": 1,
       "parts": 1,
       "category": "Icons"
@@ -6246,8 +6246,8 @@
     "Books",
     "Botanicals",
     "Brick Sketches",
-    "BrickHeadz",
     "Brickheadz",
+    "BrickHeadz",
     "BrickLink",
     "BrickLink Designer Program",
     "Bricks & More",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31490,
-    "minifigureCount": 18927,
+    "setCount": 31494,
+    "minifigureCount": 18928,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
