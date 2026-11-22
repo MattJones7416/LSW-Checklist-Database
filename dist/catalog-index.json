@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-21T07:44:59.385065+00:00",
+  "generatedAt": "2026-11-22T07:29:28.135600+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 484,
+      "count": 485,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 680,
+      "count": 681,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1909,7 +1909,7 @@
     {
       "label": "Minecraft",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/minecraft.json",
-      "count": 219,
+      "count": 220,
       "part": 1,
       "parts": 1,
       "theme": "Minecraft"
@@ -2069,7 +2069,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/non-fiction-books.json",
-      "count": 193,
+      "count": 200,
       "part": 1,
       "parts": 1,
       "theme": "Non-fiction Books"
@@ -2957,7 +2957,7 @@
     {
       "label": "Story Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/story-books.json",
-      "count": 420,
+      "count": 421,
       "part": 1,
       "parts": 1,
       "theme": "Story Books"
@@ -3599,7 +3599,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 200,
+      "count": 198,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -5039,7 +5039,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/non-fiction-books.json",
-      "count": 43,
+      "count": 45,
       "part": 1,
       "parts": 1,
       "category": "Non-fiction Books"
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31559,
+    "setCount": 31570,
     "minifigureCount": 18929,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
