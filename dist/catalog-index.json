@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-22T07:29:28.135600+00:00",
+  "generatedAt": "2026-11-23T08:13:38.624289+00:00",
   "sets": [
     {
       "label": "12V",
@@ -53,7 +53,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/activity-books-with-lego-parts.json",
-      "count": 485,
+      "count": 490,
       "part": 1,
       "parts": 1,
       "theme": "Activity Books with LEGO Parts"
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 681,
+      "count": 682,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1677,7 +1677,7 @@
     {
       "label": "LEGO Brand Store",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/lego-brand-store.json",
-      "count": 376,
+      "count": 377,
       "part": 1,
       "parts": 1,
       "theme": "LEGO Brand Store"
@@ -2069,7 +2069,7 @@
     {
       "label": "Non-fiction Books",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/non-fiction-books.json",
-      "count": 200,
+      "count": 201,
       "part": 1,
       "parts": 1,
       "theme": "Non-fiction Books"
@@ -2461,7 +2461,7 @@
     {
       "label": "Seasonal",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/seasonal.json",
-      "count": 129,
+      "count": 130,
       "part": 1,
       "parts": 1,
       "theme": "Seasonal"
@@ -3599,7 +3599,7 @@
     {
       "label": "Activity Books with LEGO Parts",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/activity-books-with-lego-parts.json",
-      "count": 198,
+      "count": 200,
       "part": 1,
       "parts": 1,
       "category": "Activity Books with LEGO Parts"
@@ -4215,7 +4215,7 @@
     {
       "label": "Dreamzzz",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/dreamzzz.json",
-      "count": 111,
+      "count": 110,
       "part": 1,
       "parts": 1,
       "category": "Dreamzzz"
@@ -5071,7 +5071,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/other.json",
-      "count": 91,
+      "count": 92,
       "part": 1,
       "parts": 1,
       "category": "Other"
@@ -6079,7 +6079,7 @@
     {
       "label": "Unknown",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/minifigures/unknown.json",
-      "count": 452,
+      "count": 451,
       "part": 1,
       "parts": 1,
       "category": "Unknown"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,8 +6640,8 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31570,
-    "minifigureCount": 18929,
+    "setCount": 31579,
+    "minifigureCount": 18930,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
     "maxItemsPerChunk": 800
