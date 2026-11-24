@@ -600,15 +600,6 @@
     "bricklink_part_num": "298c02"
   },
   {
-    "part_num": "3004",
-    "name": "Brick 1 x 2",
-    "color_name": "Black",
-    "quantity": 2,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300426.jpg",
-    "bricklink_part_num": "3004"
-  },
-  {
     "part_num": "3005",
     "name": "Brick 1 x 1",
     "color_name": "Yellow",
@@ -1332,6 +1323,15 @@
     "bricklink_part_num": "3003"
   },
   {
+    "part_num": "3004",
+    "name": "Brick 1 x 2",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/300426.jpg",
+    "bricklink_part_num": "3004"
+  },
+  {
     "part_num": "3008",
     "name": "Brick 1 x 8",
     "color_name": "Light Gray",
@@ -1474,6 +1474,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/elements/3006844.jpg",
     "bricklink_part_num": "3062b"
+  },
+  {
+    "part_num": "3069b",
+    "name": "Tile 1 x 2 with Groove",
+    "color_name": "Black",
+    "quantity": 1,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/elements/306926.jpg",
+    "bricklink_part_num": "3069b"
   },
   {
     "part_num": "3069b",
