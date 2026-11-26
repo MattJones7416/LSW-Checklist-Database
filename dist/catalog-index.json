@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-25T09:08:10.112869+00:00",
+  "generatedAt": "2026-11-26T08:55:35.862409+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 684,
+      "count": 685,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -1261,7 +1261,7 @@
     {
       "label": "Gear (2/2)",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/gear-p2.json",
-      "count": 673,
+      "count": 674,
       "part": 2,
       "parts": 2,
       "theme": "Gear"
@@ -2997,7 +2997,7 @@
     {
       "label": "Super Heroes Marvel",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/super-heroes-marvel.json",
-      "count": 59,
+      "count": 60,
       "part": 1,
       "parts": 1,
       "theme": "Super Heroes Marvel"
@@ -6539,8 +6539,8 @@
     "Soccer",
     "Sofia the First",
     "Soft Bricks",
-    "Sonic The Hedgehog",
     "Sonic the Hedgehog",
+    "Sonic The Hedgehog",
     "Space",
     "Space Police I",
     "Space Police II",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31585,
+    "setCount": 31588,
     "minifigureCount": 18930,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
