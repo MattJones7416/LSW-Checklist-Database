@@ -229,15 +229,6 @@
     "minifigure_number": "Multiple"
   },
   {
-    "part_num": "2454a",
-    "name": "Brick 1 x 2 x 5 with Blocked Open Studs and Bottom Stud Holder with Asymmetric Ridges",
-    "color_name": "White",
-    "quantity": 4,
-    "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/2454a.png",
-    "bricklink_part_num": "2454a"
-  },
-  {
     "part_num": "2518",
     "name": "Plant, Palm Leaf Large 10 x 5",
     "color_name": "Green",
@@ -335,6 +326,15 @@
     "is_spare": false,
     "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/14/4079.png",
     "bricklink_part_num": "4079"
+  },
+  {
+    "part_num": "46212",
+    "name": "Brick 1 x 2 x 5 without Side Supports",
+    "color_name": "White",
+    "quantity": 4,
+    "is_spare": false,
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/46212a.png",
+    "bricklink_part_num": "46212"
   },
   {
     "part_num": "4625",
@@ -1665,13 +1665,13 @@
     "bricklink_part_num": "3730"
   },
   {
-    "part_num": "3755a",
-    "name": "Brick 1 x 3 x 5 with Side Supports",
+    "part_num": "3755",
+    "name": "Brick 1 x 3 x 5 without Side Supports",
     "color_name": "White",
     "quantity": 1,
     "is_spare": false,
-    "image_url": "https://cdn.rebrickable.com/media/parts/elements/375501.jpg",
-    "bricklink_part_num": "3755a"
+    "image_url": "https://cdn.rebrickable.com/media/parts/ldraw/15/3755a.png",
+    "bricklink_part_num": "3755"
   },
   {
     "part_num": "3795",
