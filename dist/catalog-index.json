@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T09:05:49.989004+00:00",
+  "generatedAt": "2026-11-28T08:27:47.429350+00:00",
   "sets": [
     {
       "label": "12V",
@@ -589,7 +589,7 @@
     {
       "label": "Classic Town",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/classic-town.json",
-      "count": 686,
+      "count": 687,
       "part": 1,
       "parts": 1,
       "theme": "Classic Town"
@@ -2061,7 +2061,7 @@
     {
       "label": "Ninjago",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/ninjago.json",
-      "count": 683,
+      "count": 684,
       "part": 1,
       "parts": 1,
       "theme": "Ninjago"
@@ -2109,7 +2109,7 @@
     {
       "label": "Other",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/other.json",
-      "count": 188,
+      "count": 189,
       "part": 1,
       "parts": 1,
       "theme": "Other"
@@ -2845,7 +2845,7 @@
     {
       "label": "Spider-Man",
       "url": "https://raw.githubusercontent.com/MattJones7416/LSW-Checklist-Database/refs/heads/main/dist/chunks/sets/spider-man.json",
-      "count": 136,
+      "count": 137,
       "part": 1,
       "parts": 1,
       "theme": "Spider-Man"
@@ -6620,8 +6620,8 @@
     "Various",
     "Vehicle",
     "Video Games and Accessories",
-    "VIDIYO",
     "Vidiyo",
+    "VIDIYO",
     "Vikings",
     "Villains",
     "VIP Add-On Packs",
@@ -6640,7 +6640,7 @@
     "Zooters"
   ],
   "summary": {
-    "setCount": 31596,
+    "setCount": 31600,
     "minifigureCount": 18930,
     "setChunkCount": 446,
     "minifigureChunkCount": 328,
